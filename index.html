@@ -4,38 +4,61 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Daily Threat Intelligence Report — June 23, 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f8f9fa; color: #333; line-height: 1.6; }
-.container { max-width: 900px; margin: 0 auto; padding: 20px; }
-header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); color: white; padding: 40px 20px; text-align: center; }
-header h1 { font-size: 28px; margin-bottom: 8px; }
-header p { color: #aaa; font-size: 14px; }
-.stats { display: flex; justify-content: center; gap: 30px; margin: 30px 0; flex-wrap: wrap; }
-.stat { text-align: center; }
-.stat .number { font-size: 32px; font-weight: 700; color: #4A90D9; }
-.stat .label { font-size: 12px; color: #888; text-transform: uppercase; letter-spacing: 1px; }
-h2 { font-size: 22px; margin: 30px 0 15px; padding-bottom: 8px; border-bottom: 2px solid #4A90D9; color: #1a1a2e; }
-.report-card { background: white; border-radius: 8px; padding: 20px; margin-bottom: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); border-left: 4px solid #4A90D9; }
-.report-card h3 { font-size: 16px; margin-bottom: 8px; color: #1a1a2e; }
+body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: #0d1117; color: #c9d1d9; line-height: 1.6; }
+.mono { font-family: 'JetBrains Mono', monospace; }
+.container { max-width: 960px; margin: 0 auto; padding: 20px; }
+.ascii-header { text-align: center; padding: 30px 20px 20px; }
+.ascii-header pre { font-family: 'JetBrains Mono', monospace; font-size: 10px; line-height: 1.2; color: #58a6ff; display: inline-block; text-align: left; }
+.header-info { text-align: center; padding: 10px 0 30px; }
+.header-info h1 { font-size: 24px; color: #f0f6fc; margin: 0 0 4px; }
+.header-info .date { font-size: 13px; color: #8b949e; }
+.stats { display: flex; justify-content: center; gap: 24px; margin: 30px 0 40px; flex-wrap: wrap; }
+.stat { text-align: center; background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 16px 24px; min-width: 100px; }
+.stat .number { font-size: 28px; font-weight: 700; color: #58a6ff; }
+.stat .label { font-size: 11px; color: #8b949e; text-transform: uppercase; letter-spacing: 1px; }
+h2 { font-size: 20px; margin: 30px 0 16px; padding-bottom: 8px; border-bottom: 1px solid #30363d; color: #f0f6fc; }
+.report-card { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 20px; margin-bottom: 12px; }
+.report-card:hover { border-color: #58a6ff; }
+.report-card h3 { font-size: 15px; margin-bottom: 8px; color: #f0f6fc; }
+.report-card h3 .icon { margin-right: 8px; }
 .report-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; }
-.report-header .date { font-size: 12px; color: #888; white-space: nowrap; }
+.report-header .date { font-size: 12px; color: #8b949e; white-space: nowrap; }
 .report-meta { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 8px; }
-.tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; background: #e8f0fe; color: #1a73e8; }
+.tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; background: #1f6feb22; color: #58a6ff; border: 1px solid #1f6feb44; }
 .refs { list-style: none; padding: 0; margin: 8px 0; }
 .refs li { font-size: 12px; margin: 2px 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.refs a { color: #4A90D9; text-decoration: none; }
+.refs a { color: #58a6ff; text-decoration: none; }
 .refs a:hover { text-decoration: underline; }
-.source-link { display: inline-block; margin-top: 8px; font-size: 12px; color: #4A90D9; text-decoration: none; }
+.source-link { display: inline-block; margin-top: 8px; font-size: 12px; color: #58a6ff; text-decoration: none; }
 .source-link:hover { text-decoration: underline; }
-footer { text-align: center; padding: 30px; color: #888; font-size: 12px; border-top: 1px solid #eee; margin-top: 40px; }
+footer { text-align: center; padding: 40px 0 20px; color: #484f58; font-size: 12px; }
+.footer-ascii { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #30363d; margin-top: 16px; white-space: pre; line-height: 1.2; }
+@media (max-width: 600px) {
+    .stats { gap: 10px; }
+    .stat { padding: 12px 16px; min-width: 80px; }
+    .stat .number { font-size: 22px; }
+    .ascii-header pre { font-size: 7px; }
+}
 </style>
 </head>
 <body>
-<header>
+<div class="ascii-header">
+<pre>,     ███████╗██╗  ██╗ █████╗ ██████╗ ██████╗
+     ██╔════╝██║  ██║██╔══██╗██╔══██╗██╔══██╗
+     ███████╗███████║███████║██████╔╝██████╔╝
+     ╚════██║██╔══██║██╔══██║██╔══██╗██╔═══╝
+     ███████║██║  ██║██║  ██║██║  ██║██║
+     ╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝
+     DAILY THREAT INTELLIGENCE REPORT</pre>
+</div>
+<div class="header-info">
     <h1>Daily Threat Intelligence Report</h1>
-    <p>June 23, 2026 — Auto-published from threat intelligence feeds</p>
-</header>
+    <p class="date">June 23, 2026</p>
+</div>
 
 <div class="container">
     <div class="stats">
@@ -50,7 +73,7 @@ footer { text-align: center; padding: 30px; color: #888; font-size: 12px; border
     
         <div class="report-card">
             <div class="report-header">
-                <h3>Threat Actors Weaponizing RAR Archives to Target Thailand's Healthcare Sector</h3>
+                <h3><span class="icon">🔑</span>Threat Actors Weaponizing RAR Archives to Target Thailand's Healthcare Sector</h3>
                 <span class="date">2026-06-22</span>
             </div>
             <div class="report-meta">
@@ -64,7 +87,7 @@ footer { text-align: center; padding: 30px; color: #888; font-size: 12px; border
 
         <div class="report-card">
             <div class="report-header">
-                <h3>Inside the FortiBleed Open Directory: A Technical Analysis of What the Attacker Left Behind</h3>
+                <h3><span class="icon">⚠️</span>Inside the FortiBleed Open Directory: A Technical Analysis of What the Attacker Left Behind</h3>
                 <span class="date">2026-06-22</span>
             </div>
             <div class="report-meta">
@@ -78,7 +101,7 @@ footer { text-align: center; padding: 30px; color: #888; font-size: 12px; border
 
         <div class="report-card">
             <div class="report-header">
-                <h3>An unknown actor distributes malicious VBS scripts via WhatsApp</h3>
+                <h3><span class="icon">🐀</span>An unknown actor distributes malicious VBS scripts via WhatsApp</h3>
                 <span class="date">2026-06-22</span>
             </div>
             <div class="report-meta">
@@ -92,7 +115,7 @@ footer { text-align: center; padding: 30px; color: #888; font-size: 12px; border
 
         <div class="report-card">
             <div class="report-header">
-                <h3>3CXDesktopApp Intrusion Campaign Prevention</h3>
+                <h3><span class="icon">📦</span>3CXDesktopApp Intrusion Campaign Prevention</h3>
                 <span class="date">2026-06-22</span>
             </div>
             <div class="report-meta">
@@ -106,7 +129,7 @@ footer { text-align: center; padding: 30px; color: #888; font-size: 12px; border
 
         <div class="report-card">
             <div class="report-header">
-                <h3>Cloud Atlas activity in the second half of 2025 and early 2026: new tools and a new payload</h3>
+                <h3><span class="icon">🐀</span>Cloud Atlas activity in the second half of 2025 and early 2026: new tools and a new payload</h3>
                 <span class="date">2026-06-21</span>
             </div>
             <div class="report-meta">
@@ -120,7 +143,7 @@ footer { text-align: center; padding: 30px; color: #888; font-size: 12px; border
 
         <div class="report-card">
             <div class="report-header">
-                <h3>The Gentleman Ransomware | Defense Evasion TTPs Uncovered</h3>
+                <h3><span class="icon">🔒</span>The Gentleman Ransomware | Defense Evasion TTPs Uncovered</h3>
                 <span class="date">2026-06-20</span>
             </div>
             <div class="report-meta">
@@ -134,7 +157,7 @@ footer { text-align: center; padding: 30px; color: #888; font-size: 12px; border
 
         <div class="report-card">
             <div class="report-header">
-                <h3>The Evolution of ClickFix: From Cleartext to Server Side Polymorphism</h3>
+                <h3><span class="icon">🕵️</span>The Evolution of ClickFix: From Cleartext to Server Side Polymorphism</h3>
                 <span class="date">2026-06-20</span>
             </div>
             <div class="report-meta">
@@ -148,7 +171,7 @@ footer { text-align: center; padding: 30px; color: #888; font-size: 12px; border
 
         <div class="report-card">
             <div class="report-header">
-                <h3>PureLogs: Delivery via PawsRunner Steganography</h3>
+                <h3><span class="icon">🎣</span>PureLogs: Delivery via PawsRunner Steganography</h3>
                 <span class="date">2026-06-20</span>
             </div>
             <div class="report-meta">
@@ -162,7 +185,7 @@ footer { text-align: center; padding: 30px; color: #888; font-size: 12px; border
 
         <div class="report-card">
             <div class="report-header">
-                <h3>One Man, One AI, One Fake Persona: Inside the 5-Year Influence and Fraud 'Patriot Bait' Campaign</h3>
+                <h3><span class="icon">🐀</span>One Man, One AI, One Fake Persona: Inside the 5-Year Influence and Fraud 'Patriot Bait' Campaign</h3>
                 <span class="date">2026-06-20</span>
             </div>
             <div class="report-meta">
@@ -176,7 +199,7 @@ footer { text-align: center; padding: 30px; color: #888; font-size: 12px; border
 
         <div class="report-card">
             <div class="report-header">
-                <h3>Middle East Malicious Infrastructure Report: 1,350+ C2 Servers Mapped Across 98 Providers</h3>
+                <h3><span class="icon">🕵️</span>Middle East Malicious Infrastructure Report: 1,350+ C2 Servers Mapped Across 98 Providers</h3>
                 <span class="date">2026-06-20</span>
             </div>
             <div class="report-meta">
@@ -190,7 +213,7 @@ footer { text-align: center; padding: 30px; color: #888; font-size: 12px; border
 
         <div class="report-card">
             <div class="report-header">
-                <h3>Popular node-ipc npm Package Infected with Credential Stealer</h3>
+                <h3><span class="icon">📦</span>Popular node-ipc npm Package Infected with Credential Stealer</h3>
                 <span class="date">2026-06-19</span>
             </div>
             <div class="report-meta">
@@ -204,7 +227,7 @@ footer { text-align: center; padding: 30px; color: #888; font-size: 12px; border
 
         <div class="report-card">
             <div class="report-header">
-                <h3>Popa: From Sourcing to Distribution</h3>
+                <h3><span class="icon">📱</span>Popa: From Sourcing to Distribution</h3>
                 <span class="date">2026-06-19</span>
             </div>
             <div class="report-meta">
@@ -218,7 +241,7 @@ footer { text-align: center; padding: 30px; color: #888; font-size: 12px; border
 
         <div class="report-card">
             <div class="report-header">
-                <h3>Operation Poisson – Analyzing a Cybercriminal’s Entire Operation</h3>
+                <h3><span class="icon">⚠️</span>Operation Poisson – Analyzing a Cybercriminal’s Entire Operation</h3>
                 <span class="date">2026-06-19</span>
             </div>
             <div class="report-meta">
@@ -232,7 +255,7 @@ footer { text-align: center; padding: 30px; color: #888; font-size: 12px; border
 
         <div class="report-card">
             <div class="report-header">
-                <h3>Operation FlutterBridge: The FlutterShell macOS Backdoor</h3>
+                <h3><span class="icon">🐀</span>Operation FlutterBridge: The FlutterShell macOS Backdoor</h3>
                 <span class="date">2026-06-19</span>
             </div>
             <div class="report-meta">
@@ -246,7 +269,7 @@ footer { text-align: center; padding: 30px; color: #888; font-size: 12px; border
 
         <div class="report-card">
             <div class="report-header">
-                <h3>Operation Dragon Whistle: UNG002 Targets Chinese Academia via Weaponized Institutional Lure</h3>
+                <h3><span class="icon">🎣</span>Operation Dragon Whistle: UNG002 Targets Chinese Academia via Weaponized Institutional Lure</h3>
                 <span class="date">2026-06-19</span>
             </div>
             <div class="report-meta">
@@ -260,7 +283,7 @@ footer { text-align: center; padding: 30px; color: #888; font-size: 12px; border
 
         <div class="report-card">
             <div class="report-header">
-                <h3>OXLOADER: new loader evading detection to drop infostealer</h3>
+                <h3><span class="icon">🔑</span>OXLOADER: new loader evading detection to drop infostealer</h3>
                 <span class="date">2026-06-19</span>
             </div>
             <div class="report-meta">
@@ -274,7 +297,7 @@ footer { text-align: center; padding: 30px; color: #888; font-size: 12px; border
 
         <div class="report-card">
             <div class="report-header">
-                <h3>Beyond Tax Returns: How Shared Malware Infrastructure Scales Brand Abuse In Indonesia</h3>
+                <h3><span class="icon">🎣</span>Beyond Tax Returns: How Shared Malware Infrastructure Scales Brand Abuse In Indonesia</h3>
                 <span class="date">2026-06-19</span>
             </div>
             <div class="report-meta">
@@ -288,7 +311,7 @@ footer { text-align: center; padding: 30px; color: #888; font-size: 12px; border
 
         <div class="report-card">
             <div class="report-header">
-                <h3>Analysis of Gamaredon campaign targeting Ukraine weaponizing CVE-2025-8088</h3>
+                <h3><span class="icon">⚠️</span>Analysis of Gamaredon campaign targeting Ukraine weaponizing CVE-2025-8088</h3>
                 <span class="date">2026-06-19</span>
             </div>
             <div class="report-meta">
@@ -302,7 +325,7 @@ footer { text-align: center; padding: 30px; color: #888; font-size: 12px; border
 
         <div class="report-card">
             <div class="report-header">
-                <h3>Twitter Feed - nextronresearch - 17-06-2026</h3>
+                <h3><span class="icon">🕵️</span>Twitter Feed - nextronresearch - 17-06-2026</h3>
                 <span class="date">2026-06-18</span>
             </div>
             <div class="report-meta">
@@ -316,7 +339,7 @@ footer { text-align: center; padding: 30px; color: #888; font-size: 12px; border
 
         <div class="report-card">
             <div class="report-header">
-                <h3>Threat Actors Abuse claude.ai Shared Chat for ClickFix Malvertising Campaign</h3>
+                <h3><span class="icon">🎣</span>Threat Actors Abuse claude.ai Shared Chat for ClickFix Malvertising Campaign</h3>
                 <span class="date">2026-06-18</span>
             </div>
             <div class="report-meta">
@@ -330,7 +353,7 @@ footer { text-align: center; padding: 30px; color: #888; font-size: 12px; border
 
         <div class="report-card">
             <div class="report-header">
-                <h3>Sayonara, SocGholish: Operation Endgame Disrupts Major Cybercrime Operation</h3>
+                <h3><span class="icon">🔒</span>Sayonara, SocGholish: Operation Endgame Disrupts Major Cybercrime Operation</h3>
                 <span class="date">2026-06-18</span>
             </div>
             <div class="report-meta">
@@ -344,7 +367,7 @@ footer { text-align: center; padding: 30px; color: #888; font-size: 12px; border
 
         <div class="report-card">
             <div class="report-header">
-                <h3>Operation Endgame vs. SocGholish Fake Updates</h3>
+                <h3><span class="icon">🐀</span>Operation Endgame vs. SocGholish Fake Updates</h3>
                 <span class="date">2026-06-18</span>
             </div>
             <div class="report-meta">
@@ -358,7 +381,7 @@ footer { text-align: center; padding: 30px; color: #888; font-size: 12px; border
 
         <div class="report-card">
             <div class="report-header">
-                <h3>Okendo Reviews Supply Chain Attack</h3>
+                <h3><span class="icon">📦</span>Okendo Reviews Supply Chain Attack</h3>
                 <span class="date">2026-06-18</span>
             </div>
             <div class="report-meta">
@@ -372,7 +395,7 @@ footer { text-align: center; padding: 30px; color: #888; font-size: 12px; border
 
         <div class="report-card">
             <div class="report-header">
-                <h3>May 2026 Infostealer Trend Report</h3>
+                <h3><span class="icon">🎣</span>May 2026 Infostealer Trend Report</h3>
                 <span class="date">2026-06-18</span>
             </div>
             <div class="report-meta">
@@ -386,7 +409,7 @@ footer { text-align: center; padding: 30px; color: #888; font-size: 12px; border
 
         <div class="report-card">
             <div class="report-header">
-                <h3>Latest PyPi Compromise</h3>
+                <h3><span class="icon">📦</span>Latest PyPi Compromise</h3>
                 <span class="date">2026-06-18</span>
             </div>
             <div class="report-meta">
@@ -400,7 +423,7 @@ footer { text-align: center; padding: 30px; color: #888; font-size: 12px; border
 
         <div class="report-card">
             <div class="report-header">
-                <h3>Klue Integration Abused in Salesforce Data Theft | Threat Spotlight</h3>
+                <h3><span class="icon">🐀</span>Klue Integration Abused in Salesforce Data Theft | Threat Spotlight</h3>
                 <span class="date">2026-06-18</span>
             </div>
             <div class="report-meta">
@@ -414,7 +437,7 @@ footer { text-align: center; padding: 30px; color: #888; font-size: 12px; border
 
         <div class="report-card">
             <div class="report-header">
-                <h3>Invisible Sting: Over 4000 Outdated Routers Compromised by AryStinger, Becoming Global Attack Springboards for Hackers</h3>
+                <h3><span class="icon">📡</span>Invisible Sting: Over 4000 Outdated Routers Compromised by AryStinger, Becoming Global Attack Springboards for Hackers</h3>
                 <span class="date">2026-06-18</span>
             </div>
             <div class="report-meta">
@@ -428,7 +451,7 @@ footer { text-align: center; padding: 30px; color: #888; font-size: 12px; border
 
         <div class="report-card">
             <div class="report-header">
-                <h3>Inside Banana RAT: From Build Server to Banking Fraud</h3>
+                <h3><span class="icon">🐀</span>Inside Banana RAT: From Build Server to Banking Fraud</h3>
                 <span class="date">2026-06-18</span>
             </div>
             <div class="report-meta">
@@ -442,7 +465,7 @@ footer { text-align: center; padding: 30px; color: #888; font-size: 12px; border
 
         <div class="report-card">
             <div class="report-header">
-                <h3>GitBait: Phishing targeting the Mexican financial sector</h3>
+                <h3><span class="icon">🎣</span>GitBait: Phishing targeting the Mexican financial sector</h3>
                 <span class="date">2026-06-18</span>
             </div>
             <div class="report-meta">
@@ -456,7 +479,7 @@ footer { text-align: center; padding: 30px; color: #888; font-size: 12px; border
 
         <div class="report-card">
             <div class="report-header">
-                <h3>From package to postinstall payload: Inside the Mastra npm supply chain compromise</h3>
+                <h3><span class="icon">⚠️</span>From package to postinstall payload: Inside the Mastra npm supply chain compromise</h3>
                 <span class="date">2026-06-18</span>
             </div>
             <div class="report-meta">
@@ -470,7 +493,7 @@ footer { text-align: center; padding: 30px; color: #888; font-size: 12px; border
 
         <div class="report-card">
             <div class="report-header">
-                <h3>Crypto Clipper uses Tor and worm-like propagation for persistence and control</h3>
+                <h3><span class="icon">🐀</span>Crypto Clipper uses Tor and worm-like propagation for persistence and control</h3>
                 <span class="date">2026-06-18</span>
             </div>
             <div class="report-meta">
@@ -484,7 +507,7 @@ footer { text-align: center; padding: 30px; color: #888; font-size: 12px; border
 
         <div class="report-card">
             <div class="report-header">
-                <h3>9 Year-Old PHP Vulnerability Keeps Swinging As One of the Most Targeted Vulnerabilities</h3>
+                <h3><span class="icon">🤖</span>9 Year-Old PHP Vulnerability Keeps Swinging As One of the Most Targeted Vulnerabilities</h3>
                 <span class="date">2026-06-18</span>
             </div>
             <div class="report-meta">
@@ -498,7 +521,7 @@ footer { text-align: center; padding: 30px; color: #888; font-size: 12px; border
 
         <div class="report-card">
             <div class="report-header">
-                <h3>Copycat hits another npm package</h3>
+                <h3><span class="icon">🔑</span>Copycat hits another npm package</h3>
                 <span class="date">2026-06-17</span>
             </div>
             <div class="report-meta">
@@ -512,7 +535,7 @@ footer { text-align: center; padding: 30px; color: #888; font-size: 12px; border
 
         <div class="report-card">
             <div class="report-header">
-                <h3>ClickFix Campaign Generated Via AI Delivers SmartRAT</h3>
+                <h3><span class="icon">🕵️</span>ClickFix Campaign Generated Via AI Delivers SmartRAT</h3>
                 <span class="date">2026-06-17</span>
             </div>
             <div class="report-meta">
@@ -525,7 +548,12 @@ footer { text-align: center; padding: 30px; color: #888; font-size: 12px; border
         </div>
 
     <footer>
-        <p>Generated at 2026-06-23 20:03 UTC — Threat Intelligence Pipeline</p>
+        <p>Report generated at 2026-06-23 20:17 UTC</p>
+        <div class="footer-ascii">
+    ╔═══════════════════════════════════════════════╗
+    ║  The only good breach is the one you detect.  ║
+    ╚═══════════════════════════════════════════════╝
+        </div>
     </footer>
 </div>
 </body>
