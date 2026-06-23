@@ -28,6 +28,10 @@ h2 { font-size: 20px; margin: 30px 0 16px; padding-bottom: 8px; border-bottom: 1
 .opinion li { margin: 4px 0; color: #c9d1d9; }
 .opinion strong { color: #f0f6fc; }
 .opinion em { color: #8b949e; }
+.opinion ul { margin: 12px 0; padding-left: 20px; list-style: none; }
+.opinion ul li { margin: 6px 0; padding-left: 16px; position: relative; color: #c9d1d9; }
+.opinion ul li::before { content: "▸"; position: absolute; left: 0; color: #58a6ff; }
+.opinion-list li { margin: 6px 0; }
 .report-card { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 20px; margin-bottom: 12px; }
 .report-card:hover { border-color: #58a6ff; }
 .report-card h3 { font-size: 15px; margin-bottom: 8px; color: #f0f6fc; }
@@ -71,19 +75,8 @@ h3 { font-size: 16px; margin: 16px 0 4px; color: #8b949e; }
 
 <div class="container">
     <div class="opinion">
-        This week's threat landscape has been anything but quiet. The standout? **The #APT36 cluster can't stop, won't stop** — attributed to APT36. But that's just the tip of the iceberg.
-
-What's striking this week is the breadth of activity across Nation-State Activity, Social Engineering & Malvertising, Malware Loaders & Backdoors, and Supply Chain Attacks. A few observations from the trenches:
-
-- **Nation-state activity**: "The #APT36 cluster can't stop, won't stop" — APT36 shows the patience and precision we've come to expect from advanced persistent threats.
-- **Social engineering gets smarter**: "Observed phishing URLs delivering RMM payload" — the actor is weaponizing trust. The human layer remains the softest target.
-- **Supply chain attacks continue**: "From PostCSS Masquerading to Windows RAT" — the actor is abusing trusted distribution channels. If you're not auditing your dependencies, you're already behind.
-- **Supply chain attacks continue**: "Detecting the Klue supply chain attack in Salesforce instanc" — Icarus is abusing trusted distribution channels. If you're not auditing your dependencies, you're already behind.
-- **Supply chain attacks continue**: "Customer CRM Data Accessed in Supply Chain Incident" — the actor is abusing trusted distribution channels. If you're not auditing your dependencies, you're already behind.
-
-The common thread? Attackers are getting better at blending into normal operations — legitimate RMM tools, signed installers, cloud services, trusted update channels. The days of obvious malware are fading. As defenders, we need to be asking "why is this legitimate tool behaving weirdly?" not just "is this file malicious?"
-
-*Analysis based on 7 threat reports collected this week. Stay sharp out there.*
+        <h2>Opinion of a DFIR Guy</h2>
+        <p><strong>The #APT36 cluster can't stop, won't stop</strong> is the report that made me sit up this week. APT36 is running the kind of patient, methodical operation that reminds me why I never trust a quiet network. The tradecraft here is worth studying.</p><p>On the <strong>nation-state</strong> front, APT36 is showing the kind of patience that makes attribution possible but response hard. "The #APT36 cluster can't stop, won't stop" shows TTPs worth adding to your detection stack.</p><p><strong>Social engineering</strong> remains the most reliable initial access vector. unknown actors are leveraging trust in ways that bypass technical controls. "Observed phishing URLs delivering RMM payload" is worth sharing with your awareness training team.</p><p><strong>Supply chain</strong> activity is ramping up — Icarus is abusing package repositories and trusted distribution channels. "From PostCSS Masquerading to Windows RAT" is a good example of why dependency auditing can't be optional anymore.</p><p>If you take one thing from this week: audit your dependencies, watch your RMM tools like they're compromised, and assume your users will click anything. Then build your detections accordingly.</p><p>— Analysis based on 7 reports from the last 24 hours.</p>
     </div>
 
     <div class="stats">
@@ -200,7 +193,7 @@ The common thread? Attackers are getting better at blending into normal operatio
         </div>
 
     <footer>
-        <p>Report generated at 2026-06-23 21:52 UTC</p>
+        <p>Report generated at 2026-06-23 22:09 UTC</p>
         <div class="footer-ascii">
     ╔═══════════════════════════════════════════════╗
     ║  The only good breach is the one you detect.  ║
