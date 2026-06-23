@@ -71,21 +71,31 @@ h3 { font-size: 16px; margin: 16px 0 4px; color: #8b949e; }
 
 <div class="container">
     <div class="opinion">
-        The common thread? Attackers are getting better at blending into normal operations — legitimate RMM tools, signed installers, cloud services, trusted update channels. The days of obvious malware are fading. As defenders, we need to be asking "why is this legitimate tool behaving weirdly?" not just "is this file malicious?"
+        This week's threat landscape has been anything but quiet. The standout? **The #APT36 cluster can't stop, won't stop** — attributed to APT36. But that's just the tip of the iceberg.
 
-*Analysis based on 0 threat reports collected this week. Stay sharp out there.*
+What's striking this week is the breadth of activity across Nation-State Activity, Social Engineering & Malvertising, Malware Loaders & Backdoors, and Supply Chain Attacks. A few observations from the trenches:
+
+- **Nation-state activity**: "The #APT36 cluster can't stop, won't stop" — APT36 shows the patience and precision we've come to expect from advanced persistent threats.
+- **Social engineering gets smarter**: "Observed phishing URLs delivering RMM payload" — the actor is weaponizing trust. The human layer remains the softest target.
+- **Supply chain attacks continue**: "From PostCSS Masquerading to Windows RAT" — the actor is abusing trusted distribution channels. If you're not auditing your dependencies, you're already behind.
+- **Supply chain attacks continue**: "Detecting the Klue supply chain attack in Salesforce instanc" — Icarus is abusing trusted distribution channels. If you're not auditing your dependencies, you're already behind.
+- **Supply chain attacks continue**: "Customer CRM Data Accessed in Supply Chain Incident" — the actor is abusing trusted distribution channels. If you're not auditing your dependencies, you're already behind.
+
+The common thread? Attackers are getting better at blending into normal operations — legitimate RMM tools, signed installers, cloud services, trusted update channels. The days of obvious malware are fading. As defenders, we need to be asking "why is this legitimate tool behaving weirdly?" not just "is this file malicious?"
+
+*Analysis based on 7 threat reports collected this week. Stay sharp out there.*
     </div>
 
     <div class="stats">
-        <div class="stat"><div class="number">0</div><div class="label">Reports</div></div>
-        <div class="stat"><div class="number">0</div><div class="label">Adversaries</div></div>
+        <div class="stat"><div class="number">7</div><div class="label">Reports</div></div>
+        <div class="stat"><div class="number">2</div><div class="label">Adversaries</div></div>
         <div class="stat"><div class="number">0</div><div class="label">Malware Families</div></div>
         <div class="stat"><div class="number">0</div><div class="label">CVEs</div></div>
-        <div class="stat"><div class="number">0</div><div class="label">IOCs</div></div>
+        <div class="stat"><div class="number">44</div><div class="label">IOCs</div></div>
     </div>
 
     <!-- Top Adversaries -->
-    
+    <h2>Top Adversaries</h2><div class='mini-section'><div class='mini-card'><strong>APT36</strong></div><div class='mini-card'><strong>Icarus</strong></div></div>
 
     <!-- Critical CVEs -->
     
@@ -94,13 +104,103 @@ h3 { font-size: 16px; margin: 16px 0 4px; color: #8b949e; }
     
 
     <!-- Key Themes -->
-    
+    <h2>Key Themes</h2><h3>Nation-State Activity</h3><p>1 report</p><h3>Social Engineering & Malvertising</h3><p>2 reports</p><h3>Malware Loaders & Backdoors</h3><p>2 reports</p><h3>Supply Chain Attacks</h3><p>2 reports</p>
 
     <h2>Latest Reports</h2>
     
+        <div class="report-card">
+            <div class="report-header">
+                <h3><span class="icon">🕵️</span>The #APT36 cluster can't stop, won't stop</h3>
+                <span class="date">2026-06-23</span>
+            </div>
+            <div class="report-meta">
+                <span class="tag">Actor: APT36</span>
+                <span class="tag">TLP: White</span>
+                <span class="tag">CVEs: None</span>
+            </div>
+            <ul class='refs'><li><a href="https://x.com/GenThreatLabs/status/2068972067307811234" target="_blank" rel="noopener">https://x.com/GenThreatLabs/status/2068972067307811234</a></li></ul>
+        </div>
+
+        <div class="report-card">
+            <div class="report-header">
+                <h3><span class="icon">🎣</span>Observed phishing URLs delivering RMM payload</h3>
+                <span class="date">2026-06-23</span>
+            </div>
+            <div class="report-meta">
+                <span class="tag">Actor: Unknown</span>
+                <span class="tag">TLP: White</span>
+                <span class="tag">CVEs: None</span>
+            </div>
+            <ul class='refs'><li><a href="https://x.com/patialavii/status/2068919332126835122" target="_blank" rel="noopener">https://x.com/patialavii/status/2068919332126835122</a></li></ul>
+        </div>
+
+        <div class="report-card">
+            <div class="report-header">
+                <h3><span class="icon">📦</span>From PostCSS Masquerading to Windows RAT</h3>
+                <span class="date">2026-06-23</span>
+            </div>
+            <div class="report-meta">
+                <span class="tag">Actor: Unknown</span>
+                <span class="tag">TLP: White</span>
+                <span class="tag">CVEs: None</span>
+            </div>
+            <ul class='refs'><li><a href="https://research.jfrog.com/post/from-postcss-typosquat-to-windows-rat" target="_blank" rel="noopener">https://research.jfrog.com/post/from-postcss-typosquat-to-windows-rat</a></li></ul>
+        </div>
+
+        <div class="report-card">
+            <div class="report-header">
+                <h3><span class="icon">📦</span>Detecting the Klue supply chain attack in Salesforce instances</h3>
+                <span class="date">2026-06-23</span>
+            </div>
+            <div class="report-meta">
+                <span class="tag">Actor: Icarus</span>
+                <span class="tag">TLP: White</span>
+                <span class="tag">CVEs: None</span>
+            </div>
+            <ul class='refs'><li><a href="https://securitylabs.datadoghq.com/articles/detecting-the-klue-supply-chain-attack-in-salesforce/" target="_blank" rel="noopener">https://securitylabs.datadoghq.com/articles/detecting-the-klue-supply-chain-atta...</a></li></ul>
+        </div>
+
+        <div class="report-card">
+            <div class="report-header">
+                <h3><span class="icon">📦</span>Customer CRM Data Accessed in Supply Chain Incident</h3>
+                <span class="date">2026-06-23</span>
+            </div>
+            <div class="report-meta">
+                <span class="tag">Actor: Unknown</span>
+                <span class="tag">TLP: White</span>
+                <span class="tag">CVEs: None</span>
+            </div>
+            <ul class='refs'><li><a href="https://cyberpress.org/lastpass-confirms-customer-crm/" target="_blank" rel="noopener">https://cyberpress.org/lastpass-confirms-customer-crm/</a></li></ul>
+        </div>
+
+        <div class="report-card">
+            <div class="report-header">
+                <h3><span class="icon">📦</span>Artifact scanner detects npm package 'node-fetch-utils' using external dependency resolution with remote tarball dependency from GitHub</h3>
+                <span class="date">2026-06-23</span>
+            </div>
+            <div class="report-meta">
+                <span class="tag">Actor: Unknown</span>
+                <span class="tag">TLP: White</span>
+                <span class="tag">CVEs: None</span>
+            </div>
+            <ul class='refs'><li><a href="https://x.com/nextronresearch/status/2068958596646265033" target="_blank" rel="noopener">https://x.com/nextronresearch/status/2068958596646265033</a></li></ul>
+        </div>
+
+        <div class="report-card">
+            <div class="report-header">
+                <h3><span class="icon">🎣</span>A Multi-Stage Steganographic Loader Campaign Deploying Diverse Payloads Globally</h3>
+                <span class="date">2026-06-23</span>
+            </div>
+            <div class="report-meta">
+                <span class="tag">Actor: Unknown</span>
+                <span class="tag">TLP: White</span>
+                <span class="tag">CVEs: None</span>
+            </div>
+            <ul class='refs'><li><a href="https://labs.k7computing.com/index.php/a-multi-stage-steganographic-loader-campaign-deploying-diverse-payloads-globally" target="_blank" rel="noopener">https://labs.k7computing.com/index.php/a-multi-stage-steganographic-loader-campa...</a></li></ul>
+        </div>
 
     <footer>
-        <p>Report generated at 2026-06-23 21:36 UTC</p>
+        <p>Report generated at 2026-06-23 21:52 UTC</p>
         <div class="footer-ascii">
     ╔═══════════════════════════════════════════════╗
     ║  The only good breach is the one you detect.  ║
