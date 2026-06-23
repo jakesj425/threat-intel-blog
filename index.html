@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Threat Intel Daily Blog — 2026-06-23</title>
+    <style>
+        :root {
+            --bg: #0d1117;
+            --card-bg: #161b22;
+            --border: #30363d;
+            --text: #c9d1d9;
+            --text-muted: #8b949e;
+            --accent: #58a6ff;
+            --accent2: #f78166;
+            --green: #3fb950;
+            --orange: #d29922;
+            --red: #f85149;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            padding: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        header {
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        h1 { color: var(--accent); font-size: 2rem; margin-bottom: 0.5rem; }
+        h2 { color: var(--accent2); font-size: 1.4rem; margin: 2rem 0 1rem; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; }
+        h3 { color: var(--text); font-size: 1.1rem; margin: 1.5rem 0 0.75rem; }
+        .subtitle { color: var(--text-muted); font-size: 0.95rem; }
+        .meta { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1rem; }
+        ul { padding-left: 1.5rem; margin-bottom: 1rem; }
+        li { margin-bottom: 0.4rem; }
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        strong { color: var(--text); }
+        blockquote {
+            border-left: 4px solid var(--green);
+            background: var(--card-bg);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 6px 6px 0;
+        }
+        blockquote p { margin-bottom: 0.5rem; }
+        blockquote p:last-child { margin-bottom: 0; }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            font-size: 0.9rem;
+        }
+        th, td {
+            padding: 0.6rem 1rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+        th { background: var(--card-bg); color: var(--accent); }
+        hr { border: none; border-top: 1px solid var(--border); margin: 2rem 0; }
+        .footer {
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border);
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            text-align: center;
+        }
+        .stats {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin: 1rem 0;
+        }
+        .stat {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+        }
+        .stat-value { color: var(--accent); font-weight: 700; font-size: 1.1rem; }
+        .stat-label { color: var(--text-muted); }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Daily Threat Intelligence Blog</h1>
+    <p class="subtitle">Automated threat intel summaries from OTX pulse data, enriched with MITRE ATT&amp;CK TTPs and D3FEND countermeasures.</p>
+    <p class="meta">2026-06-23 | Generated 2026-06-23 19:39 UTC</p>
+    <div class="stats">
+        <div class="stat"><div class="stat-value">34</div><div class="stat-label">Reports</div></div>
+        <div class="stat"><div class="stat-value">18</div><div class="stat-label">Adversaries</div></div>
+        <div class="stat"><div class="stat-value">55</div><div class="stat-label">Malware Families</div></div>
+        <div class="stat"><div class="stat-value">13</div><div class="stat-label">CVEs</div></div>
+        <div class="stat"><div class="stat-value">838</div><div class="stat-label">IOCs</div></div>
+    </div>
+</header>
+
+<main>
+<h1>Daily Threat Intelligence Blog — 2026-06-23</h1>
+
+<h2>LinkedIn Post</h2>
+
+<p>&lt;!-- LINKEDIN_POST_START --&gt;</p>
+
+<p><strong>🔥 Weekly Threat Intel Roundup — DFIR Hot Takes 🔥</strong></p>
+
+<p>This week we tracked <strong>34 threat reports</strong> across <strong>18 adversary groups</strong>. Here's what caught my attention:</p>
+
+<li><strong>Threat Actors Weaponizing RAR Archives to Target Thailand's Healthcare Sector</strong> — Unknown</li>
+<li><strong>Inside the FortiBleed Open Directory: A Technical Analysis of What the Attacker </strong> — Unknown</li>
+<li><strong>An unknown actor distributes malicious VBS scripts via WhatsApp</strong> — Unknown</li>
+<li><strong>3CXDesktopApp Intrusion Campaign Prevention</strong> — Lazarus Group</li>
+<li><strong>Cloud Atlas activity in the second half of 2025 and early 2026: new tools and a </strong> — Inception Framework</li>
+
+<p>Key themes this week:</p>
+
+<li>Credential Theft &amp; Infostealers (9 reports)</li>
+<li>Malware Loaders &amp; Backdoors (15 reports)</li>
+<li>Ransomware (1 reports)</li>
+<li>Social Engineering &amp; Malvertising (2 reports)</li>
+<li>Supply Chain Attacks (2 reports)</li>
+
+<p>The threat landscape keeps evolving — supply chain attacks on npm/PyPi, AI-powered solo operators, and decade-old router vulnerabilities still being exploited at scale. Stay sharp out there.</p>
+
+<p><strong>Sources:</strong></p>
+<li><a href="https://www.seqrite.com/blog/threat-actors-weaponizing-rar-archives-to-target-thailands-healthcare-sector/">Threat Actors Weaponizing RAR Archives to Target Thailand's </a></li>
+<li><a href="https://www.cloudsek.com/blog/inside-the-fortibleed-open-directory-a-technical-analysis-of-what-the-attacker-left-behind">Inside the FortiBleed Open Directory: A Technical Analysis o</a></li>
+<li><a href="https://securelist.com/whatsapp-vbs-rmm-campaign/120290/">An unknown actor distributes malicious VBS scripts via Whats</a></li>
+<li><a href="https://www.crowdstrike.com/blog/crowdstrike-detects-and-prevents-active-intrusion-campaign-targeting-3cxdesktopapp-customers/?utm_source=Securitylab.ru">3CXDesktopApp Intrusion Campaign Prevention</a></li>
+<li><a href="https://securelist.com/cloud-atlas-2026/119895/">Cloud Atlas activity in the second half of 2025 and early 20</a></li>
+<li><a href="https://www.huntress.com/blog/the-gentlemen-ransomware-defense-evasion-ttps">The Gentleman Ransomware | Defense Evasion TTPs Uncovered</a></li>
+<li><a href="https://www.menlosecurity.com/blog/the-evolution-of-clickfix-from-cleartext-to-server-side-polymorphism">The Evolution of ClickFix: From Cleartext to Server Side Pol</a></li>
+<li><a href="https://www.fortinet.com/blog/threat-research/purelogs-delivery-via-pawsrunner-steganography">PureLogs: Delivery via PawsRunner Steganography</a></li>
+
+<p>&lt;!-- LINKEDIN_POST_END --&gt;</p>
+
+<hr>
+
+<blockquote>
+<p>[!tldr] TL;DR</p>
+<p><strong>34 reports</strong> analyzed | <strong>18 adversaries</strong> | <strong>55 malware families</strong> | <strong>13 CVEs</strong> | <strong>838 IOCs</strong></p>
+</blockquote>
+
+<hr>
+
+<h2>Key Themes</h2>
+
+<h3>Credential Theft &amp; Infostealers</h3>
+
+<li><strong><a href="#2026-06-22 Threat Actors Weaponizing RAR Archives to Target Thailand's Healthcare Sector">2026-06-22 Threat Actors Weaponizing RAR Archives to Target Thailand's Healthcare Sector</a></strong> (2026-06-22) — Actor: Unknown actor</li>
+<li><strong><a href="#2026-06-22 Inside the FortiBleed Open Directory_ A Technical Analysis of What the Attacker Left Behind">2026-06-22 Inside the FortiBleed Open Directory_ A Technical Analysis of What the Attacker Left Behind</a></strong> (2026-06-22) — Actor: Unknown actor</li>
+<li><strong><a href="#2026-06-20 PureLogs_ Delivery via PawsRunner Steganography">2026-06-20 PureLogs_ Delivery via PawsRunner Steganography</a></strong> (2026-06-20) — Actor: Unknown actor</li>
+<li><strong><a href="#2026-06-20 One Man, One AI, One Fake Persona_ Inside the 5-Year Influence and Fraud 'Patriot Bait' Campaign">2026-06-20 One Man, One AI, One Fake Persona_ Inside the 5-Year Influence and Fraud 'Patriot Bait' Campaign</a></strong> (2026-06-20) — Actor: bandcampro</li>
+<li><strong><a href="#2026-06-19 Operation Poisson – Analyzing a Cybercriminal’s Entire Operation">2026-06-19 Operation Poisson – Analyzing a Cybercriminal’s Entire Operation</a></strong> (2026-06-19) — Actor: Poisson</li>
+<li><em>...and 4 more</em></li>
+
+<h3>Malware Loaders &amp; Backdoors</h3>
+
+<li><strong><a href="#2026-06-22 An unknown actor distributes malicious VBS scripts via WhatsApp">2026-06-22 An unknown actor distributes malicious VBS scripts via WhatsApp</a></strong> (2026-06-22) — Actor: Unknown actor</li>
+<li><strong><a href="#2026-06-22 3CXDesktopApp Intrusion Campaign Prevention">2026-06-22 3CXDesktopApp Intrusion Campaign Prevention</a></strong> (2026-06-22) — Actor: Lazarus Group</li>
+<li><strong><a href="#2026-06-21 Cloud Atlas activity in the second half of 2025 and early 2026_ new tools and a new payload">2026-06-21 Cloud Atlas activity in the second half of 2025 and early 2026_ new tools and a new payload</a></strong> (2026-06-21) — Actor: Inception Framework</li>
+<li><strong><a href="#2026-06-20 Middle East Malicious Infrastructure Report_ 1,350+ C2 Servers Mapped Across 98 Providers">2026-06-20 Middle East Malicious Infrastructure Report_ 1,350+ C2 Servers Mapped Across 98 Providers</a></strong> (2026-06-20) — Actor: Eagle Werewolf, ENERGETIC BEAR, Velvet Tempest, APT28, GrayCharlie</li>
+<li><strong><a href="#2026-06-19 Operation FlutterBridge_ The FlutterShell macOS Backdoor">2026-06-19 Operation FlutterBridge_ The FlutterShell macOS Backdoor</a></strong> (2026-06-19) — Actor: Unknown actor</li>
+<li><em>...and 10 more</em></li>
+
+<h3>Ransomware</h3>
+
+<li><strong><a href="#2026-06-20 The Gentleman Ransomware _ Defense Evasion TTPs Uncovered">2026-06-20 The Gentleman Ransomware _ Defense Evasion TTPs Uncovered</a></strong> (2026-06-20) — Actor: The Gentlemen</li>
+
+<h3>Social Engineering &amp; Malvertising</h3>
+
+<li><strong><a href="#2026-06-20 The Evolution of ClickFix_ From Cleartext to Server Side Polymorphism">2026-06-20 The Evolution of ClickFix_ From Cleartext to Server Side Polymorphism</a></strong> (2026-06-20) — Actor: Unknown actor</li>
+<li><strong><a href="#2026-06-19 Operation Dragon Whistle_ UNG002 Targets Chinese Academia via Weaponized Institutional Lure">2026-06-19 Operation Dragon Whistle_ UNG002 Targets Chinese Academia via Weaponized Institutional Lure</a></strong> (2026-06-19) — Actor: UNG002</li>
+
+<h3>Supply Chain Attacks</h3>
+
+<li><strong><a href="#2026-06-19 Popular node-ipc npm Package Infected with Credential Stealer">2026-06-19 Popular node-ipc npm Package Infected with Credential Stealer</a></strong> (2026-06-19) — Actor: Unknown actor</li>
+<li><strong><a href="#2026-06-18 Latest PyPi Compromise">2026-06-18 Latest PyPi Compromise</a></strong> (2026-06-18) — Actor: TeamPCP</li>
+
+<h3>Other Campaigns</h3>
+
+<li><strong><a href="#2026-06-19 Popa_ From Sourcing to Distribution">2026-06-19 Popa_ From Sourcing to Distribution</a></strong> (2026-06-19) — Actor: Unknown actor</li>
+<li><strong><a href="#2026-06-19 Analysis of Gamaredon campaign targeting Ukraine weaponizing CVE-2025-8088">2026-06-19 Analysis of Gamaredon campaign targeting Ukraine weaponizing CVE-2025-8088</a></strong> (2026-06-19) — Actor: Gamaredon</li>
+
+<h3>Nation-State Activity</h3>
+
+<li><strong><a href="#2026-06-18 Threat Actors Abuse claude.ai Shared Chat for ClickFix Malvertising Campaign">2026-06-18 Threat Actors Abuse claude.ai Shared Chat for ClickFix Malvertising Campaign</a></strong> (2026-06-18) — Actor: Unknown actor</li>
+
+<h3>Infrastructure &amp; IoT Threats</h3>
+
+<li><strong><a href="#2026-06-18 Invisible Sting_ Over 4000 Outdated Routers Compromised by AryStinger, Becoming Global Attack Springboards for Hackers">2026-06-18 Invisible Sting_ Over 4000 Outdated Routers Compromised by AryStinger, Becoming Global Attack Springboards for Hackers</a></strong> (2026-06-18) — Actor: Unknown actor</li>
+<li><strong><a href="#2026-06-18 9 Year-Old PHP Vulnerability Keeps Swinging As One of the Most Targeted Vulnerabilities">2026-06-18 9 Year-Old PHP Vulnerability Keeps Swinging As One of the Most Targeted Vulnerabilities</a></strong> (2026-06-18) — Actor: Unknown actor</li>
+
+<hr>
+
+<h2>Top Adversaries</h2>
+
+<li><strong><a href="#APT28">APT28</a></strong> (2026-06-20) — Type: Espionage | 1 reports</li>
+<li><strong><a href="#ENERGETIC BEAR">ENERGETIC BEAR</a></strong> (2026-06-20) — Type: Espionage | 1 reports</li>
+<li><strong><a href="#Eagle Werewolf">Eagle Werewolf</a></strong> (2026-06-20) — Type: Espionage | 1 reports</li>
+<li><strong><a href="#GOLD PRELUDE">GOLD PRELUDE</a></strong> (2026-06-18) — Type: Cybercrime | 1 reports</li>
+<li><strong><a href="#Gamaredon">Gamaredon</a></strong> (2026-06-19) — Type: Unknown | 1 reports</li>
+<li><strong><a href="#GoldFactory">GoldFactory</a></strong> (2026-06-19) — Type: Unknown | 1 reports</li>
+<li><strong><a href="#GrayCharlie">GrayCharlie</a></strong> (2026-06-20) — Type: Espionage | 1 reports</li>
+<li><strong><a href="#Inception Framework">Inception Framework</a></strong> (2026-06-21) — Type: Unknown | 1 reports</li>
+<li><strong><a href="#Lazarus Group">Lazarus Group</a></strong> (2026-06-22) — Type: Unknown | 1 reports</li>
+<li><strong><a href="#Poisson">Poisson</a></strong> (2026-06-19) — Type: Unknown | 1 reports</li>
+
+<hr>
+
+<h2>Top Malware Families</h2>
+
+<li><strong><a href="#AquaLARAT">AquaLARAT</a></strong> (2026-06-20) — Used by: <a href="#GrayCharlie">GrayCharlie</a></li>
+<li><strong><a href="#AsyncRAT">AsyncRAT</a></strong> (2026-06-20) — Used by: <a href="#GrayCharlie">GrayCharlie</a></li>
+<li><strong><a href="#Cloud Atlas">Cloud Atlas</a></strong> (2026-06-21) — Used by: <a href="#Inception Framework">Inception Framework</a></li>
+<li><strong><a href="#DynoWiper">DynoWiper</a></strong> (2026-06-20) — Used by: <a href="#GrayCharlie">GrayCharlie</a></li>
+<li><strong><a href="#EchoGather">EchoGather</a></strong> (2026-06-20) — Used by: <a href="#GrayCharlie">GrayCharlie</a></li>
+<li><strong><a href="#Gigabud.RAT">Gigabud.RAT</a></strong> (2026-06-19) — Used by: <a href="#GoldFactory">GoldFactory</a></li>
+<li><strong><a href="#HellSuChecker">HellSuChecker</a></strong> (2026-06-20) — Used by: <a href="#GrayCharlie">GrayCharlie</a></li>
+<li><strong><a href="#LockBit Black">LockBit Black</a></strong> (2026-06-20) — Used by: <a href="#GrayCharlie">GrayCharlie</a></li>
+<li><strong><a href="#MMRat">MMRat</a></strong> (2026-06-19) — Used by: <a href="#GoldFactory">GoldFactory</a></li>
+<li><strong><a href="#NetSupport RAT">NetSupport RAT</a></strong> (2026-06-21) — Used by: <a href="#Inception Framework">Inception Framework</a></li>
+
+<hr>
+
+<h2>Critical CVEs</h2>
+
+<li><strong><a href="#CVE-2013-3307">CVE-2013-3307</a></strong> — CVSS: N/A (N/A)</li>
+<li><strong><a href="#CVE-2016-5681">CVE-2016-5681</a></strong> — CVSS: N/A (N/A)</li>
+<li><strong><a href="#CVE-2017-9841">CVE-2017-9841</a></strong> — CVSS: N/A (N/A)</li>
+<li><strong><a href="#CVE-2018-0802">CVE-2018-0802</a></strong> — CVSS: N/A (N/A)</li>
+<li><strong><a href="#CVE-2021-41773">CVE-2021-41773</a></strong> — CVSS: N/A (N/A)</li>
+<li><strong><a href="#CVE-2022-47945">CVE-2022-47945</a></strong> — CVSS: N/A (N/A)</li>
+<li><strong><a href="#CVE-2024-4577">CVE-2024-4577</a></strong> — CVSS: N/A (N/A)</li>
+<li><strong><a href="#CVE-2024-55591">CVE-2024-55591</a></strong> — CVSS: N/A (N/A)</li>
+<li><strong><a href="#CVE-2025-11837">CVE-2025-11837</a></strong> — CVSS: N/A (N/A)</li>
+<li><strong><a href="#CVE-2025-11953">CVE-2025-11953</a></strong> — CVSS: N/A (N/A)</li>
+
+<hr>
+
+<h2>Shared IOCs (High-Confidence Connections)</h2>
+
+<p><em>No shared IOCs found in this cycle.</em></p>
+
+<hr>
+
+<h2>Explore</h2>
+
+<li><a href="#00_Dashboard">00_Dashboard</a> — Dataview tables and statistics</li>
+<li><a href="#Entities/Adversaries">Entities/Adversaries</a> — Threat actor profiles</li>
+<li><a href="#Entities/Malware">Entities/Malware</a> — Malware family profiles</li>
+<li><a href="#Entities/CVEs">Entities/CVEs</a> — Vulnerability details</li>
+<li><a href="#Entities/IOCs">Entities/IOCs</a> — Indicator database</li>
+<li><a href="#00_Map_of_Content">00_Map_of_Content</a> — Vault structure</li>
+
+<blockquote>
+<p>[!tip] Graph View</p>
+<p>Press <code>Ctrl/Cmd+G</code> to open the knowledge graph. Filter by <code>tag:#entity</code> to see all entities, or <code>tag:#adversary</code> for actors only.</p>
+</blockquote>
+
+<hr>
+<p><em>Generated by OTX-Obsidian Pipeline at 2026-06-23 19:39 UTC</em></p>
+</main>
+
+<footer class="footer">
+    <p>Generated by OTX-Obsidian Pipeline. Powered by <a href="https://pages.github.com">GitHub Pages</a>.</p>
+    <p>Source repo: <a href="https://github.com/jakesj425/threat-intel-blog">jakesj425/threat-intel-blog</a></p>
+</footer>
+
+</body>
+</html>
