@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily Threat Intelligence Report — June 24, 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: #0d1117; color: #c9d1d9; line-height: 1.6; }
+.mono { font-family: 'JetBrains Mono', monospace; }
+.container { max-width: 960px; margin: 0 auto; padding: 20px; }
+.ascii-header { text-align: center; padding: 30px 20px 20px; }
+.ascii-header pre { font-family: 'JetBrains Mono', monospace; font-size: 10px; line-height: 1.2; color: #58a6ff; display: inline-block; text-align: left; }
+.header-info { text-align: center; padding: 10px 0 30px; }
+.header-info h1 { font-size: 24px; color: #f0f6fc; margin: 0 0 4px; }
+.header-info .date { font-size: 13px; color: #8b949e; }
+.stats { display: flex; justify-content: center; gap: 24px; margin: 30px 0 40px; flex-wrap: wrap; }
+.stat { text-align: center; background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 16px 24px; min-width: 100px; }
+.stat .number { font-size: 28px; font-weight: 700; color: #58a6ff; }
+.stat .label { font-size: 11px; color: #8b949e; text-transform: uppercase; letter-spacing: 1px; }
+h2 { font-size: 20px; margin: 30px 0 16px; padding-bottom: 8px; border-bottom: 1px solid #30363d; color: #f0f6fc; }
+h3 { font-size: 16px; margin: 16px 0 4px; color: #8b949e; }
+.opinion { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 24px; margin-bottom: 30px; border-left: 4px solid #58a6ff; }
+.opinion h2 { border: none; margin-top: 0; padding-bottom: 12px; }
+.opinion p { margin: 8px 0; color: #c9d1d9; }
+.opinion ul { margin: 12px 0; padding-left: 20px; list-style: none; }
+.opinion ul li { margin: 6px 0; padding-left: 16px; position: relative; color: #c9d1d9; }
+.opinion ul li::before { content: "▸"; position: absolute; left: 0; color: #58a6ff; }
+.opinion strong { color: #f0f6fc; }
+.opinion em { color: #8b949e; }
+.opinion a { color: #58a6ff; text-decoration: none; border-bottom: 1px dotted #58a6ff44; }
+.opinion a:hover { border-bottom-color: #58a6ff; text-decoration: underline; }
+.opinion ul.opinion-list li a { font-size: 0.9em; }
+.report-card { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 20px; margin-bottom: 12px; }
+.report-card:hover { border-color: #58a6ff; }
+.report-card h3 { font-size: 15px; margin-bottom: 8px; color: #f0f6fc; }
+.report-card h3 .icon { margin-right: 8px; }
+.report-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; }
+.report-header .date { font-size: 12px; color: #8b949e; white-space: nowrap; }
+.report-meta { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 8px; }
+.tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; background: #1f6feb22; color: #58a6ff; border: 1px solid #1f6feb44; }
+.refs { list-style: none; padding: 0; margin: 8px 0; }
+.refs li { font-size: 12px; margin: 2px 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.refs a { color: #58a6ff; text-decoration: none; }
+.refs a:hover { text-decoration: underline; }
+footer { text-align: center; padding: 40px 0 20px; color: #484f58; font-size: 12px; }
+.mini-section { display: flex; flex-wrap: wrap; gap: 8px; margin: 8px 0 16px; }
+.mini-card { background: #0d1117; border: 1px solid #30363d; border-radius: 6px; padding: 8px 14px; font-size: 13px; color: #c9d1d9; }
+.mini-card strong { color: #f0f6fc; }
+.footer-ascii { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #30363d; margin-top: 16px; white-space: pre; line-height: 1.2; }
+@media (max-width: 600px) {
+    .stats { gap: 10px; }
+    .stat { padding: 12px 16px; min-width: 80px; }
+    .stat .number { font-size: 22px; }
+    .ascii-header pre { font-size: 7px; }
+}
+</style>
+</head>
+<body>
+<div class="ascii-header">
+<pre>    ╔══════════════════════════════════════════════════╗
+    ║  ██████╗ ███████╗██████╗  ██████╗ ██████╗ ████████╗║
+    ║  ██╔══██╗██╔════╝██╔══██╗██╔═══██╗██╔══██╗╚══██╔══╝║
+    ║  ██████╔╝█████╗  ██████╔╝██║   ██║██████╔╝   ██║   ║
+    ║  ██╔══██╗██╔══╝  ██╔═══╝ ██║   ██║██╔══██╗   ██║   ║
+    ║  ██║  ██║███████╗██║     ╚██████╔╝██║  ██║   ██║   ║
+    ║  ╚═╝  ╚═╝╚══════╝╚═╝      ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ║
+    ║         DAILY THREAT INTELLIGENCE REPORT          ║
+    ╚══════════════════════════════════════════════════╝</pre>
+</div>
+<div class="header-info">
+    <h1>Daily Threat Intelligence Report</h1>
+    <p class="date">June 24, 2026</p>
+</div>
+
+<div class="container">
+    <div class="opinion">
+        <h2>Opinion of a DFIR Guy</h2>
+        <p><strong>🔥 Weekly Threat Intel Roundup — DFIR Hot Takes 🔥</strong></p><ul class='opinion-list'><li><strong>The #APT36 cluster can't stop, won't stop</strong> — APT36</li><li><strong>Observed phishing URLs delivering RMM payload</strong> — Unknown</li><li><strong>From PostCSS Masquerading to Windows RAT</strong> — Unknown</li><li><strong>Detecting the Klue supply chain attack in Salesforce instances</strong> — Icarus</li><li><strong>Customer CRM Data Accessed in Supply Chain Incident</strong> — Unknown</li></ul><p>Key themes this week:</p><ul class='opinion-list'><li>Nation-State Activity (2 reports)</li><li>Social Engineering & Malvertising (4 reports)</li><li>Malware Loaders & Backdoors (17 reports)</li><li>Supply Chain Attacks (4 reports)</li><li>Credential Theft & Infostealers (9 reports)</li></ul><p>The threat landscape keeps evolving — supply chain attacks on npm/PyPi, AI-powered solo operators, and decade-old router vulnerabilities still being exploited at scale. Stay sharp out there.</p><p><strong>Sources:</strong>
+- <a href="https://x.com/GenThreatLabs/status/2068972067307811234" target="_blank" rel="noopener">The #APT36 cluster can't stop, won't stop</a>
+- <a href="https://x.com/patialavii/status/2068919332126835122" target="_blank" rel="noopener">Observed phishing URLs delivering RMM payload</a>
+- <a href="https://research.jfrog.com/post/from-postcss-typosquat-to-windows-rat" target="_blank" rel="noopener">From PostCSS Masquerading to Windows RAT</a>
+- <a href="https://securitylabs.datadoghq.com/articles/detecting-the-klue-supply-chain-attack-in-salesforce/" target="_blank" rel="noopener">Detecting the Klue supply chain attack in Salesforce instanc</a>
+- <a href="https://cyberpress.org/lastpass-confirms-customer-crm/" target="_blank" rel="noopener">Customer CRM Data Accessed in Supply Chain Incident</a>
+- <a href="https://x.com/nextronresearch/status/2068958596646265033" target="_blank" rel="noopener">Artifact scanner detects npm package 'node-fetch-utils' usin</a>
+- <a href="https://labs.k7computing.com/index.php/a-multi-stage-steganographic-loader-campaign-deploying-diverse-payloads-globally" target="_blank" rel="noopener">A Multi-Stage Steganographic Loader Campaign Deploying Diver</a>
+- <a href="https://www.seqrite.com/blog/threat-actors-weaponizing-rar-archives-to-target-thailands-healthcare-sector/" target="_blank" rel="noopener">Threat Actors Weaponizing RAR Archives to Target Thailand's </a></p><p>The threat landscape keeps evolving — supply chain attacks on npm/PyPi, AI-powered solo operators, and decade-old router vulnerabilities still being exploited at scale. Stay sharp out there.</p><p><strong>Sources:</strong>
+- <a href="https://x.com/GenThreatLabs/status/2068972067307811234" target="_blank" rel="noopener">The #APT36 cluster can't stop, won't stop</a>
+- <a href="https://x.com/patialavii/status/2068919332126835122" target="_blank" rel="noopener">Observed phishing URLs delivering RMM payload</a>
+- <a href="https://research.jfrog.com/post/from-postcss-typosquat-to-windows-rat" target="_blank" rel="noopener">From PostCSS Masquerading to Windows RAT</a>
+- <a href="https://securitylabs.datadoghq.com/articles/detecting-the-klue-supply-chain-attack-in-salesforce/" target="_blank" rel="noopener">Detecting the Klue supply chain attack in Salesforce instanc</a>
+- <a href="https://cyberpress.org/lastpass-confirms-customer-crm/" target="_blank" rel="noopener">Customer CRM Data Accessed in Supply Chain Incident</a>
+- <a href="https://x.com/nextronresearch/status/2068958596646265033" target="_blank" rel="noopener">Artifact scanner detects npm package 'node-fetch-utils' usin</a>
+- <a href="https://labs.k7computing.com/index.php/a-multi-stage-steganographic-loader-campaign-deploying-diverse-payloads-globally" target="_blank" rel="noopener">A Multi-Stage Steganographic Loader Campaign Deploying Diver</a>
+- <a href="https://www.seqrite.com/blog/threat-actors-weaponizing-rar-archives-to-target-thailands-healthcare-sector/" target="_blank" rel="noopener">Threat Actors Weaponizing RAR Archives to Target Thailand's </a></p>
+    </div>
+
+    <div class="stats">
+        <div class="stat"><div class="number">0</div><div class="label">Reports</div></div>
+        <div class="stat"><div class="number">0</div><div class="label">Adversaries</div></div>
+        <div class="stat"><div class="number">0</div><div class="label">Malware Families</div></div>
+        <div class="stat"><div class="number">0</div><div class="label">CVEs</div></div>
+        <div class="stat"><div class="number">0</div><div class="label">IOCs</div></div>
+    </div>
+
+    
+    
+    
+    
+
+    <h2>Latest Reports</h2>
+    
+
+    <footer>
+        <p>Report generated at 2026-06-24 00:20 UTC</p>
+        <div class="footer-ascii">
+    ╔═══════════════════════════════════════════════╗
+    ║  The only good breach is the one you detect.  ║
+    ╚═══════════════════════════════════════════════╝
+        </div>
+    </footer>
+</div>
+</body>
+</html>
