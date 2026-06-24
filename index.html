@@ -78,43 +78,117 @@ footer { text-align: center; padding: 40px 0 20px; color: #484f58; font-size: 12
 <div class="container">
     <div class="opinion">
         <h2>Opinion of a DFIR Guy</h2>
-        <p><strong>🔥 Weekly Threat Intel Roundup — DFIR Hot Takes 🔥</strong></p><ul class='opinion-list'><li><strong>The #APT36 cluster can't stop, won't stop</strong> — APT36</li><li><strong>Observed phishing URLs delivering RMM payload</strong> — Unknown</li><li><strong>From PostCSS Masquerading to Windows RAT</strong> — Unknown</li><li><strong>Detecting the Klue supply chain attack in Salesforce instances</strong> — Icarus</li><li><strong>Customer CRM Data Accessed in Supply Chain Incident</strong> — Unknown</li></ul><p>Key themes this week:</p><ul class='opinion-list'><li>Nation-State Activity (2 reports)</li><li>Social Engineering & Malvertising (4 reports)</li><li>Malware Loaders & Backdoors (17 reports)</li><li>Supply Chain Attacks (4 reports)</li><li>Credential Theft & Infostealers (9 reports)</li></ul><p>The threat landscape keeps evolving — supply chain attacks on npm/PyPi, AI-powered solo operators, and decade-old router vulnerabilities still being exploited at scale. Stay sharp out there.</p><p><strong>Sources:</strong>
-- <a href="https://x.com/GenThreatLabs/status/2068972067307811234" target="_blank" rel="noopener">The #APT36 cluster can't stop, won't stop</a>
-- <a href="https://x.com/patialavii/status/2068919332126835122" target="_blank" rel="noopener">Observed phishing URLs delivering RMM payload</a>
-- <a href="https://research.jfrog.com/post/from-postcss-typosquat-to-windows-rat" target="_blank" rel="noopener">From PostCSS Masquerading to Windows RAT</a>
-- <a href="https://securitylabs.datadoghq.com/articles/detecting-the-klue-supply-chain-attack-in-salesforce/" target="_blank" rel="noopener">Detecting the Klue supply chain attack in Salesforce instanc</a>
-- <a href="https://cyberpress.org/lastpass-confirms-customer-crm/" target="_blank" rel="noopener">Customer CRM Data Accessed in Supply Chain Incident</a>
-- <a href="https://x.com/nextronresearch/status/2068958596646265033" target="_blank" rel="noopener">Artifact scanner detects npm package 'node-fetch-utils' usin</a>
-- <a href="https://labs.k7computing.com/index.php/a-multi-stage-steganographic-loader-campaign-deploying-diverse-payloads-globally" target="_blank" rel="noopener">A Multi-Stage Steganographic Loader Campaign Deploying Diver</a>
-- <a href="https://www.seqrite.com/blog/threat-actors-weaponizing-rar-archives-to-target-thailands-healthcare-sector/" target="_blank" rel="noopener">Threat Actors Weaponizing RAR Archives to Target Thailand's </a></p><p>The threat landscape keeps evolving — supply chain attacks on npm/PyPi, AI-powered solo operators, and decade-old router vulnerabilities still being exploited at scale. Stay sharp out there.</p><p><strong>Sources:</strong>
-- <a href="https://x.com/GenThreatLabs/status/2068972067307811234" target="_blank" rel="noopener">The #APT36 cluster can't stop, won't stop</a>
-- <a href="https://x.com/patialavii/status/2068919332126835122" target="_blank" rel="noopener">Observed phishing URLs delivering RMM payload</a>
-- <a href="https://research.jfrog.com/post/from-postcss-typosquat-to-windows-rat" target="_blank" rel="noopener">From PostCSS Masquerading to Windows RAT</a>
-- <a href="https://securitylabs.datadoghq.com/articles/detecting-the-klue-supply-chain-attack-in-salesforce/" target="_blank" rel="noopener">Detecting the Klue supply chain attack in Salesforce instanc</a>
-- <a href="https://cyberpress.org/lastpass-confirms-customer-crm/" target="_blank" rel="noopener">Customer CRM Data Accessed in Supply Chain Incident</a>
-- <a href="https://x.com/nextronresearch/status/2068958596646265033" target="_blank" rel="noopener">Artifact scanner detects npm package 'node-fetch-utils' usin</a>
-- <a href="https://labs.k7computing.com/index.php/a-multi-stage-steganographic-loader-campaign-deploying-diverse-payloads-globally" target="_blank" rel="noopener">A Multi-Stage Steganographic Loader Campaign Deploying Diver</a>
-- <a href="https://www.seqrite.com/blog/threat-actors-weaponizing-rar-archives-to-target-thailands-healthcare-sector/" target="_blank" rel="noopener">Threat Actors Weaponizing RAR Archives to Target Thailand's </a></p>
+        <p>📊 <strong>Today's snapshot:</strong> 8 fresh reports | 54 IOCs | 2 adversaries (APT36, Icarus) | 0 CVEs | 3 MITRE techniques on the new stuff alone</p>
     </div>
 
     <div class="stats">
-        <div class="stat"><div class="number">0</div><div class="label">Reports</div></div>
-        <div class="stat"><div class="number">0</div><div class="label">Adversaries</div></div>
+        <div class="stat"><div class="number">7</div><div class="label">Reports</div></div>
+        <div class="stat"><div class="number">2</div><div class="label">Adversaries</div></div>
         <div class="stat"><div class="number">0</div><div class="label">Malware Families</div></div>
         <div class="stat"><div class="number">0</div><div class="label">CVEs</div></div>
-        <div class="stat"><div class="number">0</div><div class="label">IOCs</div></div>
+        <div class="stat"><div class="number">44</div><div class="label">IOCs</div></div>
     </div>
 
+    <h2>Top Adversaries</h2><div class='mini-section'><div class='mini-card'><strong>APT36</strong></div><div class='mini-card'><strong>Icarus</strong></div></div>
     
     
-    
-    
+    <h2>Key Themes</h2><h3>Nation-State Activity</h3><p>1 report</p><h3>Social Engineering & Malvertising</h3><p>2 reports</p><h3>Malware Loaders & Backdoors</h3><p>2 reports</p><h3>Supply Chain Attacks</h3><p>2 reports</p>
 
     <h2>Latest Reports</h2>
     
+        <div class="report-card">
+            <div class="report-header">
+                <h3><span class="icon">🕵️</span>The #APT36 cluster can't stop, won't stop</h3>
+                <span class="date">2026-06-23</span>
+            </div>
+            <div class="report-meta">
+                <span class="tag">Actor: APT36</span>
+                <span class="tag">TLP: White</span>
+                <span class="tag">CVEs: None</span>
+            </div>
+            <ul class='refs'><li><a href="https://x.com/GenThreatLabs/status/2068972067307811234" target="_blank" rel="noopener">https://x.com/GenThreatLabs/status/2068972067307811234</a></li></ul>
+        </div>
+
+        <div class="report-card">
+            <div class="report-header">
+                <h3><span class="icon">🎣</span>Observed phishing URLs delivering RMM payload</h3>
+                <span class="date">2026-06-23</span>
+            </div>
+            <div class="report-meta">
+                <span class="tag">Actor: Unknown</span>
+                <span class="tag">TLP: White</span>
+                <span class="tag">CVEs: None</span>
+            </div>
+            <ul class='refs'><li><a href="https://x.com/patialavii/status/2068919332126835122" target="_blank" rel="noopener">https://x.com/patialavii/status/2068919332126835122</a></li></ul>
+        </div>
+
+        <div class="report-card">
+            <div class="report-header">
+                <h3><span class="icon">📦</span>From PostCSS Masquerading to Windows RAT</h3>
+                <span class="date">2026-06-23</span>
+            </div>
+            <div class="report-meta">
+                <span class="tag">Actor: Unknown</span>
+                <span class="tag">TLP: White</span>
+                <span class="tag">CVEs: None</span>
+            </div>
+            <ul class='refs'><li><a href="https://research.jfrog.com/post/from-postcss-typosquat-to-windows-rat" target="_blank" rel="noopener">https://research.jfrog.com/post/from-postcss-typosquat-to-windows-rat</a></li></ul>
+        </div>
+
+        <div class="report-card">
+            <div class="report-header">
+                <h3><span class="icon">📦</span>Detecting the Klue supply chain attack in Salesforce instances</h3>
+                <span class="date">2026-06-23</span>
+            </div>
+            <div class="report-meta">
+                <span class="tag">Actor: Icarus</span>
+                <span class="tag">TLP: White</span>
+                <span class="tag">CVEs: None</span>
+            </div>
+            <ul class='refs'><li><a href="https://securitylabs.datadoghq.com/articles/detecting-the-klue-supply-chain-attack-in-salesforce/" target="_blank" rel="noopener">https://securitylabs.datadoghq.com/articles/detecting-the-klue-supply-chain-atta...</a></li></ul>
+        </div>
+
+        <div class="report-card">
+            <div class="report-header">
+                <h3><span class="icon">📦</span>Customer CRM Data Accessed in Supply Chain Incident</h3>
+                <span class="date">2026-06-23</span>
+            </div>
+            <div class="report-meta">
+                <span class="tag">Actor: Unknown</span>
+                <span class="tag">TLP: White</span>
+                <span class="tag">CVEs: None</span>
+            </div>
+            <ul class='refs'><li><a href="https://cyberpress.org/lastpass-confirms-customer-crm/" target="_blank" rel="noopener">https://cyberpress.org/lastpass-confirms-customer-crm/</a></li></ul>
+        </div>
+
+        <div class="report-card">
+            <div class="report-header">
+                <h3><span class="icon">📦</span>Artifact scanner detects npm package 'node-fetch-utils' using external dependency resolution with remote tarball dependency from GitHub</h3>
+                <span class="date">2026-06-23</span>
+            </div>
+            <div class="report-meta">
+                <span class="tag">Actor: Unknown</span>
+                <span class="tag">TLP: White</span>
+                <span class="tag">CVEs: None</span>
+            </div>
+            <ul class='refs'><li><a href="https://x.com/nextronresearch/status/2068958596646265033" target="_blank" rel="noopener">https://x.com/nextronresearch/status/2068958596646265033</a></li></ul>
+        </div>
+
+        <div class="report-card">
+            <div class="report-header">
+                <h3><span class="icon">🎣</span>A Multi-Stage Steganographic Loader Campaign Deploying Diverse Payloads Globally</h3>
+                <span class="date">2026-06-23</span>
+            </div>
+            <div class="report-meta">
+                <span class="tag">Actor: Unknown</span>
+                <span class="tag">TLP: White</span>
+                <span class="tag">CVEs: None</span>
+            </div>
+            <ul class='refs'><li><a href="https://labs.k7computing.com/index.php/a-multi-stage-steganographic-loader-campaign-deploying-diverse-payloads-globally" target="_blank" rel="noopener">https://labs.k7computing.com/index.php/a-multi-stage-steganographic-loader-campa...</a></li></ul>
+        </div>
 
     <footer>
-        <p>Report generated at 2026-06-24 00:20 UTC</p>
+        <p>Report generated at 2026-06-24 01:30 UTC</p>
         <div class="footer-ascii">
     ╔═══════════════════════════════════════════════╗
     ║  The only good breach is the one you detect.  ║
