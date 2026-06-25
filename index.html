@@ -73,37 +73,130 @@ footer { text-align: center; padding: 40px 0 20px; color: #484f58; font-size: 12
 <div class="container">
     <div class="opinion">
         <h2>Opinion of a DFIR Guy</h2>
-        <p>If I had to sum up this cycle in one phrase, it'd be: <strong>malware loaders & backdoors everywhere</strong>. 17 reports under this theme alone, including <strong>From PostCSS Masquerading to Windows RAT</strong> attributed to an unknown actor.</p><p><strong>Malware Loaders & Backdoors</strong>: 17 reports — notable ones include From PostCSS Masquerading to Windows RAT, A Multi-Stage Steganographic Loader Campaign Deplo, An unknown actor distributes malicious VBS scripts.</p><p><strong>Credential Theft & Infostealers</strong>: 9 reports — notable ones include Threat Actors Weaponizing RAR Archives to Target T, Inside the FortiBleed Open Directory: A Technical , PureLogs: Delivery via PawsRunner Steganography.</p><p><strong>Social Engineering & Malvertising</strong>: 4 reports — notable ones include Observed phishing URLs delivering RMM payload, Customer CRM Data Accessed in Supply Chain Inciden, The Evolution of ClickFix: From Cleartext to Serve.</p><p>What concerns me most isn't any single campaign — it's the convergence of techniques. Social engineering paired with supply chain abuse paired with better evasion. The stacks are getting deeper.</p><p>— Based on 41 reports from the last 24 hours.</p><p>---</p><p><strong>Sources:</strong>
-- <a href="https://x.com/GenThreatLabs/status/2068972067307811234" target="_blank" rel="noopener">The #APT36 cluster can't stop, won't stop</a>
-- <a href="https://x.com/patialavii/status/2068919332126835122" target="_blank" rel="noopener">Observed phishing URLs delivering RMM payload</a>
-- <a href="https://research.jfrog.com/post/from-postcss-typosquat-to-windows-rat" target="_blank" rel="noopener">From PostCSS Masquerading to Windows RAT</a>
-- <a href="https://securitylabs.datadoghq.com/articles/detecting-the-klue-supply-chain-attack-in-salesforce/" target="_blank" rel="noopener">Detecting the Klue supply chain attack in Salesforce instanc</a>
-- <a href="https://cyberpress.org/lastpass-confirms-customer-crm/" target="_blank" rel="noopener">Customer CRM Data Accessed in Supply Chain Incident</a>
-- <a href="https://x.com/nextronresearch/status/2068958596646265033" target="_blank" rel="noopener">Artifact scanner detects npm package 'node-fetch-utils' usin</a>
-- <a href="https://labs.k7computing.com/index.php/a-multi-stage-steganographic-loader-campaign-deploying-diverse-payloads-globally" target="_blank" rel="noopener">A Multi-Stage Steganographic Loader Campaign Deploying Diver</a>
-- <a href="https://www.seqrite.com/blog/threat-actors-weaponizing-rar-archives-to-target-thailands-healthcare-sector/" target="_blank" rel="noopener">Threat Actors Weaponizing RAR Archives to Target Thailand's </a>
-- <a href="https://www.cloudsek.com/blog/inside-the-fortibleed-open-directory-a-technical-analysis-of-what-the-attacker-left-behind" target="_blank" rel="noopener">Inside the FortiBleed Open Directory: A Technical Analysis o</a>
-- <a href="https://securelist.com/whatsapp-vbs-rmm-campaign/120290/" target="_blank" rel="noopener">An unknown actor distributes malicious VBS scripts via Whats</a></p>
+        <p>🔥 <strong>DFIR Wild Powder: This Week's Threats That Would Make Your Jaw Drop</strong> 🔍</p><p>🔗 <strong>Thing #1: macOS.Gaslight is doing something I've never seen before.</strong> A DPRK-aligned Rust backdoor that turns <em>prompt injection</em> on the security analyst — not the sandbox. It literally tries to manipulate you during analysis. From a forensic angle, this is bonkers: the malware is weaponizing the investigator's own workflow against them. If you're doing malware analysis on this thing and your tool starts acting weird... that's by design.</p><p>🔗 <strong>Thing #2: GhostShell is targeting Ukraine's UAV supply chain with Besomar-themed lures.</strong> We're seeing a deliberate supply chain compromise aimed at drone warfare infrastructure. The forensic artifacts here are going to be gold — look for compromised firmware update chains and weaponized documents targeting defense industrial base. This is the kind of campaign that keeps you up at night.</p><p>🔗 <strong>Thing #3: StrikeShark drops a custom SharkLoader + Cobalt Strike Beacon combo.</strong> What's interesting from a DFIR perspective is the multi-stage delivery — SharkLoader is doing the initial recon and staging before handing off to Cobalt Strike. If you're hunting for this, look for the loader's C2 patterns <em>before</em> the Cobalt Strike beacon phones home. The IOC window is wider than most people think.</p><p>🔗 <strong>Thing #4: The FortiBleed credential factory is still spinning.</strong> Inside FortiBleed reverse-engineered a CyberStrike harvester running a global FortiGate credential factory. The scary part? It's been going since at least 2024 and it's still active. If your org has FortiGate appliances and you haven't rotated credentials + checked for config dumps... today's the day.</p><p>🔗 <strong>Thing #5: AI supply chain attacks are here — and they're on npm/PyPi.</strong> The Skill Marketplace report shows threat actors poisoning open-source AI toolkits. For DFIR folks: this means your next incident might start with a compromised `pip install`. Check your dependency trees. The attack surface is <em>massive</em>.</p><p>The big picture? <strong>The stacks are getting deeper.</strong> Social engineering + supply chain abuse + better evasion, all in one campaign. It's no longer enough to patch CVEs — you have to assume the build pipeline itself is compromised.</p><p>#DFIR #ThreatIntel #MalwareAnalysis #SupplyChainSecurity #IncidentResponse</p><p>— Based on 49 fresh reports spanning loaders, infostealers, supply chain, and nation-state activity.</p>
     </div>
 
     <div class="stats">
-        <div class="stat"><div class="number">0</div><div class="label">Reports</div></div>
-        <div class="stat"><div class="number">0</div><div class="label">Adversaries</div></div>
+        <div class="stat"><div class="number">8</div><div class="label">Reports</div></div>
+        <div class="stat"><div class="number">4</div><div class="label">Adversaries</div></div>
         <div class="stat"><div class="number">0</div><div class="label">Malware Families</div></div>
-        <div class="stat"><div class="number">0</div><div class="label">CVEs</div></div>
-        <div class="stat"><div class="number">0</div><div class="label">IOCs</div></div>
+        <div class="stat"><div class="number">16</div><div class="label">CVEs</div></div>
+        <div class="stat"><div class="number">143</div><div class="label">IOCs</div></div>
     </div>
 
+    <h2>Top Adversaries</h2><div class='mini-section'><div class='mini-card'><strong>DPRK-aligned</strong></div><div class='mini-card'><strong>GhostShell</strong></div><div class='mini-card'><strong>RAZOR TIGER</strong></div><div class='mini-card'><strong>Woodgnat</strong></div></div>
+    <h2>Critical CVEs</h2><div class='mini-section'><div class='mini-card'>CVE-2016-4437</div><div class='mini-card'>CVE-2021-26855</div><div class='mini-card'>CVE-2021-27076</div><div class='mini-card'>CVE-2021-36260</div><div class='mini-card'>CVE-2022-27925</div><div class='mini-card'>CVE-2022-40684</div><div class='mini-card'>CVE-2022-41082</div><div class='mini-card'>CVE-2023-20198</div><div class='mini-card'>CVE-2023-32315</div><div class='mini-card'>CVE-2023-46747</div></div>
     
-    
-    
-    
+    <h2>Key Themes</h2><h3>Credential Theft & Infostealers</h3><p>5 reports</p><h3>Supply Chain Attacks</h3><p>1 report</p><h3>Malware Loaders & Backdoors</h3><p>1 report</p><h3>Nation-State Activity</h3><p>1 report</p>
 
     <h2>Latest Reports</h2>
     
+        <div class="report-card">
+            <div class="report-header">
+                <h3><span class="icon">🔑</span>macOS.Gaslight | Rust Backdoor Turns Prompt Injection on the Analyst, Not the Sandbox</h3>
+                <span class="date">2026-06-24</span>
+            </div>
+            <div class="report-meta">
+                <span class="tag">Actor: DPRK-aligned</span>
+                <span class="tag">TLP: White</span>
+                <span class="tag">CVEs: None</span>
+            </div>
+            <ul class='refs'><li><a href="https://www.sentinelone.com/labs/macos-gaslight-rust-backdoor-turns-prompt-injection-on-the-analyst-not-the-sandbox/" target="_blank" rel="noopener">https://www.sentinelone.com/labs/macos-gaslight-rust-backdoor-turns-prompt-injec...</a></li></ul>
+        </div>
+
+        <div class="report-card">
+            <div class="report-header">
+                <h3><span class="icon">📦</span>Ukraine's UAV Supply Chain Targeted With Besomar-Themed Malware Chain</h3>
+                <span class="date">2026-06-24</span>
+            </div>
+            <div class="report-meta">
+                <span class="tag">Actor: GhostShell</span>
+                <span class="tag">TLP: White</span>
+                <span class="tag">CVEs: None</span>
+            </div>
+            <ul class='refs'><li><a href="https://cyberpress.org/ghostshell-targets-uav-supply/" target="_blank" rel="noopener">https://cyberpress.org/ghostshell-targets-uav-supply/</a></li></ul>
+        </div>
+
+        <div class="report-card">
+            <div class="report-header">
+                <h3><span class="icon">🐀</span>StrikeShark: a new campaign involving a custom SharkLoader and Cobalt Strike Beacon</h3>
+                <span class="date">2026-06-24</span>
+            </div>
+            <div class="report-meta">
+                <span class="tag">Actor: Unknown</span>
+                <span class="tag">TLP: White</span>
+                <span class="tag">CVEs: CVE-2016-4437, CVE-2021-26855, CVE-2021-27076, CVE-2021-36260, CVE-2022-27925</span>
+            </div>
+            <ul class='refs'><li><a href="https://securelist.com/strikeshark-campaign/120326/" target="_blank" rel="noopener">https://securelist.com/strikeshark-campaign/120326/</a></li></ul>
+        </div>
+
+        <div class="report-card">
+            <div class="report-header">
+                <h3><span class="icon">🔑</span>StealC and Amadey: Breaking down infostealers and the cybercrime services that deliver them</h3>
+                <span class="date">2026-06-24</span>
+            </div>
+            <div class="report-meta">
+                <span class="tag">Actor: Unknown</span>
+                <span class="tag">TLP: White</span>
+                <span class="tag">CVEs: None</span>
+            </div>
+            <ul class='refs'><li><a href="https://www.microsoft.com/en-us/security/blog/2026/06/24/stealc-and-amadey-breaking-down-infostealers-and-the-cybercrime-services-that-deliver-them/" target="_blank" rel="noopener">https://www.microsoft.com/en-us/security/blog/2026/06/24/stealc-and-amadey-break...</a></li></ul>
+        </div>
+
+        <div class="report-card">
+            <div class="report-header">
+                <h3><span class="icon">📦</span>Skill Marketplace and the Emerging AI Supply Chain Threat</h3>
+                <span class="date">2026-06-24</span>
+            </div>
+            <div class="report-meta">
+                <span class="tag">Actor: Unknown</span>
+                <span class="tag">TLP: White</span>
+                <span class="tag">CVEs: None</span>
+            </div>
+            <ul class='refs'><li><a href="https://unit42.paloaltonetworks.com/openclaw-ai-supply-chain-risk/" target="_blank" rel="noopener">https://unit42.paloaltonetworks.com/openclaw-ai-supply-chain-risk/</a></li></ul>
+        </div>
+
+        <div class="report-card">
+            <div class="report-header">
+                <h3><span class="icon">🕵️</span>Observed activity associated with Sidewinder APT. Lure document: No.9374.docx, 64f2681ad0940e6c2c9c76e6834117bf. Observed C2 infrastructure: update[.]ms-office[.]app</h3>
+                <span class="date">2026-06-24</span>
+            </div>
+            <div class="report-meta">
+                <span class="tag">Actor: RAZOR TIGER</span>
+                <span class="tag">TLP: White</span>
+                <span class="tag">CVEs: None</span>
+            </div>
+            <ul class='refs'><li><a href="https://x.com/suyog41/status/2069306035496776105" target="_blank" rel="noopener">https://x.com/suyog41/status/2069306035496776105</a></li></ul>
+        </div>
+
+        <div class="report-card">
+            <div class="report-header">
+                <h3><span class="icon">🔒</span>New Backdoor May be Linked to Ransomware Access Broker</h3>
+                <span class="date">2026-06-24</span>
+            </div>
+            <div class="report-meta">
+                <span class="tag">Actor: Woodgnat</span>
+                <span class="tag">TLP: White</span>
+                <span class="tag">CVEs: None</span>
+            </div>
+            <ul class='refs'><li><a href="https://www.security.com/threat-intelligence/new-mistic-backdoor-modelorat" target="_blank" rel="noopener">https://www.security.com/threat-intelligence/new-mistic-backdoor-modelorat</a></li></ul>
+        </div>
+
+        <div class="report-card">
+            <div class="report-header">
+                <h3><span class="icon">🔑</span>Inside FortiBleed: Reverse Engineering the CyberStrike Harvester Behind a Global FortiGate Credential Factory</h3>
+                <span class="date">2026-06-24</span>
+            </div>
+            <div class="report-meta">
+                <span class="tag">Actor: Unknown</span>
+                <span class="tag">TLP: White</span>
+                <span class="tag">CVEs: CVE-2026-0257, CVE-2026-25089, CVE-2026-35616</span>
+            </div>
+            <ul class='refs'><li><a href="https://arcticwolf.com/resources/blog/inside-fortibleed-reverse-engineering-the-cyberstrike-harvester-behind-a-global-fortigate-credential-factory/" target="_blank" rel="noopener">https://arcticwolf.com/resources/blog/inside-fortibleed-reverse-engineering-the-...</a></li></ul>
+        </div>
 
     <footer>
-        <p>Report generated at 2026-06-25 12:21 UTC</p>
+        <p>Report generated at 2026-06-25 13:33 UTC</p>
         <div class="footer-ascii">
     ╔═══════════════════════════════════════════════╗
     ║  The only good breach is the one you detect.  ║
