@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Daily Threat Intelligence Report — June 25, 2026</title>
+<title>Daily Threat Intelligence Report — June 26, 2026</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
@@ -61,97 +61,85 @@ footer { text-align: center; padding: 40px 0 20px; color: #484f58; font-size: 12
 </head>
 <body>
 <div class="ascii-header">
-<pre>     ⚡ THREAT INTELLIGENCE DAILY BRIEFING ⚡
-    ┌─────────────────────────────────────────┐
-    │  Analyzing threats. Zero fluff. Stay sharp. │
-    └─────────────────────────────────────────┘</pre>
+<pre>    ╔══════════════════════════════════════════╗
+    ║  ▀█▀ █▀█ █▀▀ ▄▀█ ▀█▀ █ █▀█ █▄▀ ▀█▀ █▀▀ ║
+    ║  █  █▀▄ ██▄ █▀█ █  █ █▀▄ █▀█ █   █  ██▄ ║
+    ║                                          ║
+    ║  DAILY THREAT INTELLIGENCE REPORT        ║
+    ╚══════════════════════════════════════════╝</pre>
 </div>
 <div class="header-info">
     <h1>Daily Threat Intelligence Report</h1>
-    <p class="date">June 25, 2026</p>
+    <p class="date">June 26, 2026</p>
 </div>
 
 <div class="container">
     <div class="opinion">
         <h2>Opinion of a DFIR Guy</h2>
-        <p>🔥 <strong>DFIR Wild Powder: This Week's Threats That Would Make Your Jaw Drop</strong> 🔍</p><p>🔗 <strong>Thing #1: macOS.Gaslight is doing something I've never seen before.</strong> A DPRK-aligned Rust backdoor that turns <em>prompt injection</em> on the security analyst — not the sandbox. It literally tries to manipulate you during analysis. From a forensic angle, this is bonkers: the malware is weaponizing the investigator's own workflow against them. If you're doing malware analysis on this thing and your tool starts acting weird... that's by design.</p><p>🔗 <strong>Thing #2: GhostShell is targeting Ukraine's UAV supply chain with Besomar-themed lures.</strong> We're seeing a deliberate supply chain compromise aimed at drone warfare infrastructure. The forensic artifacts here are going to be gold — look for compromised firmware update chains and weaponized documents targeting defense industrial base. This is the kind of campaign that keeps you up at night.</p><p>🔗 <strong>Thing #3: StrikeShark drops a custom SharkLoader + Cobalt Strike Beacon combo.</strong> What's interesting from a DFIR perspective is the multi-stage delivery — SharkLoader is doing the initial recon and staging before handing off to Cobalt Strike. If you're hunting for this, look for the loader's C2 patterns <em>before</em> the Cobalt Strike beacon phones home. The IOC window is wider than most people think.</p><p>🔗 <strong>Thing #4: The FortiBleed credential factory is still spinning.</strong> Inside FortiBleed reverse-engineered a CyberStrike harvester running a global FortiGate credential factory. The scary part? It's been going since at least 2024 and it's still active. If your org has FortiGate appliances and you haven't rotated credentials + checked for config dumps... today's the day.</p><p>🔗 <strong>Thing #5: AI supply chain attacks are here — and they're on npm/PyPi.</strong> The Skill Marketplace report shows threat actors poisoning open-source AI toolkits. For DFIR folks: this means your next incident might start with a compromised `pip install`. Check your dependency trees. The attack surface is <em>massive</em>.</p><p>The big picture? <strong>The stacks are getting deeper.</strong> Social engineering + supply chain abuse + better evasion, all in one campaign. It's no longer enough to patch CVEs — you have to assume the build pipeline itself is compromised.</p><p>#DFIR #ThreatIntel #MalwareAnalysis #SupplyChainSecurity #IncidentResponse</p><p>— Based on 49 fresh reports spanning loaders, infostealers, supply chain, and nation-state activity.</p>
+        <p>🔥 <strong>DFIR Dirty Dozen: This Cycle's Weirdest Finds That Deserve a Second Look</strong> 🔍</p><p>🔗 <strong>Thing #1: Edgecution escapes a browser sandbox with a Chrome extension.</strong> An IAB (Payouts King) is deploying Edgecution — a malicious Edge extension that abuses <strong>Chrome native messaging</strong> to break out of the browser sandbox entirely. From a DFIR perspective, this is wild: the thing runs a Python backdoor and a headless browser invisibly. Your EDR might see "just Chrome" while the attacker is executing arbitrary commands via websocket C2. Hunt for native messaging registry keys and suspicious extension manifests.</p><p>🔗 <strong>Thing #2: Cisco SD-WAN zero-day comes with built-in anti-forensics.</strong> CVE-2026-20245 is a privilege escalation via malicious CSV upload — but the kicker is the attacker <strong>systematically deletes files, restores configs, and runs validation scripts</strong> to wipe their own tracks. This is the kind of intrusion where you arrive and the logs are gone. The forensic gold is in the pre-exploitation peering anomalies and any surviving password file artifacts. If you run SD-WAN, check for unexpected user accounts yesterday.</p><p>🔗 <strong>Thing #3: KimJongRAT (Kimsuky APT) now dynamically fetches C2 from GitHub and Google Drive.</strong> A North Korean APT abusing <strong>GitHub Releases, Google Drive, and Dropbox</strong> as Living Off Trusted Sites (LOTS) infrastructure. The C2 isn't hardcoded anymore — it's fetched dynamically, so sinkholing one domain doesn't kill the campaign. For DFIR folks: your proxy logs will show "just GitHub traffic." The IOC is the <em>pattern</em> of GitHub API calls, not the domain.</p><p>🔗 <strong>Thing #4: Prinz Eugen ransomware uses ChaCha20 and leaves NO ransom note on disk.</strong> ROOTBOY's new Go-based encryptor is rad from a forensics standpoint: it scrubs memory, self-deletes, and does all extortion <strong>out-of-band</strong> via leak sites and email. No ransom note means no obvious "you've been hit" indicator. You'll find it by spotting the ChaCha20-encrypted file entropy and the missing notes. Targets include Standard Bank South Africa — big fish.</p><p>🔗 <strong>Thing #5: ClickFix now delivers macOS infostealer via fake CAPTCHA → DMG.</strong> The fake CAPTCHA → Terminal command pipeline has evolved to target Mac users with a <strong>self-signed DMG containing Atomic macOS Stealer (Odyssey variant)</strong>. It trojanizes Ledger Live and Trezor Suite — replacing legit crypto apps with malware. For DFIR: check your users' Applications folder for duplicate Ledger.app bundles and suspicious LaunchAgents. The persistence is sneaky.</p><p>🔗 <strong>Thing #6: Cryptojacking via poisoned search results installs ScreenConnect persistence.</strong> This campaign is cool because it's <strong>dual-purpose</strong>: yes, they mine GPU coin, but they also install <strong>ScreenConnect RMM</strong> for persistent remote access. The DLL sideloading into Microsoft-signed .NET binaries means it looks legit in process lists. From an incident response angle: if you find XMRig on a workstation, don't just kill it — check for the ScreenConnect agent too, because the real payload is the backdoor, not the miner.</p><p>The big picture? <strong>The boundary between "commodity malware" and "targeted intrusion" is gone.</strong> Cryptojackers are installing RMM tools. Browser extensions are escaping sandboxes. Ransomware is going note-free. Assume every "simple" infection has a second, quieter stage.</p><p>#DFIR #ThreatIntel #MalwareAnalysis #SupplyChainSecurity #IncidentResponse #Ransomware</p><p>— Based on 11 fresh reports spanning cryptojacking, APT activity, ransomware, browser exploitation, and cloud credential theft.</p>
     </div>
 
     <div class="stats">
-        <div class="stat"><div class="number">8</div><div class="label">Reports</div></div>
-        <div class="stat"><div class="number">4</div><div class="label">Adversaries</div></div>
+        <div class="stat"><div class="number">11</div><div class="label">Reports</div></div>
+        <div class="stat"><div class="number">3</div><div class="label">Adversaries</div></div>
         <div class="stat"><div class="number">0</div><div class="label">Malware Families</div></div>
-        <div class="stat"><div class="number">16</div><div class="label">CVEs</div></div>
-        <div class="stat"><div class="number">143</div><div class="label">IOCs</div></div>
+        <div class="stat"><div class="number">4</div><div class="label">CVEs</div></div>
+        <div class="stat"><div class="number">131</div><div class="label">IOCs</div></div>
     </div>
 
-    <h2>Top Adversaries</h2><div class='mini-section'><div class='mini-card'><strong>DPRK-aligned</strong></div><div class='mini-card'><strong>GhostShell</strong></div><div class='mini-card'><strong>RAZOR TIGER</strong></div><div class='mini-card'><strong>Woodgnat</strong></div></div>
-    <h2>Critical CVEs</h2><div class='mini-section'><div class='mini-card'>CVE-2016-4437</div><div class='mini-card'>CVE-2021-26855</div><div class='mini-card'>CVE-2021-27076</div><div class='mini-card'>CVE-2021-36260</div><div class='mini-card'>CVE-2022-27925</div><div class='mini-card'>CVE-2022-40684</div><div class='mini-card'>CVE-2022-41082</div><div class='mini-card'>CVE-2023-20198</div><div class='mini-card'>CVE-2023-32315</div><div class='mini-card'>CVE-2023-46747</div></div>
+    <h2>Top Adversaries</h2><div class='mini-section'><div class='mini-card'><strong>Kimsuky</strong></div><div class='mini-card'><strong>Payouts King</strong></div><div class='mini-card'><strong>ROOTBOY</strong></div></div>
+    <h2>Critical CVEs</h2><div class='mini-section'><div class='mini-card'>CVE-2026-20127</div><div class='mini-card'>CVE-2026-20182</div><div class='mini-card'>CVE-2026-20245</div><div class='mini-card'>CVE-2026-24190</div></div>
     
-    <h2>Key Themes</h2><h3>Credential Theft & Infostealers</h3><p>5 reports</p><h3>Supply Chain Attacks</h3><p>1 report</p><h3>Malware Loaders & Backdoors</h3><p>1 report</p><h3>Nation-State Activity</h3><p>1 report</p>
+    <h2>Key Themes</h2><h3>Other Campaigns</h3><p>1 report</p><h3>Credential Theft & Infostealers</h3><p>4 reports</p><h3>Ransomware</h3><p>1 report</p><h3>Social Engineering & Malvertising</h3><p>3 reports</p><h3>Malware Loaders & Backdoors</h3><p>1 report</p><h3>Infrastructure & IoT Threats</h3><p>1 report</p>
 
     <h2>Latest Reports</h2>
     
         <div class="report-card">
             <div class="report-header">
-                <h3><span class="icon">🔑</span>macOS.Gaslight | Rust Backdoor Turns Prompt Injection on the Analyst, Not the Sandbox</h3>
-                <span class="date">2026-06-24</span>
-            </div>
-            <div class="report-meta">
-                <span class="tag">Actor: DPRK-aligned</span>
-                <span class="tag">TLP: White</span>
-                <span class="tag">CVEs: None</span>
-            </div>
-            <div class="report-stats">5 IOCs · 1 source</div>
-            <ul class='refs'><li><a href="https://www.sentinelone.com/labs/macos-gaslight-rust-backdoor-turns-prompt-injection-on-the-analyst-not-the-sandbox/" target="_blank" rel="noopener">sentinelone.com</a></li></ul>
-        </div>
-
-        <div class="report-card">
-            <div class="report-header">
-                <h3><span class="icon">📦</span>Ukraine's UAV Supply Chain Targeted With Besomar-Themed Malware Chain</h3>
-                <span class="date">2026-06-24</span>
-            </div>
-            <div class="report-meta">
-                <span class="tag">Actor: GhostShell</span>
-                <span class="tag">TLP: White</span>
-                <span class="tag">CVEs: None</span>
-            </div>
-            <div class="report-stats">9 IOCs · 1 source</div>
-            <ul class='refs'><li><a href="https://cyberpress.org/ghostshell-targets-uav-supply/" target="_blank" rel="noopener">cyberpress.org</a></li></ul>
-        </div>
-
-        <div class="report-card">
-            <div class="report-header">
-                <h3><span class="icon">🐀</span>StrikeShark: a new campaign involving a custom SharkLoader and Cobalt Strike Beacon</h3>
-                <span class="date">2026-06-24</span>
-            </div>
-            <div class="report-meta">
-                <span class="tag">Actor: Unknown</span>
-                <span class="tag">TLP: White</span>
-                <span class="tag">CVEs: CVE-2016-4437, CVE-2021-26855, CVE-2021-27076, CVE-2021-36260, CVE-2022-27925</span>
-            </div>
-            <div class="report-stats">15 IOCs · 13 CVEs · 1 source</div>
-            <ul class='refs'><li><a href="https://securelist.com/strikeshark-campaign/120326/" target="_blank" rel="noopener">securelist.com</a></li></ul>
-        </div>
-
-        <div class="report-card">
-            <div class="report-header">
-                <h3><span class="icon">🔑</span>StealC and Amadey: Breaking down infostealers and the cybercrime services that deliver them</h3>
-                <span class="date">2026-06-24</span>
+                <h3><span class="icon">⚠️</span>From poisoned search results to GPU mining: A cryptojacking campaign abusing ScreenConnect and Microsoft .NET utilities</h3>
+                <span class="date">2026-06-26</span>
             </div>
             <div class="report-meta">
                 <span class="tag">Actor: Unknown</span>
                 <span class="tag">TLP: White</span>
                 <span class="tag">CVEs: None</span>
             </div>
-            <div class="report-stats">47 IOCs · 1 source</div>
-            <ul class='refs'><li><a href="https://www.microsoft.com/en-us/security/blog/2026/06/24/stealc-and-amadey-breaking-down-infostealers-and-the-cybercrime-services-that-deliver-them/" target="_blank" rel="noopener">microsoft.com</a></li></ul>
+            <div class="report-stats">26 IOCs · 1 source</div>
+            <ul class='refs'><li><a href="https://www.microsoft.com/en-us/security/blog/2026/05/26/poisoned-search-results-gpu-mining-cryptojacking-campaign-abusing-screenconnect-microsoft-net-utilities/" target="_blank" rel="noopener">microsoft.com</a></li></ul>
         </div>
 
         <div class="report-card">
             <div class="report-header">
-                <h3><span class="icon">📦</span>Skill Marketplace and the Emerging AI Supply Chain Threat</h3>
-                <span class="date">2026-06-24</span>
+                <h3><span class="icon">⚠️</span>Zero-Day Exploitation of Vulnerability (CVE-2026-20245) in Cisco Catalyst SD-WAN Manager</h3>
+                <span class="date">2026-06-25</span>
+            </div>
+            <div class="report-meta">
+                <span class="tag">Actor: Unknown</span>
+                <span class="tag">TLP: White</span>
+                <span class="tag">CVEs: CVE-2026-20127, CVE-2026-20182, CVE-2026-20245</span>
+            </div>
+            <div class="report-stats">9 IOCs · 3 CVEs · 1 source</div>
+            <ul class='refs'><li><a href="https://cloud.google.com/blog/topics/threat-intelligence/zero-day-exploitation-cisco-catalyst-sd-wan-manager" target="_blank" rel="noopener">cloud.google.com</a></li></ul>
+        </div>
+
+        <div class="report-card">
+            <div class="report-header">
+                <h3><span class="icon">⚠️</span>Prinz Eugen ransomware: a deep dive into a new Go-based encryptor</h3>
+                <span class="date">2026-06-25</span>
+            </div>
+            <div class="report-meta">
+                <span class="tag">Actor: ROOTBOY</span>
+                <span class="tag">TLP: White</span>
+                <span class="tag">CVEs: None</span>
+            </div>
+            <div class="report-stats">18 IOCs · 1 source</div>
+            <ul class='refs'><li><a href="https://www.threatdown.com/blog/prinz-eugen-ransomware-a-deep-dive-into-a-new-go-based-encryptor/" target="_blank" rel="noopener">threatdown.com</a></li></ul>
+        </div>
+
+        <div class="report-card">
+            <div class="report-header">
+                <h3><span class="icon">🎣</span>Phishing Campaign Deploys JavaScript-Driven PureLogs Variant to Steal Sensitive Data</h3>
+                <span class="date">2026-06-25</span>
             </div>
             <div class="report-meta">
                 <span class="tag">Actor: Unknown</span>
@@ -159,53 +147,109 @@ footer { text-align: center; padding: 40px 0 20px; color: #484f58; font-size: 12
                 <span class="tag">CVEs: None</span>
             </div>
             <div class="report-stats">11 IOCs · 1 source</div>
-            <ul class='refs'><li><a href="https://unit42.paloaltonetworks.com/openclaw-ai-supply-chain-risk/" target="_blank" rel="noopener">unit42.paloaltonetworks.com</a></li></ul>
+            <ul class='refs'><li><a href="https://www.fortinet.com/blog/threat-research/phishing-campaign-deploys-javascript-driven-purelogs-variant-to-steal-sensitive-data" target="_blank" rel="noopener">fortinet.com</a></li></ul>
         </div>
 
         <div class="report-card">
             <div class="report-header">
-                <h3><span class="icon">🕵️</span>Observed activity associated with Sidewinder APT. Lure document: No.9374.docx, 64f2681ad0940e6c2c9c76e6834117bf. Observed C2 infrastructure: update[.]ms-office[.]app</h3>
-                <span class="date">2026-06-24</span>
+                <h3><span class="icon">🐀</span>Payouts King Ransomware Initial Access Broker Deploys New Edgecution Malware</h3>
+                <span class="date">2026-06-25</span>
             </div>
             <div class="report-meta">
-                <span class="tag">Actor: RAZOR TIGER</span>
+                <span class="tag">Actor: Payouts King</span>
                 <span class="tag">TLP: White</span>
                 <span class="tag">CVEs: None</span>
             </div>
-            <div class="report-stats">1 IOCs · 1 source</div>
-            <ul class='refs'><li><a href="https://x.com/suyog41/status/2069306035496776105" target="_blank" rel="noopener">x.com</a></li></ul>
+            <div class="report-stats">2 IOCs · 1 source</div>
+            <ul class='refs'><li><a href="https://www.zscaler.com/blogs/security-research/payouts-king-ransomware-initial-access-broker-deploys-new-edgecution" target="_blank" rel="noopener">zscaler.com</a></li></ul>
         </div>
 
         <div class="report-card">
             <div class="report-header">
-                <h3><span class="icon">🔒</span>New Backdoor May be Linked to Ransomware Access Broker</h3>
-                <span class="date">2026-06-24</span>
-            </div>
-            <div class="report-meta">
-                <span class="tag">Actor: Woodgnat</span>
-                <span class="tag">TLP: White</span>
-                <span class="tag">CVEs: None</span>
-            </div>
-            <div class="report-stats">45 IOCs · 1 source</div>
-            <ul class='refs'><li><a href="https://www.security.com/threat-intelligence/new-mistic-backdoor-modelorat" target="_blank" rel="noopener">security.com</a></li></ul>
-        </div>
-
-        <div class="report-card">
-            <div class="report-header">
-                <h3><span class="icon">🔑</span>Inside FortiBleed: Reverse Engineering the CyberStrike Harvester Behind a Global FortiGate Credential Factory</h3>
-                <span class="date">2026-06-24</span>
+                <h3><span class="icon">🔑</span>Operation Endgame disrupts Amadey and Stealc</h3>
+                <span class="date">2026-06-25</span>
             </div>
             <div class="report-meta">
                 <span class="tag">Actor: Unknown</span>
                 <span class="tag">TLP: White</span>
-                <span class="tag">CVEs: CVE-2026-0257, CVE-2026-25089, CVE-2026-35616</span>
+                <span class="tag">CVEs: None</span>
             </div>
-            <div class="report-stats">10 IOCs · 3 CVEs · 1 source</div>
-            <ul class='refs'><li><a href="https://arcticwolf.com/resources/blog/inside-fortibleed-reverse-engineering-the-cyberstrike-harvester-behind-a-global-fortigate-credential-factory/" target="_blank" rel="noopener">arcticwolf.com</a></li></ul>
+            <div class="report-stats">19 IOCs · 1 source</div>
+            <ul class='refs'><li><a href="https://www.welivesecurity.com/en/eset-research/eset-takes-part-operation-endgame-disrupt-amadey-stealc/" target="_blank" rel="noopener">welivesecurity.com</a></li></ul>
+        </div>
+
+        <div class="report-card">
+            <div class="report-header">
+                <h3><span class="icon">🔑</span>LokiBot After a Decade: An Analysis of a Recent LokiBot Campaign</h3>
+                <span class="date">2026-06-25</span>
+            </div>
+            <div class="report-meta">
+                <span class="tag">Actor: Unknown</span>
+                <span class="tag">TLP: White</span>
+                <span class="tag">CVEs: CVE-2026-24190</span>
+            </div>
+            <div class="report-stats">16 IOCs · 1 CVE · 1 source</div>
+            <ul class='refs'><li><a href="https://www.levelblue.com/blogs/spiderlabs-blog/lokibot-after-a-decade-an-analysis-of-a-recent-lokibot-campaign" target="_blank" rel="noopener">levelblue.com</a></li></ul>
+        </div>
+
+        <div class="report-card">
+            <div class="report-header">
+                <h3><span class="icon">🔑</span>KimJongRAT Continues to Evolve by Leveraging LOTS</h3>
+                <span class="date">2026-06-25</span>
+            </div>
+            <div class="report-meta">
+                <span class="tag">Actor: Kimsuky</span>
+                <span class="tag">TLP: White</span>
+                <span class="tag">CVEs: None</span>
+            </div>
+            <div class="report-stats">11 IOCs · 1 source</div>
+            <ul class='refs'><li><a href="https://sect.iij.ad.jp/blog/2026/06/continuous-evolution-of-kimjongrat-2026/" target="_blank" rel="noopener">sect.iij.ad.jp</a></li></ul>
+        </div>
+
+        <div class="report-card">
+            <div class="report-header">
+                <h3><span class="icon">🎣</span>FIFA 2026 Security Alert: Cybercriminals Exploit Fan Excitement with Mass Phishing</h3>
+                <span class="date">2026-06-25</span>
+            </div>
+            <div class="report-meta">
+                <span class="tag">Actor: Unknown</span>
+                <span class="tag">TLP: White</span>
+                <span class="tag">CVEs: None</span>
+            </div>
+            <div class="report-stats">5 IOCs · 1 source</div>
+            <ul class='refs'><li><a href="https://www.pointwild.com/threat-intelligence/fifa-2026-security-alert-cybercriminals-exploit-fan-excitement-with-mass-phishing/" target="_blank" rel="noopener">pointwild.com</a></li></ul>
+        </div>
+
+        <div class="report-card">
+            <div class="report-header">
+                <h3><span class="icon">🎣</span>ClickFix campaign delivers macOS infostealer via DMG</h3>
+                <span class="date">2026-06-25</span>
+            </div>
+            <div class="report-meta">
+                <span class="tag">Actor: Unknown</span>
+                <span class="tag">TLP: White</span>
+                <span class="tag">CVEs: None</span>
+            </div>
+            <div class="report-stats">10 IOCs · 2 sources</div>
+            <ul class='refs'><li><a href="https://x.com/Unit42_Intel/status/2069321645924159505" target="_blank" rel="noopener">x.com</a></li><li><a href="https://github.com/PaloAltoNetworks/Unit42-timely-threat-intel/blob/main/2026-06-20-ClickFix-campaign-delivers-macOS-infostealer-via-DMG.txt" target="_blank" rel="noopener">github.com</a></li></ul>
+        </div>
+
+        <div class="report-card">
+            <div class="report-header">
+                <h3><span class="icon">🎣</span>Behind the console: An AiTM phishing kit harvesting AWS console credentials and beyond</h3>
+                <span class="date">2026-06-25</span>
+            </div>
+            <div class="report-meta">
+                <span class="tag">Actor: Unknown</span>
+                <span class="tag">TLP: White</span>
+                <span class="tag">CVEs: None</span>
+            </div>
+            <div class="report-stats">4 IOCs · 1 source</div>
+            <ul class='refs'><li><a href="https://securitylabs.datadoghq.com/articles/behind-the-console-aws-aitm-phishing-kit-and-beyond/" target="_blank" rel="noopener">securitylabs.datadoghq.com</a></li></ul>
         </div>
 
     <footer>
-        <p>Report generated at 2026-06-25 13:57 UTC</p>
+        <p>Report generated at 2026-06-26 08:09 UTC</p>
         <div class="footer-ascii">
     ╔═══════════════════════════════════════════════╗
     ║  The only good breach is the one you detect.  ║
