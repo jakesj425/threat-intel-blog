@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Daily Threat Intelligence Report — June 26, 2026</title>
+<title>Daily Threat Intelligence Report — June 27, 2026</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
@@ -61,39 +61,140 @@ footer { text-align: center; padding: 40px 0 20px; color: #484f58; font-size: 12
 </head>
 <body>
 <div class="ascii-header">
-<pre>    ╔══════════════════════════════════════════╗
-    ║  ▀█▀ █▀█ █▀▀ ▄▀█ ▀█▀ █ █▀█ █▄▀ ▀█▀ █▀▀ ║
-    ║  █  █▀▄ ██▄ █▀█ █  █ █▀▄ █▀█ █   █  ██▄ ║
-    ║                                          ║
-    ║  DAILY THREAT INTELLIGENCE REPORT        ║
-    ╚══════════════════════════════════════════╝</pre>
+<pre>    ╔══════════════════════════════════════════════════╗
+    ║  ██████╗ ███████╗██████╗  ██████╗ ██████╗ ████████╗║
+    ║  ██╔══██╗██╔════╝██╔══██╗██╔═══██╗██╔══██╗╚══██╔══╝║
+    ║  ██████╔╝█████╗  ██████╔╝██║   ██║██████╔╝   ██║   ║
+    ║  ██╔══██╗██╔══╝  ██╔═══╝ ██║   ██║██╔══██╗   ██║   ║
+    ║  ██║  ██║███████╗██║     ╚██████╔╝██║  ██║   ██║   ║
+    ║  ╚═╝  ╚═╝╚══════╝╚═╝      ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ║
+    ║         DAILY THREAT INTELLIGENCE REPORT          ║
+    ╚══════════════════════════════════════════════════╝</pre>
 </div>
 <div class="header-info">
     <h1>Daily Threat Intelligence Report</h1>
-    <p class="date">June 26, 2026</p>
+    <p class="date">June 27, 2026</p>
 </div>
 
 <div class="container">
     <div class="opinion">
         <h2>Opinion of a DFIR Guy</h2>
-        <p>🔥 <strong>DFIR Dirty Dozen: This Cycle's Weirdest Finds That Deserve a Second Look</strong> 🔍</p><p>🔗 <strong>Thing #1: Edgecution escapes a browser sandbox with a Chrome extension.</strong> An IAB (Payouts King) is deploying Edgecution — a malicious Edge extension that abuses <strong>Chrome native messaging</strong> to break out of the browser sandbox entirely. From a DFIR perspective, this is wild: the thing runs a Python backdoor and a headless browser invisibly. Your EDR might see "just Chrome" while the attacker is executing arbitrary commands via websocket C2. Hunt for native messaging registry keys and suspicious extension manifests.</p><p>🔗 <strong>Thing #2: Cisco SD-WAN zero-day comes with built-in anti-forensics.</strong> CVE-2026-20245 is a privilege escalation via malicious CSV upload — but the kicker is the attacker <strong>systematically deletes files, restores configs, and runs validation scripts</strong> to wipe their own tracks. This is the kind of intrusion where you arrive and the logs are gone. The forensic gold is in the pre-exploitation peering anomalies and any surviving password file artifacts. If you run SD-WAN, check for unexpected user accounts yesterday.</p><p>🔗 <strong>Thing #3: KimJongRAT (Kimsuky APT) now dynamically fetches C2 from GitHub and Google Drive.</strong> A North Korean APT abusing <strong>GitHub Releases, Google Drive, and Dropbox</strong> as Living Off Trusted Sites (LOTS) infrastructure. The C2 isn't hardcoded anymore — it's fetched dynamically, so sinkholing one domain doesn't kill the campaign. For DFIR folks: your proxy logs will show "just GitHub traffic." The IOC is the <em>pattern</em> of GitHub API calls, not the domain.</p><p>🔗 <strong>Thing #4: Prinz Eugen ransomware uses ChaCha20 and leaves NO ransom note on disk.</strong> ROOTBOY's new Go-based encryptor is rad from a forensics standpoint: it scrubs memory, self-deletes, and does all extortion <strong>out-of-band</strong> via leak sites and email. No ransom note means no obvious "you've been hit" indicator. You'll find it by spotting the ChaCha20-encrypted file entropy and the missing notes. Targets include Standard Bank South Africa — big fish.</p><p>🔗 <strong>Thing #5: ClickFix now delivers macOS infostealer via fake CAPTCHA → DMG.</strong> The fake CAPTCHA → Terminal command pipeline has evolved to target Mac users with a <strong>self-signed DMG containing Atomic macOS Stealer (Odyssey variant)</strong>. It trojanizes Ledger Live and Trezor Suite — replacing legit crypto apps with malware. For DFIR: check your users' Applications folder for duplicate Ledger.app bundles and suspicious LaunchAgents. The persistence is sneaky.</p><p>🔗 <strong>Thing #6: Cryptojacking via poisoned search results installs ScreenConnect persistence.</strong> This campaign is cool because it's <strong>dual-purpose</strong>: yes, they mine GPU coin, but they also install <strong>ScreenConnect RMM</strong> for persistent remote access. The DLL sideloading into Microsoft-signed .NET binaries means it looks legit in process lists. From an incident response angle: if you find XMRig on a workstation, don't just kill it — check for the ScreenConnect agent too, because the real payload is the backdoor, not the miner.</p><p>The big picture? <strong>The boundary between "commodity malware" and "targeted intrusion" is gone.</strong> Cryptojackers are installing RMM tools. Browser extensions are escaping sandboxes. Ransomware is going note-free. Assume every "simple" infection has a second, quieter stage.</p><p>#DFIR #ThreatIntel #MalwareAnalysis #SupplyChainSecurity #IncidentResponse #Ransomware</p><p>— Based on 11 fresh reports spanning cryptojacking, APT activity, ransomware, browser exploitation, and cloud credential theft.</p>
+        <p>🔥 <strong>DFIR Dust-Up: npm Gets Shredded, macOS Meets DPRK, and Telegram Becomes C2</strong> 🔍</p><p>🔗 <strong>Thing #1: Sapphire Sleet weaponized Apple's own Finder to bypass macOS security.</strong> BlueNoroff/UNC1069 is hitting VC and Web3 firms on macOS — but the trick is using Apple Script Editor and Finder to execute code <em>outside</em> security boundaries. Victims run a fake Zoom SDK update, and Finder silently spawns bash. For DFIR: look for `osascript` spawning from Finder and unsigned binaries executing from updater workflows. Your EDR won't flag this as malware. <a href="https://www.levelblue.com/blogs/spiderlabs-blog/sapphire-sleet-targets-macos-in-multi-stage-intrusion-campaign" target="_blank" rel="noopener">Source</a></p><p>🔗 <strong>Thing #2: Mini Shai-Hulud turned `npm install` into a compromise vector.</strong> This supply chain attack hijacked LeoPlatform npm packages, GitHub Actions, AND Go modules. The `binding.gyp` file executes at install time — before the package even loads. They steal npm tokens, GitHub tokens, SSH keys, and AI coding assistant configs, then use GitHub orphan branches as dead-drop C2. For DFIR: audit CI/CD for packages with suspicious `binding.gyp` or postinstall hooks. <a href="https://socket.dev/blog/miasma-mini-shai-hulud-hits-leoplatform-npm-packages-go-ecosystem" target="_blank" rel="noopener">Source</a></p><p>🔗 <strong>Thing #3: Millenium RAT rewrote in C++ and hides C2 inside Telegram Bot API.</strong> Developer "ShinyEnigma" sells it as MaaS for $50-90. Y2K Operators have infected 62,000+ endpoints across 160 countries — 39,730 in Q1 2026 alone. The Telegram C2 means no dedicated server to sinkhole. For DFIR: hunt for Telegram bot token patterns in memory dumps, not domain blocklists. <a href="https://www.group-ib.com/blog/millenium-rat-maas/" target="_blank" rel="noopener">Source</a></p><p>🔗 <strong>Thing #4: Photo ZIP campaign "laundered" authentication through Calendly and Google.</strong> Targeting hotels across Europe and Asia with photo-themed ZIPs containing malicious LNK files → PowerShell → Node.js implant. They bounce phishing through Calendly booking pages and Google redirects to bypass email security. For DFIR: your SEC logs show "trusted sender." Look for LNK files spawning encoded PowerShell and Node.js on weird ports. <a href="https://www.microsoft.com/en-us/security/blog/2026/06/25/photo-zip-campaign-targeting-hospitality-industry-delivers-node-js-implant-persistent-access/" target="_blank" rel="noopener">Source</a></p><p>The big picture? <strong>Supply chain is the new front door.</strong> npm packages, GitHub Actions, bot APIs — attackers aren't breaking in, they're getting invited through trusted pipelines. Your perimeter is now your package manager.</p><p>#DFIR #ThreatIntel #MalwareAnalysis #SupplyChainSecurity #IncidentResponse #MacSecurity</p><p>— Based on 9 fresh reports spanning npm supply chain, DPRK macOS espionage, Turla backdoors, RAT-as-a-service, and phishing laundering.</p>
     </div>
 
     <div class="stats">
-        <div class="stat"><div class="number">11</div><div class="label">Reports</div></div>
-        <div class="stat"><div class="number">3</div><div class="label">Adversaries</div></div>
+        <div class="stat"><div class="number">10</div><div class="label">Reports</div></div>
+        <div class="stat"><div class="number">5</div><div class="label">Adversaries</div></div>
         <div class="stat"><div class="number">0</div><div class="label">Malware Families</div></div>
-        <div class="stat"><div class="number">4</div><div class="label">CVEs</div></div>
-        <div class="stat"><div class="number">131</div><div class="label">IOCs</div></div>
+        <div class="stat"><div class="number">2</div><div class="label">CVEs</div></div>
+        <div class="stat"><div class="number">481</div><div class="label">IOCs</div></div>
     </div>
 
-    <h2>Top Adversaries</h2><div class='mini-section'><div class='mini-card'><strong>Kimsuky</strong></div><div class='mini-card'><strong>Payouts King</strong></div><div class='mini-card'><strong>ROOTBOY</strong></div></div>
-    <h2>Critical CVEs</h2><div class='mini-section'><div class='mini-card'>CVE-2026-20127</div><div class='mini-card'>CVE-2026-20182</div><div class='mini-card'>CVE-2026-20245</div><div class='mini-card'>CVE-2026-24190</div></div>
+    <h2>Top Adversaries</h2><div class='mini-section'><div class='mini-card'><strong>CL-STA-1062</strong></div><div class='mini-card'><strong>GHOST STADIUM</strong></div><div class='mini-card'><strong>Turla</strong></div><div class='mini-card'><strong>Void Arachne</strong></div><div class='mini-card'><strong>Y2K Operators</strong></div></div>
+    <h2>Critical CVEs</h2><div class='mini-section'><div class='mini-card'>CVE-2025-8088</div><div class='mini-card'>CVE-2026-20245</div></div>
     
-    <h2>Key Themes</h2><h3>Other Campaigns</h3><p>1 report</p><h3>Credential Theft & Infostealers</h3><p>4 reports</p><h3>Ransomware</h3><p>1 report</p><h3>Social Engineering & Malvertising</h3><p>3 reports</p><h3>Malware Loaders & Backdoors</h3><p>1 report</p><h3>Infrastructure & IoT Threats</h3><p>1 report</p>
+    <h2>Key Themes</h2><h3>Other Campaigns</h3><p>5 reports</p><h3>Social Engineering & Malvertising</h3><p>1 report</p><h3>Malware Loaders & Backdoors</h3><p>2 reports</p><h3>Nation-State Activity</h3><p>1 report</p><h3>Supply Chain Attacks</h3><p>1 report</p>
 
     <h2>Latest Reports</h2>
     
+        <div class="report-card">
+            <div class="report-header">
+                <h3><span class="icon">⚠️</span>Sapphire Sleet Targets macOS</h3>
+                <span class="date">2026-06-27</span>
+            </div>
+            <div class="report-meta">
+                <span class="tag">Actor: Unknown</span>
+                <span class="tag">TLP: White</span>
+                <span class="tag">CVEs: None</span>
+            </div>
+            <div class="report-stats">16 IOCs · 1 source</div>
+            <ul class='refs'><li><a href="https://www.levelblue.com/blogs/spiderlabs-blog/sapphire-sleet-targets-macos-in-multi-stage-intrusion-campaign" target="_blank" rel="noopener">levelblue.com</a></li></ul>
+        </div>
+
+        <div class="report-card">
+            <div class="report-header">
+                <h3><span class="icon">🎣</span>The GHOST STADIUM Score: Billions At Stake At The World’s Largest Football Tournament</h3>
+                <span class="date">2026-06-26</span>
+            </div>
+            <div class="report-meta">
+                <span class="tag">Actor: GHOST STADIUM</span>
+                <span class="tag">TLP: White</span>
+                <span class="tag">CVEs: None</span>
+            </div>
+            <div class="report-stats">51 IOCs · 1 source</div>
+            <ul class='refs'><li><a href="https://www.group-ib.com/blog/ghost-stadium-football-fraud/" target="_blank" rel="noopener">group-ib.com</a></li></ul>
+        </div>
+
+        <div class="report-card">
+            <div class="report-header">
+                <h3><span class="icon">⚠️</span>STOCKSTAY Another Day: The Latest Addition to Turla’s Intelligence Gathering Apparatus</h3>
+                <span class="date">2026-06-26</span>
+            </div>
+            <div class="report-meta">
+                <span class="tag">Actor: Turla</span>
+                <span class="tag">TLP: White</span>
+                <span class="tag">CVEs: CVE-2025-8088, CVE-2026-20245</span>
+            </div>
+            <div class="report-stats">76 IOCs · 2 CVEs · 1 source</div>
+            <ul class='refs'><li><a href="https://cloud.google.com/blog/topics/threat-intelligence/stockstay-turla-intelligence-gathering" target="_blank" rel="noopener">cloud.google.com</a></li></ul>
+        </div>
+
+        <div class="report-card">
+            <div class="report-header">
+                <h3><span class="icon">🐀</span>Photo ZIP campaign targeting hospitality industry delivers Node.js implant for persistent access</h3>
+                <span class="date">2026-06-26</span>
+            </div>
+            <div class="report-meta">
+                <span class="tag">Actor: Unknown</span>
+                <span class="tag">TLP: White</span>
+                <span class="tag">CVEs: None</span>
+            </div>
+            <div class="report-stats">100 IOCs · 1 source</div>
+            <ul class='refs'><li><a href="https://www.microsoft.com/en-us/security/blog/2026/06/25/photo-zip-campaign-targeting-hospitality-industry-delivers-node-js-implant-persistent-access/" target="_blank" rel="noopener">microsoft.com</a></li></ul>
+        </div>
+
+        <div class="report-card">
+            <div class="report-header">
+                <h3><span class="icon">🎣</span>Operation DragonReturn: China-Nexus Cyber Espionage Campaign Targeting Govt. of India/MoF Tax Infrastructure via Multi-Stage DcRAT Deployment</h3>
+                <span class="date">2026-06-26</span>
+            </div>
+            <div class="report-meta">
+                <span class="tag">Actor: Void Arachne</span>
+                <span class="tag">TLP: White</span>
+                <span class="tag">CVEs: None</span>
+            </div>
+            <div class="report-stats">35 IOCs · 1 source</div>
+            <ul class='refs'><li><a href="https://www.seqrite.com/blog/operation-dragonreturn-china-nexus-cyber-espionage-campaign-targeting-govt-of-india-mof-tax-infrastructure-via-multi-stage-dcrat-deployment/" target="_blank" rel="noopener">seqrite.com</a></li></ul>
+        </div>
+
+        <div class="report-card">
+            <div class="report-header">
+                <h3><span class="icon">📦</span>Mini Shai-Hulud Hits LeoPlatform npm Packages and GitHub Actions, Expands to the Go Ecosystem</h3>
+                <span class="date">2026-06-26</span>
+            </div>
+            <div class="report-meta">
+                <span class="tag">Actor: Unknown</span>
+                <span class="tag">TLP: White</span>
+                <span class="tag">CVEs: None</span>
+            </div>
+            <div class="report-stats">20 IOCs · 1 source</div>
+            <ul class='refs'><li><a href="https://socket.dev/blog/miasma-mini-shai-hulud-hits-leoplatform-npm-packages-go-ecosystem" target="_blank" rel="noopener">socket.dev</a></li></ul>
+        </div>
+
+        <div class="report-card">
+            <div class="report-header">
+                <h3><span class="icon">🐀</span>Millenium: A RAT Rewritten, A Threat Multiplied</h3>
+                <span class="date">2026-06-26</span>
+            </div>
+            <div class="report-meta">
+                <span class="tag">Actor: Y2K Operators</span>
+                <span class="tag">TLP: White</span>
+                <span class="tag">CVEs: None</span>
+            </div>
+            <div class="report-stats">100 IOCs · 1 source</div>
+            <ul class='refs'><li><a href="https://www.group-ib.com/blog/millenium-rat-maas/" target="_blank" rel="noopener">group-ib.com</a></li></ul>
+        </div>
+
         <div class="report-card">
             <div class="report-header">
                 <h3><span class="icon">⚠️</span>From poisoned search results to GPU mining: A cryptojacking campaign abusing ScreenConnect and Microsoft .NET utilities</h3>
@@ -110,146 +211,34 @@ footer { text-align: center; padding: 40px 0 20px; color: #484f58; font-size: 12
 
         <div class="report-card">
             <div class="report-header">
-                <h3><span class="icon">⚠️</span>Zero-Day Exploitation of Vulnerability (CVE-2026-20245) in Cisco Catalyst SD-WAN Manager</h3>
-                <span class="date">2026-06-25</span>
-            </div>
-            <div class="report-meta">
-                <span class="tag">Actor: Unknown</span>
-                <span class="tag">TLP: White</span>
-                <span class="tag">CVEs: CVE-2026-20127, CVE-2026-20182, CVE-2026-20245</span>
-            </div>
-            <div class="report-stats">9 IOCs · 3 CVEs · 1 source</div>
-            <ul class='refs'><li><a href="https://cloud.google.com/blog/topics/threat-intelligence/zero-day-exploitation-cisco-catalyst-sd-wan-manager" target="_blank" rel="noopener">cloud.google.com</a></li></ul>
-        </div>
-
-        <div class="report-card">
-            <div class="report-header">
-                <h3><span class="icon">⚠️</span>Prinz Eugen ransomware: a deep dive into a new Go-based encryptor</h3>
-                <span class="date">2026-06-25</span>
-            </div>
-            <div class="report-meta">
-                <span class="tag">Actor: ROOTBOY</span>
-                <span class="tag">TLP: White</span>
-                <span class="tag">CVEs: None</span>
-            </div>
-            <div class="report-stats">18 IOCs · 1 source</div>
-            <ul class='refs'><li><a href="https://www.threatdown.com/blog/prinz-eugen-ransomware-a-deep-dive-into-a-new-go-based-encryptor/" target="_blank" rel="noopener">threatdown.com</a></li></ul>
-        </div>
-
-        <div class="report-card">
-            <div class="report-header">
-                <h3><span class="icon">🎣</span>Phishing Campaign Deploys JavaScript-Driven PureLogs Variant to Steal Sensitive Data</h3>
-                <span class="date">2026-06-25</span>
+                <h3><span class="icon">☁️</span>From San Pedro to Salinas: How a Chinese Framework “DCloud Uni-App” Powers a Global Scam Economy</h3>
+                <span class="date">2026-06-26</span>
             </div>
             <div class="report-meta">
                 <span class="tag">Actor: Unknown</span>
                 <span class="tag">TLP: White</span>
                 <span class="tag">CVEs: None</span>
             </div>
-            <div class="report-stats">11 IOCs · 1 source</div>
-            <ul class='refs'><li><a href="https://www.fortinet.com/blog/threat-research/phishing-campaign-deploys-javascript-driven-purelogs-variant-to-steal-sensitive-data" target="_blank" rel="noopener">fortinet.com</a></li></ul>
+            <div class="report-stats">49 IOCs · 1 source</div>
+            <ul class='refs'><li><a href="https://www.infoblox.com/blog/threat-intelligence/from-san-pedro-to-salinas-how-a-chinese-framework-dcloud-uni-app-powers-a-global-scam-economy/" target="_blank" rel="noopener">infoblox.com</a></li></ul>
         </div>
 
         <div class="report-card">
             <div class="report-header">
-                <h3><span class="icon">🐀</span>Payouts King Ransomware Initial Access Broker Deploys New Edgecution Malware</h3>
-                <span class="date">2026-06-25</span>
+                <h3><span class="icon">⚠️</span>CL-STA-1062 Targets Southeast Asian Governments and Critical Infrastructure</h3>
+                <span class="date">2026-06-26</span>
             </div>
             <div class="report-meta">
-                <span class="tag">Actor: Payouts King</span>
+                <span class="tag">Actor: CL-STA-1062</span>
                 <span class="tag">TLP: White</span>
                 <span class="tag">CVEs: None</span>
             </div>
-            <div class="report-stats">2 IOCs · 1 source</div>
-            <ul class='refs'><li><a href="https://www.zscaler.com/blogs/security-research/payouts-king-ransomware-initial-access-broker-deploys-new-edgecution" target="_blank" rel="noopener">zscaler.com</a></li></ul>
-        </div>
-
-        <div class="report-card">
-            <div class="report-header">
-                <h3><span class="icon">🔑</span>Operation Endgame disrupts Amadey and Stealc</h3>
-                <span class="date">2026-06-25</span>
-            </div>
-            <div class="report-meta">
-                <span class="tag">Actor: Unknown</span>
-                <span class="tag">TLP: White</span>
-                <span class="tag">CVEs: None</span>
-            </div>
-            <div class="report-stats">19 IOCs · 1 source</div>
-            <ul class='refs'><li><a href="https://www.welivesecurity.com/en/eset-research/eset-takes-part-operation-endgame-disrupt-amadey-stealc/" target="_blank" rel="noopener">welivesecurity.com</a></li></ul>
-        </div>
-
-        <div class="report-card">
-            <div class="report-header">
-                <h3><span class="icon">🔑</span>LokiBot After a Decade: An Analysis of a Recent LokiBot Campaign</h3>
-                <span class="date">2026-06-25</span>
-            </div>
-            <div class="report-meta">
-                <span class="tag">Actor: Unknown</span>
-                <span class="tag">TLP: White</span>
-                <span class="tag">CVEs: CVE-2026-24190</span>
-            </div>
-            <div class="report-stats">16 IOCs · 1 CVE · 1 source</div>
-            <ul class='refs'><li><a href="https://www.levelblue.com/blogs/spiderlabs-blog/lokibot-after-a-decade-an-analysis-of-a-recent-lokibot-campaign" target="_blank" rel="noopener">levelblue.com</a></li></ul>
-        </div>
-
-        <div class="report-card">
-            <div class="report-header">
-                <h3><span class="icon">🔑</span>KimJongRAT Continues to Evolve by Leveraging LOTS</h3>
-                <span class="date">2026-06-25</span>
-            </div>
-            <div class="report-meta">
-                <span class="tag">Actor: Kimsuky</span>
-                <span class="tag">TLP: White</span>
-                <span class="tag">CVEs: None</span>
-            </div>
-            <div class="report-stats">11 IOCs · 1 source</div>
-            <ul class='refs'><li><a href="https://sect.iij.ad.jp/blog/2026/06/continuous-evolution-of-kimjongrat-2026/" target="_blank" rel="noopener">sect.iij.ad.jp</a></li></ul>
-        </div>
-
-        <div class="report-card">
-            <div class="report-header">
-                <h3><span class="icon">🎣</span>FIFA 2026 Security Alert: Cybercriminals Exploit Fan Excitement with Mass Phishing</h3>
-                <span class="date">2026-06-25</span>
-            </div>
-            <div class="report-meta">
-                <span class="tag">Actor: Unknown</span>
-                <span class="tag">TLP: White</span>
-                <span class="tag">CVEs: None</span>
-            </div>
-            <div class="report-stats">5 IOCs · 1 source</div>
-            <ul class='refs'><li><a href="https://www.pointwild.com/threat-intelligence/fifa-2026-security-alert-cybercriminals-exploit-fan-excitement-with-mass-phishing/" target="_blank" rel="noopener">pointwild.com</a></li></ul>
-        </div>
-
-        <div class="report-card">
-            <div class="report-header">
-                <h3><span class="icon">🎣</span>ClickFix campaign delivers macOS infostealer via DMG</h3>
-                <span class="date">2026-06-25</span>
-            </div>
-            <div class="report-meta">
-                <span class="tag">Actor: Unknown</span>
-                <span class="tag">TLP: White</span>
-                <span class="tag">CVEs: None</span>
-            </div>
-            <div class="report-stats">10 IOCs · 2 sources</div>
-            <ul class='refs'><li><a href="https://x.com/Unit42_Intel/status/2069321645924159505" target="_blank" rel="noopener">x.com</a></li><li><a href="https://github.com/PaloAltoNetworks/Unit42-timely-threat-intel/blob/main/2026-06-20-ClickFix-campaign-delivers-macOS-infostealer-via-DMG.txt" target="_blank" rel="noopener">github.com</a></li></ul>
-        </div>
-
-        <div class="report-card">
-            <div class="report-header">
-                <h3><span class="icon">🎣</span>Behind the console: An AiTM phishing kit harvesting AWS console credentials and beyond</h3>
-                <span class="date">2026-06-25</span>
-            </div>
-            <div class="report-meta">
-                <span class="tag">Actor: Unknown</span>
-                <span class="tag">TLP: White</span>
-                <span class="tag">CVEs: None</span>
-            </div>
-            <div class="report-stats">4 IOCs · 1 source</div>
-            <ul class='refs'><li><a href="https://securitylabs.datadoghq.com/articles/behind-the-console-aws-aitm-phishing-kit-and-beyond/" target="_blank" rel="noopener">securitylabs.datadoghq.com</a></li></ul>
+            <div class="report-stats">8 IOCs · 1 source</div>
+            <ul class='refs'><li><a href="https://unit42.paloaltonetworks.com/cl-sta-1062-tinyrct-backdoor/" target="_blank" rel="noopener">unit42.paloaltonetworks.com</a></li></ul>
         </div>
 
     <footer>
-        <p>Report generated at 2026-06-26 08:10 UTC</p>
+        <p>Report generated at 2026-06-27 03:20 UTC</p>
         <div class="footer-ascii">
     ╔═══════════════════════════════════════════════╗
     ║  The only good breach is the one you detect.  ║
