@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Daily Threat Intelligence Report — June 27, 2026</title>
+<title>Daily Threat Intelligence Report — June 28, 2026</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
@@ -61,39 +61,34 @@ footer { text-align: center; padding: 40px 0 20px; color: #484f58; font-size: 12
 </head>
 <body>
 <div class="ascii-header">
-<pre>    ╔══════════════════════════════════════════════════╗
-    ║  ██████╗ ███████╗██████╗  ██████╗ ██████╗ ████████╗║
-    ║  ██╔══██╗██╔════╝██╔══██╗██╔═══██╗██╔══██╗╚══██╔══╝║
-    ║  ██████╔╝█████╗  ██████╔╝██║   ██║██████╔╝   ██║   ║
-    ║  ██╔══██╗██╔══╝  ██╔═══╝ ██║   ██║██╔══██╗   ██║   ║
-    ║  ██║  ██║███████╗██║     ╚██████╔╝██║  ██║   ██║   ║
-    ║  ╚═╝  ╚═╝╚══════╝╚═╝      ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ║
-    ║         DAILY THREAT INTELLIGENCE REPORT          ║
-    ╚══════════════════════════════════════════════════╝</pre>
+<pre>     ⚡ THREAT INTELLIGENCE DAILY BRIEFING ⚡
+    ┌─────────────────────────────────────────┐
+    │  Analyzing threats. Zero fluff. Stay sharp. │
+    └─────────────────────────────────────────┘</pre>
 </div>
 <div class="header-info">
     <h1>Daily Threat Intelligence Report</h1>
-    <p class="date">June 27, 2026</p>
+    <p class="date">June 28, 2026</p>
 </div>
 
 <div class="container">
     <div class="opinion">
         <h2>Opinion of a DFIR Guy</h2>
-        <p>🔥 <strong>DFIR Dust-Up: npm Gets Shredded, macOS Meets DPRK, and Telegram Becomes C2</strong> 🔍</p><p>🔗 <strong>Thing #1: Sapphire Sleet weaponized Apple's own Finder to bypass macOS security.</strong> BlueNoroff/UNC1069 is hitting VC and Web3 firms on macOS — but the trick is using Apple Script Editor and Finder to execute code <em>outside</em> security boundaries. Victims run a fake Zoom SDK update, and Finder silently spawns bash. For DFIR: look for `osascript` spawning from Finder and unsigned binaries executing from updater workflows. Your EDR won't flag this as malware. <a href="https://www.levelblue.com/blogs/spiderlabs-blog/sapphire-sleet-targets-macos-in-multi-stage-intrusion-campaign" target="_blank" rel="noopener">Source</a></p><p>🔗 <strong>Thing #2: Mini Shai-Hulud turned `npm install` into a compromise vector.</strong> This supply chain attack hijacked LeoPlatform npm packages, GitHub Actions, AND Go modules. The `binding.gyp` file executes at install time — before the package even loads. They steal npm tokens, GitHub tokens, SSH keys, and AI coding assistant configs, then use GitHub orphan branches as dead-drop C2. For DFIR: audit CI/CD for packages with suspicious `binding.gyp` or postinstall hooks. <a href="https://socket.dev/blog/miasma-mini-shai-hulud-hits-leoplatform-npm-packages-go-ecosystem" target="_blank" rel="noopener">Source</a></p><p>🔗 <strong>Thing #3: Millenium RAT rewrote in C++ and hides C2 inside Telegram Bot API.</strong> Developer "ShinyEnigma" sells it as MaaS for $50-90. Y2K Operators have infected 62,000+ endpoints across 160 countries — 39,730 in Q1 2026 alone. The Telegram C2 means no dedicated server to sinkhole. For DFIR: hunt for Telegram bot token patterns in memory dumps, not domain blocklists. <a href="https://www.group-ib.com/blog/millenium-rat-maas/" target="_blank" rel="noopener">Source</a></p><p>🔗 <strong>Thing #4: Photo ZIP campaign "laundered" authentication through Calendly and Google.</strong> Targeting hotels across Europe and Asia with photo-themed ZIPs containing malicious LNK files → PowerShell → Node.js implant. They bounce phishing through Calendly booking pages and Google redirects to bypass email security. For DFIR: your SEC logs show "trusted sender." Look for LNK files spawning encoded PowerShell and Node.js on weird ports. <a href="https://www.microsoft.com/en-us/security/blog/2026/06/25/photo-zip-campaign-targeting-hospitality-industry-delivers-node-js-implant-persistent-access/" target="_blank" rel="noopener">Source</a></p><p>The big picture? <strong>Supply chain is the new front door.</strong> npm packages, GitHub Actions, bot APIs — attackers aren't breaking in, they're getting invited through trusted pipelines. Your perimeter is now your package manager.</p><p>#DFIR #ThreatIntel #MalwareAnalysis #SupplyChainSecurity #IncidentResponse #MacSecurity</p><p>— Based on 9 fresh reports spanning npm supply chain, DPRK macOS espionage, Turla backdoors, RAT-as-a-service, and phishing laundering.</p>
+        <p>🔥 <strong>DFIR Dust-Up: Crypto Gets Hijacked, npm Gets Shredded, and Turla Won't Quit</strong> 🔍</p><p>🔗 <strong>Thing #1: JINX-0164 turned LinkedIn into a crypto-killing machine.</strong> Posing as recruiters, they tricked devs into running AUDIOFIX (Python infostealer), then dropped MINIRAT (Go backdoor) to steal wallet keys. Then they trojanized `@velora-dex/sdk` on npm. Wild? They pivot from one dev endpoint straight into CI/CD. For DFIR: audit npm for unexpected dependency changes and watch LinkedIn DM attachments. <a href="https://www.wiz.io/blog/threat-actors-target-crypto-orgs" target="_blank" rel="noopener">Source</a></p><p>🔗 <strong>Thing #2: Sapphire Sleet weaponized Finder to bypass macOS security.</strong> BlueNoroff/UNC1069 hits VC firms — using Apple Script Editor to execute code outside security boundaries. Victims run a fake Zoom update, Finder silently spawns bash. For DFIR: look for `osascript` spawning from Finder. EDR won't flag this. <a href="https://www.levelblue.com/blogs/spiderlabs-blog/sapphire-sleet-targets-macos-in-multi-stage-intrusion-campaign" target="_blank" rel="noopener">Source</a></p><p>🔗 <strong>Thing #3: Mini Shai-Hulud made `npm install` a full compromise.</strong> Hijacked LeoPlatform npm, GitHub Actions, AND Go modules. `binding.gyp` executes before the package loads. They steal npm tokens, SSH keys, and use GitHub orphan branches as dead-drop C2. For DFIR: audit CI/CD for suspicious `binding.gyp` or postinstall hooks. <a href="https://socket.dev/blog/miasma-mini-shai-hulud-hits-leoplatform-npm-packages-go-ecosystem" target="_blank" rel="noopener">Source</a></p><p>🔗 <strong>Thing #4: Millenium RAT hides C2 inside Telegram Bot API.</strong> Dev "ShinyEnigma" sells it as MaaS for $50-90. Y2K Operators infected 62,000+ endpoints. Telegram C2 means no server to sinkhole. For DFIR: hunt for bot token patterns in memory, not domain blocklists. <a href="https://www.group-ib.com/blog/millenium-rat-maas/" target="_blank" rel="noopener">Source</a></p><p>🔗 <strong>Thing #5: Photo ZIP campaign launders phishing through Calendly.</strong> Hotels targeted with photo ZIPs → malicious LNK → PowerShell → Node.js implant. They bounce delivery through Calendly booking pages to bypass email security. For DFIR: SEP logs show "trusted sender." Look for LNKs spawning Node.js on weird ports. <a href="https://www.microsoft.com/en-us/security/blog/2026/06/25/photo-zip-campaign-targeting-hospitality-industry-delivers-node-js-implant-persistent-access/" target="_blank" rel="noopener">Source</a></p><p>The big picture? <strong>Supply chain is the new front door.</strong> npm, GitHub Actions, LinkedIn DMs, bot APIs — attackers aren't breaking in, they're getting invited. Your perimeter is now your package manager, recruiter, and calendar app.</p><p>#DFIR #ThreatIntel #MalwareAnalysis #SupplyChainSecurity #IncidentResponse</p><p>— Based on 10 fresh reports spanning crypto supply chain, DPRK macOS espionage, Turla backdoors, and RAT-as-a-service.</p>
     </div>
 
     <div class="stats">
-        <div class="stat"><div class="number">10</div><div class="label">Reports</div></div>
-        <div class="stat"><div class="number">5</div><div class="label">Adversaries</div></div>
+        <div class="stat"><div class="number">2</div><div class="label">Reports</div></div>
+        <div class="stat"><div class="number">1</div><div class="label">Adversaries</div></div>
         <div class="stat"><div class="number">0</div><div class="label">Malware Families</div></div>
-        <div class="stat"><div class="number">2</div><div class="label">CVEs</div></div>
-        <div class="stat"><div class="number">481</div><div class="label">IOCs</div></div>
+        <div class="stat"><div class="number">0</div><div class="label">CVEs</div></div>
+        <div class="stat"><div class="number">108</div><div class="label">IOCs</div></div>
     </div>
 
-    <h2>Top Adversaries</h2><div class='mini-section'><div class='mini-card'><strong>CL-STA-1062</strong></div><div class='mini-card'><strong>GHOST STADIUM</strong></div><div class='mini-card'><strong>Turla</strong></div><div class='mini-card'><strong>Void Arachne</strong></div><div class='mini-card'><strong>Y2K Operators</strong></div></div>
-    <h2>Critical CVEs</h2><div class='mini-section'><div class='mini-card'>CVE-2025-8088</div><div class='mini-card'>CVE-2026-20245</div></div>
+    <h2>Top Adversaries</h2><div class='mini-section'><div class='mini-card'><strong>JINX-0164</strong></div></div>
     
-    <h2>Key Themes</h2><h3>Other Campaigns</h3><p>5 reports</p><h3>Social Engineering & Malvertising</h3><p>1 report</p><h3>Malware Loaders & Backdoors</h3><p>2 reports</p><h3>Nation-State Activity</h3><p>1 report</p><h3>Supply Chain Attacks</h3><p>1 report</p>
+    
+    <h2>Key Themes</h2><h3>Other Campaigns</h3><p>1 report</p><h3>Supply Chain Attacks</h3><p>1 report</p>
 
     <h2>Latest Reports</h2>
     
@@ -113,132 +108,20 @@ footer { text-align: center; padding: 40px 0 20px; color: #484f58; font-size: 12
 
         <div class="report-card">
             <div class="report-header">
-                <h3><span class="icon">🎣</span>The GHOST STADIUM Score: Billions At Stake At The World’s Largest Football Tournament</h3>
-                <span class="date">2026-06-26</span>
+                <h3><span class="icon">📦</span>A New Threat Actor Targeting the Cryptocurrency Industry's Software Development Infrastructure</h3>
+                <span class="date">2026-06-27</span>
             </div>
             <div class="report-meta">
-                <span class="tag">Actor: GHOST STADIUM</span>
+                <span class="tag">Actor: JINX-0164</span>
                 <span class="tag">TLP: White</span>
                 <span class="tag">CVEs: None</span>
             </div>
-            <div class="report-stats">51 IOCs · 1 source</div>
-            <ul class='refs'><li><a href="https://www.group-ib.com/blog/ghost-stadium-football-fraud/" target="_blank" rel="noopener">group-ib.com</a></li></ul>
-        </div>
-
-        <div class="report-card">
-            <div class="report-header">
-                <h3><span class="icon">⚠️</span>STOCKSTAY Another Day: The Latest Addition to Turla’s Intelligence Gathering Apparatus</h3>
-                <span class="date">2026-06-26</span>
-            </div>
-            <div class="report-meta">
-                <span class="tag">Actor: Turla</span>
-                <span class="tag">TLP: White</span>
-                <span class="tag">CVEs: CVE-2025-8088, CVE-2026-20245</span>
-            </div>
-            <div class="report-stats">76 IOCs · 2 CVEs · 1 source</div>
-            <ul class='refs'><li><a href="https://cloud.google.com/blog/topics/threat-intelligence/stockstay-turla-intelligence-gathering" target="_blank" rel="noopener">cloud.google.com</a></li></ul>
-        </div>
-
-        <div class="report-card">
-            <div class="report-header">
-                <h3><span class="icon">🐀</span>Photo ZIP campaign targeting hospitality industry delivers Node.js implant for persistent access</h3>
-                <span class="date">2026-06-26</span>
-            </div>
-            <div class="report-meta">
-                <span class="tag">Actor: Unknown</span>
-                <span class="tag">TLP: White</span>
-                <span class="tag">CVEs: None</span>
-            </div>
-            <div class="report-stats">100 IOCs · 1 source</div>
-            <ul class='refs'><li><a href="https://www.microsoft.com/en-us/security/blog/2026/06/25/photo-zip-campaign-targeting-hospitality-industry-delivers-node-js-implant-persistent-access/" target="_blank" rel="noopener">microsoft.com</a></li></ul>
-        </div>
-
-        <div class="report-card">
-            <div class="report-header">
-                <h3><span class="icon">🎣</span>Operation DragonReturn: China-Nexus Cyber Espionage Campaign Targeting Govt. of India/MoF Tax Infrastructure via Multi-Stage DcRAT Deployment</h3>
-                <span class="date">2026-06-26</span>
-            </div>
-            <div class="report-meta">
-                <span class="tag">Actor: Void Arachne</span>
-                <span class="tag">TLP: White</span>
-                <span class="tag">CVEs: None</span>
-            </div>
-            <div class="report-stats">35 IOCs · 1 source</div>
-            <ul class='refs'><li><a href="https://www.seqrite.com/blog/operation-dragonreturn-china-nexus-cyber-espionage-campaign-targeting-govt-of-india-mof-tax-infrastructure-via-multi-stage-dcrat-deployment/" target="_blank" rel="noopener">seqrite.com</a></li></ul>
-        </div>
-
-        <div class="report-card">
-            <div class="report-header">
-                <h3><span class="icon">📦</span>Mini Shai-Hulud Hits LeoPlatform npm Packages and GitHub Actions, Expands to the Go Ecosystem</h3>
-                <span class="date">2026-06-26</span>
-            </div>
-            <div class="report-meta">
-                <span class="tag">Actor: Unknown</span>
-                <span class="tag">TLP: White</span>
-                <span class="tag">CVEs: None</span>
-            </div>
-            <div class="report-stats">20 IOCs · 1 source</div>
-            <ul class='refs'><li><a href="https://socket.dev/blog/miasma-mini-shai-hulud-hits-leoplatform-npm-packages-go-ecosystem" target="_blank" rel="noopener">socket.dev</a></li></ul>
-        </div>
-
-        <div class="report-card">
-            <div class="report-header">
-                <h3><span class="icon">🐀</span>Millenium: A RAT Rewritten, A Threat Multiplied</h3>
-                <span class="date">2026-06-26</span>
-            </div>
-            <div class="report-meta">
-                <span class="tag">Actor: Y2K Operators</span>
-                <span class="tag">TLP: White</span>
-                <span class="tag">CVEs: None</span>
-            </div>
-            <div class="report-stats">100 IOCs · 1 source</div>
-            <ul class='refs'><li><a href="https://www.group-ib.com/blog/millenium-rat-maas/" target="_blank" rel="noopener">group-ib.com</a></li></ul>
-        </div>
-
-        <div class="report-card">
-            <div class="report-header">
-                <h3><span class="icon">⚠️</span>From poisoned search results to GPU mining: A cryptojacking campaign abusing ScreenConnect and Microsoft .NET utilities</h3>
-                <span class="date">2026-06-26</span>
-            </div>
-            <div class="report-meta">
-                <span class="tag">Actor: Unknown</span>
-                <span class="tag">TLP: White</span>
-                <span class="tag">CVEs: None</span>
-            </div>
-            <div class="report-stats">26 IOCs · 1 source</div>
-            <ul class='refs'><li><a href="https://www.microsoft.com/en-us/security/blog/2026/05/26/poisoned-search-results-gpu-mining-cryptojacking-campaign-abusing-screenconnect-microsoft-net-utilities/" target="_blank" rel="noopener">microsoft.com</a></li></ul>
-        </div>
-
-        <div class="report-card">
-            <div class="report-header">
-                <h3><span class="icon">☁️</span>From San Pedro to Salinas: How a Chinese Framework “DCloud Uni-App” Powers a Global Scam Economy</h3>
-                <span class="date">2026-06-26</span>
-            </div>
-            <div class="report-meta">
-                <span class="tag">Actor: Unknown</span>
-                <span class="tag">TLP: White</span>
-                <span class="tag">CVEs: None</span>
-            </div>
-            <div class="report-stats">49 IOCs · 1 source</div>
-            <ul class='refs'><li><a href="https://www.infoblox.com/blog/threat-intelligence/from-san-pedro-to-salinas-how-a-chinese-framework-dcloud-uni-app-powers-a-global-scam-economy/" target="_blank" rel="noopener">infoblox.com</a></li></ul>
-        </div>
-
-        <div class="report-card">
-            <div class="report-header">
-                <h3><span class="icon">⚠️</span>CL-STA-1062 Targets Southeast Asian Governments and Critical Infrastructure</h3>
-                <span class="date">2026-06-26</span>
-            </div>
-            <div class="report-meta">
-                <span class="tag">Actor: CL-STA-1062</span>
-                <span class="tag">TLP: White</span>
-                <span class="tag">CVEs: None</span>
-            </div>
-            <div class="report-stats">8 IOCs · 1 source</div>
-            <ul class='refs'><li><a href="https://unit42.paloaltonetworks.com/cl-sta-1062-tinyrct-backdoor/" target="_blank" rel="noopener">unit42.paloaltonetworks.com</a></li></ul>
+            <div class="report-stats">92 IOCs · 1 source</div>
+            <ul class='refs'><li><a href="https://www.wiz.io/blog/threat-actors-target-crypto-orgs" target="_blank" rel="noopener">wiz.io</a></li></ul>
         </div>
 
     <footer>
-        <p>Report generated at 2026-06-27 03:20 UTC</p>
+        <p>Report generated at 2026-06-28 03:09 UTC</p>
         <div class="footer-ascii">
     ╔═══════════════════════════════════════════════╗
     ║  The only good breach is the one you detect.  ║
