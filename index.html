@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Daily Threat Intelligence Report — June 28, 2026</title>
+<title>Daily Threat Intelligence Report — June 29, 2026</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
@@ -61,67 +61,69 @@ footer { text-align: center; padding: 40px 0 20px; color: #484f58; font-size: 12
 </head>
 <body>
 <div class="ascii-header">
-<pre>     ⚡ THREAT INTELLIGENCE DAILY BRIEFING ⚡
-    ┌─────────────────────────────────────────┐
-    │  Analyzing threats. Zero fluff. Stay sharp. │
-    └─────────────────────────────────────────┘</pre>
+<pre>    ╔══════════════════════════════════════════╗
+    ║  ▀█▀ █▀█ █▀▀ ▄▀█ ▀█▀ █ █▀█ █▄▀ ▀█▀ █▀▀ ║
+    ║  █  █▀▄ ██▄ █▀█ █  █ █▀▄ █▀█ █   █  ██▄ ║
+    ║                                          ║
+    ║  DAILY THREAT INTELLIGENCE REPORT        ║
+    ╚══════════════════════════════════════════╝</pre>
 </div>
 <div class="header-info">
     <h1>Daily Threat Intelligence Report</h1>
-    <p class="date">June 28, 2026</p>
+    <p class="date">June 29, 2026</p>
 </div>
 
 <div class="container">
     <div class="opinion">
         <h2>Opinion of a DFIR Guy</h2>
-        <p>🔥 <strong>DFIR Dust-Up: Crypto Gets Hijacked, npm Gets Shredded, and Turla Won't Quit</strong> 🔍</p><p>🔗 <strong>Thing #1: JINX-0164 turned LinkedIn into a crypto-killing machine.</strong> Posing as recruiters, they tricked devs into running AUDIOFIX (Python infostealer), then dropped MINIRAT (Go backdoor) to steal wallet keys. Then they trojanized `@velora-dex/sdk` on npm. Wild? They pivot from one dev endpoint straight into CI/CD. For DFIR: audit npm for unexpected dependency changes and watch LinkedIn DM attachments. <a href="https://www.wiz.io/blog/threat-actors-target-crypto-orgs" target="_blank" rel="noopener">Source</a></p><p>🔗 <strong>Thing #2: Sapphire Sleet weaponized Finder to bypass macOS security.</strong> BlueNoroff/UNC1069 hits VC firms — using Apple Script Editor to execute code outside security boundaries. Victims run a fake Zoom update, Finder silently spawns bash. For DFIR: look for `osascript` spawning from Finder. EDR won't flag this. <a href="https://www.levelblue.com/blogs/spiderlabs-blog/sapphire-sleet-targets-macos-in-multi-stage-intrusion-campaign" target="_blank" rel="noopener">Source</a></p><p>🔗 <strong>Thing #3: Mini Shai-Hulud made `npm install` a full compromise.</strong> Hijacked LeoPlatform npm, GitHub Actions, AND Go modules. `binding.gyp` executes before the package loads. They steal npm tokens, SSH keys, and use GitHub orphan branches as dead-drop C2. For DFIR: audit CI/CD for suspicious `binding.gyp` or postinstall hooks. <a href="https://socket.dev/blog/miasma-mini-shai-hulud-hits-leoplatform-npm-packages-go-ecosystem" target="_blank" rel="noopener">Source</a></p><p>🔗 <strong>Thing #4: Millenium RAT hides C2 inside Telegram Bot API.</strong> Dev "ShinyEnigma" sells it as MaaS for $50-90. Y2K Operators infected 62,000+ endpoints. Telegram C2 means no server to sinkhole. For DFIR: hunt for bot token patterns in memory, not domain blocklists. <a href="https://www.group-ib.com/blog/millenium-rat-maas/" target="_blank" rel="noopener">Source</a></p><p>🔗 <strong>Thing #5: Photo ZIP campaign launders phishing through Calendly.</strong> Hotels targeted with photo ZIPs → malicious LNK → PowerShell → Node.js implant. They bounce delivery through Calendly booking pages to bypass email security. For DFIR: SEP logs show "trusted sender." Look for LNKs spawning Node.js on weird ports. <a href="https://www.microsoft.com/en-us/security/blog/2026/06/25/photo-zip-campaign-targeting-hospitality-industry-delivers-node-js-implant-persistent-access/" target="_blank" rel="noopener">Source</a></p><p>The big picture? <strong>Supply chain is the new front door.</strong> npm, GitHub Actions, LinkedIn DMs, bot APIs — attackers aren't breaking in, they're getting invited. Your perimeter is now your package manager, recruiter, and calendar app.</p><p>#DFIR #ThreatIntel #MalwareAnalysis #SupplyChainSecurity #IncidentResponse</p><p>— Based on 10 fresh reports spanning crypto supply chain, DPRK macOS espionage, Turla backdoors, and RAT-as-a-service.</p>
+        <p>🔥 <strong>DFIR Flavor of the Day: JSONPing Callbacks, Fake Webex Lures, and npm Gone Rogue</strong> 🔍</p><p>🔗 <strong>Thing #1: Kimsuky invented "JSONPing" — payload pages that phone home via JSONP to verify you actually ran the malware.</strong> The distribution site pings localhost servers in real time to confirm execution before dropping the next stage. Clever? Painful. For DFIR: your web logs now show callback requests to localhost domains. That's a smoking gun most people miss. And they spoofed real Webex meeting pages using actual meeting schedules. The social engineering tailoring is next-level. <a href="https://www.enki.co.kr/en/media-center/blog/kimsuky-s-advanced-attack-techniques-jsonping-webex-spoofing-and-a-new-httpspy-variant" target="_blank" rel="noopener">Source</a></p><p>🔗 <strong>Thing #2: Three-stage HttpSpy replaced the old single-binary loader with RC4 encryption at every hop.</strong> The new variant uses `memloader` → `spyloader.dll` → `spyinster.dll`, each layer encrypted. For DFIR: you can't grep for strings anymore. Memory forensics is the only way to see what stage two and three are doing. And those C2 domains? `chickenkiller.com` and `crabdance.com` — free dynamic DNS they keep rotating through. <a href="https://www.enki.co.kr/en/media-center/blog/kimsuky-s-advanced-attack-techniques-jsonping-webex-spoofing-and-a-new-httpspy-variant" target="_blank" rel="noopener">Source</a></p><p>🔗 <strong>Thing #3: SideCopy hit Afghanistan's Ministry of Finance with Pashto-language LNK files disguised as staff directories.</strong> They listed real provincial finance officials with working contact info as decoys. The chain goes LNK → mshta.exe → remote HTA → obfuscated JS → XenoRAT 1.8.7 beaching to bulletproof Bulgarian hosting. For DFIR: the registry persistence key mimicked Microsoft Edge. If you only check Run keys, you'll miss it. Always check `URL` handler hijacks too. <a href="https://www.seqrite.com/blog/operation-xenofiscal-sidecopy-deploying-persistent-xenorat-targeting-the-mof-afghanistan/" target="_blank" rel="noopener">Source</a></p><p>🔗 <strong>Thing #4: JINX-0164 trojanized `@velora-dex/sdk` on npm, but the rad part is the INITIAL ACCESS.</strong> LinkedIn recruiter persona → fake Zoom audio driver download → AUDIOFIX Python infostealer → MINIRAT Go backdoor → then CI/CD pivoting. For DFIR: the npm supply chain hook isn't the story, it's the final move. Most responders will look at the trojanized package and stop there. Hunt the LinkedIn DM trail. <a href="https://www.wiz.io/blog/threat-actors-target-crypto-orgs" target="_blank" rel="noopener">Source</a></p><p>🔗 <strong>Thing #5: Sapphire Sleet's macOS campaign uses Apple Script Editor and Finder to execute code OUTSIDE security enforcement boundaries.</strong> They suppress system alerts during fake Zoom SDK updates. For DFIR: EDRs that rely on macOS system extension monitoring will miss Finder-spawned processes entirely. TCC bypasses built in. This is why file access auditing (not just process monitoring) matters on Mac. <a href="https://www.levelblue.com/blogs/spiderlabs-blog/sapphire-sleet-targets-macos-in-multi-stage-intrusion-campaign" target="_blank" rel="noopener">Source</a></p><p>The big picture? <strong>Defense evasion is now about abusing trusted tools, not avoiding them.</strong> Finder, mshta, AppleScript, npm postinstall — attackers live inside the OS toolkit. Your detection has to start with "what abnormal thing is this trusted binary doing?" not "is this binary bad?"</p><p>#DFIR #ThreatIntel #MalwareAnalysis #Kimsuky #macOSThreats #SupplyChain #IncidentResponse</p><p>— Based on 4 fresh reports covering Kimsuky's JSONPing technique, SideCopy's Afghan MoF targeting, JINX-0164's crypto developer campaign, and Sapphire Sleet's macOS intrusion.</p>
     </div>
 
     <div class="stats">
         <div class="stat"><div class="number">2</div><div class="label">Reports</div></div>
-        <div class="stat"><div class="number">1</div><div class="label">Adversaries</div></div>
+        <div class="stat"><div class="number">2</div><div class="label">Adversaries</div></div>
         <div class="stat"><div class="number">0</div><div class="label">Malware Families</div></div>
         <div class="stat"><div class="number">0</div><div class="label">CVEs</div></div>
-        <div class="stat"><div class="number">108</div><div class="label">IOCs</div></div>
+        <div class="stat"><div class="number">70</div><div class="label">IOCs</div></div>
     </div>
 
-    <h2>Top Adversaries</h2><div class='mini-section'><div class='mini-card'><strong>JINX-0164</strong></div></div>
+    <h2>Top Adversaries</h2><div class='mini-section'><div class='mini-card'><strong>Kimsuky</strong></div><div class='mini-card'><strong>SideCopy</strong></div></div>
     
     
-    <h2>Key Themes</h2><h3>Other Campaigns</h3><p>1 report</p><h3>Supply Chain Attacks</h3><p>1 report</p>
+    <h2>Key Themes</h2><h3>Malware Loaders & Backdoors</h3><p>1 report</p><h3>Social Engineering & Malvertising</h3><p>1 report</p>
 
     <h2>Latest Reports</h2>
     
         <div class="report-card">
             <div class="report-header">
-                <h3><span class="icon">⚠️</span>Sapphire Sleet Targets macOS</h3>
-                <span class="date">2026-06-27</span>
+                <h3><span class="icon">🕵️</span>Operation XENOFISCAL: SideCopy deploying persistent XenoRAT targeting the MoF, Afghanistan</h3>
+                <span class="date">2026-06-28</span>
             </div>
             <div class="report-meta">
-                <span class="tag">Actor: Unknown</span>
+                <span class="tag">Actor: SideCopy</span>
                 <span class="tag">TLP: White</span>
                 <span class="tag">CVEs: None</span>
             </div>
-            <div class="report-stats">16 IOCs · 1 source</div>
-            <ul class='refs'><li><a href="https://www.levelblue.com/blogs/spiderlabs-blog/sapphire-sleet-targets-macos-in-multi-stage-intrusion-campaign" target="_blank" rel="noopener">levelblue.com</a></li></ul>
+            <div class="report-stats">14 IOCs · 1 source</div>
+            <ul class='refs'><li><a href="https://www.seqrite.com/blog/operation-xenofiscal-sidecopy-deploying-persistent-xenorat-targeting-the-mof-afghanistan/" target="_blank" rel="noopener">seqrite.com</a></li></ul>
         </div>
 
         <div class="report-card">
             <div class="report-header">
-                <h3><span class="icon">📦</span>A New Threat Actor Targeting the Cryptocurrency Industry's Software Development Infrastructure</h3>
-                <span class="date">2026-06-27</span>
+                <h3><span class="icon">🎣</span>Kimsuky's Advanced Attack Techniques: JSONPing, Webex Spoofing, and a New HttpSpy Variant</h3>
+                <span class="date">2026-06-28</span>
             </div>
             <div class="report-meta">
-                <span class="tag">Actor: JINX-0164</span>
+                <span class="tag">Actor: Kimsuky</span>
                 <span class="tag">TLP: White</span>
                 <span class="tag">CVEs: None</span>
             </div>
-            <div class="report-stats">92 IOCs · 1 source</div>
-            <ul class='refs'><li><a href="https://www.wiz.io/blog/threat-actors-target-crypto-orgs" target="_blank" rel="noopener">wiz.io</a></li></ul>
+            <div class="report-stats">56 IOCs · 1 source</div>
+            <ul class='refs'><li><a href="https://www.enki.co.kr/en/media-center/blog/kimsuky-s-advanced-attack-techniques-jsonping-webex-spoofing-and-a-new-httpspy-variant" target="_blank" rel="noopener">enki.co.kr</a></li></ul>
         </div>
 
     <footer>
-        <p>Report generated at 2026-06-28 03:09 UTC</p>
+        <p>Report generated at 2026-06-29 03:02 UTC</p>
         <div class="footer-ascii">
     ╔═══════════════════════════════════════════════╗
     ║  The only good breach is the one you detect.  ║
