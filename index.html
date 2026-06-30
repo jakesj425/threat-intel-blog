@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Daily Threat Intelligence Report — June 29, 2026</title>
+<title>Daily Threat Intelligence Report — June 30, 2026</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
@@ -61,69 +61,128 @@ footer { text-align: center; padding: 40px 0 20px; color: #484f58; font-size: 12
 </head>
 <body>
 <div class="ascii-header">
-<pre>    ╔══════════════════════════════════════════╗
-    ║  ▀█▀ █▀█ █▀▀ ▄▀█ ▀█▀ █ █▀█ █▄▀ ▀█▀ █▀▀ ║
-    ║  █  █▀▄ ██▄ █▀█ █  █ █▀▄ █▀█ █   █  ██▄ ║
-    ║                                          ║
-    ║  DAILY THREAT INTELLIGENCE REPORT        ║
-    ╚══════════════════════════════════════════╝</pre>
+<pre>    ╔══════════════════════════════════════════════════╗
+    ║  ██████╗ ███████╗██████╗  ██████╗ ██████╗ ████████╗║
+    ║  ██╔══██╗██╔════╝██╔══██╗██╔═══██╗██╔══██╗╚══██╔══╝║
+    ║  ██████╔╝█████╗  ██████╔╝██║   ██║██████╔╝   ██║   ║
+    ║  ██╔══██╗██╔══╝  ██╔═══╝ ██║   ██║██╔══██╗   ██║   ║
+    ║  ██║  ██║███████╗██║     ╚██████╔╝██║  ██║   ██║   ║
+    ║  ╚═╝  ╚═╝╚══════╝╚═╝      ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ║
+    ║         DAILY THREAT INTELLIGENCE REPORT          ║
+    ╚══════════════════════════════════════════════════╝</pre>
 </div>
 <div class="header-info">
     <h1>Daily Threat Intelligence Report</h1>
-    <p class="date">June 29, 2026</p>
+    <p class="date">June 30, 2026</p>
 </div>
 
 <div class="container">
     <div class="opinion">
         <h2>Opinion of a DFIR Guy</h2>
-        <p>🔥 <strong>DFIR Flavor of the Day: JSONPing Callbacks, Fake Webex Lures, and npm Gone Rogue</strong> 🔍</p><p>🔗 <strong>Thing #1: Kimsuky invented "JSONPing" — payload pages that phone home via JSONP to verify you actually ran the malware.</strong> The distribution site pings localhost servers in real time to confirm execution before dropping the next stage. Clever? Painful. For DFIR: your web logs now show callback requests to localhost domains. That's a smoking gun most people miss. And they spoofed real Webex meeting pages using actual meeting schedules. The social engineering tailoring is next-level. <a href="https://www.enki.co.kr/en/media-center/blog/kimsuky-s-advanced-attack-techniques-jsonping-webex-spoofing-and-a-new-httpspy-variant" target="_blank" rel="noopener">Source</a></p><p>🔗 <strong>Thing #2: Three-stage HttpSpy replaced the old single-binary loader with RC4 encryption at every hop.</strong> The new variant uses `memloader` → `spyloader.dll` → `spyinster.dll`, each layer encrypted. For DFIR: you can't grep for strings anymore. Memory forensics is the only way to see what stage two and three are doing. And those C2 domains? `chickenkiller.com` and `crabdance.com` — free dynamic DNS they keep rotating through. <a href="https://www.enki.co.kr/en/media-center/blog/kimsuky-s-advanced-attack-techniques-jsonping-webex-spoofing-and-a-new-httpspy-variant" target="_blank" rel="noopener">Source</a></p><p>🔗 <strong>Thing #3: SideCopy hit Afghanistan's Ministry of Finance with Pashto-language LNK files disguised as staff directories.</strong> They listed real provincial finance officials with working contact info as decoys. The chain goes LNK → mshta.exe → remote HTA → obfuscated JS → XenoRAT 1.8.7 beaching to bulletproof Bulgarian hosting. For DFIR: the registry persistence key mimicked Microsoft Edge. If you only check Run keys, you'll miss it. Always check `URL` handler hijacks too. <a href="https://www.seqrite.com/blog/operation-xenofiscal-sidecopy-deploying-persistent-xenorat-targeting-the-mof-afghanistan/" target="_blank" rel="noopener">Source</a></p><p>🔗 <strong>Thing #4: JINX-0164 trojanized `@velora-dex/sdk` on npm, but the rad part is the INITIAL ACCESS.</strong> LinkedIn recruiter persona → fake Zoom audio driver download → AUDIOFIX Python infostealer → MINIRAT Go backdoor → then CI/CD pivoting. For DFIR: the npm supply chain hook isn't the story, it's the final move. Most responders will look at the trojanized package and stop there. Hunt the LinkedIn DM trail. <a href="https://www.wiz.io/blog/threat-actors-target-crypto-orgs" target="_blank" rel="noopener">Source</a></p><p>🔗 <strong>Thing #5: Sapphire Sleet's macOS campaign uses Apple Script Editor and Finder to execute code OUTSIDE security enforcement boundaries.</strong> They suppress system alerts during fake Zoom SDK updates. For DFIR: EDRs that rely on macOS system extension monitoring will miss Finder-spawned processes entirely. TCC bypasses built in. This is why file access auditing (not just process monitoring) matters on Mac. <a href="https://www.levelblue.com/blogs/spiderlabs-blog/sapphire-sleet-targets-macos-in-multi-stage-intrusion-campaign" target="_blank" rel="noopener">Source</a></p><p>The big picture? <strong>Defense evasion is now about abusing trusted tools, not avoiding them.</strong> Finder, mshta, AppleScript, npm postinstall — attackers live inside the OS toolkit. Your detection has to start with "what abnormal thing is this trusted binary doing?" not "is this binary bad?"</p><p>#DFIR #ThreatIntel #MalwareAnalysis #Kimsuky #macOSThreats #SupplyChain #IncidentResponse</p><p>— Based on 4 fresh reports covering Kimsuky's JSONPing technique, SideCopy's Afghan MoF targeting, JINX-0164's crypto developer campaign, and Sapphire Sleet's macOS intrusion.</p>
+        <p>🔥 <strong>ClickFix Goes Mainstream, AI Pipelines Get Clapped, and 97 Domains All Wrong</strong> 🔍</p><p>🔗 <strong>Thing #1: DriveSurge does ClickFix AND fake update drive-bys on thousands of sites.</strong> Two initial access vectors on one infrastructure. Block one, they walk in the other door. They hit macOS too. For DFIR: check for `osascript` or `Terminal.app` spawning weird child processes — the ClickFix path most EDRs sleep on. <a href="https://www.silentpush.com/blog/drivesurge/" target="_blank" rel="noopener">Source</a></p><p>🔗 <strong>Thing #2: Langflow's CVSS paradox — 9.9 IDOR barely touched, 9.3 RCE is in CISA KEV with thousands of hits.</strong> One solo operator harvested AWS keys from every tenant. Lower score wins because unauth RCE beats authenticated access. For DFIR: patch by CISA KEV first, CVSS second. And find out if your org is running Langflow — most don't even know they are. <a href="https://www.sysdig.com/blog/understanding-langflow-cve-2026-55255-and-why-higher-cvss-vulnerabilities-arent-always-the-most-exploited" target="_blank" rel="noopener">Source</a></p><p>🔗 <strong>Thing #3: AsyncRAT + Remcos hide payloads in PNG steganography.</strong> The C2 hostname is `ffgfgjjddsgtrddhtjyfdsessxdssdfdfdfghfhg.duckdns.org` — keyboard-mash to dodge regex. URLs serve `.png` files that are actually weaponized HTA. For DFIR: hunt `mshta.exe` downloading image files, and flag DuckDNS subdomains with entropy >4.0. <a href="https://otx.alienvault.com/pulse/6a3ba45b3fef31b3a05d9cb0" target="_blank" rel="noopener">Source</a></p><p>🔗 <strong>Thing #4: PasasteSinTAG spun up 97 domains for one Chilean portal — same name, different TLDs.</strong> .buzz, .cfd, .click, .cyou, .help, .icu, .lol — TLD-squatting, not typosquatting. For DFIR: find one phishing domain for a brand, assume 100 exist. Pivot on the second-level domain across all TLDs. <a href="https://x.com/tial_cl/status/2071307374497861790" target="_blank" rel="noopener">Source</a></p><p>🔗 <strong>Thing #5: Miasma Mini Shai-Hulud hit npm Backstage plugins AND GitHub Actions in one shot.</strong> 45 malicious packages. Compromise the build pipeline, own everything it builds. For DFIR: check `package-lock.json` for sha256 mismatches against registry manifests — that's the forensic artifact. <a href="https://socket.dev/blog/miasma-mini-shai-hulud-hits-immobiliarelabs-npm-packages" target="_blank" rel="noopener">Source</a></p><p>The big picture? <strong>Initial access is a buffet — ClickFix, drive-by, stego, supply chain, TLD-squat, AI RCE.</strong> Every vector abuses something the system already trusts. Stop asking "is this file bad?" and start asking "is this trusted thing behaving weird?"</p><p>#DFIR #ThreatIntel #MalwareAnalysis #SupplyChain #ClickFix #AISecurity #IncidentResponse</p><p>— Based on 6 fresh reports spanning ClickFix/drive-by attacks, AI pipeline exploitation, stego malware, npm supply chain, and phishing domain infra.</p>
     </div>
 
     <div class="stats">
-        <div class="stat"><div class="number">2</div><div class="label">Reports</div></div>
-        <div class="stat"><div class="number">2</div><div class="label">Adversaries</div></div>
+        <div class="stat"><div class="number">6</div><div class="label">Reports</div></div>
+        <div class="stat"><div class="number">1</div><div class="label">Adversaries</div></div>
         <div class="stat"><div class="number">0</div><div class="label">Malware Families</div></div>
-        <div class="stat"><div class="number">0</div><div class="label">CVEs</div></div>
-        <div class="stat"><div class="number">70</div><div class="label">IOCs</div></div>
+        <div class="stat"><div class="number">2</div><div class="label">CVEs</div></div>
+        <div class="stat"><div class="number">279</div><div class="label">IOCs</div></div>
     </div>
 
-    <h2>Top Adversaries</h2><div class='mini-section'><div class='mini-card'><strong>Kimsuky</strong></div><div class='mini-card'><strong>SideCopy</strong></div></div>
+    <h2>Top Adversaries</h2><div class='mini-section'><div class='mini-card'><strong>DriveSurge</strong></div></div>
+    <h2>Critical CVEs</h2><div class='mini-section'><div class='mini-card'>CVE-2026-33017</div><div class='mini-card'>CVE-2026-55255</div></div>
     
-    
-    <h2>Key Themes</h2><h3>Malware Loaders & Backdoors</h3><p>1 report</p><h3>Social Engineering & Malvertising</h3><p>1 report</p>
+    <h2>Key Themes</h2><h3>Infrastructure & IoT Threats</h3><p>1 report</p><h3>Nation-State Activity</h3><p>1 report</p><h3>Social Engineering & Malvertising</h3><p>3 reports</p><h3>Supply Chain Attacks</h3><p>1 report</p>
 
     <h2>Latest Reports</h2>
     
         <div class="report-card">
             <div class="report-header">
-                <h3><span class="icon">🕵️</span>Operation XENOFISCAL: SideCopy deploying persistent XenoRAT targeting the MoF, Afghanistan</h3>
-                <span class="date">2026-06-28</span>
+                <h3><span class="icon">🤖</span>Understanding Langflow CVE-2026-55255, and why higher CVSS vulnerabilities aren't always the most exploited</h3>
+                <span class="date">2026-06-29</span>
             </div>
             <div class="report-meta">
-                <span class="tag">Actor: SideCopy</span>
+                <span class="tag">Actor: Unknown</span>
                 <span class="tag">TLP: White</span>
-                <span class="tag">CVEs: None</span>
+                <span class="tag">CVEs: CVE-2026-33017, CVE-2026-55255</span>
             </div>
-            <div class="report-stats">14 IOCs · 1 source</div>
-            <ul class='refs'><li><a href="https://www.seqrite.com/blog/operation-xenofiscal-sidecopy-deploying-persistent-xenorat-targeting-the-mof-afghanistan/" target="_blank" rel="noopener">seqrite.com</a></li></ul>
+            <div class="report-stats">2 IOCs · 2 CVEs · 1 source</div>
+            <ul class='refs'><li><a href="https://www.sysdig.com/blog/understanding-langflow-cve-2026-55255-and-why-higher-cvss-vulnerabilities-arent-always-the-most-exploited" target="_blank" rel="noopener">sysdig.com</a></li></ul>
         </div>
 
         <div class="report-card">
             <div class="report-header">
-                <h3><span class="icon">🎣</span>Kimsuky's Advanced Attack Techniques: JSONPing, Webex Spoofing, and a New HttpSpy Variant</h3>
-                <span class="date">2026-06-28</span>
+                <h3><span class="icon">🎣</span>Phishing Campaign PasasteSinTAG - New domain rotation identified associated with the campaign impersonating the PasasteSinTAG portal</h3>
+                <span class="date">2026-06-29</span>
             </div>
             <div class="report-meta">
-                <span class="tag">Actor: Kimsuky</span>
+                <span class="tag">Actor: Unknown</span>
                 <span class="tag">TLP: White</span>
                 <span class="tag">CVEs: None</span>
             </div>
-            <div class="report-stats">56 IOCs · 1 source</div>
-            <ul class='refs'><li><a href="https://www.enki.co.kr/en/media-center/blog/kimsuky-s-advanced-attack-techniques-jsonping-webex-spoofing-and-a-new-httpspy-variant" target="_blank" rel="noopener">enki.co.kr</a></li></ul>
+            <div class="report-stats">100 IOCs · 1 source</div>
+            <ul class='refs'><li><a href="https://x.com/tial_cl/status/2071307374497861790" target="_blank" rel="noopener">x.com</a></li></ul>
+        </div>
+
+        <div class="report-card">
+            <div class="report-header">
+                <h3><span class="icon">🎣</span>New customs charges for online orders outside the EU</h3>
+                <span class="date">2026-06-29</span>
+            </div>
+            <div class="report-meta">
+                <span class="tag">Actor: Unknown</span>
+                <span class="tag">TLP: White</span>
+                <span class="tag">CVEs: None</span>
+            </div>
+            <div class="report-stats">3 IOCs · 1 source</div>
+            <ul class='refs'><li><a href="https://www.ccpc.ie/consumer-advice/consumer-rights/buying-goods/buying-outside-the-eu/new-customs-charges-for-online-orders" target="_blank" rel="noopener">ccpc.ie</a></li></ul>
+        </div>
+
+        <div class="report-card">
+            <div class="report-header">
+                <h3><span class="icon">📦</span>Miasma Mini Shai-Hulud Hits ImmobiliareLabs npm Packages</h3>
+                <span class="date">2026-06-29</span>
+            </div>
+            <div class="report-meta">
+                <span class="tag">Actor: Unknown</span>
+                <span class="tag">TLP: White</span>
+                <span class="tag">CVEs: None</span>
+            </div>
+            <div class="report-stats">45 IOCs · 1 source</div>
+            <ul class='refs'><li><a href="https://socket.dev/blog/miasma-mini-shai-hulud-hits-immobiliarelabs-npm-packages" target="_blank" rel="noopener">socket.dev</a></li></ul>
+        </div>
+
+        <div class="report-card">
+            <div class="report-header">
+                <h3><span class="icon">🎣</span>AsyncRAT and Remcos delivered in an optimistic campaign</h3>
+                <span class="date">2026-06-29</span>
+            </div>
+            <div class="report-meta">
+                <span class="tag">Actor: Unknown</span>
+                <span class="tag">TLP: White</span>
+                <span class="tag">CVEs: None</span>
+            </div>
+            <div class="report-stats">98 IOCs</div>
+            
+        </div>
+
+        <div class="report-card">
+            <div class="report-header">
+                <h3><span class="icon">🎣</span>A New Threat Actor Using ClickFix and Fake Update Drive-By Attacks in Thousands of Compromised Sites</h3>
+                <span class="date">2026-06-29</span>
+            </div>
+            <div class="report-meta">
+                <span class="tag">Actor: DriveSurge</span>
+                <span class="tag">TLP: White</span>
+                <span class="tag">CVEs: None</span>
+            </div>
+            <div class="report-stats">31 IOCs · 1 source</div>
+            <ul class='refs'><li><a href="https://www.silentpush.com/blog/drivesurge/" target="_blank" rel="noopener">silentpush.com</a></li></ul>
         </div>
 
     <footer>
-        <p>Report generated at 2026-06-29 03:02 UTC</p>
+        <p>Report generated at 2026-06-30 03:08 UTC</p>
         <div class="footer-ascii">
     ╔═══════════════════════════════════════════════╗
     ║  The only good breach is the one you detect.  ║
