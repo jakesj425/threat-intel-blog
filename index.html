@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Daily Threat Intelligence Report — June 30, 2026</title>
+<title>Daily Threat Intelligence Report — July 01, 2026</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
@@ -61,60 +61,69 @@ footer { text-align: center; padding: 40px 0 20px; color: #484f58; font-size: 12
 </head>
 <body>
 <div class="ascii-header">
-<pre>    ╔══════════════════════════════════════════════════╗
-    ║  ██████╗ ███████╗██████╗  ██████╗ ██████╗ ████████╗║
-    ║  ██╔══██╗██╔════╝██╔══██╗██╔═══██╗██╔══██╗╚══██╔══╝║
-    ║  ██████╔╝█████╗  ██████╔╝██║   ██║██████╔╝   ██║   ║
-    ║  ██╔══██╗██╔══╝  ██╔═══╝ ██║   ██║██╔══██╗   ██║   ║
-    ║  ██║  ██║███████╗██║     ╚██████╔╝██║  ██║   ██║   ║
-    ║  ╚═╝  ╚═╝╚══════╝╚═╝      ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ║
-    ║         DAILY THREAT INTELLIGENCE REPORT          ║
-    ╚══════════════════════════════════════════════════╝</pre>
+<pre>     ⚡ THREAT INTELLIGENCE DAILY BRIEFING ⚡
+    ┌─────────────────────────────────────────┐
+    │  Analyzing threats. Zero fluff. Stay sharp. │
+    └─────────────────────────────────────────┘</pre>
 </div>
 <div class="header-info">
     <h1>Daily Threat Intelligence Report</h1>
-    <p class="date">June 30, 2026</p>
+    <p class="date">July 01, 2026</p>
 </div>
 
 <div class="container">
     <div class="opinion">
         <h2>Opinion of a DFIR Guy</h2>
-        <p>🔥 <strong>ClickFix Goes Mainstream, AI Pipelines Get Clapped, and 97 Domains All Wrong</strong> 🔍</p><p>🔗 <strong>Thing #1: DriveSurge does ClickFix AND fake update drive-bys on thousands of sites.</strong> Two initial access vectors on one infrastructure. Block one, they walk in the other door. They hit macOS too. For DFIR: check for `osascript` or `Terminal.app` spawning weird child processes — the ClickFix path most EDRs sleep on. <a href="https://www.silentpush.com/blog/drivesurge/" target="_blank" rel="noopener">Source</a></p><p>🔗 <strong>Thing #2: Langflow's CVSS paradox — 9.9 IDOR barely touched, 9.3 RCE is in CISA KEV with thousands of hits.</strong> One solo operator harvested AWS keys from every tenant. Lower score wins because unauth RCE beats authenticated access. For DFIR: patch by CISA KEV first, CVSS second. And find out if your org is running Langflow — most don't even know they are. <a href="https://www.sysdig.com/blog/understanding-langflow-cve-2026-55255-and-why-higher-cvss-vulnerabilities-arent-always-the-most-exploited" target="_blank" rel="noopener">Source</a></p><p>🔗 <strong>Thing #3: AsyncRAT + Remcos hide payloads in PNG steganography.</strong> The C2 hostname is `ffgfgjjddsgtrddhtjyfdsessxdssdfdfdfghfhg.duckdns.org` — keyboard-mash to dodge regex. URLs serve `.png` files that are actually weaponized HTA. For DFIR: hunt `mshta.exe` downloading image files, and flag DuckDNS subdomains with entropy >4.0. <a href="https://otx.alienvault.com/pulse/6a3ba45b3fef31b3a05d9cb0" target="_blank" rel="noopener">Source</a></p><p>🔗 <strong>Thing #4: PasasteSinTAG spun up 97 domains for one Chilean portal — same name, different TLDs.</strong> .buzz, .cfd, .click, .cyou, .help, .icu, .lol — TLD-squatting, not typosquatting. For DFIR: find one phishing domain for a brand, assume 100 exist. Pivot on the second-level domain across all TLDs. <a href="https://x.com/tial_cl/status/2071307374497861790" target="_blank" rel="noopener">Source</a></p><p>🔗 <strong>Thing #5: Miasma Mini Shai-Hulud hit npm Backstage plugins AND GitHub Actions in one shot.</strong> 45 malicious packages. Compromise the build pipeline, own everything it builds. For DFIR: check `package-lock.json` for sha256 mismatches against registry manifests — that's the forensic artifact. <a href="https://socket.dev/blog/miasma-mini-shai-hulud-hits-immobiliarelabs-npm-packages" target="_blank" rel="noopener">Source</a></p><p>The big picture? <strong>Initial access is a buffet — ClickFix, drive-by, stego, supply chain, TLD-squat, AI RCE.</strong> Every vector abuses something the system already trusts. Stop asking "is this file bad?" and start asking "is this trusted thing behaving weird?"</p><p>#DFIR #ThreatIntel #MalwareAnalysis #SupplyChain #ClickFix #AISecurity #IncidentResponse</p><p>— Based on 6 fresh reports spanning ClickFix/drive-by attacks, AI pipeline exploitation, stego malware, npm supply chain, and phishing domain infra.</p>
+        <p>🔥 <strong>Why Your EDR Killing Playbook Is Already Obsolete — Three Reports Explain Today</strong> 🔍</p><p>🔗 <strong>Thing #1: Zero-day BYOVD is now a ransomware standard play.</strong> The Gentlemen didn't just find an exploit — they killed Palo Alto Cortex XDR, SentinelOne, ESET, and Windows Defender via `ktapi.sys` from Kontron (a legit driver nobody had blocklisted). The exploit dodges SMEP/SMAP like it's 2008. For DFIR: check for unsigned third-party drivers in memory, and treat driver blocklists like candy — they're always incomplete. <a href="https://expel.com/blog/not-very-gentlemanly-analyzing-a-zero-day-exploit-used-by-the-gentlemen-ransomware-to-disable-targets-edrs/" target="_blank" rel="noopener">Source</a></p><p>🔗 <strong>Thing #2: ValleyRAT's process injection is getting creative with Donut shellcode.</strong> SilverFox is dropping 31 MD5s and 36 SHA256s across fake installers targeting both Chinese and Japanese victims. Pool Party Variant 7 injection + DLL sideloading + junk code insertion. For DFIR: hunt `regsvr32.exe` spawning from `install.exe` processes, and check `HKCU\Software\Classes\CLSID` for new COM hijack persistence. <a href="https://www.levelblue.com/blogs/spiderlabs-blog/an-analysis-of-valleyrat-infection-campaigns-from-fake-installers-japanese-malicious-emails" target="_blank" rel="noopener">Source</a></p><p>🔗 <strong>Thing #3: Supply chain hits npm — 45 malicious packages in one shot.</strong> Miasma Mini Shai-Hulud doesn't just go after developers — it goes after CI/CD. Backstage plugins and GitHub Actions both compromised. That's your build pipeline, production, and every downstream customer in one swing. For DFIR: verify every SHA256 in `package-lock.json` against registry manifests — the difference is the artifact that shows compromise. <a href="https://socket.dev/blog/miasma-mini-shai-hulud-hits-immobiliarelabs-npm-packages" target="_blank" rel="noopener">Source</a></p><p>🔗 <strong>Thing #4: BTMOB Android RAT is MaaS for $5K with regional phishing templates.</strong> Evolved from SpySolr, uses Accessibility Services to escalate, targets Argentina/Brazil tax agencies. Steal screenshots, SMS, device activity — then wipe `logcat` clean. For DFIR: look for `android.permission.BIND_ACCESSIBILITY_SERVICE` apps with no Play Store listing but network connections to `aliyuncs.com` or DuckDNS domains. <a href="https://www.welivesecurity.com/en/malware/btmob-stealthy-rat-burrowing-deep-android-devices/" target="_blank" rel="noopener">Source</a></p><p>🔗 <strong>Thing #5: Defence Impairment Olympics shows how persistence beats detection.</strong> One stego webshell on ColdFusion led to timestomping, WMI Event Consumers clearing logs, killing Sysmon/Filebeat, uninstalling ModSecurity. The forensic artifact trail goes cold when they kill the logging tools first. For DFIR: check `HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\Notify` for WMI persistence artifacts — that registry key survives reboots even when Event Logs get nuked. <a href="https://www.huntress.com/blog/mimikatz-credential-dumping-defence-impairment" target="_blank" rel="noopener">Source</a></p><p>The big picture? <strong>Kill-chain thinking is dead.</strong> Attackers are now exploiting trust chains — legitimate drivers, accessibility frameworks, build pipelines, and logging systems. The attack surface isn't the malware — it's the assumptions about what's trusted.</p><p>#DFIR #ThreatIntel #MalwareAnalysis #SupplyChain #BYOVD #AndroidSecurity #IncidentResponse — Based on 2 fresh reports spanning zero-day exploits, Android RAT, and supply chain attacks.</p>
     </div>
 
     <div class="stats">
-        <div class="stat"><div class="number">6</div><div class="label">Reports</div></div>
-        <div class="stat"><div class="number">1</div><div class="label">Adversaries</div></div>
+        <div class="stat"><div class="number">11</div><div class="label">Reports</div></div>
+        <div class="stat"><div class="number">4</div><div class="label">Adversaries</div></div>
         <div class="stat"><div class="number">0</div><div class="label">Malware Families</div></div>
-        <div class="stat"><div class="number">2</div><div class="label">CVEs</div></div>
-        <div class="stat"><div class="number">279</div><div class="label">IOCs</div></div>
+        <div class="stat"><div class="number">4</div><div class="label">CVEs</div></div>
+        <div class="stat"><div class="number">294</div><div class="label">IOCs</div></div>
     </div>
 
-    <h2>Top Adversaries</h2><div class='mini-section'><div class='mini-card'><strong>DriveSurge</strong></div></div>
-    <h2>Critical CVEs</h2><div class='mini-section'><div class='mini-card'>CVE-2026-33017</div><div class='mini-card'>CVE-2026-55255</div></div>
+    <h2>Top Adversaries</h2><div class='mini-section'><div class='mini-card'><strong>MUSTANG PANDA</strong></div><div class='mini-card'><strong>SilverFox</strong></div><div class='mini-card'><strong>The Gentlemen</strong></div><div class='mini-card'><strong>ToddyCat</strong></div></div>
+    <h2>Critical CVEs</h2><div class='mini-section'><div class='mini-card'>CVE-2023-26360</div><div class='mini-card'>CVE-2023-29298</div><div class='mini-card'>CVE-2023-29300</div><div class='mini-card'>CVE-2026-48558</div></div>
     
-    <h2>Key Themes</h2><h3>Infrastructure & IoT Threats</h3><p>1 report</p><h3>Nation-State Activity</h3><p>1 report</p><h3>Social Engineering & Malvertising</h3><p>3 reports</p><h3>Supply Chain Attacks</h3><p>1 report</p>
+    <h2>Key Themes</h2><h3>Ransomware</h3><p>1 report</p><h3>Social Engineering & Malvertising</h3><p>1 report</p><h3>Credential Theft & Infostealers</h3><p>2 reports</p><h3>Nation-State Activity</h3><p>5 reports</p><h3>Malware Loaders & Backdoors</h3><p>1 report</p><h3>Supply Chain Attacks</h3><p>1 report</p>
 
     <h2>Latest Reports</h2>
     
         <div class="report-card">
             <div class="report-header">
-                <h3><span class="icon">🤖</span>Understanding Langflow CVE-2026-55255, and why higher CVSS vulnerabilities aren't always the most exploited</h3>
-                <span class="date">2026-06-29</span>
+                <h3><span class="icon">🔒</span>Not very gentlemanly: Analyzing a zero-day exploit used to disable targets' EDRs</h3>
+                <span class="date">2026-07-01</span>
             </div>
             <div class="report-meta">
-                <span class="tag">Actor: Unknown</span>
+                <span class="tag">Actor: The Gentlemen</span>
                 <span class="tag">TLP: White</span>
-                <span class="tag">CVEs: CVE-2026-33017, CVE-2026-55255</span>
+                <span class="tag">CVEs: None</span>
             </div>
-            <div class="report-stats">2 IOCs · 2 CVEs · 1 source</div>
-            <ul class='refs'><li><a href="https://www.sysdig.com/blog/understanding-langflow-cve-2026-55255-and-why-higher-cvss-vulnerabilities-arent-always-the-most-exploited" target="_blank" rel="noopener">sysdig.com</a></li></ul>
+            <div class="report-stats">3 IOCs · 1 source</div>
+            <ul class='refs'><li><a href="https://expel.com/blog/not-very-gentlemanly-analyzing-a-zero-day-exploit-used-by-the-gentlemen-ransomware-to-disable-targets-edrs/" target="_blank" rel="noopener">expel.com</a></li></ul>
         </div>
 
         <div class="report-card">
             <div class="report-header">
-                <h3><span class="icon">🎣</span>Phishing Campaign PasasteSinTAG - New domain rotation identified associated with the campaign impersonating the PasasteSinTAG portal</h3>
-                <span class="date">2026-06-29</span>
+                <h3><span class="icon">🎣</span>An Analysis of ValleyRAT Infection Campaigns from Fake Installers, Japanese Malicious Emails</h3>
+                <span class="date">2026-07-01</span>
+            </div>
+            <div class="report-meta">
+                <span class="tag">Actor: SilverFox</span>
+                <span class="tag">TLP: White</span>
+                <span class="tag">CVEs: None</span>
+            </div>
+            <div class="report-stats">6 IOCs · 1 source</div>
+            <ul class='refs'><li><a href="https://www.levelblue.com/blogs/spiderlabs-blog/an-analysis-of-valleyrat-infection-campaigns-from-fake-installers-japanese-malicious-emails" target="_blank" rel="noopener">levelblue.com</a></li></ul>
+        </div>
+
+        <div class="report-card">
+            <div class="report-header">
+                <h3><span class="icon">🎣</span>RAT Abuses TON Blockchain to Target Japan's Hotel Industry</h3>
+                <span class="date">2026-06-30</span>
             </div>
             <div class="report-meta">
                 <span class="tag">Actor: Unknown</span>
@@ -122,67 +131,123 @@ footer { text-align: center; padding: 40px 0 20px; color: #484f58; font-size: 12
                 <span class="tag">CVEs: None</span>
             </div>
             <div class="report-stats">100 IOCs · 1 source</div>
-            <ul class='refs'><li><a href="https://x.com/tial_cl/status/2071307374497861790" target="_blank" rel="noopener">x.com</a></li></ul>
+            <ul class='refs'><li><a href="https://www.trendmicro.com/en_us/research/26/f/tonresolver.html" target="_blank" rel="noopener">trendmicro.com</a></li></ul>
         </div>
 
         <div class="report-card">
             <div class="report-header">
-                <h3><span class="icon">🎣</span>New customs charges for online orders outside the EU</h3>
-                <span class="date">2026-06-29</span>
+                <h3><span class="icon">🕵️</span>India's government and energy sectors targeted with ZOHOMURK and MINIRECON</h3>
+                <span class="date">2026-06-30</span>
+            </div>
+            <div class="report-meta">
+                <span class="tag">Actor: MUSTANG PANDA</span>
+                <span class="tag">TLP: White</span>
+                <span class="tag">CVEs: None</span>
+            </div>
+            <div class="report-stats">17 IOCs · 1 source</div>
+            <ul class='refs'><li><a href="https://www.acronis.com/en/tru/posts/mustang-panda-targets-indias-government-and-energy-sectors/" target="_blank" rel="noopener">acronis.com</a></li></ul>
+        </div>
+
+        <div class="report-card">
+            <div class="report-header">
+                <h3><span class="icon">🕵️</span>How access to Gmail accounts is gained</h3>
+                <span class="date">2026-06-30</span>
+            </div>
+            <div class="report-meta">
+                <span class="tag">Actor: ToddyCat</span>
+                <span class="tag">TLP: White</span>
+                <span class="tag">CVEs: None</span>
+            </div>
+            <div class="report-stats">11 IOCs · 1 source</div>
+            <ul class='refs'><li><a href="https://securelist.com/toddycat-apt-umbrij-tool-and-oauth/120251/" target="_blank" rel="noopener">securelist.com</a></li></ul>
+        </div>
+
+        <div class="report-card">
+            <div class="report-header">
+                <h3><span class="icon">🕵️</span>From Bing Search to Ransomware: Bumblebee and AdaptixC2 Deliver Akira</h3>
+                <span class="date">2026-06-30</span>
             </div>
             <div class="report-meta">
                 <span class="tag">Actor: Unknown</span>
                 <span class="tag">TLP: White</span>
                 <span class="tag">CVEs: None</span>
             </div>
-            <div class="report-stats">3 IOCs · 1 source</div>
-            <ul class='refs'><li><a href="https://www.ccpc.ie/consumer-advice/consumer-rights/buying-goods/buying-outside-the-eu/new-customs-charges-for-online-orders" target="_blank" rel="noopener">ccpc.ie</a></li></ul>
+            <div class="report-stats">22 IOCs · 1 source</div>
+            <ul class='refs'><li><a href="https://thedfirreport.com/2025/08/05/from-bing-search-to-ransomware-bumblebee-and-adaptixc2-deliver-akira-2/" target="_blank" rel="noopener">thedfirreport.com</a></li></ul>
         </div>
 
         <div class="report-card">
             <div class="report-header">
-                <h3><span class="icon">📦</span>Miasma Mini Shai-Hulud Hits ImmobiliareLabs npm Packages</h3>
-                <span class="date">2026-06-29</span>
+                <h3><span class="icon">⚠️</span>Defence Impairment Olympics</h3>
+                <span class="date">2026-06-30</span>
+            </div>
+            <div class="report-meta">
+                <span class="tag">Actor: Unknown</span>
+                <span class="tag">TLP: White</span>
+                <span class="tag">CVEs: CVE-2023-26360, CVE-2023-29298, CVE-2023-29300</span>
+            </div>
+            <div class="report-stats">6 IOCs · 3 CVEs · 1 source</div>
+            <ul class='refs'><li><a href="https://www.huntress.com/blog/mimikatz-credential-dumping-defence-impairment" target="_blank" rel="noopener">huntress.com</a></li></ul>
+        </div>
+
+        <div class="report-card">
+            <div class="report-header">
+                <h3><span class="icon">🕵️</span>Chromium extension uses AI‑related branding to redirect browser search</h3>
+                <span class="date">2026-06-30</span>
             </div>
             <div class="report-meta">
                 <span class="tag">Actor: Unknown</span>
                 <span class="tag">TLP: White</span>
                 <span class="tag">CVEs: None</span>
             </div>
-            <div class="report-stats">45 IOCs · 1 source</div>
-            <ul class='refs'><li><a href="https://socket.dev/blog/miasma-mini-shai-hulud-hits-immobiliarelabs-npm-packages" target="_blank" rel="noopener">socket.dev</a></li></ul>
+            <div class="report-stats">7 IOCs · 1 source</div>
+            <ul class='refs'><li><a href="https://www.microsoft.com/en-us/security/blog/2026/06/29/chromium-extension-uses-airelated-branding-redirect-browser-search/" target="_blank" rel="noopener">microsoft.com</a></li></ul>
         </div>
 
         <div class="report-card">
             <div class="report-header">
-                <h3><span class="icon">🎣</span>AsyncRAT and Remcos delivered in an optimistic campaign</h3>
-                <span class="date">2026-06-29</span>
+                <h3><span class="icon">📦</span>Chrome and Firefox Extensions Posing as Free VPNs Add Clipboard Stealers via Malicious Updates</h3>
+                <span class="date">2026-06-30</span>
             </div>
             <div class="report-meta">
                 <span class="tag">Actor: Unknown</span>
                 <span class="tag">TLP: White</span>
                 <span class="tag">CVEs: None</span>
             </div>
-            <div class="report-stats">98 IOCs</div>
-            
+            <div class="report-stats">19 IOCs · 1 source</div>
+            <ul class='refs'><li><a href="https://socket.dev/blog/chrome-and-firefox-extensions-free-vpns-add-clipboard-stealers" target="_blank" rel="noopener">socket.dev</a></li></ul>
         </div>
 
         <div class="report-card">
             <div class="report-header">
-                <h3><span class="icon">🎣</span>A New Threat Actor Using ClickFix and Fake Update Drive-By Attacks in Thousands of Compromised Sites</h3>
-                <span class="date">2026-06-29</span>
+                <h3><span class="icon">🎣</span>A stealthy RAT burrowing deep into Android devices</h3>
+                <span class="date">2026-06-30</span>
             </div>
             <div class="report-meta">
-                <span class="tag">Actor: DriveSurge</span>
+                <span class="tag">Actor: Unknown</span>
                 <span class="tag">TLP: White</span>
                 <span class="tag">CVEs: None</span>
             </div>
-            <div class="report-stats">31 IOCs · 1 source</div>
-            <ul class='refs'><li><a href="https://www.silentpush.com/blog/drivesurge/" target="_blank" rel="noopener">silentpush.com</a></li></ul>
+            <div class="report-stats">99 IOCs · 1 source</div>
+            <ul class='refs'><li><a href="https://www.welivesecurity.com/en/malware/btmob-stealthy-rat-burrowing-deep-android-devices/" target="_blank" rel="noopener">welivesecurity.com</a></li></ul>
+        </div>
+
+        <div class="report-card">
+            <div class="report-header">
+                <h3><span class="icon">📦</span>A Djinn in the Machine: TaskWeaver's Node.js Intrusion Chain</h3>
+                <span class="date">2026-06-30</span>
+            </div>
+            <div class="report-meta">
+                <span class="tag">Actor: Unknown</span>
+                <span class="tag">TLP: White</span>
+                <span class="tag">CVEs: CVE-2026-48558</span>
+            </div>
+            <div class="report-stats">4 IOCs · 1 CVE · 1 source</div>
+            <ul class='refs'><li><a href="https://blackpointcyber.com/blog/a-djinn-in-the-machine-taskweavers-node-js-intrusion-chain/" target="_blank" rel="noopener">blackpointcyber.com</a></li></ul>
         </div>
 
     <footer>
-        <p>Report generated at 2026-06-30 03:08 UTC</p>
+        <p>Report generated at 2026-07-01 09:49 UTC</p>
         <div class="footer-ascii">
     ╔═══════════════════════════════════════════════╗
     ║  The only good breach is the one you detect.  ║
