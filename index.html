@@ -546,6 +546,105 @@ body {
     opacity: 0.6;
 }
 
+/* ── Report card tag chips ── */
+.report-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-bottom: 4px;
+}
+
+.tag-actor {
+    background: rgba(79, 195, 247, 0.08);
+    color: var(--accent);
+    border-color: rgba(79, 195, 247, 0.15);
+}
+
+.tag-ioc {
+    background: rgba(102, 187, 106, 0.08);
+    color: var(--green);
+    border-color: rgba(102, 187, 106, 0.15);
+}
+
+.report-ioc-line {
+    margin-top: 8px;
+    padding: 8px 0 0 48px;
+    border-top: 1px solid var(--border);
+}
+
+@media (max-width: 600px) {
+    .report-ioc-line {
+        padding-left: 0;
+    }
+}
+
+/* ── Opinion section numbering ── */
+.section-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--accent);
+    margin-right: 6px;
+    user-select: none;
+}
+
+/* ── Source footnotes in opinion ── */
+.para-sources {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    color: var(--text-secondary);
+    margin-top: 10px;
+    padding-top: 8px;
+    border-top: 1px solid var(--border);
+    line-height: 1.6;
+}
+
+.para-sources a {
+    font-family: 'Inter', sans-serif;
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(79, 195, 247, 0.3);
+}
+
+.para-sources a:hover {
+    border-bottom-color: var(--accent);
+}
+
+/* ── Scroll to top ── */
+.scroll-top {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    color: var(--text-secondary);
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.3s ease, transform 0.3s ease, border-color 0.2s, background 0.2s;
+    z-index: 999;
+    pointer-events: none;
+}
+
+.scroll-top.visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.scroll-top:hover {
+    border-color: var(--accent);
+    background: var(--accent-glow);
+    color: var(--accent);
+}
+
 /* ── Animations ── */
 .fade-in {
     opacity: 0;
@@ -623,373 +722,375 @@ body {
             <div class="label">Analysis & Opinion</div>
             <h2>Opinion of a DFIR Guy</h2>
         </div>
-        <div class="article-body fade-in">
-            <p>The Huntress writeup on CVE-2025-5777 is the most operationally useful thing I read today, not because the vulnerability is new (it's a CitrixBleed sequel, we know the drill by now), but because they documented something rare: the IAB's own operational security failure. The same workstation name — WIN-4EOAP4JTJR9 — leaked through Citrix auto-created printer mappings across every victim environment. Citrix creates a "Print to PDF" printer mapping for every client session, embedding the client workstation name in the Windows Application event log. When the operator used the same machine for every intrusion, they left the same artifact in every org. That's not TTP analysis, that's a fingerprint. And it's exactly the kind of low-tech artifact that makes incident responders' jobs easier than hunting for novel malware samples. The seven-step killchain Huntress reconstructed (leak heap → steal session → symlink LPE → create local admin → RMM → lateral → encrypt) is practically a checklist now. If you see CVE-2025-5777 in your NetScaler logs, assume the full chain is in progress.</p><p>GodDamn is the other ransomware story that matters today, and for similar reasons: the operators aren't innovating in encryption, they're innovating in defense evasion. The PoisonX kernel driver — signed by Microsoft, published to GitHub as a "research tool" by someone calling themselves oxfemale — kills CrowdStrike and Defender at ring-0, loaded alongside a fake symantec.exe to rub it in. Hyadina's evolution from Monster (Delphi, 2022) to Beast (Linux/ESXi, 2024) to GodDamn (signed kernel driver, 2026) is instructive. Each iteration adds one or two genuinely new capabilities while keeping the core playbook identical: anydesk + nirsoft + psExec + an evasion gimmick. The ransomware-as-a-service model has standardized the delivery chain to the point where the distinguishing feature between groups is not what they do but what they use to avoid being caught doing it.</p><p>RedHook's upgrade is the Android story that deserves more attention than it'll get. Group-IB's analysis shows it abusing ADB Wireless Debugging to get shell (uid 2000) privileges — no exploit, no root, just automating a developer feature meant for debugging. It literally opens Settings, taps "Build Number" seven times to enable Developer Options, enables Wireless Debugging, pairs itself, then connects to its own ADB daemon over loopback. From there it uses the Shizuku framework for protected API calls. 53 C2 commands, multi-layered persistence (1-pixel activity, silent audio, cross-process resurrection loop), and expansion from Vietnam into Indonesia. This is the same trajectory we saw with banking trojans on desktop — mobile malware is maturing its privilege escalation and persistence, and the barrier to entry is dropping because attackers are repurposing open-source tools. If Shizuku is going to exist — and it's legitimately useful for Android developers — we need a way to detect its abuse.</p><p>Clubfoot Wolf's campaign against Russian chemical distributors, documented by BI.ZONE, is the kind of "boring" threat that probably does more damage in aggregate than any APT. Phishing email → ZIP with LNK → PowerShell loading AES-CBC encrypted payload → NetSupport Manager. The URL shortener abuse (crop.sh) to hide C2 is a detail worth flagging: shorteners let attackers swap out backend infrastructure without changing the lure, and URL scanners rarely block them. The decoy docs — bogus invoices, company profiles, tax certificates — were specific enough to build trust with targets in the chemical distribution industry. This is targeted phishing, not spray-and-pray.</p><p>The CYFIRMA report on Indonesia's banking sector is overwhelming but worth the read. TripleX claims 2TB from a state-owned bank. 890K mobile banking accounts for sale. Ransomware groups ICARUS and The Gentleman have their own data leak listings for Indonesian fintech and insurance companies. And the APT activity is relentless: SilverFox with tax-themed phishing and ValleyRAT, Lotus Blossom compromising the Notepad++ update mechanism to deliver Cobalt Strike, Mustang Panda shifting focus to banking with LOTUSLITE, Amaranth-Dragon weaponizing CVE-2025-8088 (WinRAR) with a fake civil servant salary decree. The convergence of financially motivated crime and state espionage in one market is striking. Threat actors don't distinguish between stealing data for money and stealing it for intelligence — they just steal it, and whoever pays more gets it.</p><p>The thread connecting these five reports is that every group is borrowing capabilities from somewhere else — RedHook borrows Shizuku, GodDamn borrows PoisonX from GitHub, GigaWiper merges three existing families, the IAB buys CitrixBleed access on the open market. The malware ecosystem has become a dependency graph, and the most dangerous capability isn't the one someone wrote from scratch — it's the one they copied, tested, and deployed at scale.</p>
+        <div class="article-body fade-in" style="transition-delay: 0.1s">
+            <p><span class='section-num'>1.</span> The Huntress writeup on CVE-2025-5777 is the most operationally useful thing I read today, not because the vulnerability is new (it's a CitrixBleed sequel, we know the drill by now), but because they documented something rare: the IAB's own operational security failure. The same workstation name — WIN-4EOAP4JTJR9 — leaked through Citrix auto-created printer mappings across every victim environment. Citrix creates a "Print to PDF" printer mapping for every client session, embedding the client workstation name in the Windows Application event log. When the operator used the same machine for every intrusion, they left the same artifact in every org. That's not TTP analysis, that's a fingerprint. And it's exactly the kind of low-tech artifact that makes incident responders' jobs easier than hunting for novel malware samples. The seven-step killchain Huntress reconstructed (leak heap → steal session → symlink LPE → create local admin → RMM → lateral → encrypt) is practically a checklist now. If you see CVE-2025-5777 in your NetScaler logs, assume the full chain is in progress.</p><p><span class='section-num'>2.</span> GodDamn is the other ransomware story that matters today, and for similar reasons: the operators aren't innovating in encryption, they're innovating in defense evasion. The PoisonX kernel driver — signed by Microsoft, published to GitHub as a "research tool" by someone calling themselves oxfemale — kills CrowdStrike and Defender at ring-0, loaded alongside a fake symantec.exe to rub it in. Hyadina's evolution from Monster (Delphi, 2022) to Beast (Linux/ESXi, 2024) to GodDamn (signed kernel driver, 2026) is instructive. Each iteration adds one or two genuinely new capabilities while keeping the core playbook identical: anydesk + nirsoft + psExec + an evasion gimmick. The ransomware-as-a-service model has standardized the delivery chain to the point where the distinguishing feature between groups is not what they do but what they use to avoid being caught doing it.</p><p><span class='section-num'>3.</span> RedHook's upgrade is the Android story that deserves more attention than it'll get. Group-IB's analysis shows it abusing ADB Wireless Debugging to get shell (uid 2000) privileges — no exploit, no root, just automating a developer feature meant for debugging. It literally opens Settings, taps "Build Number" seven times to enable Developer Options, enables Wireless Debugging, pairs itself, then connects to its own ADB daemon over loopback. From there it uses the Shizuku framework for protected API calls. 53 C2 commands, multi-layered persistence (1-pixel activity, silent audio, cross-process resurrection loop), and expansion from Vietnam into Indonesia. This is the same trajectory we saw with banking trojans on desktop — mobile malware is maturing its privilege escalation and persistence, and the barrier to entry is dropping because attackers are repurposing open-source tools. If Shizuku is going to exist — and it's legitimately useful for Android developers — we need a way to detect its abuse.</p><p><span class='section-num'>4.</span> Clubfoot Wolf's campaign against Russian chemical distributors, documented by BI.ZONE, is the kind of "boring" threat that probably does more damage in aggregate than any APT. Phishing email → ZIP with LNK → PowerShell loading AES-CBC encrypted payload → NetSupport Manager. The URL shortener abuse (crop.sh) to hide C2 is a detail worth flagging: shorteners let attackers swap out backend infrastructure without changing the lure, and URL scanners rarely block them. The decoy docs — bogus invoices, company profiles, tax certificates — were specific enough to build trust with targets in the chemical distribution industry. This is targeted phishing, not spray-and-pray.</p><p><span class='section-num'>5.</span> The CYFIRMA report on Indonesia's banking sector is overwhelming but worth the read. TripleX claims 2TB from a state-owned bank. 890K mobile banking accounts for sale. Ransomware groups ICARUS and The Gentleman have their own data leak listings for Indonesian fintech and insurance companies. And the APT activity is relentless: SilverFox with tax-themed phishing and ValleyRAT, Lotus Blossom compromising the Notepad++ update mechanism to deliver Cobalt Strike, Mustang Panda shifting focus to banking with LOTUSLITE, Amaranth-Dragon weaponizing CVE-2025-8088 (WinRAR) with a fake civil servant salary decree. The convergence of financially motivated crime and state espionage in one market is striking. Threat actors don't distinguish between stealing data for money and stealing it for intelligence — they just steal it, and whoever pays more gets it.</p><p><span class='section-num'>6.</span> The thread connecting these five reports is that every group is borrowing capabilities from somewhere else — RedHook borrows Shizuku, GodDamn borrows PoisonX from GitHub, GigaWiper merges three existing families, the IAB buys CitrixBleed access on the open market. The malware ecosystem has become a dependency graph, and the most dangerous capability isn't the one someone wrote from scratch — it's the one they copied, tested, and deployed at scale.</p>
         </div>
     </div>
 </div>
 
-<div class="section-divider fade-in">
+<div class="section-divider fade-in" style="transition-delay: 0.2s">
     <div class="section-divider-line"></div>
     <div class="section-divider-label">Threat Landscape</div>
 </div>
 
-<div class="intel-section fade-in">
+<div class="intel-section fade-in" style="transition-delay: 0.3s">
     <h2>Key Intelligence</h2>
     <div class="pill-group"><div class="pill-group-label">Actors</div><div class="pill-row"><span class="pill">Amaranth-Dragon</span><span class="pill">Clubfoot Wolf</span><span class="pill">DragonForce</span><span class="pill">Earth Dahu</span><span class="pill">Hyadina</span><span class="pill">ICARUS</span><span class="pill">Lotus Blossom</span><span class="pill">Mustang Panda</span><span class="pill">Qilin</span><span class="pill">Rare Werewolf</span><span class="pill">SHADOW-EARTH-066</span><span class="pill">Shadow Campaigns</span></div></div>
     
     <div class="pill-group"><div class="pill-group-label">CVEs</div><div class="pill-row"><span class="pill">CVE-2017-18362</span><span class="pill">CVE-2018-20250</span><span class="pill">CVE-2020-22653</span><span class="pill">CVE-2020-22658</span><span class="pill">CVE-2023-25717</span><span class="pill">CVE-2023-4966</span><span class="pill">CVE-2025-20333</span><span class="pill">CVE-2025-20362</span><span class="pill">CVE-2025-2492</span><span class="pill">CVE-2025-5777</span><span class="pill">CVE-2025-6218</span><span class="pill">CVE-2025-8088</span></div></div>
 </div>
 
-<div class="reports-section fade-in">
+<div class="reports-section">
     <h2>Latest Reports</h2>
     
-        <div class="report-card">
+        <div class="report-card fade-in" style="transition-delay: 0.0s">
             <div class="report-card-inner">
                 <div class="report-card-header">
                     <span class="report-icon">🎣</span>
                     <div>
                         <div class="report-title">Threat Insight: Cybercriminals Abusing Vercel to Deliver Remote Access Malware</div>
-                        <div class="report-meta-line">
-                            <span class="tag">Actor: Unknown</span>
-                            <span class="tag tag-cve">CVEs: None</span>
-                            <span class="tag tag-stats">6 IOCs · 1 source</span>
+                        <div class="report-tags">
+                            <span class="tag tag-actor">Unknown</span>
+                            
                         </div>
                     </div>
                     <span class="report-date">2026-07-10</span>
                 </div>
+                <div class="report-meta-line report-ioc-line"><span class="tag tag-ioc">MD5: 4</span><span class="tag tag-ioc">SHA1: 1</span><span class="tag tag-ioc">SHA256: 1</span></div>
                 <ul class='refs'><li><a href="https://www.cyberarmor.tech/blog/threat-insight-cybercriminals-abusing-vercel-to-deliver-remote-access-malware" target="_blank" rel="noopener">cyberarmor.tech</a></li></ul>
             </div>
         </div>
-        <div class="report-card">
+        <div class="report-card fade-in" style="transition-delay: 0.06s">
             <div class="report-card-inner">
                 <div class="report-card-header">
                     <span class="report-icon">🎣</span>
                     <div>
                         <div class="report-title">RedHook Returns with a Dangerous Upgrade</div>
-                        <div class="report-meta-line">
-                            <span class="tag">Actor: Unknown</span>
-                            <span class="tag tag-cve">CVEs: None</span>
-                            <span class="tag tag-stats">6 IOCs · 1 source</span>
+                        <div class="report-tags">
+                            <span class="tag tag-actor">Unknown</span>
+                            
                         </div>
                     </div>
                     <span class="report-date">2026-07-10</span>
                 </div>
+                <div class="report-meta-line report-ioc-line"><span class="tag tag-ioc">Hostname: 3</span><span class="tag tag-ioc">SHA256: 1</span><span class="tag tag-ioc">URL: 2</span></div>
                 <ul class='refs'><li><a href="https://www.group-ib.com/blog/redhook-android-rat-upgraded/" target="_blank" rel="noopener">group-ib.com</a></li></ul>
             </div>
         </div>
-        <div class="report-card">
+        <div class="report-card fade-in" style="transition-delay: 0.12s">
             <div class="report-card-inner">
                 <div class="report-card-header">
                     <span class="report-icon">🕵️</span>
                     <div>
                         <div class="report-title">One Target, Two Flags | Rival Espionage Actors Converge On Pakistani Law Enforcement</div>
-                        <div class="report-meta-line">
-                            <span class="tag">Actor: TAG-179</span>
-                            <span class="tag tag-cve">CVEs: None</span>
-                            <span class="tag tag-stats">41 IOCs · 1 source</span>
+                        <div class="report-tags">
+                            <span class="tag tag-actor">TAG-179</span>
+                            
                         </div>
                     </div>
                     <span class="report-date">2026-07-10</span>
                 </div>
+                <div class="report-meta-line report-ioc-line"><span class="tag tag-ioc">Hostname: 1</span><span class="tag tag-ioc">IP: 14</span><span class="tag tag-ioc">MD5: 4</span><span class="tag tag-ioc">SHA1: 16</span><span class="tag tag-ioc">SHA256: 4</span><span class="tag tag-ioc">URL: 2</span></div>
                 <ul class='refs'><li><a href="https://www.sentinelone.com/labs/one-target-china-india-espionage-converge-on-pakistani-law-enforcement/" target="_blank" rel="noopener">sentinelone.com</a></li></ul>
             </div>
         </div>
-        <div class="report-card">
+        <div class="report-card fade-in" style="transition-delay: 0.18s">
             <div class="report-card-inner">
                 <div class="report-card-header">
                     <span class="report-icon">🎣</span>
                     <div>
                         <div class="report-title">Massive offensive launched on Russian businesses</div>
-                        <div class="report-meta-line">
-                            <span class="tag">Actor: Clubfoot Wolf</span>
-                            <span class="tag tag-cve">CVEs: None</span>
-                            <span class="tag tag-stats">76 IOCs · 1 source</span>
+                        <div class="report-tags">
+                            <span class="tag tag-actor">Clubfoot Wolf</span>
+                            
                         </div>
                     </div>
                     <span class="report-date">2026-07-10</span>
                 </div>
+                <div class="report-meta-line report-ioc-line"><span class="tag tag-ioc">Domain: 2</span><span class="tag tag-ioc">MD5: 9</span><span class="tag tag-ioc">SHA1: 9</span><span class="tag tag-ioc">SHA256: 40</span><span class="tag tag-ioc">URL: 16</span></div>
                 <ul class='refs'><li><a href="https://bi-zone.medium.com/clubfoot-wolf-launches-massive-offensive-on-russian-businesses-5c2743ff2ebd" target="_blank" rel="noopener">bi-zone.medium.com</a></li></ul>
             </div>
         </div>
-        <div class="report-card">
+        <div class="report-card fade-in" style="transition-delay: 0.24s">
             <div class="report-card-inner">
                 <div class="report-card-header">
                     <span class="report-icon">🔒</span>
                     <div>
                         <div class="report-title">Indonesian Banking Sector Threat Landscape</div>
-                        <div class="report-meta-line">
-                            <span class="tag">Actor: Amaranth-Dragon, ICARUS, Lotus Blossom, Mustang Panda, Shadow Campaigns, SilverFox, The Gen, TripleX</span>
-                            <span class="tag tag-cve">CVEs: CVE-2025-8088</span>
-                            <span class="tag tag-stats">33 IOCs · 1 CVE · 1 source</span>
+                        <div class="report-tags">
+                            <span class="tag tag-actor">Amaranth-Dragon</span><span class="tag tag-actor">ICARUS</span><span class="tag tag-actor">Lotus Blossom</span><span class="tag tag-actor">Mustang Panda</span><span class="tag tag-actor">Shadow Campaigns</span><span class="tag tag-actor">SilverFox</span><span class="tag tag-actor">The Gen</span><span class="tag tag-actor">TripleX</span>
+                            <span class="tag tag-cve">CVE-2025-8088</span>
                         </div>
                     </div>
                     <span class="report-date">2026-07-10</span>
                 </div>
+                <div class="report-meta-line report-ioc-line"><span class="tag tag-ioc">Domain: 15</span><span class="tag tag-ioc">Hostname: 11</span><span class="tag tag-ioc">IP: 2</span><span class="tag tag-ioc">SHA1: 4</span><span class="tag tag-ioc">SHA256: 1</span></div>
                 <ul class='refs'><li><a href="https://www.cyfirma.com/research/indonesian-banking-sector-threat-landscape/" target="_blank" rel="noopener">cyfirma.com</a></li></ul>
             </div>
         </div>
-        <div class="report-card">
+        <div class="report-card fade-in" style="transition-delay: 0.3s">
             <div class="report-card-inner">
                 <div class="report-card-header">
                     <span class="report-icon">⚠️</span>
                     <div>
                         <div class="report-title">GodDamn Ransomware: Latest Beast Rebrand Uses Malicious Driver to Disable Defenses</div>
-                        <div class="report-meta-line">
-                            <span class="tag">Actor: Hyadina</span>
-                            <span class="tag tag-cve">CVEs: None</span>
-                            <span class="tag tag-stats">38 IOCs · 1 source</span>
+                        <div class="report-tags">
+                            <span class="tag tag-actor">Hyadina</span>
+                            
                         </div>
                     </div>
                     <span class="report-date">2026-07-10</span>
                 </div>
+                <div class="report-meta-line report-ioc-line"><span class="tag tag-ioc">MD5: 9</span><span class="tag tag-ioc">SHA1: 9</span><span class="tag tag-ioc">SHA256: 20</span></div>
                 <ul class='refs'><li><a href="https://www.security.com/threat-intelligence/goddamn-ransomware-beast-rebrand" target="_blank" rel="noopener">security.com</a></li></ul>
             </div>
         </div>
-        <div class="report-card">
+        <div class="report-card fade-in" style="transition-delay: 0.36s">
             <div class="report-card-inner">
                 <div class="report-card-header">
                     <span class="report-icon">🔒</span>
                     <div>
                         <div class="report-title">GigaWiper: Anatomy of a destructive backdoor assembled from multiple malware</div>
-                        <div class="report-meta-line">
-                            <span class="tag">Actor: Unknown</span>
-                            <span class="tag tag-cve">CVEs: None</span>
-                            <span class="tag tag-stats">20 IOCs · 1 source</span>
+                        <div class="report-tags">
+                            <span class="tag tag-actor">Unknown</span>
+                            
                         </div>
                     </div>
                     <span class="report-date">2026-07-10</span>
                 </div>
+                <div class="report-meta-line report-ioc-line"><span class="tag tag-ioc">IP: 2</span><span class="tag tag-ioc">MD5: 5</span><span class="tag tag-ioc">SHA1: 5</span><span class="tag tag-ioc">SHA256: 8</span></div>
                 <ul class='refs'><li><a href="https://www.microsoft.com/en-us/security/blog/2026/07/09/gigawiper-anatomy-of-a-destructive-backdoor-assembled-from-multiple-malware/" target="_blank" rel="noopener">microsoft.com</a></li></ul>
             </div>
         </div>
-        <div class="report-card">
+        <div class="report-card fade-in" style="transition-delay: 0.42s">
             <div class="report-card-inner">
                 <div class="report-card-header">
                     <span class="report-icon">📱</span>
                     <div>
                         <div class="report-title">Fake Banking Rewards, Telegram Delivery and Albiriox: Anatomy of an Android Malware Campaign</div>
-                        <div class="report-meta-line">
-                            <span class="tag">Actor: Unknown</span>
-                            <span class="tag tag-cve">CVEs: None</span>
-                            <span class="tag tag-stats">10 IOCs · 1 source</span>
+                        <div class="report-tags">
+                            <span class="tag tag-actor">Unknown</span>
+                            
                         </div>
                     </div>
                     <span class="report-date">2026-07-10</span>
                 </div>
+                <div class="report-meta-line report-ioc-line"><span class="tag tag-ioc">Domain: 1</span><span class="tag tag-ioc">MD5: 1</span><span class="tag tag-ioc">SHA256: 7</span><span class="tag tag-ioc">URL: 1</span></div>
                 <ul class='refs'><li><a href="https://www.d3lab.net/fake-banking-rewards-telegram-delivery-and-albiriox-anatomy-of-an-android-malware-campaign/" target="_blank" rel="noopener">d3lab.net</a></li></ul>
             </div>
         </div>
-        <div class="report-card">
+        <div class="report-card fade-in" style="transition-delay: 0.48s">
             <div class="report-card-inner">
                 <div class="report-card-header">
                     <span class="report-icon">📦</span>
                     <div>
                         <div class="report-title">Compromised Injective SDK npm Package Exfiltrates Wallet Keys and Mnemonics</div>
-                        <div class="report-meta-line">
-                            <span class="tag">Actor: Unknown</span>
-                            <span class="tag tag-cve">CVEs: None</span>
-                            <span class="tag tag-stats">4 IOCs · 1 source</span>
+                        <div class="report-tags">
+                            <span class="tag tag-actor">Unknown</span>
+                            
                         </div>
                     </div>
                     <span class="report-date">2026-07-10</span>
                 </div>
+                <div class="report-meta-line report-ioc-line"><span class="tag tag-ioc">Hostname: 1</span><span class="tag tag-ioc">SHA256: 2</span><span class="tag tag-ioc">URL: 1</span></div>
                 <ul class='refs'><li><a href="https://socket.dev/blog/compromised-injective-sdk-npm-package" target="_blank" rel="noopener">socket.dev</a></li></ul>
             </div>
         </div>
-        <div class="report-card">
+        <div class="report-card fade-in" style="transition-delay: 0.54s">
             <div class="report-card-inner">
                 <div class="report-card-header">
                     <span class="report-icon">🔒</span>
                     <div>
                         <div class="report-title">CitrixBleed 2 (CVE-2025-5777) 7 Steps to Dragonforce Ransomware</div>
-                        <div class="report-meta-line">
-                            <span class="tag">Actor: DragonForce</span>
-                            <span class="tag tag-cve">CVEs: CVE-2017-18362, CVE-2023-4966, CVE-2025-5777, CVE-2026-4368</span>
-                            <span class="tag tag-stats">9 IOCs · 4 CVEs · 1 source</span>
+                        <div class="report-tags">
+                            <span class="tag tag-actor">DragonForce</span>
+                            <span class="tag tag-cve">CVE-2017-18362</span><span class="tag tag-cve">CVE-2023-4966</span><span class="tag tag-cve">CVE-2025-5777</span><span class="tag tag-cve">CVE-2026-4368</span>
                         </div>
                     </div>
                     <span class="report-date">2026-07-10</span>
                 </div>
+                <div class="report-meta-line report-ioc-line"><span class="tag tag-ioc">Domain: 2</span><span class="tag tag-ioc">Hostname: 3</span><span class="tag tag-ioc">SHA256: 3</span><span class="tag tag-ioc">URL: 1</span></div>
                 <ul class='refs'><li><a href="https://www.huntress.com/blog/citrixbleed-2-dragonforce-ransomware" target="_blank" rel="noopener">huntress.com</a></li></ul>
             </div>
         </div>
-        <div class="report-card">
+        <div class="report-card fade-in" style="transition-delay: 0.6s">
             <div class="report-card-inner">
                 <div class="report-card-header">
                     <span class="report-icon">🔑</span>
                     <div>
                         <div class="report-title">Vidar Stealer Unmasked: Code Signing Abuse, Go Loaders and File Inflation</div>
-                        <div class="report-meta-line">
-                            <span class="tag">Actor: X3D MINER</span>
-                            <span class="tag tag-cve">CVEs: None</span>
-                            <span class="tag tag-stats">100 IOCs · 1 source</span>
+                        <div class="report-tags">
+                            <span class="tag tag-actor">X3D MINER</span>
+                            
                         </div>
                     </div>
                     <span class="report-date">2026-07-09</span>
                 </div>
+                <div class="report-meta-line report-ioc-line"><span class="tag tag-ioc">MD5: 32</span><span class="tag tag-ioc">SHA1: 29</span><span class="tag tag-ioc">SHA256: 39</span></div>
                 <ul class='refs'><li><a href="https://unit42.paloaltonetworks.com/vidar-stealer-xmrig-miner-campaign-analysis/" target="_blank" rel="noopener">unit42.paloaltonetworks.com</a></li></ul>
             </div>
         </div>
-        <div class="report-card">
+        <div class="report-card fade-in" style="transition-delay: 0.6599999999999999s">
             <div class="report-card-inner">
                 <div class="report-card-header">
                     <span class="report-icon">🎣</span>
                     <div>
                         <div class="report-title">Vidar Infostealer Being Spread through Phishing Emails</div>
-                        <div class="report-meta-line">
-                            <span class="tag">Actor: Unknown</span>
-                            <span class="tag tag-cve">CVEs: None</span>
-                            <span class="tag tag-stats">17 IOCs · 1 source</span>
+                        <div class="report-tags">
+                            <span class="tag tag-actor">Unknown</span>
+                            
                         </div>
                     </div>
                     <span class="report-date">2026-07-09</span>
                 </div>
+                <div class="report-meta-line report-ioc-line"><span class="tag tag-ioc">Hostname: 5</span><span class="tag tag-ioc">MD5: 6</span><span class="tag tag-ioc">SHA1: 3</span><span class="tag tag-ioc">SHA256: 3</span></div>
                 <ul class='refs'><li><a href="https://asec.ahnlab.com/en/94363/" target="_blank" rel="noopener">asec.ahnlab.com</a></li></ul>
             </div>
         </div>
-        <div class="report-card">
+        <div class="report-card fade-in" style="transition-delay: 0.72s">
             <div class="report-card-inner">
                 <div class="report-card-header">
                     <span class="report-icon">🎣</span>
                     <div>
                         <div class="report-title">Phishers Abuse Business Account Manager Service</div>
-                        <div class="report-meta-line">
-                            <span class="tag">Actor: Unknown</span>
-                            <span class="tag tag-cve">CVEs: None</span>
-                            <span class="tag tag-stats">3 IOCs · 1 source</span>
+                        <div class="report-tags">
+                            <span class="tag tag-actor">Unknown</span>
+                            
                         </div>
                     </div>
                     <span class="report-date">2026-07-09</span>
                 </div>
+                <div class="report-meta-line report-ioc-line"><span class="tag tag-ioc">Domain: 1</span><span class="tag tag-ioc">Hostname: 1</span><span class="tag tag-ioc">URL: 1</span></div>
                 <ul class='refs'><li><a href="https://www.huntress.com/blog/meta-business-manager-phishing" target="_blank" rel="noopener">huntress.com</a></li></ul>
             </div>
         </div>
-        <div class="report-card">
+        <div class="report-card fade-in" style="transition-delay: 0.78s">
             <div class="report-card-inner">
                 <div class="report-card-header">
                     <span class="report-icon">🔑</span>
                     <div>
                         <div class="report-title">Old WinRAR Flaw Fuels Attacks on Ukraine: How Unmanaged Software Keeps the Door Open</div>
-                        <div class="report-meta-line">
-                            <span class="tag">Actor: SHADOW-EARTH-066, Earth Dahu</span>
-                            <span class="tag tag-cve">CVEs: CVE-2018-20250, CVE-2025-6218, CVE-2025-8088</span>
-                            <span class="tag tag-stats">52 IOCs · 3 CVEs · 1 source</span>
+                        <div class="report-tags">
+                            <span class="tag tag-actor">SHADOW-EARTH-066</span><span class="tag tag-actor">Earth Dahu</span>
+                            <span class="tag tag-cve">CVE-2018-20250</span><span class="tag tag-cve">CVE-2025-6218</span><span class="tag tag-cve">CVE-2025-8088</span>
                         </div>
                     </div>
                     <span class="report-date">2026-07-09</span>
                 </div>
+                <div class="report-meta-line report-ioc-line"><span class="tag tag-ioc">Domain: 2</span><span class="tag tag-ioc">Hostname: 1</span><span class="tag tag-ioc">MD5: 4</span><span class="tag tag-ioc">SHA1: 4</span><span class="tag tag-ioc">SHA256: 37</span><span class="tag tag-ioc">URL: 4</span></div>
                 <ul class='refs'><li><a href="https://www.trendmicro.com/en_us/research/26/f/old-winrar-flaw-fuels-attacks-on-ukraine.html" target="_blank" rel="noopener">trendmicro.com</a></li></ul>
             </div>
         </div>
-        <div class="report-card">
+        <div class="report-card fade-in" style="transition-delay: 0.8s">
             <div class="report-card-inner">
                 <div class="report-card-header">
                     <span class="report-icon">🐀</span>
                     <div>
                         <div class="report-title">Malicious Go Module Exposes GitHub Malware Lure Network Spanning 222 Repositories</div>
-                        <div class="report-meta-line">
-                            <span class="tag">Actor: Unknown</span>
-                            <span class="tag tag-cve">CVEs: None</span>
-                            <span class="tag tag-stats">40 IOCs · 1 source</span>
+                        <div class="report-tags">
+                            <span class="tag tag-actor">Unknown</span>
+                            
                         </div>
                     </div>
                     <span class="report-date">2026-07-09</span>
                 </div>
+                <div class="report-meta-line report-ioc-line"><span class="tag tag-ioc">Domain: 3</span><span class="tag tag-ioc">MD5: 5</span><span class="tag tag-ioc">SHA1: 5</span><span class="tag tag-ioc">SHA256: 23</span><span class="tag tag-ioc">URL: 4</span></div>
                 <ul class='refs'><li><a href="https://socket.dev/blog/malicious-go-module-exposes-github-malware-lure-network" target="_blank" rel="noopener">socket.dev</a></li></ul>
             </div>
         </div>
-        <div class="report-card">
+        <div class="report-card fade-in" style="transition-delay: 0.8s">
             <div class="report-card-inner">
                 <div class="report-card-header">
                     <span class="report-icon">🎣</span>
                     <div>
                         <div class="report-title">From Invoice to AnyDesk: Uncovering a Phishing Campaign Targeting Russian Aerospace Organizations</div>
-                        <div class="report-meta-line">
-                            <span class="tag">Actor: Rare Werewolf</span>
-                            <span class="tag tag-cve">CVEs: None</span>
-                            <span class="tag tag-stats">17 IOCs · 1 source</span>
+                        <div class="report-tags">
+                            <span class="tag tag-actor">Rare Werewolf</span>
+                            
                         </div>
                     </div>
                     <span class="report-date">2026-07-09</span>
                 </div>
+                <div class="report-meta-line report-ioc-line"><span class="tag tag-ioc">Domain: 2</span><span class="tag tag-ioc">IP: 3</span><span class="tag tag-ioc">MD5: 4</span><span class="tag tag-ioc">SHA1: 4</span><span class="tag tag-ioc">SHA256: 4</span></div>
                 <ul class='refs'><li><a href="https://www.seqrite.com/blog/from-invoice-to-anydesk-uncovering-a-phishing-campaign-targeting-russian-aerospace-organizations/" target="_blank" rel="noopener">seqrite.com</a></li></ul>
             </div>
         </div>
-        <div class="report-card">
+        <div class="report-card fade-in" style="transition-delay: 0.8s">
             <div class="report-card-inner">
                 <div class="report-card-header">
                     <span class="report-icon">🕵️</span>
                     <div>
                         <div class="report-title">From Fake Amazon Security Alert to HarborWatch Agent: ClickFix Delivery of a Custom Monitoring RAT</div>
-                        <div class="report-meta-line">
-                            <span class="tag">Actor: Unknown</span>
-                            <span class="tag tag-cve">CVEs: None</span>
-                            <span class="tag tag-stats">12 IOCs · 1 source</span>
+                        <div class="report-tags">
+                            <span class="tag tag-actor">Unknown</span>
+                            
                         </div>
                     </div>
                     <span class="report-date">2026-07-09</span>
                 </div>
+                <div class="report-meta-line report-ioc-line"><span class="tag tag-ioc">Domain: 2</span><span class="tag tag-ioc">Hostname: 1</span><span class="tag tag-ioc">MD5: 3</span><span class="tag tag-ioc">SHA1: 1</span><span class="tag tag-ioc">SHA256: 3</span><span class="tag tag-ioc">URL: 2</span></div>
                 <ul class='refs'><li><a href="https://cofense.com/blog/from-fake-amazon-security-alert-to-harborwatch-agent-clickfix-delivery-of-a-custom-monitoring-rat" target="_blank" rel="noopener">cofense.com</a></li></ul>
             </div>
         </div>
-        <div class="report-card">
+        <div class="report-card fade-in" style="transition-delay: 0.8s">
             <div class="report-card-inner">
                 <div class="report-card-header">
                     <span class="report-icon">🐀</span>
                     <div>
                         <div class="report-title">Coordinated npm and PyPI Campaign Typosquats Popular Secure Payment Apps</div>
-                        <div class="report-meta-line">
-                            <span class="tag">Actor: Unknown</span>
-                            <span class="tag tag-cve">CVEs: None</span>
-                            <span class="tag tag-stats">58 IOCs · 1 source</span>
+                        <div class="report-tags">
+                            <span class="tag tag-actor">Unknown</span>
+                            
                         </div>
                     </div>
                     <span class="report-date">2026-07-09</span>
                 </div>
+                <div class="report-meta-line report-ioc-line"><span class="tag tag-ioc">Hostname: 1</span><span class="tag tag-ioc">SHA256: 56</span><span class="tag tag-ioc">URL: 1</span></div>
                 <ul class='refs'><li><a href="https://socket.dev/blog/npm-pypi-campaign-typosquats-popular-secure-payment-apps" target="_blank" rel="noopener">socket.dev</a></li></ul>
             </div>
         </div>
-        <div class="report-card">
+        <div class="report-card fade-in" style="transition-delay: 0.8s">
             <div class="report-card-inner">
                 <div class="report-card-header">
                     <span class="report-icon">📡</span>
                     <div>
                         <div class="report-title">Continues building ORB networks using new malware</div>
-                        <div class="report-meta-line">
-                            <span class="tag">Actor: UAT-7810</span>
-                            <span class="tag tag-cve">CVEs: CVE-2020-22653, CVE-2020-22658, CVE-2023-25717, CVE-2025-20333, CVE-2025-20362</span>
-                            <span class="tag tag-stats">81 IOCs · 6 CVEs · 1 source</span>
+                        <div class="report-tags">
+                            <span class="tag tag-actor">UAT-7810</span>
+                            <span class="tag tag-cve">CVE-2020-22653</span><span class="tag tag-cve">CVE-2020-22658</span><span class="tag tag-cve">CVE-2023-25717</span><span class="tag tag-cve">CVE-2025-20333</span><span class="tag tag-cve">CVE-2025-20362</span><span class="tag tag-cve">CVE-2025-2492</span>
                         </div>
                     </div>
                     <span class="report-date">2026-07-09</span>
                 </div>
+                <div class="report-meta-line report-ioc-line"><span class="tag tag-ioc">IP: 4</span><span class="tag tag-ioc">SHA256: 77</span></div>
                 <ul class='refs'><li><a href="https://blog.talosintelligence.com/uat-7810/" target="_blank" rel="noopener">blog.talosintelligence.com</a></li></ul>
             </div>
         </div>
-        <div class="report-card">
+        <div class="report-card fade-in" style="transition-delay: 0.8s">
             <div class="report-card-inner">
                 <div class="report-card-header">
                     <span class="report-icon">🔒</span>
                     <div>
                         <div class="report-title">Active Exploitation of Check Point VPN Authentication Bypass (CVE-2026-50751)</div>
-                        <div class="report-meta-line">
-                            <span class="tag">Actor: Qilin</span>
-                            <span class="tag tag-cve">CVEs: CVE-2026-50751, CVE-2026-50752</span>
-                            <span class="tag tag-stats">2 IOCs · 2 CVEs · 1 source</span>
+                        <div class="report-tags">
+                            <span class="tag tag-actor">Qilin</span>
+                            <span class="tag tag-cve">CVE-2026-50751</span><span class="tag tag-cve">CVE-2026-50752</span>
                         </div>
                     </div>
                     <span class="report-date">2026-07-09</span>
                 </div>
+                <div class="report-meta-line report-ioc-line"><span class="tag tag-ioc">MD5: 2</span></div>
                 <ul class='refs'><li><a href="https://blog.checkpoint.com/security/check-point-releases-important-hotfix-for-vulnerabilities-in-deprecated-ikev1-vpn-protocol" target="_blank" rel="noopener">blog.checkpoint.com</a></li></ul>
             </div>
         </div>
 </div>
 
-<footer class="site-footer fade-in">
+<footer class="site-footer fade-in" style="transition-delay: 0.4s">
     <div class="footer-quote">"The only good breach is the one you detect."</div>
-    <div class="footer-meta">Report generated 2026-07-10 10:51 UTC &middot; jakesj425.github.io/threat-intel-blog</div>
+    <div class="footer-meta">Report generated 2026-07-10 11:35 UTC &middot; jakesj425.github.io/threat-intel-blog</div>
 </footer>
+
+<button class="scroll-top" id="scrollTop" aria-label="Scroll to top">&#8593;</button>
 
 <script>
 // ── Reading progress ──
@@ -1013,6 +1114,16 @@ const observer = new IntersectionObserver((entries) => {
 });
 
 document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// ── Scroll to top ──
+const scrollBtn = document.getElementById('scrollTop');
+window.addEventListener('scroll', function() {
+    const scrollY = window.scrollY || document.documentElement.scrollTop;
+    scrollBtn.classList.toggle('visible', scrollY > 400);
+});
+scrollBtn.addEventListener('click', function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+});
 </script>
 </body>
 </html>
