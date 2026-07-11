@@ -874,14 +874,14 @@ body {
 </div>
 
 <div class="stats-bar">
-    <div class="stat-chip"><span class="num">10</span><span class="lbl">Reports</span></div>
-    <div class="stat-chip"><span class="num">12</span><span class="lbl">Adversaries</span></div>
+    <div class="stat-chip"><span class="num">11</span><span class="lbl">Reports</span></div>
+    <div class="stat-chip"><span class="num">13</span><span class="lbl">Adversaries</span></div>
     <div class="stat-chip"><span class="num">0</span><span class="lbl">Malware</span></div>
     <div class="stat-chip"><span class="num">5</span><span class="lbl">CVEs</span></div>
-    <div class="stat-chip"><span class="num">243</span><span class="lbl">IOCs</span></div>
+    <div class="stat-chip"><span class="num">247</span><span class="lbl">IOCs</span></div>
 </div>
 
-<div class="themes-row"><span class="theme-chip"><span class="theme-chip-name">Nation-State Activity</span><span class="theme-chip-count">2</span></span><span class="theme-chip"><span class="theme-chip-name">Malware Loaders & Backdoors</span><span class="theme-chip-count">3</span></span><span class="theme-chip"><span class="theme-chip-name">Social Engineering & Malvertising</span><span class="theme-chip-count">1</span></span><span class="theme-chip"><span class="theme-chip-name">Credential Theft & Infostealers</span><span class="theme-chip-count">2</span></span><span class="theme-chip"><span class="theme-chip-name">Ransomware</span><span class="theme-chip-count">2</span></span></div>
+<div class="themes-row"><span class="theme-chip"><span class="theme-chip-name">Nation-State Activity</span><span class="theme-chip-count">2</span></span><span class="theme-chip"><span class="theme-chip-name">Credential Theft & Infostealers</span><span class="theme-chip-count">3</span></span><span class="theme-chip"><span class="theme-chip-name">Malware Loaders & Backdoors</span><span class="theme-chip-count">3</span></span><span class="theme-chip"><span class="theme-chip-name">Social Engineering & Malvertising</span><span class="theme-chip-count">1</span></span><span class="theme-chip"><span class="theme-chip-name">Ransomware</span><span class="theme-chip-count">2</span></span></div>
 
 <div class="article-wrap">
     <div class="article">
@@ -889,9 +889,9 @@ body {
             <div class="label">Analysis & Opinion</div>
             <h2>Opinion of a DFIR Guy</h2>
         </div>
-        <div class="tldr-card fade-in" style="transition-delay: 0.05s"><div class="tldr-label">TL;DR</div><ul class="tldr-bullets"><li>10 reports analyzed — 3 Malware Loaders & Backdoors, 2 Nation-State Activity, 2 Credential Theft & Infostealers</li><li>12 adversarial groups identified</li><li>5 CVEs in active use</li><li>Ransomware activity across 2 reports</li><li>Nation-state campaigns in 2 reports</li><li>Top report: Threat Insight: Cybercriminals Abusing Vercel to Deliver Remote Access Malware</li></ul></div>
+        <div class="tldr-card fade-in" style="transition-delay: 0.05s"><div class="tldr-label">TL;DR</div><ul class="tldr-bullets"><li>11 reports analyzed — 3 Credential Theft & Infostealers, 3 Malware Loaders & Backdoors, 2 Nation-State Activity</li><li>13 adversarial groups identified</li><li>5 CVEs in active use</li><li>Ransomware activity across 2 reports</li><li>Nation-state campaigns in 2 reports</li><li>Top report: Threat Insight: Cybercriminals Abusing Vercel to Deliver Remote Access Malware</li></ul></div>
         <div class="article-body fade-in" style="transition-delay: 0.1s">
-            <p><span class='section-num'>1.</span> The Huntress writeup on CVE-2025-5777 is the most operationally useful thing I read today, not because the vulnerability is new (it's a CitrixBleed sequel, we know the drill by now), but because they documented something rare: the IAB's own operational security failure. The same workstation name — WIN-4EOAP4JTJR9 — leaked through Citrix auto-created printer mappings across every victim environment. Citrix creates a "Print to PDF" printer mapping for every client session, embedding the client workstation name in the Windows Application event log. When the operator used the same machine for every intrusion, they left the same artifact in every org. That's not TTP analysis, that's a fingerprint. And it's exactly the kind of low-tech artifact that makes incident responders' jobs easier than hunting for novel malware samples. The seven-step killchain Huntress reconstructed (leak heap → steal session → symlink LPE → create local admin → RMM → lateral → encrypt) is practically a checklist now. If you see CVE-2025-5777 in your NetScaler logs, assume the full chain is in progress.<div class="para-sources">Source: <a href="https://www.huntress.com/blog/citrixbleed-2-dragonforce-ransomware" target="_blank" rel="noopener">huntress.com</a></div></p><p><span class='section-num'>2.</span> GodDamn is the other ransomware story that matters today, and for similar reasons: the operators aren't innovating in encryption, they're innovating in defense evasion. The PoisonX kernel driver — signed by Microsoft, published to GitHub as a "research tool" by someone calling themselves oxfemale — kills CrowdStrike and Defender at ring-0, loaded alongside a fake symantec.exe to rub it in. Hyadina's evolution from Monster (Delphi, 2022) to Beast (Linux/ESXi, 2024) to GodDamn (signed kernel driver, 2026) is instructive. Each iteration adds one or two genuinely new capabilities while keeping the core playbook identical: anydesk + nirsoft + psExec + an evasion gimmick. The ransomware-as-a-service model has standardized the delivery chain to the point where the distinguishing feature between groups is not what they do but what they use to avoid being caught doing it.<div class="para-sources">Source: <a href="https://www.security.com/threat-intelligence/goddamn-ransomware-beast-rebrand" target="_blank" rel="noopener">security.com</a></div></p><p><span class='section-num'>3.</span> RedHook's upgrade is the Android story that deserves more attention than it'll get. Group-IB's analysis shows it abusing ADB Wireless Debugging to get shell (uid 2000) privileges — no exploit, no root, just automating a developer feature meant for debugging. It literally opens Settings, taps "Build Number" seven times to enable Developer Options, enables Wireless Debugging, pairs itself, then connects to its own ADB daemon over loopback. From there it uses the Shizuku framework for protected API calls. 53 C2 commands, multi-layered persistence (1-pixel activity, silent audio, cross-process resurrection loop), and expansion from Vietnam into Indonesia. This is the same trajectory we saw with banking trojans on desktop — mobile malware is maturing its privilege escalation and persistence, and the barrier to entry is dropping because attackers are repurposing open-source tools. If Shizuku is going to exist — and it's legitimately useful for Android developers — we need a way to detect its abuse.</p><p><span class='section-num'>4.</span> Clubfoot Wolf's campaign against Russian chemical distributors, documented by BI.ZONE, is the kind of "boring" threat that probably does more damage in aggregate than any APT. Phishing email → ZIP with LNK → PowerShell loading AES-CBC encrypted payload → NetSupport Manager. The URL shortener abuse (crop.sh) to hide C2 is a detail worth flagging: shorteners let attackers swap out backend infrastructure without changing the lure, and URL scanners rarely block them. The decoy docs — bogus invoices, company profiles, tax certificates — were specific enough to build trust with targets in the chemical distribution industry. This is targeted phishing, not spray-and-pray.<div class="para-sources">Source: <a href="https://bi-zone.medium.com/clubfoot-wolf-launches-massive-offensive-on-russian-businesses-5c2743ff2ebd" target="_blank" rel="noopener">bi-zone.medium.com</a></div></p><p><span class='section-num'>5.</span> The CYFIRMA report on Indonesia's banking sector is overwhelming but worth the read. TripleX claims 2TB from a state-owned bank. 890K mobile banking accounts for sale. Ransomware groups ICARUS and The Gentleman have their own data leak listings for Indonesian fintech and insurance companies. And the APT activity is relentless: SilverFox with tax-themed phishing and ValleyRAT, Lotus Blossom compromising the Notepad++ update mechanism to deliver Cobalt Strike, Mustang Panda shifting focus to banking with LOTUSLITE, Amaranth-Dragon weaponizing CVE-2025-8088 (WinRAR) with a fake civil servant salary decree. The convergence of financially motivated crime and state espionage in one market is striking. Threat actors don't distinguish between stealing data for money and stealing it for intelligence — they just steal it, and whoever pays more gets it.<div class="para-sources">Source: <a href="https://www.cyfirma.com/research/indonesian-banking-sector-threat-landscape/" target="_blank" rel="noopener">cyfirma.com</a></div></p><p><span class='section-num'>6.</span> The thread connecting these five reports is that every group is borrowing capabilities from somewhere else — RedHook borrows Shizuku, GodDamn borrows PoisonX from GitHub, GigaWiper merges three existing families, the IAB buys CitrixBleed access on the open market. The malware ecosystem has become a dependency graph, and the most dangerous capability isn't the one someone wrote from scratch — it's the one they copied, tested, and deployed at scale.</p>
+            <p><span class='section-num'>1.</span> The SilabRAT analysis from Group-IB is a good reminder that the MaaS economy has matured past the point where any half-decent capability is the product of a single developer working alone. o1oo1 — who started on Exploit forum in late 2021 selling bulk SMTP credentials and trading data leaks — now runs a two-product shop: AsmCrypt ($3K/month) for obfuscation and SilabRAT ($5K/month) for execution. The bundle discount ($1K off for subscribing to both) is the detail that tells you this isn't a side project anymore. This is a business with tiered pricing and cross-sell strategy.<div class="para-sources">Source: <a href="https://www.group-ib.com/blog/silabrat-hijackloader-trojan-malware/" target="_blank" rel="noopener">group-ib.com</a></div></p><p><span class='section-num'>2.</span> The Chrome App-Bound Encryption bypass is the most technically interesting piece. Chrome 127 introduced ABE specifically to tie encrypted secrets to Chrome's process identity via a COM service, making it so even user-level malware can't decrypt cookies by simply calling DPAPI. SilabRAT's approach — COM elevation via GoogleChromeElevationService, calling DecryptData on the `_app_bound_encrypted_key` — is the same technique we've seen from multiple stealers over the past year. The cat-and-mouse with browser security continues: Chrome 136 made debugging port abuse harder, and the ABE bypass will likely be patched in a future release, but the pattern is predictable. Every time Google adds a cryptographic boundary, someone finds a way to ask Chrome politely to decrypt its own keys.</p><p><span class='section-num'>3.</span> The HVNC implementation is also worth highlighting. Instead of the traditional invisible desktop approach, SilabRAT hooks low-level file APIs (NtOpenFile, ZwQueryFullAttributesFile) to redirect the browser's profile directory access to a cloned copy while the real session remains untouched. This allows the attacker to run a hidden browser with the victim's authenticated sessions, and because all traffic originates from the victim's actual IP and device, fraud detection systems see a legitimate user. This is the same operational principle as cookie theft — bypass something possession-based using the victim's own environment — but executed at a lower level that's harder to intercept.</p><p><span class='section-num'>4.</span> What I find most striking is the operational uptime. Group-IB observed one buyer reporting over 90% of infected machines stayed online throughout a month-long campaign. For a MaaS RAT, that's the real differentiation. It's easy to build a stealer with flashy features; it's hard to keep it running without getting detected, without crashing, and without losing your botnet over weeks of operation. That stability is what justifies the $5K price tag, and it's what makes SilabRAT more dangerous than the average forum-offered RAT.</p><p><span class='section-num'>5.</span> The o1oo1 story also mirrors a pattern we see across the underground: the career progression from low-level fraud (SMTP creds, carding) to tool development (AsmCrypt) to full MaaS platform ownership (SilabRAT). These aren't distinct threat actors — they're the same people moving up the value chain. When we track adversaries, we should be looking at forum histories, not just malware families. o1oo1's evolution tells us more about where the MaaS market is headed than any single SilabRAT sample analysis.<div class="para-sources">Source: <a href="https://www.group-ib.com/blog/silabrat-hijackloader-trojan-malware/" target="_blank" rel="noopener">group-ib.com</a></div></p><p><span class='section-num'>6.</span> One note: Group-IB published on June 10 and ZScaler independently covered the same family as SnappyClient. Neither team knew about the other's work, and that's healthy. Redundant analysis of commodity malware is better than blind spots.</p><p><span class='section-num'>7.</span> IOC-wise, we have four SHA256 hashes (SilabRAT sample, APPBDLL 64/32, Target.dll) and one C2 IP. No CVEs here — this is pure capability-for-hire.</p>
         </div>
     </div>
 </div>
@@ -933,6 +933,23 @@ body {
                 <div class="report-card-header">
                     <span class="report-icon">🎣</span>
                     <div>
+                        <div class="report-title">SilabRAT, What's Your Power?</div>
+                        <div class="report-tags">
+                            <span class="tag tag-actor">o1oo1</span>
+                            
+                        </div>
+                    </div>
+                    <span class="report-date">2026-07-10</span>
+                </div>
+                <div class="report-meta-line report-ioc-line"><span class="tag tag-ioc">SHA256: 4</span></div><div class="report-ioc-detail"><div class="ioc-table-wrap"><div class="ioc-table-header"><span class="ioc-table-label">SHA256</span><span class="ioc-table-count">4</span></div><div class="ioc-table"><div class="ioc-row">3a6adbe0081b2488e0f137496e92591e0c29148154b2d99faadab9cc435b879b</div><div class="ioc-row">79f8da9f9fb4ac7c16d9c210f1f6ef418357a3e7bf602b1dd03a490596fa58c5</div><div class="ioc-row">fb56e66920c84ef9e51db0ea23144f5755daef97cbff8613b05ab56d0dc9d623</div><div class="ioc-row">fbce30a0c852972fdc24f1b6a7c270512a50ef1a7c6c88c88b92a2dcbdfdd023</div></div></div></div>
+                <ul class='refs'><li><a href="https://www.group-ib.com/blog/silabrat-hijackloader-trojan-malware/" target="_blank" rel="noopener">group-ib.com</a></li></ul>
+            </div>
+        </div>
+        <div class="report-card fade-in" style="transition-delay: 0.12s">
+            <div class="report-card-inner">
+                <div class="report-card-header">
+                    <span class="report-icon">🎣</span>
+                    <div>
                         <div class="report-title">RedHook Returns with a Dangerous Upgrade</div>
                         <div class="report-tags">
                             <span class="tag tag-actor">Unknown</span>
@@ -945,7 +962,7 @@ body {
                 <ul class='refs'><li><a href="https://www.group-ib.com/blog/redhook-android-rat-upgraded/" target="_blank" rel="noopener">group-ib.com</a></li></ul>
             </div>
         </div>
-        <div class="report-card fade-in" style="transition-delay: 0.12s">
+        <div class="report-card fade-in" style="transition-delay: 0.18s">
             <div class="report-card-inner">
                 <div class="report-card-header">
                     <span class="report-icon">🕵️</span>
@@ -962,7 +979,7 @@ body {
                 <ul class='refs'><li><a href="https://www.sentinelone.com/labs/one-target-china-india-espionage-converge-on-pakistani-law-enforcement/" target="_blank" rel="noopener">sentinelone.com</a></li></ul>
             </div>
         </div>
-        <div class="report-card fade-in" style="transition-delay: 0.18s">
+        <div class="report-card fade-in" style="transition-delay: 0.24s">
             <div class="report-card-inner">
                 <div class="report-card-header">
                     <span class="report-icon">🎣</span>
@@ -979,7 +996,7 @@ body {
                 <ul class='refs'><li><a href="https://bi-zone.medium.com/clubfoot-wolf-launches-massive-offensive-on-russian-businesses-5c2743ff2ebd" target="_blank" rel="noopener">bi-zone.medium.com</a></li></ul>
             </div>
         </div>
-        <div class="report-card fade-in" style="transition-delay: 0.24s">
+        <div class="report-card fade-in" style="transition-delay: 0.3s">
             <div class="report-card-inner">
                 <div class="report-card-header">
                     <span class="report-icon">🔒</span>
@@ -996,7 +1013,7 @@ body {
                 <ul class='refs'><li><a href="https://www.cyfirma.com/research/indonesian-banking-sector-threat-landscape/" target="_blank" rel="noopener">cyfirma.com</a></li></ul>
             </div>
         </div>
-        <div class="report-card fade-in" style="transition-delay: 0.3s">
+        <div class="report-card fade-in" style="transition-delay: 0.36s">
             <div class="report-card-inner">
                 <div class="report-card-header">
                     <span class="report-icon">⚠️</span>
@@ -1013,7 +1030,7 @@ body {
                 <ul class='refs'><li><a href="https://www.security.com/threat-intelligence/goddamn-ransomware-beast-rebrand" target="_blank" rel="noopener">security.com</a></li></ul>
             </div>
         </div>
-        <div class="report-card fade-in" style="transition-delay: 0.36s">
+        <div class="report-card fade-in" style="transition-delay: 0.42s">
             <div class="report-card-inner">
                 <div class="report-card-header">
                     <span class="report-icon">🔒</span>
@@ -1030,7 +1047,7 @@ body {
                 <ul class='refs'><li><a href="https://www.microsoft.com/en-us/security/blog/2026/07/09/gigawiper-anatomy-of-a-destructive-backdoor-assembled-from-multiple-malware/" target="_blank" rel="noopener">microsoft.com</a></li></ul>
             </div>
         </div>
-        <div class="report-card fade-in" style="transition-delay: 0.42s">
+        <div class="report-card fade-in" style="transition-delay: 0.48s">
             <div class="report-card-inner">
                 <div class="report-card-header">
                     <span class="report-icon">📱</span>
@@ -1047,7 +1064,7 @@ body {
                 <ul class='refs'><li><a href="https://www.d3lab.net/fake-banking-rewards-telegram-delivery-and-albiriox-anatomy-of-an-android-malware-campaign/" target="_blank" rel="noopener">d3lab.net</a></li></ul>
             </div>
         </div>
-        <div class="report-card fade-in" style="transition-delay: 0.48s">
+        <div class="report-card fade-in" style="transition-delay: 0.54s">
             <div class="report-card-inner">
                 <div class="report-card-header">
                     <span class="report-icon">📦</span>
@@ -1064,7 +1081,7 @@ body {
                 <ul class='refs'><li><a href="https://socket.dev/blog/compromised-injective-sdk-npm-package" target="_blank" rel="noopener">socket.dev</a></li></ul>
             </div>
         </div>
-        <div class="report-card fade-in" style="transition-delay: 0.54s">
+        <div class="report-card fade-in" style="transition-delay: 0.6s">
             <div class="report-card-inner">
                 <div class="report-card-header">
                     <span class="report-icon">🔒</span>
@@ -1085,7 +1102,7 @@ body {
 
 <footer class="site-footer fade-in" style="transition-delay: 0.4s">
     <div class="footer-quote">"The only good breach is the one you detect."</div>
-    <div class="footer-meta">Report generated 2026-07-11 08:57 UTC &middot; jakesj425.github.io/threat-intel-blog</div>
+    <div class="footer-meta">Report generated 2026-07-11 09:32 UTC &middot; jakesj425.github.io/threat-intel-blog</div>
 </footer>
 
 <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">&#8593;</button>
