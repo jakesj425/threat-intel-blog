@@ -1,411 +1,962 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Threat Pulse — 2026-07-25</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;0,7..72,700;1,7..72,400&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg: #0a0e14;
-            --bg-card: #111820;
-            --bg-elevated: #182230;
-            --border: #1e2a3a;
-            --text: #d1d9e6;
-            --text-secondary: #8892a8;
-            --accent: #4fc3f7;
-            --accent-dim: #1a3a5c;
-            --accent-glow: rgba(79, 195, 247, 0.06);
-            --green: #66bb6a;
-            --orange: #ffa726;
-            --red: #ff6b6b;
-            --radius: 10px;
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.7;
-            -webkit-font-smoothing: antialiased;
-        }
-        .container {
-            max-width: 780px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Threat Pulse — July 25, 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;0,7..72,700;1,7..72,400;1,7..72,600&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+    --bg: #0a0e14;
+    --bg-card: #111820;
+    --bg-elevated: #182230;
+    --border: #1e2a3a;
+    --border-hover: #2d4a6a;
+    --text: #d1d9e6;
+    --text-secondary: #8892a8;
+    --accent: #4fc3f7;
+    --accent-dim: #1a3a5c;
+    --accent-glow: rgba(79, 195, 247, 0.08);
+    --red: #ff6b6b;
+    --orange: #ffa726;
+    --green: #66bb6a;
+    --purple: #ab47bc;
+    --radius: 12px;
+    --radius-sm: 8px;
+}
 
-        /* ── Hero ── */
-        .hero {
-            text-align: center;
-            padding: 64px 0 48px;
-            position: relative;
-        }
-        .hero::after {
-            content: '';
-            position: absolute;
-            bottom: 0; left: 50%;
-            transform: translateX(-50%);
-            width: 60%;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--border), transparent);
-        }
-        .hero h1 {
-            font-family: 'Literata', Georgia, serif;
-            font-size: clamp(26px, 4vw, 40px);
-            font-weight: 700;
-            line-height: 1.3;
-            background: linear-gradient(135deg, #f0f4ff 0%, var(--accent) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 8px;
-        }
-        .hero .meta {
-            font-size: 13px;
-            color: var(--text-secondary);
-            margin-top: 4px;
-        }
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
-        /* ── Stats bar ── */
-        .stats-bar {
-            display: flex;
-            justify-content: center;
-            gap: 6px;
-            flex-wrap: wrap;
-            margin: 32px auto;
-        }
-        .stat-chip {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            padding: 6px 14px;
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 100px;
-            font-size: 12px;
-        }
-        .stat-chip .num {
-            font-weight: 700;
-            color: var(--accent);
-            font-size: 14px;
-        }
-        .stat-chip .lbl {
-            color: var(--text-secondary);
-        }
+html {
+    scroll-behavior: smooth;
+}
 
-        /* ── Content typography ── */
-        .content h1 { display: none; }
-        .content h2 {
-            font-size: 18px;
-            font-weight: 700;
-            color: var(--text);
-            margin: 36px 0 16px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .content h2::after {
-            content: '';
-            flex: 1;
-            height: 1px;
-            background: linear-gradient(90deg, var(--border), transparent);
-        }
-        .content h3 {
-            font-size: 14px;
-            font-weight: 600;
-            color: var(--accent);
-            margin: 24px 0 10px;
-        }
-        .content p {
-            font-size: 15px;
-            line-height: 1.8;
-            margin-bottom: 16px;
-        }
-        .content strong { color: #f0f4ff; }
-        .content a {
-            color: var(--accent);
-            text-decoration: none;
-            border-bottom: 1px solid rgba(79, 195, 247, 0.3);
-            transition: border-color 0.2s;
-        }
-        .content a:hover { border-bottom-color: var(--accent); }
-        .content ul {
-            list-style: none;
-            padding: 0;
-            margin-bottom: 16px;
-        }
-        .content ul li {
-            padding: 4px 0 4px 20px;
-            position: relative;
-            font-size: 14px;
-        }
-        .content ul li::before {
-            content: '>';
-            position: absolute;
-            left: 0;
-            color: var(--accent);
-            font-family: 'JetBrains Mono', monospace;
-            font-weight: 700;
-        }
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+}
 
-        /* ── TL;DR blockquote ── */
-        blockquote {
-            border-left: 3px solid var(--accent);
-            background: var(--bg-card);
-            padding: 16px 20px;
-            margin: 24px 0;
-            border-radius: 0 var(--radius) var(--radius) 0;
-            font-size: 14px;
-        }
-        blockquote p { margin-bottom: 4px; }
-        blockquote p:last-child { margin-bottom: 0; }
+/* ── Reading progress bar ── */
+.progress-bar {
+    position: fixed;
+    top: 0; left: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent), var(--purple));
+    z-index: 1000;
+    width: 0%;
+    transition: width 0.1s ease;
+}
 
-        /* ── Table ── */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 16px 0;
-            font-size: 13px;
-        }
-        th, td {
-            padding: 8px 12px;
-            border: 1px solid var(--border);
-            text-align: left;
-        }
-        th {
-            background: var(--bg-elevated);
-            color: var(--accent);
-            font-weight: 600;
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        td {
-            color: var(--text-secondary);
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 12px;
-        }
+/* ── Hero ── */
+.hero {
+    position: relative;
+    padding: 80px 24px 60px;
+    text-align: center;
+    overflow: hidden;
+}
 
-        hr { border: none; border-top: 1px solid var(--border); margin: 40px 0; }
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    opacity: 0.4;
+}
 
-        /* ── Footer ── */
-        .site-footer {
-            text-align: center;
-            padding: 40px 0 60px;
-            font-size: 12px;
-            color: var(--text-secondary);
-        }
-        .site-footer a {
-            color: var(--accent);
-            text-decoration: none;
-        }
+.hero-glow {
+    position: absolute;
+    top: -120px; left: 50%;
+    transform: translateX(-50%);
+    width: 600px; height: 300px;
+    background: radial-gradient(ellipse, var(--accent-glow) 0%, transparent 70%);
+    pointer-events: none;
+}
 
-        @media (max-width: 600px) {
-            .hero { padding: 40px 0 32px; }
-            .opinion p { font-size: 15px; }
-        }
-    </style>
+.hero-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+}
+
+.hero h1 {
+    font-family: 'Literata', Georgia, serif;
+    font-size: clamp(28px, 5vw, 48px);
+    font-weight: 700;
+    line-height: 1.25;
+    background: linear-gradient(135deg, #f0f4ff 0%, var(--accent) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 12px;
+}
+
+.hero-date {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--text-secondary);
+}
+
+/* ── Stats bar ── */
+.stats-bar {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin: 0 auto 60px;
+    max-width: 700px;
+    padding: 0 24px;
+}
+
+.stat-chip {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    font-size: 13px;
+    transition: border-color 0.2s, transform 0.2s;
+}
+
+.stat-chip:hover {
+    border-color: var(--accent);
+    transform: translateY(-1px);
+}
+
+.stat-chip .num {
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--accent);
+}
+
+.stat-chip .lbl {
+    color: var(--text-secondary);
+}
+
+/* ── Themes row ── */
+.themes-row {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin: -30px auto 50px;
+    max-width: 700px;
+    padding: 0 24px;
+}
+
+.theme-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px 6px 16px;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    font-size: 12px;
+    transition: border-color 0.2s, background 0.2s;
+}
+
+.theme-chip:hover {
+    border-color: var(--accent);
+    background: var(--accent-glow);
+}
+
+.theme-chip-name {
+    color: var(--text);
+}
+
+.theme-chip-count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 20px;
+    height: 20px;
+    padding: 0 6px;
+    border-radius: 10px;
+    background: var(--accent-dim);
+    color: var(--accent);
+    font-size: 11px;
+    font-weight: 600;
+}
+
+/* ── Article ── */
+.article-wrap {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+.article {
+    position: relative;
+}
+
+.article-header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid var(--border);
+}
+
+.article-header .label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 8px;
+}
+
+.article-header h2 {
+    font-family: 'Literata', Georgia, serif;
+    font-size: clamp(24px, 3.5vw, 36px);
+    font-weight: 700;
+    line-height: 1.3;
+    color: var(--text);
+}
+
+.article-body {
+    font-family: 'Literata', Georgia, serif;
+    font-size: 17px;
+    line-height: 1.8;
+    color: var(--text);
+}
+
+.article-body p {
+    margin-bottom: 20px;
+    text-indent: 0;
+}
+
+.article-body p:first-of-type::first-letter {
+    float: left;
+    font-size: 3.2em;
+    font-weight: 700;
+    line-height: 0.9;
+    padding-right: 8px;
+    padding-top: 4px;
+    color: var(--accent);
+    font-family: 'Literata', Georgia, serif;
+}
+
+.article-body strong {
+    color: #f0f4ff;
+    font-weight: 600;
+}
+
+.article-body a {
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(79, 195, 247, 0.3);
+    transition: border-color 0.2s;
+}
+
+.article-body a:hover {
+    border-bottom-color: var(--accent);
+}
+
+.article-body ul {
+    margin: 16px 0 24px;
+    padding-left: 0;
+    list-style: none;
+}
+
+.article-body ul li {
+    margin: 8px 0;
+    padding-left: 24px;
+    position: relative;
+}
+
+.article-body ul li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-family: 'Inter', sans-serif;
+}
+
+.article-body em {
+    color: var(--text-secondary);
+}
+
+.article-separator {
+    text-align: center;
+    margin: 48px 0;
+    color: var(--border);
+    font-size: 20px;
+    font-family: 'Literata', Georgia, serif;
+    letter-spacing: 8px;
+}
+
+/* ── Divider ── */
+.section-divider {
+    max-width: 720px;
+    margin: 60px auto;
+    padding: 0 24px;
+    text-align: center;
+}
+
+.section-divider-line {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border), transparent);
+    margin-bottom: 12px;
+}
+
+.section-divider-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+}
+
+/* ── Intel data section ── */
+.intel-section {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 24px 32px;
+}
+
+.intel-section h2 {
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.intel-section h2::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, var(--border), transparent);
+}
+
+/* ── Pills ── */
+.pill-group {
+    margin-bottom: 28px;
+}
+
+.pill-group-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    margin-bottom: 10px;
+}
+
+.pill-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.pill {
+    display: inline-block;
+    padding: 5px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 500;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    color: var(--text);
+    transition: border-color 0.2s, background 0.2s, transform 0.15s;
+}
+
+.pill:hover {
+    border-color: var(--accent);
+    background: var(--accent-glow);
+    transform: translateY(-1px);
+}
+
+/* ── Report cards ── */
+.reports-section {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 24px 60px;
+}
+
+.reports-section h2 {
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.reports-section h2::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, var(--border), transparent);
+}
+
+.report-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    margin-bottom: 8px;
+    overflow: hidden;
+    transition: border-color 0.25s, box-shadow 0.25s;
+}
+
+.report-card:hover {
+    border-color: var(--border-hover);
+    box-shadow: 0 4px 24px rgba(0,0,0,0.3);
+}
+
+.report-card-inner {
+    padding: 16px 20px;
+}
+
+.report-card-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.report-icon {
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    background: var(--bg-elevated);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
+}
+
+.report-icon:hover {
+    border-color: var(--accent);
+}
+
+.report-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.4;
+    margin-bottom: 6px;
+}
+
+.report-meta-line {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+}
+
+.tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: 500;
+    background: rgba(79, 195, 247, 0.08);
+    color: var(--accent);
+    border: 1px solid rgba(79, 195, 247, 0.15);
+    letter-spacing: 0.2px;
+}
+
+.tag-cve {
+    background: rgba(255, 107, 107, 0.08);
+    color: var(--red);
+    border-color: rgba(255, 107, 107, 0.15);
+}
+
+.tag-stats {
+    background: rgba(102, 187, 106, 0.08);
+    color: var(--green);
+    border-color: rgba(102, 187, 106, 0.15);
+}
+
+.report-date {
+    flex-shrink: 0;
+    font-size: 11px;
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--text-secondary);
+    margin-left: auto;
+    padding-top: 2px;
+}
+
+.refs {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0 0 48px;
+}
+
+.refs li {
+    font-size: 12px;
+    margin: 2px 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.refs a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.refs a:hover {
+    color: var(--accent);
+    text-decoration: underline;
+}
+
+/* ── Footer ── */
+.site-footer {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 40px 24px 60px;
+    text-align: center;
+}
+
+.footer-quote {
+    font-family: 'Literata', Georgia, serif;
+    font-size: 14px;
+    font-style: italic;
+    color: var(--text-secondary);
+    margin-bottom: 24px;
+}
+
+.footer-meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--text-secondary);
+    opacity: 0.6;
+}
+
+/* ── IOC table display ── */
+.report-ioc-detail {
+    padding: 6px 0 2px 48px;
+    border-top: 1px solid var(--border);
+    margin-top: 6px;
+}
+
+.ioc-table-wrap {
+    margin-bottom: 8px;
+}
+
+.ioc-table-wrap:last-child {
+    margin-bottom: 0;
+}
+
+.ioc-table-header {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 4px;
+}
+
+.ioc-table-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--green);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.ioc-table-count {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    background: var(--bg-elevated);
+    padding: 1px 6px;
+    border-radius: 4px;
+}
+
+.ioc-table {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 2px;
+}
+
+.ioc-row {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10.5px;
+    line-height: 1.5;
+    padding: 3px 8px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    color: var(--text-secondary);
+    word-break: break-all;
+    transition: border-color 0.15s;
+}
+
+.ioc-row:hover {
+    border-color: var(--border-hover);
+}
+
+.ioc-details {
+    margin-top: 2px;
+}
+
+.ioc-details[open] .ioc-summary {
+    border-color: var(--accent);
+    background: var(--accent-glow);
+}
+
+.ioc-summary {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--accent);
+    cursor: pointer;
+    padding: 4px 10px;
+    border: 1px dashed var(--border);
+    border-radius: 4px;
+    user-select: none;
+    transition: border-color 0.2s, background 0.2s;
+    display: inline-block;
+}
+
+.ioc-summary::marker {
+    color: var(--accent);
+}
+
+.ioc-summary:hover {
+    border-color: var(--accent);
+    background: var(--accent-glow);
+}
+
+.ioc-table-extra {
+    margin-top: 2px;
+}
+
+@media (max-width: 600px) {
+    .report-ioc-detail {
+        padding-left: 0;
+    }
+
+    .ioc-table {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ── Report card tag chips ── */
+.report-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-bottom: 4px;
+}
+
+.tag-actor {
+    background: rgba(79, 195, 247, 0.08);
+    color: var(--accent);
+    border-color: rgba(79, 195, 247, 0.15);
+}
+
+.tag-ioc {
+    background: rgba(102, 187, 106, 0.08);
+    color: var(--green);
+    border-color: rgba(102, 187, 106, 0.15);
+}
+
+.report-ioc-line {
+    margin-top: 8px;
+    padding: 8px 0 0 48px;
+    border-top: 1px solid var(--border);
+}
+
+@media (max-width: 600px) {
+    .report-ioc-line {
+        padding-left: 0;
+    }
+}
+
+/* ── Opinion section numbering ── */
+.section-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--accent);
+    margin-right: 6px;
+    user-select: none;
+}
+
+/* ── Source footnotes in opinion ── */
+.para-sources {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    color: var(--text-secondary);
+    margin-top: 10px;
+    padding-top: 8px;
+    border-top: 1px solid var(--border);
+    line-height: 1.6;
+}
+
+.para-sources a {
+    font-family: 'Inter', sans-serif;
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(79, 195, 247, 0.3);
+}
+
+.para-sources a:hover {
+    border-bottom-color: var(--accent);
+}
+
+/* ── Scroll to top ── */
+.scroll-top {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    color: var(--text-secondary);
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.3s ease, transform 0.3s ease, border-color 0.2s, background 0.2s;
+    z-index: 999;
+    pointer-events: none;
+}
+
+.scroll-top.visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.scroll-top:hover {
+    border-color: var(--accent);
+    background: var(--accent-glow);
+    color: var(--accent);
+}
+
+/* ── TL;DR card ── */
+.tldr-card {
+    background: linear-gradient(135deg, var(--bg-elevated) 0%, var(--bg-card) 100%);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: var(--radius);
+    padding: 20px 24px;
+    margin-bottom: 32px;
+}
+
+.tldr-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+}
+
+.tldr-bullets {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.tldr-bullets li {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--text);
+    padding: 4px 0 4px 20px;
+    position: relative;
+}
+
+.tldr-bullets li::before {
+    content: "▸";
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+}
+
+.tldr-bullets li:last-child {
+    margin-bottom: 0;
+}
+
+/* ── Visual section break ── */
+.section-break {
+    text-align: center;
+    margin: 32px 0;
+    font-family: 'Literata', Georgia, serif;
+    font-size: 14px;
+    letter-spacing: 6px;
+    color: var(--border);
+    user-select: none;
+}
+
+/* ── Animations ── */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ── Responsive ── */
+@media (max-width: 600px) {
+    .hero {
+        padding: 50px 20px 40px;
+    }
+
+    .stats-bar {
+        gap: 6px;
+    }
+
+    .stat-chip {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+
+    .article-body {
+        font-size: 16px;
+    }
+
+    .article-body p:first-of-type::first-letter {
+        font-size: 2.6em;
+    }
+
+    .report-card-header {
+        flex-wrap: wrap;
+    }
+
+    .report-date {
+        width: 100%;
+        margin-top: -6px;
+        padding-left: 48px;
+    }
+
+    .refs {
+        margin-left: 0;
+    }
+}
+</style>
 </head>
 <body>
+<div class="progress-bar" id="progressBar"></div>
 
 <div class="hero">
+    <div class="hero-glow"></div>
+    <div class="hero-eyebrow">Threat Intelligence Briefing</div>
     <h1>Daily Threat Pulse</h1>
-    <p class="meta">2026-07-25</p>
+    <div class="hero-date">July 25, 2026</div>
 </div>
 
-<div class="container">
-    <div class="stats-bar">
-        <div class="stat-chip"><span class="num">198</span><span class="lbl">Reports</span></div>
-        <div class="stat-chip"><span class="num">65</span><span class="lbl">Adversaries</span></div>
-        <div class="stat-chip"><span class="num">124</span><span class="lbl">Malware</span></div>
-        <div class="stat-chip"><span class="num">101</span><span class="lbl">CVEs</span></div>
-        <div class="stat-chip"><span class="num">4104</span><span class="lbl">IOCs</span></div>
-    </div>
-
-    <div class="content">
-        <h1>Daily Threat Intelligence Blog — 2026-07-25</h1>
-
-<h2>Opinion of a DFIR Guy</h2>
-
-<p>If I had to sum up this cycle in one phrase, it'd be: <strong>credential theft &amp; infostealers everywhere</strong>. 2 reports under this theme alone, including <strong>Dolphin X Stealer Targets 300+ Apps and Profiles Users with AI</strong> attributed to Kontraktnik.</p>
-
-<p><strong>Credential Theft &amp; Infostealers</strong>: 2 reports — notable ones include Dolphin X Stealer Targets 300+ Apps and Profiles U, Abusing Trusted Business Workflows: A Multi-Stage .</p>
-
-<p><strong>Other Campaigns</strong>: 1 reports — notable ones include Inside a TrickBot Variant Using DNS Tunneling for .</p>
-
-<p><strong>Supply Chain Attacks</strong>: 1 reports — notable ones include Detecting the Klue supply chain attack in Salesfor.</p>
-
-<p>What concerns me most isn't any single campaign — it's the convergence of techniques. Social engineering paired with supply chain abuse paired with better evasion. The stacks are getting deeper.</p>
-
-<p>— Based on 5 reports from the last 24 hours.</p>
-
-<p><strong>Sources:</strong></p>
-<li><a href="https://www.fortinet.com/blog/threat-research/inside-a-trickbot-variant-using-dns-tunneling-for-c2">Inside a TrickBot Variant Using DNS Tunneling for C2</a></li>
-<li><a href="https://www.varonis.com/blog/dolphin-x-stealer">Dolphin X Stealer Targets 300+ Apps and Profiles Users with </a></li>
-<li><a href="https://www.seqrite.com/blog/abusing-trusted-business-workflows-a-multi-stage-phantom-stealer-campaign/">Abusing Trusted Business Workflows: A Multi-Stage Phantom St</a></li>
-<li><a href="https://securitylabs.datadoghq.com/articles/detecting-the-klue-supply-chain-attack-in-salesforce/">Detecting the Klue supply chain attack in Salesforce instanc</a></li>
-<li><a href="https://securelist.com/whatsapp-vbs-rmm-campaign/120290/">An unknown actor distributes malicious VBS scripts via Whats</a></li>
-
-<hr>
-
-<blockquote>
-<p>[!tldr] TL;DR</p>
-<p><strong>5 reports</strong> (2026-07-22) | <strong>2 adversaries</strong> | <strong>2 malware families</strong> | <strong>0 CVEs</strong> | <strong>80 IOCs</strong></p>
-</blockquote>
-
-<hr>
-
-<h2>Key Themes</h2>
-
-<h3>Other Campaigns</h3>
-
-<li><strong><a href="#2026-07-22 Inside a TrickBot Variant Using DNS Tunneling for C2">2026-07-22 Inside a TrickBot Variant Using DNS Tunneling for C2</a></strong> (2026-07-22) — Actor: Unknown actor</li>
-
-<h3>Credential Theft &amp; Infostealers</h3>
-
-<li><strong><a href="#2026-07-22 Dolphin X Stealer Targets 300+ Apps and Profiles Users with AI">2026-07-22 Dolphin X Stealer Targets 300+ Apps and Profiles Users with AI</a></strong> (2026-07-22) — Actor: Kontraktnik</li>
-<li><strong><a href="#2026-07-22 Abusing Trusted Business Workflows_ A Multi-Stage Phantom Stealer Campaign">2026-07-22 Abusing Trusted Business Workflows_ A Multi-Stage Phantom Stealer Campaign</a></strong> (2026-07-22) — Actor: Unknown actor</li>
-
-<h3>Supply Chain Attacks</h3>
-
-<li><strong><a href="#2026-06-23 Detecting the Klue supply chain attack in Salesforce instances">2026-06-23 Detecting the Klue supply chain attack in Salesforce instances</a></strong> (2026-07-22) — Actor: Icarus</li>
-
-<h3>Malware Loaders &amp; Backdoors</h3>
-
-<li><strong><a href="#2026-06-22 An unknown actor distributes malicious VBS scripts via WhatsApp">2026-06-22 An unknown actor distributes malicious VBS scripts via WhatsApp</a></strong> (2026-07-22) — Actor: Unknown actor</li>
-
-<hr>
-
-<h2>Top Adversaries</h2>
-
-<li><strong><a href="#Icarus">Icarus</a></strong> (2026-07-22) — Type: Cybercrime, Espionage, Nation-State, Unknown | 3 reports</li>
-<li><strong><a href="#Kontraktnik">Kontraktnik</a></strong> (2026-07-22) — Type: Unknown | 1 reports</li>
-
-<hr>
-
-<h2>Top Malware Families</h2>
-
-<li><strong><a href="#infostealer">infostealer</a></strong> (2026-07-22) — Used by: <a href="#ClickLock Dev">ClickLock Dev</a>, <a href="#Gamaredon">Gamaredon</a>, <a href="#Kimsuky">Kimsuky</a></li>
-<li><strong><a href="#rat">rat</a></strong> (2026-07-22) — Used by: <a href="#Kimsuky">Kimsuky</a>, <a href="#Kontraktnik">Kontraktnik</a>, <a href="#SideCopy">SideCopy</a></li>
-
-<hr>
-
-<h2>Critical CVEs</h2>
+<div class="stats-bar">
+    <div class="stat-chip"><span class="num">0</span><span class="lbl">Reports</span></div>
+    <div class="stat-chip"><span class="num">0</span><span class="lbl">Adversaries</span></div>
+    <div class="stat-chip"><span class="num">0</span><span class="lbl">Malware</span></div>
+    <div class="stat-chip"><span class="num">0</span><span class="lbl">CVEs</span></div>
+    <div class="stat-chip"><span class="num">0</span><span class="lbl">IOCs</span></div>
+</div>
 
 
-<hr>
 
-<h2>Shared IOCs (High-Confidence Connections)</h2>
-
-<table><thead><tr>
-<th>IOC</th>
-<th>Type</th>
-<th>Pulses</th>
-</tr></thead><tbody>
-<tr>
-<td><a href="#ipv4_94.154.32.160">ipv4_94.154.32.160</a></td>
-<td>ipv4</td>
-<td>3</td>
-</tr>
-<tr>
-<td><a href="#domain_baoxis.cc">domain_baoxis.cc</a></td>
-<td>domain</td>
-<td>2</td>
-</tr>
-<tr>
-<td><a href="#hostname_invoice.msopsa.top">hostname_invoice.msopsa.top</a></td>
-<td>hostname</td>
-<td>2</td>
-</tr>
-<tr>
-<td><a href="#hostname_temu.baskwms.top">hostname_temu.baskwms.top</a></td>
-<td>hostname</td>
-<td>2</td>
-</tr>
-<tr>
-<td><a href="#ipv4_138.226.246.94">ipv4_138.226.246.94</a></td>
-<td>ipv4</td>
-<td>2</td>
-</tr>
-<tr>
-<td><a href="#ipv4_212.86.125.24">ipv4_212.86.125.24</a></td>
-<td>ipv4</td>
-<td>2</td>
-</tr>
-<tr>
-<td><a href="#md5_02bb20455cc592a69c080abac770ce90">md5_02bb20455cc592a69c080abac770ce90</a></td>
-<td>md5</td>
-<td>2</td>
-</tr>
-<tr>
-<td><a href="#md5_05d188f071d097f5b6bd8138749b4b14">md5_05d188f071d097f5b6bd8138749b4b14</a></td>
-<td>md5</td>
-<td>2</td>
-</tr>
-<tr>
-<td><a href="#md5_0ba93109757776a44de9d8c88baa4963">md5_0ba93109757776a44de9d8c88baa4963</a></td>
-<td>md5</td>
-<td>2</td>
-</tr>
-<tr>
-<td><a href="#md5_1a3cc75466ffb1971482f7abf7aabc3f">md5_1a3cc75466ffb1971482f7abf7aabc3f</a></td>
-<td>md5</td>
-<td>2</td>
-</tr>
-<tr>
-<td><a href="#md5_1c47c63e5ed25060d95359c57c77b107">md5_1c47c63e5ed25060d95359c57c77b107</a></td>
-<td>md5</td>
-<td>2</td>
-</tr>
-<tr>
-<td><a href="#md5_1d94fbe9cab21278cc3f104bea334d08">md5_1d94fbe9cab21278cc3f104bea334d08</a></td>
-<td>md5</td>
-<td>2</td>
-</tr>
-<tr>
-<td><a href="#md5_20209b3a32769afc6a75694b8d8839dd">md5_20209b3a32769afc6a75694b8d8839dd</a></td>
-<td>md5</td>
-<td>2</td>
-</tr>
-<tr>
-<td><a href="#md5_2c6f05f1f309d89b2236e6c8b59c88f9">md5_2c6f05f1f309d89b2236e6c8b59c88f9</a></td>
-<td>md5</td>
-<td>2</td>
-</tr>
-<tr>
-<td><a href="#md5_31037a42ca048e06e69a78f55bc2eff5">md5_31037a42ca048e06e69a78f55bc2eff5</a></td>
-<td>md5</td>
-<td>2</td>
-</tr>
-
-<hr>
-
-<h2>Explore</h2>
-
-</tbody></table>
-<li><a href="#00_Dashboard">00_Dashboard</a> — Dataview tables and statistics</li>
-<li><a href="#Entities/Adversaries">Entities/Adversaries</a> — Threat actor profiles</li>
-<li><a href="#Entities/Malware">Entities/Malware</a> — Malware family profiles</li>
-<li><a href="#Entities/CVEs">Entities/CVEs</a> — Vulnerability details</li>
-<li><a href="#Entities/IOCs">Entities/IOCs</a> — Indicator database</li>
-<li><a href="#00_Map_of_Content">00_Map_of_Content</a> — Vault structure</li>
-
-<blockquote>
-<p>[!tip] Graph View</p>
-<p>Press <code>Ctrl/Cmd+G</code> to open the knowledge graph. Filter by <code>tag:#entity</code> to see all entities, or <code>tag:#adversary</code> for actors only.</p>
-</blockquote>
-
-<hr>
-<p><em>Generated at 2026-07-25 18:20 UTC</em></p>
+<div class="article-wrap">
+    <div class="article">
+        <div class="article-header fade-in">
+            <div class="label">Analysis & Opinion</div>
+            <h2>Opinion of a DFIR Guy</h2>
+        </div>
+        <div class="tldr-card fade-in" style="transition-delay: 0.05s"><div class="tldr-label">TL;DR</div><ul class="tldr-bullets"><li>0 reports analyzed</li></ul></div>
+        <div class="article-body fade-in" style="transition-delay: 0.1s">
+            <p><span class='section-num'>1.</span> If I had to sum up this cycle in one phrase, it'd be: <strong>credential theft & infostealers everywhere</strong>. 2 reports under this theme alone, including <strong>Dolphin X Stealer Targets 300+ Apps and Profiles Users with AI</strong> attributed to Kontraktnik.</p><p><span class='section-num'>2.</span> <strong>Credential Theft & Infostealers</strong>: 2 reports — notable ones include Dolphin X Stealer Targets 300+ Apps and Profiles U, Abusing Trusted Business Workflows: A Multi-Stage .</p><p><span class='section-num'>3.</span> <strong>Other Campaigns</strong>: 1 reports — notable ones include Inside a TrickBot Variant Using DNS Tunneling for .</p><p><span class='section-num'>4.</span> <strong>Supply Chain Attacks</strong>: 1 reports — notable ones include Detecting the Klue supply chain attack in Salesfor.</p><p><span class='section-num'>5.</span> What concerns me most isn't any single campaign — it's the convergence of techniques. Social engineering paired with supply chain abuse paired with better evasion. The stacks are getting deeper.</p><p><span class='section-num'>6.</span> — Based on 5 reports from the last 24 hours.</p><p><span class='section-num'>7.</span> <strong>Sources:</strong>
+- <a href="https://www.fortinet.com/blog/threat-research/inside-a-trickbot-variant-using-dns-tunneling-for-c2" target="_blank" rel="noopener">Inside a TrickBot Variant Using DNS Tunneling for C2</a>
+- <a href="https://www.varonis.com/blog/dolphin-x-stealer" target="_blank" rel="noopener">Dolphin X Stealer Targets 300+ Apps and Profiles Users with </a>
+- <a href="https://www.seqrite.com/blog/abusing-trusted-business-workflows-a-multi-stage-phantom-stealer-campaign/" target="_blank" rel="noopener">Abusing Trusted Business Workflows: A Multi-Stage Phantom St</a>
+- <a href="https://securitylabs.datadoghq.com/articles/detecting-the-klue-supply-chain-attack-in-salesforce/" target="_blank" rel="noopener">Detecting the Klue supply chain attack in Salesforce instanc</a>
+- <a href="https://securelist.com/whatsapp-vbs-rmm-campaign/120290/" target="_blank" rel="noopener">An unknown actor distributes malicious VBS scripts via Whats</a><div class="para-sources">Sources: <a href="https://www.fortinet.com/blog/threat-research/inside-a-trickbot-variant-using-dns-tunneling-for-c2" target="_blank" rel="noopener">fortinet.com</a>, <a href="https://www.varonis.com/blog/dolphin-x-stealer" target="_blank" rel="noopener">varonis.com</a>, <a href="https://www.seqrite.com/blog/abusing-trusted-business-workflows-a-multi-stage-phantom-stealer-campaign/" target="_blank" rel="noopener">seqrite.com</a>, <a href="https://securitylabs.datadoghq.com/articles/detecting-the-klue-supply-chain-attack-in-salesforce/" target="_blank" rel="noopener">securitylabs.datadoghq.com</a>, <a href="https://securelist.com/whatsapp-vbs-rmm-campaign/120290/" target="_blank" rel="noopener">securelist.com</a></div></p>
+        </div>
     </div>
 </div>
 
-<footer class="site-footer">
-    <p><a href="https://github.com/jakesj425/threat-intel-blog">Source</a> &middot; <a href="https://pages.github.com">GitHub Pages</a></p>
+<div class="section-divider fade-in" style="transition-delay: 0.2s">
+    <div class="section-divider-line"></div>
+    <div class="section-divider-label">Threat Landscape</div>
+</div>
+
+<div class="intel-section fade-in" style="transition-delay: 0.3s">
+    <h2>Key Intelligence</h2>
+    
+    
+    
+</div>
+
+<div class="reports-section">
+    <h2>Latest Reports</h2>
+    
+</div>
+
+<footer class="site-footer fade-in" style="transition-delay: 0.4s">
+    <div class="footer-quote">"The only good breach is the one you detect."</div>
+    <div class="footer-meta">Report generated 2026-07-25 18:20 UTC &middot; jakesj425.github.io/threat-intel-blog</div>
 </footer>
 
+<button class="scroll-top" id="scrollTop" aria-label="Scroll to top">&#8593;</button>
+
+<script>
+// ── Reading progress ──
+window.addEventListener('scroll', function() {
+    const bar = document.getElementById('progressBar');
+    const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    bar.style.width = (winScroll / height * 100) + '%';
+});
+
+// ── Intersection Observer for fade-in ──
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    });
+}, {
+    threshold: 0.1,
+    rootMargin: '0px 0px -40px 0px'
+});
+
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// ── Scroll to top ──
+const scrollBtn = document.getElementById('scrollTop');
+window.addEventListener('scroll', function() {
+    const scrollY = window.scrollY || document.documentElement.scrollTop;
+    scrollBtn.classList.toggle('visible', scrollY > 400);
+});
+scrollBtn.addEventListener('click', function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+</script>
 </body>
 </html>
