@@ -94,7 +94,7 @@
 <header>
     <h1>Daily Threat Intelligence Blog</h1>
     <p class="subtitle">Automated threat intel summaries from OTX pulse data, enriched with MITRE ATT&amp;CK TTPs and D3FEND countermeasures.</p>
-    <p class="meta">2026-07-25 | Generated 2026-07-25 18:10 UTC</p>
+    <p class="meta">2026-07-25 | Generated 2026-07-25 18:12 UTC</p>
     <div class="stats">
         <div class="stat"><div class="stat-value">198</div><div class="stat-label">Reports</div></div>
         <div class="stat"><div class="stat-value">65</div><div class="stat-label">Adversaries</div></div>
@@ -105,41 +105,98 @@
 </header>
 
 <main>
-<h1>Daily Threat Intelligence Blog — 2026-07-25  |  Window: 2026-07-25</h1>
+<h1>Daily Threat Intelligence Blog — 2026-07-25  |  Window: 2026-07-22</h1>
 
 <h2>LinkedIn Post</h2>
 <p>&lt;!-- LINKEDIN_POST_START --&gt;</p>
 
 <p><strong>🔥 Weekly Threat Intel Roundup — DFIR Hot Takes 🔥</strong></p>
 
+<li><strong>Inside a TrickBot Variant Using DNS Tunneling for C2</strong> — Unknown</li>
+<li><strong>Dolphin X Stealer Targets 300+ Apps and Profiles Users with AI</strong> — Kontraktnik</li>
+<li><strong>Abusing Trusted Business Workflows: A Multi-Stage Phantom Stealer Campaign</strong> — Unknown</li>
+<li><strong>Detecting the Klue supply chain attack in Salesforce instances</strong> — Icarus</li>
+<li><strong>An unknown actor distributes malicious VBS scripts via WhatsApp</strong> — Unknown</li>
 
 <p>Key themes this week:</p>
 
+<li>Other Campaigns (1 reports)</li>
+<li>Credential Theft &amp; Infostealers (2 reports)</li>
+<li>Supply Chain Attacks (1 reports)</li>
+<li>Malware Loaders &amp; Backdoors (1 reports)</li>
 
 <p>The threat landscape keeps evolving — supply chain attacks on npm/PyPi, AI-powered solo operators, and decade-old router vulnerabilities still being exploited at scale. Stay sharp out there.</p>
 
 <p>&lt;!-- LINKEDIN_POST_END --&gt;</p>
 
+<h2>Opinion of a DFIR Guy</h2>
+
+<h3>1. Inside a TrickBot Variant Using DNS Tunneling for C2</h3>
+<p>This TrickBot variant (not to be confused with the original botnet still operated by UNC1878) is a standalone  fork that swaps HTTP for DNS tunneling over TXT and A records. The evasion is notable — it registers as a Wireshark auto-update service and uses Nslookup to exfil data. DNS tunneling is noisy if you know what to look for: abnormally long TXT queries, high query volume to a single domain, and base64-encoded subdomains. If you don't have DNS query logging at the edge, this variant will fly right under the radar.</p>
+
+<p><strong>Source:</strong> <a href="https://www.fortinet.com/blog/threat-research/inside-a-trickbot-variant-using-dns-tunneling-for-c2">fortinet.com</a></p>
+
+<h3>2. Dolphin X Stealer Targets 300+ Apps and Profiles Users with AI</h3>
+<p>A MaaS stealer that's aggressively pushing the envelope on victim profiling. Dolphin X uses AI-powered data filtering — it scans for high-value targets by scraping sensitive files, browser profiles, and over 300 application configurations, then exfiltrates only what matters. The server-side build system lets operators customize the payload per target. What stands out here is the automation: the malware decides who's worth stealing from, not the operator. Defenders should monitor for unusual browser profile access and outbound HTTPS to unknown endpoints, especially from non-browser processes.</p>
+
+<p><strong>Source:</strong> <a href="https://www.varonis.com/blog/dolphin-x-stealer">varonis.com</a></p>
+
+<h3>3. Abusing Trusted Business Workflows: A Multi-Stage Phantom Stealer Campaign</h3>
+<p>A multi-stage campaign from a threat actor likely focused on Southeast Asian targets. Phantom Stealer v3.5.0 uses UPS and LHDN-themed phishing lures to deliver a payload that progresses through AES-encrypted —&gt; XOR —&gt; reflective .NET loading before establishing SMTP exfiltration. The evolution to v3.5.0 suggests active development. The phishing angles are convincing to anyone who deals with logistics or tax authorities. Email gateway policies blocking archive-to-exe chains and monitoring for .NET reflection load would catch this at stages 2 or 3.</p>
+
+<p><strong>Source:</strong> <a href="https://www.seqrite.com/blog/abusing-trusted-business-workflows-a-multi-stage-phantom-stealer-campaign/">seqrite.com</a></p>
+
+<h3>4. Detecting the Klue supply chain attack in Salesforce instances</h3>
+<p>The Klue supply chain attack demonstrates how third-party risk cascades in SaaS ecosystems. The Icarus group exploited a dormant service account in a Klue integration — a credential that should have been rotated or revoked — to steal OAuth tokens and escalate privileges across Salesforce instances. This is the kind of attack that bypasses all your security controls because it originates from a trusted integration. The lesson: audit unused API credentials aggressively, enforce OAuth token binding, and treat every integration as a potential pivot point.</p>
+
+<p><strong>Source:</strong> <a href="https://securitylabs.datadoghq.com/articles/detecting-the-klue-supply-chain-attack-in-salesforce/">securitylabs.datadoghq.com</a></p>
+
+<h3>5. An unknown actor distributes malicious VBS scripts via WhatsApp</h3>
+<p>A social engineering campaign using compromised WhatsApp accounts to distribute VBScript droppers that ultimately deliver ValleyRAT. The attack chain is deceptively simple: the victim receives a message from a trusted contact -&gt; clicks a link -&gt; a VBS script downloads -&gt; ValleyRAT deploys with RMM-like capabilities for persistent access. ValleyRAT has been connected to a Chinese-speaking APT group in prior reporting. The WhatsApp vector is effective because it weaponizes trust — the message comes from someone the victim knows. User education needs to cover messaging apps, not just email.</p>
+
+<p><strong>Source:</strong> <a href="https://securelist.com/whatsapp-vbs-rmm-campaign/120290/">securelist.com</a></p>
+
 <hr>
 
 <blockquote>
 <p>[!tldr] TL;DR</p>
-<p><strong>0 reports</strong> (2026-07-25) | <strong>0 adversaries</strong> | <strong>0 malware families</strong> | <strong>0 CVEs</strong> | <strong>0 IOCs</strong></p>
+<p><strong>5 reports</strong> (2026-07-22) | <strong>2 adversaries</strong> | <strong>2 malware families</strong> | <strong>0 CVEs</strong> | <strong>80 IOCs</strong></p>
 </blockquote>
 
 <hr>
 
 <h2>Key Themes</h2>
 
+<h3>Other Campaigns</h3>
+
+<li><strong><a href="#2026-07-22 Inside a TrickBot Variant Using DNS Tunneling for C2">2026-07-22 Inside a TrickBot Variant Using DNS Tunneling for C2</a></strong> (2026-07-22) — Actor: Unknown actor</li>
+
+<h3>Credential Theft &amp; Infostealers</h3>
+
+<li><strong><a href="#2026-07-22 Dolphin X Stealer Targets 300+ Apps and Profiles Users with AI">2026-07-22 Dolphin X Stealer Targets 300+ Apps and Profiles Users with AI</a></strong> (2026-07-22) — Actor: Kontraktnik</li>
+<li><strong><a href="#2026-07-22 Abusing Trusted Business Workflows_ A Multi-Stage Phantom Stealer Campaign">2026-07-22 Abusing Trusted Business Workflows_ A Multi-Stage Phantom Stealer Campaign</a></strong> (2026-07-22) — Actor: Unknown actor</li>
+
+<h3>Supply Chain Attacks</h3>
+
+<li><strong><a href="#2026-06-23 Detecting the Klue supply chain attack in Salesforce instances">2026-06-23 Detecting the Klue supply chain attack in Salesforce instances</a></strong> (2026-07-22) — Actor: Icarus</li>
+
+<h3>Malware Loaders &amp; Backdoors</h3>
+
+<li><strong><a href="#2026-06-22 An unknown actor distributes malicious VBS scripts via WhatsApp">2026-06-22 An unknown actor distributes malicious VBS scripts via WhatsApp</a></strong> (2026-07-22) — Actor: Unknown actor</li>
+
 <hr>
 
 <h2>Top Adversaries</h2>
 
+<li><strong><a href="#Icarus">Icarus</a></strong> (2026-07-22) — Type: Cybercrime, Espionage, Nation-State, Unknown | 3 reports</li>
+<li><strong><a href="#Kontraktnik">Kontraktnik</a></strong> (2026-07-22) — Type: Unknown | 1 reports</li>
 
 <hr>
 
 <h2>Top Malware Families</h2>
 
+<li><strong><a href="#infostealer">infostealer</a></strong> (2026-07-22) — Used by: <a href="#ClickLock Dev">ClickLock Dev</a>, <a href="#Gamaredon">Gamaredon</a>, <a href="#Kimsuky">Kimsuky</a></li>
+<li><strong><a href="#rat">rat</a></strong> (2026-07-22) — Used by: <a href="#Kimsuky">Kimsuky</a>, <a href="#Kontraktnik">Kontraktnik</a>, <a href="#SideCopy">SideCopy</a></li>
 
 <hr>
 
@@ -150,12 +207,92 @@
 
 <h2>Shared IOCs (High-Confidence Connections)</h2>
 
-<p><em>No shared IOCs found in this cycle.</em></p>
+<table><thead><tr>
+<th>IOC</th>
+<th>Type</th>
+<th>Pulses</th>
+</tr></thead><tbody>
+<tr>
+<td><a href="#ipv4_94.154.32.160">ipv4_94.154.32.160</a></td>
+<td>ipv4</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="#domain_baoxis.cc">domain_baoxis.cc</a></td>
+<td>domain</td>
+<td>2</td>
+</tr>
+<tr>
+<td><a href="#hostname_invoice.msopsa.top">hostname_invoice.msopsa.top</a></td>
+<td>hostname</td>
+<td>2</td>
+</tr>
+<tr>
+<td><a href="#hostname_temu.baskwms.top">hostname_temu.baskwms.top</a></td>
+<td>hostname</td>
+<td>2</td>
+</tr>
+<tr>
+<td><a href="#ipv4_138.226.246.94">ipv4_138.226.246.94</a></td>
+<td>ipv4</td>
+<td>2</td>
+</tr>
+<tr>
+<td><a href="#ipv4_212.86.125.24">ipv4_212.86.125.24</a></td>
+<td>ipv4</td>
+<td>2</td>
+</tr>
+<tr>
+<td><a href="#md5_02bb20455cc592a69c080abac770ce90">md5_02bb20455cc592a69c080abac770ce90</a></td>
+<td>md5</td>
+<td>2</td>
+</tr>
+<tr>
+<td><a href="#md5_05d188f071d097f5b6bd8138749b4b14">md5_05d188f071d097f5b6bd8138749b4b14</a></td>
+<td>md5</td>
+<td>2</td>
+</tr>
+<tr>
+<td><a href="#md5_0ba93109757776a44de9d8c88baa4963">md5_0ba93109757776a44de9d8c88baa4963</a></td>
+<td>md5</td>
+<td>2</td>
+</tr>
+<tr>
+<td><a href="#md5_1a3cc75466ffb1971482f7abf7aabc3f">md5_1a3cc75466ffb1971482f7abf7aabc3f</a></td>
+<td>md5</td>
+<td>2</td>
+</tr>
+<tr>
+<td><a href="#md5_1c47c63e5ed25060d95359c57c77b107">md5_1c47c63e5ed25060d95359c57c77b107</a></td>
+<td>md5</td>
+<td>2</td>
+</tr>
+<tr>
+<td><a href="#md5_1d94fbe9cab21278cc3f104bea334d08">md5_1d94fbe9cab21278cc3f104bea334d08</a></td>
+<td>md5</td>
+<td>2</td>
+</tr>
+<tr>
+<td><a href="#md5_20209b3a32769afc6a75694b8d8839dd">md5_20209b3a32769afc6a75694b8d8839dd</a></td>
+<td>md5</td>
+<td>2</td>
+</tr>
+<tr>
+<td><a href="#md5_2c6f05f1f309d89b2236e6c8b59c88f9">md5_2c6f05f1f309d89b2236e6c8b59c88f9</a></td>
+<td>md5</td>
+<td>2</td>
+</tr>
+<tr>
+<td><a href="#md5_31037a42ca048e06e69a78f55bc2eff5">md5_31037a42ca048e06e69a78f55bc2eff5</a></td>
+<td>md5</td>
+<td>2</td>
+</tr>
 
 <hr>
 
 <h2>Explore</h2>
 
+</tbody></table>
 <li><a href="#00_Dashboard">00_Dashboard</a> — Dataview tables and statistics</li>
 <li><a href="#Entities/Adversaries">Entities/Adversaries</a> — Threat actor profiles</li>
 <li><a href="#Entities/Malware">Entities/Malware</a> — Malware family profiles</li>
@@ -169,7 +306,7 @@
 </blockquote>
 
 <hr>
-<p><em>Generated by OTX-Obsidian Pipeline at 2026-07-25 18:09 UTC</em></p>
+<p><em>Generated by OTX-Obsidian Pipeline at 2026-07-25 18:12 UTC</em></p>
 </main>
 
 <footer class="footer">
