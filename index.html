@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Threat Pulse — October 22, 2026</title>
+<title>Threat Pulse — October 23, 2026</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;0,7..72,700;1,7..72,400;1,7..72,600&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
@@ -860,18 +860,18 @@ body {
     <div class="hero-glow"></div>
     <div class="hero-eyebrow">Threat Intelligence Briefing</div>
     <h1>Daily Threat Pulse</h1>
-    <div class="hero-date">October 22, 2026</div>
+    <div class="hero-date">October 23, 2026</div>
 </div>
 
 <div class="stats-bar">
-    <div class="stat-chip"><span class="num">15</span><span class="lbl">Reports</span></div>
-    <div class="stat-chip"><span class="num">6</span><span class="lbl">Adversaries</span></div>
+    <div class="stat-chip"><span class="num">6</span><span class="lbl">Reports</span></div>
+    <div class="stat-chip"><span class="num">1</span><span class="lbl">Adversaries</span></div>
     <div class="stat-chip"><span class="num">0</span><span class="lbl">Malware</span></div>
-    <div class="stat-chip"><span class="num">5</span><span class="lbl">CVEs</span></div>
-    <div class="stat-chip"><span class="num">301</span><span class="lbl">IOCs</span></div>
+    <div class="stat-chip"><span class="num">0</span><span class="lbl">CVEs</span></div>
+    <div class="stat-chip"><span class="num">31</span><span class="lbl">IOCs</span></div>
 </div>
 
-<div class="themes-row"><span class="theme-chip"><span class="theme-chip-name">Ransomware</span><span class="theme-chip-count">2</span></span><span class="theme-chip"><span class="theme-chip-name">Other Campaigns</span><span class="theme-chip-count">4</span></span><span class="theme-chip"><span class="theme-chip-name">Credential Theft & Infostealers</span><span class="theme-chip-count">3</span></span><span class="theme-chip"><span class="theme-chip-name">Malware Loaders & Backdoors</span><span class="theme-chip-count">6</span></span></div>
+<div class="themes-row"><span class="theme-chip"><span class="theme-chip-name">Social Engineering & Malvertising</span><span class="theme-chip-count">1</span></span><span class="theme-chip"><span class="theme-chip-name">Ransomware</span><span class="theme-chip-count">1</span></span><span class="theme-chip"><span class="theme-chip-name">Other Campaigns</span><span class="theme-chip-count">2</span></span><span class="theme-chip"><span class="theme-chip-name">Credential Theft & Infostealers</span><span class="theme-chip-count">1</span></span><span class="theme-chip"><span class="theme-chip-name">Malware Loaders & Backdoors</span><span class="theme-chip-count">1</span></span></div>
 
 <div class="article-wrap">
     <div class="article">
@@ -879,26 +879,9 @@ body {
             <div class="label">Analysis & Opinion</div>
             <h2>Opinion of a DFIR Guy</h2>
         </div>
-        <div class="tldr-card fade-in" style="transition-delay: 0.05s"><div class="tldr-label">TL;DR</div><ul class="tldr-bullets"><li>15 reports analyzed — 6 Malware Loaders & Backdoors, 4 Other Campaigns, 3 Credential Theft & Infostealers</li><li>6 adversarial groups identified</li><li>5 CVEs in active use</li><li>Ransomware activity across 2 reports</li><li>Top report: The Tale of Two INC Ransom Notes: A Ransomware Timeline</li></ul></div>
+        <div class="tldr-card fade-in" style="transition-delay: 0.05s"><div class="tldr-label">TL;DR</div><ul class="tldr-bullets"><li>6 reports analyzed — 2 Other Campaigns, 1 Social Engineering & Malvertising, 1 Ransomware</li><li>1 adversarial groups identified</li><li>Ransomware activity across 1 reports</li><li>Top report: October 2026 Spearphishing Campaign: Shared Tooling Between Kimsuky and APT-C-36</li></ul></div>
         <div class="article-body fade-in" style="transition-delay: 0.1s">
-            <p>The litellm supply chain compromise is the one that should sting most. Datadog shows attackers used stolen GitHub CLI OAuth tokens to inject into the release pipeline and drop a Python infostealer that runs on every interpreter start via `.pth` and `sitecustomize.py`. The payload targets cloud creds, AI tool sessions, browser secrets, and LiteLLM proxy config; cleanup requires manually deleting dropped files because removing the package won't help. This is the second LiteLLM hit in 2026 (TeamPCP-linked earlier). The lesson isn't "don't install packages" - it's that release pipelines need branch locks and token hygiene because developer CLI tokens are now crown jewels.</p><p>Two different camps are showing how AI is changing offense. Symantec caught "Skynet", an autonomous agent hunting exposed LLM endpoints to power scanning/exploitation/mining, with jailbreaks to strip refusals and 74 tools to hit frameworks/Prisma/Werkzeug/debuggers. Meanwhile Zscaler tracked a global, AI-assisted campaign using a customized ARTEX framework with Claude Code/Codex/Grok, role-based agents reviewing each other's work, project state persisted across sessions, and a jump server to route through. Both are pointing the same direction: agents can sustain long-running ops and route through stolen/abused inference, shifting cost to victims while keeping operators more hands-off.</p><p>Vuln exploitation remains relentless at the edge. ClingSTUN is turning vulnerable edge devices into attacker infra (32 CVEs in the pulse alone). NetScaler is seeing active intrusions chaining CVE-2026-88771/88779 with multiple reports calling out exploitation. BeyondTrust Remote Support has CVE-2026-102764 actively exploited (ARMORY CASTLE tied). Cisco FMC vulns are under active exploitation with multiple state-aligned actors (UAT-12197/11823/11988, Sandworm). PAN-OS CVE-2026-0257 exploitation is ongoing. Artifactory is hit with a zero-day chain. AhsayCBS flaws exploited for webshells/XMRig. The theme: scan once, exploit broadly, pivot from edge/management planes.<div class="para-sources">Source: <a href="https://unit42.paloaltonetworks.com/active-exploitation-of-pan-os-cve-2026-0257/?pdf=print&lg=en&_wpnonce=b95d08d606" target="_blank" rel="noopener">unit42.paloaltonetworks.com</a></div></p><p>Supply chain and initial access keep evolving. LiteLLM again; Midnight Mimosa exploiting Android firmware supply chain; a trojanized Terraform provider tied to TraderTraitor; Wazza device code phishing kit targeting M365; LLMjacking from stolen cloud billing to abuse inference. DPRK/Kimsuky remain active (Ukrainian targets, GitPower, Android supply chain). Ransomware crews (The Gentlemen, DragonForce) continue to professionalize.<div class="para-sources">Sources: <a href="https://www.sentinelone.com/labs/dont-call-us-well-call-your-apis-tradertraitor-backdoors-resurface-on-victim-with-no-crypto-ties/" target="_blank" rel="noopener">sentinelone.com</a>, <a href="https://www.acronis.com/en/tru/posts/the-gentlemen-a-closer-look-at-a-not-so-gentle-ransomware-as-a-service-operation/" target="_blank" rel="noopener">acronis.com</a></div></p><p>For defenders: treat AI infra as exposed attack surface (lock down unauthenticated LLM/MCP endpoints, monitor spend), harden release pipelines (token scoping/branch restrictions), focus on edge/management plane (inventory, patch aggressively, hunt for unusual builds like the HAProxy tradecraft we saw previously), and instrument for AI-assisted TTPs (multi-session persistence, role-based agents, automated pivots). The gap between offense and defense is growing as agents industrialize tradecraft.</p><p>ey Themes</p><h3>Ransomware</h3><ul class='opinion-list'><li><strong>[[2026-10-22 The Tale of Two INC Ransom Notes_ A Ransomware Timeline]]</strong> (2026-10-22) — Actor: INC</li><li><strong>[[2026-10-21 Threat Brief_ Active Exploitation of PAN-OS CVE-2026-0257]]</strong> (2026-10-21) — Actor: Spikey Scorpius, Tarnished Scorpius</li></ul><h3>Other Campaigns</h3><ul class='opinion-list'><li><strong>[[2026-10-22 Recent AI-Assisted Cyber Attacks in Japan_ Investigating Attack Infrastructure and Techniques]]</strong> (2026-10-22) — Actor: Unknown actor</li><li><strong>[[2026-10-22 Autonomous LLMjacking_ 'Skynet' Agent Hijacks Exposed AI Models to Run Attacks]]</strong> (2026-10-22) — Actor: Unknown actor</li><li><strong>[[2026-10-21 Ukraine's State Data-Exchange System Targeted by Russian-Speaking Operator via Graylog Log4Shell]]</strong> (2026-10-21) — Actor: Unknown actor</li><li><strong>[[2026-10-21 North Korea's Hangro Revisited]]</strong> (2026-10-21) — Actor: Unknown actor</li></ul><h3>Credential Theft & Infostealers</h3><ul class='opinion-list'><li><strong>[[2026-10-22 LiteLLM supply chain compromise]]</strong> (2026-10-22) — Actor: Unknown actor</li><li><strong>[[2026-10-21 Inside Wazza_ A Newly Observed Device Code Phishing Kit Targeting Microsoft 365 Accounts]]</strong> (2026-10-21) — Actor: Unknown actor</li><li><strong>[[2026-10-21 From Phishing to LLMjacking_ Threat Actors Targeting Cloud Billing Accounts for LLM Usage]]</strong> (2026-10-21) — Actor: Unknown actor</li></ul><h3>Malware Loaders & Backdoors</h3><ul class='opinion-list'><li><strong>[[2026-10-22 Inside a Global AI-Assisted Hacking Campaign]]</strong> (2026-10-22) — Actor: Unknown actor</li><li><strong>[[2026-10-21 The Gentlemen_ A closer look at a not-so-gentle ransomware-as-a-service operation]]</strong> (2026-10-21) — Actor: The Gentlemen</li><li><strong>[[2026-10-21 PAYLOAD ransomware attacks through Active Directory GPO]]</strong> (2026-10-21) — Actor: Unknown actor</li><li><strong>[[2026-10-21 Midnight Mimosa Malware Campaign Exploits Android Firmware Supply Chain]]</strong> (2026-10-21) — Actor: Unknown actor</li><li><strong>[[2026-10-21 Don't Call Us, We'll Call Your APIs _ TraderTraitor Backdoors Resurface on Victim With No Crypto Ties]]</strong> (2026-10-21) — Actor: TraderTraitor</li><li><em>...and 1 more</em></li></ul><p>## Top Adversaries</p><ul class='opinion-list'><li><strong>[[INC]]</strong> (2026-10-22) — Type: Cybercrime | 1 reports</li><li><strong>[[Lazarus Group]]</strong> (2026-10-21) — Type: Unknown | 1 reports</li><li><strong>[[Spikey Scorpius]]</strong> (2026-10-21) — Type: Cybercrime | 1 reports</li><li><strong>[[Tarnished Scorpius]]</strong> (2026-10-21) — Type: Cybercrime | 1 reports</li><li><strong>[[The Gentlemen]]</strong> (2026-10-21) — Type: Cybercrime, Unknown | 2 reports</li><li><strong>[[TraderTraitor]]</strong> (2026-10-09) — Type: Unknown | 2 reports</li></ul><p>## Top Malware Families</p><ul class='opinion-list'><li><strong>[[Qilin]]</strong> (2026-10-09) — Used by: [[Sandworm]], [[Spikey Scorpius]], [[Tarnished Scorpius]]</li><li><strong>[[The Gentlemen]]</strong> (2026-10-21) — Used by: [[The Gentlemen]]</li><li><strong>[[crossweb ex exploitation]]</strong> (2026-10-21) — Used by: [[Lazarus Group]]</li><li><strong>[[data-exfiltration]]</strong> (2026-10-21) — Used by: [[The Gentlemen]]</li><li><strong>[[inc ransomware]]</strong> (2026-10-22) — Used by: [[INC]]</li><li><strong>[[macos backdoors]]</strong> (2026-10-21) — Used by: [[TraderTraitor]]</li><li><strong>[[nickelloader]]</strong> (2026-10-18) — Used by: [[Lazarus]], [[Lazarus Group]]</li><li><strong>[[operation flashhole]]</strong> (2026-10-21) — Used by: [[Lazarus Group]]</li><li><strong>[[overlord rat]]</strong> () — Used by: Unknown</li><li><strong>[[ransomware-as-a-service]]</strong> (2026-10-15) — Used by: [[DragonForce]], [[The Gentlemen]]</li></ul><p>## Critical CVEs</p><ul class='opinion-list'><li><strong>[[CVE-2018-14847]]</strong> — CVSS: 9.1 (CRITICAL)</li><li><strong>[[CVE-2021-41987]]</strong> — CVSS: N/A (N/A)</li><li><strong>[[CVE-2023-27532]]</strong> — CVSS: 7.5 (HIGH)</li><li><strong>[[CVE-2025-70795]]</strong> — CVSS: 5.5 (MEDIUM)</li><li><strong>[[CVE-2026-0257]]</strong> — CVSS: 7.8 (HIGH)</li></ul><p>## Shared IOCs (High-Confidence Connections)</p><p>| IOC | Type | Pulses |
-| — --| —  — | —  — --|
-| [[ipv4_146.19.216.120]] | ipv4 | 2 |
-| [[ipv4_154.201.79.246]] | ipv4 | 2 |
-| [[ipv4_205.214.59.31]] | ipv4 | 2 |
-| [[ipv4_38.244.50.120]] | ipv4 | 2 |
-| [[md5_1414d4ef2d1191080abc59a407dcb6c5]] | md5 | 2 |
-| [[md5_250205ee4b8de59e60c745856f439608]] | md5 | 2 |
-| [[md5_2b784622422f4280e0b3e38b30dd87bc]] | md5 | 2 |
-| [[md5_2b7f1a7d5f5515c05d0c8e3857155ae2]] | md5 | 2 |
-| [[md5_2de346602433cdd1668f36b2e9db0be1]] | md5 | 2 |
-| [[md5_33b2d3ec9a35cfb0b5a5d7b24ce4140e]] | md5 | 2 |
-| [[md5_345057421c7d9ac2b671c47449f35030]] | md5 | 2 |
-| [[md5_36deebfcda4012d18706cd170c1edf1f]] | md5 | 2 |
-| [[md5_36f9e8cf47a28f9803fba427cf02a25c]] | md5 | 2 |
-| [[md5_37f18a20b9cf32e6f07450e903eaad7c]] | md5 | 2 |
-| [[md5_387f7af167530486adcf3d8546063462]] | md5 | 2 |</p><p>## Explore</p><ul class='opinion-list'><li>[[00_Dashboard]] — Dataview tables and statistics</li><li>[[Entities/Adversaries]] — Threat actor profiles</li><li>[[Entities/Malware]] — Malware family profiles</li><li>[[Entities/CVEs]] — Vulnerability details</li><li>[[Entities/IOCs]] — Indicator database</li><li>[[00_Map_of_Content]] — Vault structure</li></ul><p>> [!tip] Graph View
-> Press `Ctrl/Cmd+G` to open the knowledge graph. Filter by `tag:#entity` to see all entities, or `tag:#adversary` for actors only.</p><p><em>Generated at 2026-10-22 14:07 UTC</em></p>
+            <p>The report that stuck with me this week: <strong>October 2026 Spearphishing Campaign: Shared Tooling Between Kimsuky an</strong> from an unknown actor. Worth a close read if you're in the trenches.</p><p>What worries me most isn't any single report — it's the convergence. The same actors are getting better at blending social engineering, supply chain abuse, and evasion.</p><p>— Analysis based on 6 reports from the last 24 hours.</p>
         </div>
     </div>
 </div>
@@ -910,15 +893,32 @@ body {
 
 <div class="intel-section fade-in" style="transition-delay: 0.3s">
     <h2>Key Intelligence</h2>
-    <div class="pill-group"><div class="pill-group-label">Actors</div><div class="pill-row"><span class="pill">INC</span><span class="pill">Lazarus Group</span><span class="pill">Spikey Scorpius</span><span class="pill">Tarnished Scorpius</span><span class="pill">The Gentlemen</span><span class="pill">TraderTraitor</span></div></div>
+    <div class="pill-group"><div class="pill-group-label">Actors</div><div class="pill-row"><span class="pill">INC</span></div></div>
     
-    <div class="pill-group"><div class="pill-group-label">CVEs</div><div class="pill-row"><span class="pill">CVE-2018-14847</span><span class="pill">CVE-2021-41987</span><span class="pill">CVE-2023-27532</span><span class="pill">CVE-2025-70795</span><span class="pill">CVE-2026-0257</span></div></div>
+    
 </div>
 
 <div class="reports-section">
     <h2>Latest Reports</h2>
     
         <div class="report-card fade-in" style="transition-delay: 0.0s">
+            <div class="report-card-inner">
+                <div class="report-card-header">
+                    <span class="report-icon">⚠️</span>
+                    <div>
+                        <div class="report-title">October 2026 Spearphishing Campaign: Shared Tooling Between Kimsuky and APT-C-36</div>
+                        <div class="report-tags">
+                            <span class="tag tag-actor">Unknown</span>
+                            
+                        </div>
+                    </div>
+                    <span class="report-date"></span>
+                </div>
+                
+                
+            </div>
+        </div>
+        <div class="report-card fade-in" style="transition-delay: 0.06s">
             <div class="report-card-inner">
                 <div class="report-card-header">
                     <span class="report-icon">🔒</span>
@@ -935,7 +935,7 @@ body {
                 <ul class='refs'><li><a href="https://www.huntress.com/blog/two-inc-ransom-notes" target="_blank" rel="noopener">huntress.com</a></li></ul>
             </div>
         </div>
-        <div class="report-card fade-in" style="transition-delay: 0.06s">
+        <div class="report-card fade-in" style="transition-delay: 0.12s">
             <div class="report-card-inner">
                 <div class="report-card-header">
                     <span class="report-icon">⚠️</span>
@@ -952,7 +952,7 @@ body {
                 <ul class='refs'><li><a href="https://blogs.jpcert.or.jp/en/2026/10/web_api_attacks.html" target="_blank" rel="noopener">blogs.jpcert.or.jp</a></li></ul>
             </div>
         </div>
-        <div class="report-card fade-in" style="transition-delay: 0.12s">
+        <div class="report-card fade-in" style="transition-delay: 0.18s">
             <div class="report-card-inner">
                 <div class="report-card-header">
                     <span class="report-icon">📦</span>
@@ -969,7 +969,7 @@ body {
                 <ul class='refs'><li><a href="https://securitylabs.datadoghq.com/articles/litellm-compromised-pypi-docker" target="_blank" rel="noopener">securitylabs.datadoghq.com</a></li></ul>
             </div>
         </div>
-        <div class="report-card fade-in" style="transition-delay: 0.18s">
+        <div class="report-card fade-in" style="transition-delay: 0.24s">
             <div class="report-card-inner">
                 <div class="report-card-header">
                     <span class="report-icon">🐀</span>
@@ -986,7 +986,7 @@ body {
                 <ul class='refs'><li><a href="https://www.zscaler.com/blogs/security-research/inside-global-ai-assisted-hacking-campaign" target="_blank" rel="noopener">zscaler.com</a></li></ul>
             </div>
         </div>
-        <div class="report-card fade-in" style="transition-delay: 0.24s">
+        <div class="report-card fade-in" style="transition-delay: 0.3s">
             <div class="report-card-inner">
                 <div class="report-card-header">
                     <span class="report-icon">⚠️</span>
@@ -1003,181 +1003,11 @@ body {
                 <ul class='refs'><li><a href="https://www.security.com/blog-post/ai-llmjacking-skynet" target="_blank" rel="noopener">security.com</a></li></ul>
             </div>
         </div>
-        <div class="report-card fade-in" style="transition-delay: 0.3s">
-            <div class="report-card-inner">
-                <div class="report-card-header">
-                    <span class="report-icon">⚠️</span>
-                    <div>
-                        <div class="report-title">Ukraine's State Data-Exchange System Targeted by Russian-Speaking Operator via Graylog Log4Shell</div>
-                        <div class="report-tags">
-                            <span class="tag tag-actor">Unknown</span>
-                            <span class="tag tag-cve">CVE-2018-14847</span><span class="tag tag-cve">CVE-2021-41987</span>
-                        </div>
-                    </div>
-                    <span class="report-date">2026-10-21</span>
-                </div>
-                <div class="report-meta-line report-ioc-line"><span class="tag tag-ioc">Domain: 1</span><span class="tag tag-ioc">IP: 2</span><span class="tag tag-ioc">SHA256: 7</span></div><div class="report-ioc-detail"><div class="ioc-table-wrap"><div class="ioc-table-header"><span class="ioc-table-label">Domain</span><span class="ioc-table-count">1</span></div><div class="ioc-table"><div class="ioc-row">scanitex[.]com</div></div></div><div class="ioc-table-wrap"><div class="ioc-table-header"><span class="ioc-table-label">IP</span><span class="ioc-table-count">2</span></div><div class="ioc-table"><div class="ioc-row">31[.]77[.]220[.]141</div><div class="ioc-row">85[.]239[.]144[.]170</div></div></div><div class="ioc-table-wrap"><div class="ioc-table-header"><span class="ioc-table-label">SHA256</span><span class="ioc-table-count">7</span></div><div class="ioc-table"><div class="ioc-row">40103a4ae0abbef8f35a7adce7f50a9f536198a850b6eeb9761d6470d1fffa9e</div><div class="ioc-row">6dde072a64933967456a57610dce8978dab195f9f9de66a0ecd1b1c7bfacacae</div><div class="ioc-row">70af26f3fd65472877ba5a3676a60d4a7ea7bbcceddc8e363ca795f36bb96ac4</div><div class="ioc-row">7e43fe3888ac282b04074916fc4c5e33697a9f254403537e552f11b7cbd4ac4b</div><div class="ioc-row">ab8c39638608738349fddb02f73a0bb5712809b22cd2863f57829e8d6f35c24d</div></div><details class="ioc-details"><summary class="ioc-summary">Show 2 more</summary><div class="ioc-table ioc-table-extra"><div class="ioc-row">d2753dc8bb3ffc5b6aeea02a6bd2faa9d83c4d6f4c9e8ae207767fe6614609e3</div><div class="ioc-row">f1f5f46f5e5e3d111779310cf3b57461a18f12f903a88290a035993dc72d6a14</div></div></details></div></div>
-                <ul class='refs'><li><a href="https://hunt.io/blog/ukraine-state-data-exchange-graylog-log4shell" target="_blank" rel="noopener">hunt.io</a></li></ul>
-            </div>
-        </div>
-        <div class="report-card fade-in" style="transition-delay: 0.36s">
-            <div class="report-card-inner">
-                <div class="report-card-header">
-                    <span class="report-icon">🔒</span>
-                    <div>
-                        <div class="report-title">Threat Brief: Active Exploitation of PAN-OS CVE-2026-0257</div>
-                        <div class="report-tags">
-                            <span class="tag tag-actor">Spikey Scorpius</span><span class="tag tag-actor">Tarnished Scorpius</span>
-                            <span class="tag tag-cve">CVE-2023-27532</span><span class="tag tag-cve">CVE-2026-0257</span>
-                        </div>
-                    </div>
-                    <span class="report-date">2026-10-21</span>
-                </div>
-                <div class="report-meta-line report-ioc-line"><span class="tag tag-ioc">IP: 4</span></div><div class="report-ioc-detail"><div class="ioc-table-wrap"><div class="ioc-table-header"><span class="ioc-table-label">IP</span><span class="ioc-table-count">4</span></div><div class="ioc-table"><div class="ioc-row">146[.]19[.]216[.]119</div><div class="ioc-row">146[.]19[.]216[.]120</div><div class="ioc-row">146[.]19[.]216[.]125</div><div class="ioc-row">23[.]128[.]228[.]6</div></div></div></div>
-                <ul class='refs'><li><a href="https://unit42.paloaltonetworks.com/active-exploitation-of-pan-os-cve-2026-0257/?pdf=print&lg=en&_wpnonce=b95d08d606" target="_blank" rel="noopener">unit42.paloaltonetworks.com</a></li></ul>
-            </div>
-        </div>
-        <div class="report-card fade-in" style="transition-delay: 0.42s">
-            <div class="report-card-inner">
-                <div class="report-card-header">
-                    <span class="report-icon">🔒</span>
-                    <div>
-                        <div class="report-title">The Gentlemen: A closer look at a not-so-gentle ransomware-as-a-service operation</div>
-                        <div class="report-tags">
-                            <span class="tag tag-actor">The Gentlemen</span>
-                            <span class="tag tag-cve">CVE-2025-70795</span>
-                        </div>
-                    </div>
-                    <span class="report-date">2026-10-21</span>
-                </div>
-                <div class="report-meta-line report-ioc-line"><span class="tag tag-ioc">Domain: 1</span><span class="tag tag-ioc">IP: 1</span><span class="tag tag-ioc">MD5: 6</span><span class="tag tag-ioc">SHA1: 6</span><span class="tag tag-ioc">SHA256: 22</span><span class="tag tag-ioc">URL: 2</span></div><div class="report-ioc-detail"><div class="ioc-table-wrap"><div class="ioc-table-header"><span class="ioc-table-label">Domain</span><span class="ioc-table-count">1</span></div><div class="ioc-table"><div class="ioc-row">tezwsse5czllksjb7cwp65rvnk4oobmzti2znn42i43bjdfd2prqqkad[.]onion</div></div></div><div class="ioc-table-wrap"><div class="ioc-table-header"><span class="ioc-table-label">IP</span><span class="ioc-table-count">1</span></div><div class="ioc-table"><div class="ioc-row">2[.]5[.]30[.]112</div></div></div><div class="ioc-table-wrap"><div class="ioc-table-header"><span class="ioc-table-label">MD5</span><span class="ioc-table-count">6</span></div><div class="ioc-table"><div class="ioc-row">598b222fe1d12453639dc14b390b3fa9</div><div class="ioc-row">6440dff8fd8156ef54f6814207983d65</div><div class="ioc-row">698ce57e5f0ecda7b41d2c6c1e7ca177</div><div class="ioc-row">736a6b312fe80efea9bc2e482629be06</div><div class="ioc-row">926d26fae93d090519ac0f0e1155150e</div></div><details class="ioc-details"><summary class="ioc-summary">Show 1 more</summary><div class="ioc-table ioc-table-extra"><div class="ioc-row">f3c6ca1ba97b7f94ab52584dc62ea691</div></div></details></div><div class="ioc-table-wrap"><div class="ioc-table-header"><span class="ioc-table-label">SHA1</span><span class="ioc-table-count">6</span></div><div class="ioc-table"><div class="ioc-row">06c524df4947206f9d09181a187ead4128f8c0e9</div><div class="ioc-row">6983544798d04f180427d1cb81c3a11ba227bfd4</div><div class="ioc-row">9887bc4eed59173d94f5340ef7c09e8ea68cd824</div><div class="ioc-row">9e9cfecdae356761795f5c5f5655d1ec306e39d6</div><div class="ioc-row">9ef41c3f92003f73a9946f50ab5a20f6f5df56b7</div></div><details class="ioc-details"><summary class="ioc-summary">Show 1 more</summary><div class="ioc-table ioc-table-extra"><div class="ioc-row">a1894ecc337c34031986f5908c7300b2483074f6</div></div></details></div><div class="ioc-table-wrap"><div class="ioc-table-header"><span class="ioc-table-label">SHA256</span><span class="ioc-table-count">22</span></div><div class="ioc-table"><div class="ioc-row">1334f0189a8e6dbc48456fa4b482c5726ab7609f7fa652fcc4c1a96f2334436f</div><div class="ioc-row">143af42b492b0f36b296b0b593bd630248b5641c20b1ca1e5603e7e01b5b0676</div><div class="ioc-row">228fc86acbaa6626051fd189932cb1768254aec5a9539771cee8a567103bbec1</div><div class="ioc-row">363a435e517f344056c42f8d46ef73396220f79e780828ad35ec0a68e7525d02</div><div class="ioc-row">3c2466d8a4572c26530e6f6bcef01fc1baefb98dbff2c65efaed5599622f51f3</div></div><details class="ioc-details"><summary class="ioc-summary">Show 17 more</summary><div class="ioc-table ioc-table-extra"><div class="ioc-row">403187f08c064f244e101bbc03f1fb5b82af8ebdf4b2be0ba1a70d59ac74b313</div><div class="ioc-row">4de88220ff6a6dcb137b17d8d3f77ab4bacc39ea4e4d1147f687b021b7a82b8c</div><div class="ioc-row">5206a05eb128ccdef497f7f234cb27678046f6c6b12aa7a072672f2a4694c2b9</div><div class="ioc-row">586459f1adf018de4586dcd61782839a3ee72d8469944e0f4dd45a6e20598869</div><div class="ioc-row">6a70824fc1777f81c8e8289258ac951e6bac7636db5315b6d7e76c5a58b82b6b</div><div class="ioc-row">7284d45bdbb1e32e3fb1ca6041b448b165795c91a2748de715798238fc8b3bff</div><div class="ioc-row">7d90023d535096da99bffcb3370008355435d9f022232870f3c27d29be8be60c</div><div class="ioc-row">7eb2fd5e79e79c3f2a95023d617062908c9d8c5aff9fed8361a5a74dc0d1af75</div><div class="ioc-row">9c6f6c0d7127c95aa1360ad6fb0ba5679527a6ea2cc17eb0bc2162dd1e13cd09</div><div class="ioc-row">a1500204822fb16556a274132d802ba18a7e8b95cf134bd17b473f915e8cda81</div><div class="ioc-row">a974a9f097bc2e26f285560f1454c70710c88c30c0ae1edfa2977ad862c56716</div><div class="ioc-row">afc30b1a14f2f29572412ba883782eb3ad3a9e6bf9ff9c38aa48ff35a4ee73fa</div><div class="ioc-row">bd5950d4bd3de1c6d1609b8369b7332ada40c50070a9a3cd8e80ec89b19c48dc</div><div class="ioc-row">cd66fb941e63ad9a72687cafb050ed5b4d8b97b34461168581c4f150d6501523</div><div class="ioc-row">dce2e5cc00eff2493f8ced546dc51f9d5ef78c5ee56805906ec642dfa77a1c70</div><div class="ioc-row">dfdc8313921c0f594ee1cd41ff7ef73d973c667438c2dfe5c38cafdbba10defb</div><div class="ioc-row">f483faa2b9c9815a0efb08023fe5d243b1b9f7e04b95127c506b6aae824c9d09</div></div></details></div><div class="ioc-table-wrap"><div class="ioc-table-header"><span class="ioc-table-label">URL</span><span class="ioc-table-count">2</span></div><div class="ioc-table"><div class="ioc-row">hxxp://smp10[.]simplex[.]im/a#Otp0TGDMNIj_QnXcvh9ABwFsiZEaZY_BovoanW59MXI</div><div class="ioc-row">hxxp://tezwsse5czllksjb7cwp65rvnk4oobmzti2znn42i43bjdfd2prqqkad[.]onion/</div></div></div></div>
-                <ul class='refs'><li><a href="https://www.acronis.com/en/tru/posts/the-gentlemen-a-closer-look-at-a-not-so-gentle-ransomware-as-a-service-operation/" target="_blank" rel="noopener">acronis.com</a></li></ul>
-            </div>
-        </div>
-        <div class="report-card fade-in" style="transition-delay: 0.48s">
-            <div class="report-card-inner">
-                <div class="report-card-header">
-                    <span class="report-icon">🐀</span>
-                    <div>
-                        <div class="report-title">PAYLOAD ransomware attacks through Active Directory GPO</div>
-                        <div class="report-tags">
-                            <span class="tag tag-actor">Unknown</span>
-                            
-                        </div>
-                    </div>
-                    <span class="report-date">2026-10-21</span>
-                </div>
-                <div class="report-meta-line report-ioc-line"><span class="tag tag-ioc">MD5: 2</span></div><div class="report-ioc-detail"><div class="ioc-table-wrap"><div class="ioc-table-header"><span class="ioc-table-label">MD5</span><span class="ioc-table-count">2</span></div><div class="ioc-table"><div class="ioc-row">0108656a3e1ade6ca4f21b084f5e1208</div><div class="ioc-row">bea5e267f24d7da59f6821bffdbff293</div></div></div></div>
-                <ul class='refs'><li><a href="https://securelist.com/tr/payload-ransomware-via-group-policy/121335/" target="_blank" rel="noopener">securelist.com</a></li></ul>
-            </div>
-        </div>
-        <div class="report-card fade-in" style="transition-delay: 0.54s">
-            <div class="report-card-inner">
-                <div class="report-card-header">
-                    <span class="report-icon">⚠️</span>
-                    <div>
-                        <div class="report-title">North Korea's Hangro Revisited</div>
-                        <div class="report-tags">
-                            <span class="tag tag-actor">Unknown</span>
-                            
-                        </div>
-                    </div>
-                    <span class="report-date">2026-10-21</span>
-                </div>
-                <div class="report-meta-line report-ioc-line"><span class="tag tag-ioc">Domain: 8</span><span class="tag tag-ioc">Hostname: 10</span><span class="tag tag-ioc">SHA256: 2</span><span class="tag tag-ioc">URL: 1</span></div><div class="report-ioc-detail"><div class="ioc-table-wrap"><div class="ioc-table-header"><span class="ioc-table-label">Domain</span><span class="ioc-table-count">8</span></div><div class="ioc-table"><div class="ioc-row">aeoncredit[.]com[.]cn</div><div class="ioc-row">futurere[.]com[.]kp</div><div class="ioc-row">hero-huishan[.]cn</div><div class="ioc-row">hero-huishan[.]com</div><div class="ioc-row">kevin[.]com</div></div><details class="ioc-details"><summary class="ioc-summary">Show 3 more</summary><div class="ioc-table ioc-table-extra"><div class="ioc-row">lnnk[.]com</div><div class="ioc-row">nkinternet[.]com</div><div class="ioc-row">silibank[.]com</div></div></details></div><div class="ioc-table-wrap"><div class="ioc-table-header"><span class="ioc-table-label">Hostname</span><span class="ioc-table-count">10</span></div><div class="ioc-table"><div class="ioc-row">dns[.]chinact[.]net</div><div class="ioc-row">hangro[.]net[.]kp</div><div class="ioc-row">mail[.]chinact[.]net</div><div class="ioc-row">mail[.]silibank[.]com</div><div class="ioc-row">mail[.]silibank[.]net[.]kp</div></div><details class="ioc-details"><summary class="ioc-summary">Show 5 more</summary><div class="ioc-table ioc-table-extra"><div class="ioc-row">mall[.]dssodr[.]com</div><div class="ioc-row">mx2[.]sompo-japanchina[.]com</div><div class="ioc-row">ps[.]ppokkugi[.]com</div><div class="ioc-row">smtp[.]star-co[.]net[.]kp</div><div class="ioc-row">smtp1[.]star-co[.]net[.]kp</div></div></details></div><div class="ioc-table-wrap"><div class="ioc-table-header"><span class="ioc-table-label">SHA256</span><span class="ioc-table-count">2</span></div><div class="ioc-table"><div class="ioc-row">5a2f81451d6c921a7ab845b1856f67d71c76196cc34ace5ef7c7e8e471c3214b</div><div class="ioc-row">b8810eae6ead0ec3a606300c5e3fe9c7af23f836719596e9519f73b4e1e7ad01</div></div></div><div class="ioc-table-wrap"><div class="ioc-table-header"><span class="ioc-table-label">URL</span><span class="ioc-table-count">1</span></div><div class="ioc-table"><div class="ioc-row">hxxp://silibank[.]com/fog/update_files/</div></div></div></div>
-                <ul class='refs'><li><a href="https://blog.synapticsystems.de/north-koreas-hangro-revisited" target="_blank" rel="noopener">blog.synapticsystems.de</a></li></ul>
-            </div>
-        </div>
-        <div class="report-card fade-in" style="transition-delay: 0.6s">
-            <div class="report-card-inner">
-                <div class="report-card-header">
-                    <span class="report-icon">📦</span>
-                    <div>
-                        <div class="report-title">Midnight Mimosa Malware Campaign Exploits Android Firmware Supply Chain</div>
-                        <div class="report-tags">
-                            <span class="tag tag-actor">Unknown</span>
-                            
-                        </div>
-                    </div>
-                    <span class="report-date">2026-10-21</span>
-                </div>
-                <div class="report-meta-line report-ioc-line"><span class="tag tag-ioc">MD5: 40</span><span class="tag tag-ioc">SHA1: 40</span><span class="tag tag-ioc">SHA256: 20</span></div><div class="report-ioc-detail"><div class="ioc-table-wrap"><div class="ioc-table-header"><span class="ioc-table-label">MD5</span><span class="ioc-table-count">40</span></div><div class="ioc-table"><div class="ioc-row">1414d4ef2d1191080abc59a407dcb6c5</div><div class="ioc-row">250205ee4b8de59e60c745856f439608</div><div class="ioc-row">2b784622422f4280e0b3e38b30dd87bc</div><div class="ioc-row">2b7f1a7d5f5515c05d0c8e3857155ae2</div><div class="ioc-row">2de346602433cdd1668f36b2e9db0be1</div></div><details class="ioc-details"><summary class="ioc-summary">Show 35 more</summary><div class="ioc-table ioc-table-extra"><div class="ioc-row">33b2d3ec9a35cfb0b5a5d7b24ce4140e</div><div class="ioc-row">345057421c7d9ac2b671c47449f35030</div><div class="ioc-row">36deebfcda4012d18706cd170c1edf1f</div><div class="ioc-row">36f9e8cf47a28f9803fba427cf02a25c</div><div class="ioc-row">37f18a20b9cf32e6f07450e903eaad7c</div><div class="ioc-row">387f7af167530486adcf3d8546063462</div><div class="ioc-row">3d3358b1057b1bfbd7e60577d8a31e0c</div><div class="ioc-row">4a171f62d1bab01827b06ae73d4caafa</div><div class="ioc-row">5b3a49938f455d1197736971c4c07228</div><div class="ioc-row">5d29e9b24708c3ec36d1d59036124838</div><div class="ioc-row">60bc23d3d453f258e2c4ca421cd086a9</div><div class="ioc-row">61aac6a98abd6dcff0dc41bb88159786</div><div class="ioc-row">66c6512b9a73425aba40c8bfa95d23a0</div><div class="ioc-row">6739fe083cfa8dec9b4f989ccba0e99e</div><div class="ioc-row">6eea0568d5cc776ae03e09149cec3cd8</div><div class="ioc-row">7400c34f7c6f866499029f5e759f58bd</div><div class="ioc-row">815b910f1efc95f38ba0c5b12c4f2129</div><div class="ioc-row">92f2fd8bcccc8ec4ffa64c7f6b3b9b8d</div><div class="ioc-row">9a3d04aa36654b5c4b21edd22e46f92d</div><div class="ioc-row">9e7b34e63d8d38e37667f88a945ae69a</div><div class="ioc-row">a147cd8f72aadfcf78f7723db6813e86</div><div class="ioc-row">af16072864ae0f9d755f8cf00fded359</div><div class="ioc-row">b974ef4106af6b932df352563a9b8b3c</div><div class="ioc-row">c55c9d7e12cc273b812ceffca8f62d4b</div><div class="ioc-row">ca7e2d265fc35aede432c4636a2cf4cb</div><div class="ioc-row">cdfcc848e16660d607aba6ecf24567f4</div><div class="ioc-row">cf4f24fdd283f80313565b08fea9d06d</div><div class="ioc-row">d4ceb05682ecd60f4ebb4e76e02fcf7d</div><div class="ioc-row">dce5b0dc0e7d7059b5ab8384a7c24ec4</div><div class="ioc-row">e39bddf592016ad6d0784770df3e2ffe</div><div class="ioc-row">e6650dc6721aaa27f8a289ff92e613ff</div><div class="ioc-row">e974cf4cc5d55cddc04f026dd3ea72b8</div><div class="ioc-row">ee4e778e53ce4d4339d7c7888d06384d</div><div class="ioc-row">f456f0c6b89bd3d5124699d43971d094</div><div class="ioc-row">fcb9f38cc687fc8a4637e0acdf91ab66</div></div></details></div><div class="ioc-table-wrap"><div class="ioc-table-header"><span class="ioc-table-label">SHA1</span><span class="ioc-table-count">40</span></div><div class="ioc-table"><div class="ioc-row">09f3d06d95615f9cfef7da62e324e046c286db33</div><div class="ioc-row">09fc7707e786949ddec99b48ea42452e75ead2df</div><div class="ioc-row">0cc48e4ce6bf1f3d7fbf4228f3e43e2ac33934b5</div><div class="ioc-row">11eda40901ac8bf98415b2f5f4390d777fd54a1e</div><div class="ioc-row">13947fcc695dffefe38725a45a7bc832107b67f1</div></div><details class="ioc-details"><summary class="ioc-summary">Show 35 more</summary><div class="ioc-table ioc-table-extra"><div class="ioc-row">22c4013af4192eaeb3e2c787d40d7d40c221f31f</div><div class="ioc-row">2c00a721f16726365266c0de6b21ac691f880886</div><div class="ioc-row">31427b3fc74c692db1ed26328d4ad36ffb659c36</div><div class="ioc-row">37ecc10fb057f830e380930482d2e893c395f417</div><div class="ioc-row">383de49be8a3343ce8de9e551a4c3dcab34c3ea9</div><div class="ioc-row">3d5b948a824eceedf988adaa964d915d03ee092f</div><div class="ioc-row">41a00d30e26645c267e3cb106fcd5177591e5c48</div><div class="ioc-row">4c919146e2ba12dfdce30752fc92b2859dc07338</div><div class="ioc-row">50226ba8496cd194b52d7da4bab57eb9559eb3af</div><div class="ioc-row">5a3242d3153b1e770a0cd4381b828b24dea2e125</div><div class="ioc-row">5e88e5e36201bf4353227b64ec72250a7dcc2ec5</div><div class="ioc-row">69445cedeb5df3c9f6bc8467447a0e813a8a0562</div><div class="ioc-row">6d152dcb11345dfae0986b8e97769f49db76de24</div><div class="ioc-row">6d4f1cac9b03a2ab10a58e99955dafd708f1c875</div><div class="ioc-row">7c8364823b0a2e96ab1fc7d1f36500a160880c97</div><div class="ioc-row">88fc97e541efe39400f3327a7bb08e6ecb80b7d9</div><div class="ioc-row">8bf8cd98670aaf64ebb0867335cb2f2def99afe0</div><div class="ioc-row">9313952f12f0941fa7550702e463b61458875a15</div><div class="ioc-row">97467bb9076d0b184304c6ecdd630371799de450</div><div class="ioc-row">9da6831bbcdc6898b8bee2d1a9447f6d22ef00f4</div><div class="ioc-row">9eb4487957e2b4f824f283ee17c0d4b877818739</div><div class="ioc-row">a04851cd613e2d2ef7257c2a3aefb2a68efb324b</div><div class="ioc-row">a3b4d7fe17b884369f314fdf50fb9b743606d2d4</div><div class="ioc-row">a5d7c847a5209673ca74ffb053e8a68102c86965</div><div class="ioc-row">a7cf6a0a4089a6da299055b270d2db4561aa748b</div><div class="ioc-row">b2dc16de8d90128238f4198f360a67e2e02eaa88</div><div class="ioc-row">b7225ddd1f30da5167a93d28fe63723f245ba256</div><div class="ioc-row">bb4f4de1ab57e035c3d77df3385a0d6c443d5266</div><div class="ioc-row">bc829547f5603dc078e7466419ecce47036a5c0f</div><div class="ioc-row">c844fa262a61059cac50e3662518a558b4c229e6</div><div class="ioc-row">dd88edbc7e17b9c6f5eed5a0a93598fa901cbd4a</div><div class="ioc-row">e57344d92eabbe3483eba57444f24d26246a12a2</div><div class="ioc-row">e75192992cbe907a263000b9f3a94a05776b0d13</div><div class="ioc-row">f0823115b42208952c3db8fbb03ca27475380b45</div><div class="ioc-row">f8d650d4ea1f0a161b13501491feb04af25a244e</div></div></details></div><div class="ioc-table-wrap"><div class="ioc-table-header"><span class="ioc-table-label">SHA256</span><span class="ioc-table-count">20</span></div><div class="ioc-table"><div class="ioc-row">1b423665896a40d31bc7feec8b0fa78d7f27552fd25f4a72917519feed3e59f5</div><div class="ioc-row">1ba97892f9631d0609116325eace408a4d2b28ff8f0639a4303b5cff2fb6b4f9</div><div class="ioc-row">1fce280388341989856991b09d0a82b8872061b739641241bc30e57241a27dcb</div><div class="ioc-row">1fe24e80eed64eb28ea1d31e949445eaa85095e33a03e6bc835d688b81f40875</div><div class="ioc-row">207758bad044c25f89fabf78892aa0f845a9b44a73b7aa16fd1fab1139c2297a</div></div><details class="ioc-details"><summary class="ioc-summary">Show 15 more</summary><div class="ioc-table ioc-table-extra"><div class="ioc-row">21d8ff68344b589d05626dce48a3b29573ee6c2e2a1ce81c392d69afd758c124</div><div class="ioc-row">245b0b9b3583d37ae9eedac2665b09f656bd67f3985df0cdc0af9c7cd95bceed</div><div class="ioc-row">32b0dcb8429f6b049424ef08be58f641e2ba3b8292d38d0f7ebfdcd495b697df</div><div class="ioc-row">3351728f6fba0c65d1c1c678e80c36ed7bdc8be1ea6bf85e826c27e689c3db07</div><div class="ioc-row">3398bdb7180bc9d3c6755e6cd3ddb351c751e64c3bf346a1857cb2c1c7406483</div><div class="ioc-row">3b8519d6412546c4c1c622e842e0d9b34a540169c974325d053ff227407133ad</div><div class="ioc-row">4657191f26927e22018495a9e8da9044f76d0644d56eab0a553d57cc9735c63d</div><div class="ioc-row">468d2d12ededba0733acc32b4a0da776fac592cdc5fdf49015728f4586322b79</div><div class="ioc-row">4b3080c1cd2c669dff3144f332013dd6db0aaf1115e6b04efcb4e25fea884fd2</div><div class="ioc-row">502090cf297cd5fbffe6caf57fed196e737c07075895cd26d93662c16c95c4fe</div><div class="ioc-row">53e1d7dc079dc2ffcff9fea9dccd23d9d206ffaede2274a2e6d8259c26b1a4a2</div><div class="ioc-row">543922608fa97dca7e13e70a8538ef60722d32069542551f218eafcee99e80fb</div><div class="ioc-row">55605320099d8b351e9c0fbbe0b9806058ba644de9c1f384914b4f1445a028e9</div><div class="ioc-row">58b95add72b23acce491516c4d0eaa4291ff902199b806446587ed147dfd1a1e</div><div class="ioc-row">5cd66605c1a299ac58a0686c2d52547d43d3eb60fcf7a2fc9474f5752ebb8105</div></div></details></div></div>
-                <ul class='refs'><li><a href="https://blog.polyswarm.io/midnight-mimosa-malware-campaign-exploits-android-firmware-supply-chain" target="_blank" rel="noopener">blog.polyswarm.io</a></li></ul>
-            </div>
-        </div>
-        <div class="report-card fade-in" style="transition-delay: 0.6599999999999999s">
-            <div class="report-card-inner">
-                <div class="report-card-header">
-                    <span class="report-icon">🎣</span>
-                    <div>
-                        <div class="report-title">Inside Wazza: A Newly Observed Device Code Phishing Kit Targeting Microsoft 365 Accounts</div>
-                        <div class="report-tags">
-                            <span class="tag tag-actor">Unknown</span>
-                            
-                        </div>
-                    </div>
-                    <span class="report-date">2026-10-21</span>
-                </div>
-                <div class="report-meta-line report-ioc-line"><span class="tag tag-ioc">Domain: 23</span><span class="tag tag-ioc">Hostname: 11</span><span class="tag tag-ioc">URL: 10</span></div><div class="report-ioc-detail"><div class="ioc-table-wrap"><div class="ioc-table-header"><span class="ioc-table-label">Domain</span><span class="ioc-table-count">23</span></div><div class="ioc-table"><div class="ioc-row">beton-beton[.]eu</div><div class="ioc-row">bike-msca[.]eu</div><div class="ioc-row">bodi-project[.]eu</div><div class="ioc-row">bruoth-family[.]eu</div><div class="ioc-row">cardamomo[.]eu</div></div><details class="ioc-details"><summary class="ioc-summary">Show 18 more</summary><div class="ioc-table ioc-table-extra"><div class="ioc-row">coppietersrecherche[.]eu</div><div class="ioc-row">diabetesnet[.]eu</div><div class="ioc-row">dymowski[.]eu</div><div class="ioc-row">electroloys[.]com</div><div class="ioc-row">euniverza[.]eu</div><div class="ioc-row">hacsg[.]com</div><div class="ioc-row">hutspotmaken[.]eu</div><div class="ioc-row">illuminatedminds[.]eu</div><div class="ioc-row">jetcapital[.]eu</div><div class="ioc-row">languagesforwork[.]eu</div><div class="ioc-row">lesbolides[.]eu</div><div class="ioc-row">mdiament[.]eu</div><div class="ioc-row">nbi-training[.]eu</div><div class="ioc-row">nellarmonia[.]eu</div><div class="ioc-row">originalpizza[.]eu</div><div class="ioc-row">polskaprezydencjacsr[.]eu</div><div class="ioc-row">robologic[.]eu</div><div class="ioc-row">safetystock[.]eu</div></div></details></div><div class="ioc-table-wrap"><div class="ioc-table-header"><span class="ioc-table-label">Hostname</span><span class="ioc-table-count">11</span></div><div class="ioc-table"><div class="ioc-row">beacon-surge-sync[.]workers[.]dev</div><div class="ioc-row">beaconoflinenew[.]lastfightlink[.]workers[.]dev</div><div class="ioc-row">c5id-pc17-fffoub1-bul3-ahv1-r00kubt[.]ondrv-pwrbi3-s3ntln-quesvxs-l0gsvx-entr-m365s-cmplncx-ehubn[.]workers[.]dev</div><div class="ioc-row">check[.]hutspotmaken[.]eu</div><div class="ioc-row">d3m9a-goo2ns-wx0g-jzhuc2-t9r2b9i[.]dvps-azbl-fnapp-trc3svc-synpx-quesvxs-purv3-siemsvx-cmplncx[.]workers[.]dev</div></div><details class="ioc-details"><summary class="ioc-summary">Show 6 more</summary><div class="ioc-table ioc-table-extra"><div class="ioc-row">dv0psh-purv3w-azfn-b2c0-msauth3-m365svc-s3ntln-4zrfn3x-cntnrx[.]workers[.]dev</div><div class="ioc-row">fgwhjmdaurspxvznk[.]hutspotmaken[.]eu</div><div class="ioc-row">purv3w3-t3ms4pp-certs-intun3-sbussvx-4zredg-siemsv-pip3ln-0ffc3[.]workers[.]dev</div><div class="ioc-row">ssosvc-m365s-kvl-dv0pshb-s3ntln-c0mply-4zrmonx-apimgwx-evnthb[.]workers[.]dev</div><div class="ioc-row">unhf69e-e0ppo-l0qoo-a12bcfj-ig1sa4v[.]wndws-pip3ln-sql3-waf3-purv3-gdprsx-dfn-azfn-appsvc-0ffapx[.]workers[.]dev</div><div class="ioc-row">wndws-pip3ln-sql3-waf3-purv3-gdprsx-dfn-azfn-appsvc-0ffapx[.]workers[.]dev</div></div></details></div><div class="ioc-table-wrap"><div class="ioc-table-header"><span class="ioc-table-label">URL</span><span class="ioc-table-count">10</span></div><div class="ioc-table"><div class="ioc-row">hxxp://sites[.]google[.]com/view/adobe-docus/home</div><div class="ioc-row">hxxp://sites[.]google[.]com/view/ctfvygbuhgyftvbgyfpoiuytrftgyh/home</div><div class="ioc-row">hxxp://sites[.]google[.]com/view/hgfdsqazxcvhjoswwqq/home</div><div class="ioc-row">hxxp://sites[.]google[.]com/view/kjvcfdswqazxcfvghjoplkjmnbvcf/home</div><div class="ioc-row">hxxp://sites[.]google[.]com/view/miticabo/home</div></div><details class="ioc-details"><summary class="ioc-summary">Show 5 more</summary><div class="ioc-table ioc-table-extra"><div class="ioc-row">hxxp://sites[.]google[.]com/view/onwajuly/home</div><div class="ioc-row">hxxp://sites[.]google[.]com/view/securespdf/home</div><div class="ioc-row">hxxps://check[.]hutspotmaken[.]eu/?tok=1790146486871[.]9e85d1907024e77e[.]0581ed</div><div class="ioc-row">hxxps://fgwhjmdaurspxvznk[.]hutspotmaken[.]eu/B4fWRuA</div><div class="ioc-row">hxxps://hutspotmaken[.]eu/r?key=</div></div></details></div></div>
-                <ul class='refs'><li><a href="https://www.levelblue.com/blogs/spiderlabs-blog/inside-wazza-a-newly-observed-device-code-phishing-kit-targeting-microsoft-365-accounts" target="_blank" rel="noopener">levelblue.com</a></li></ul>
-            </div>
-        </div>
-        <div class="report-card fade-in" style="transition-delay: 0.72s">
-            <div class="report-card-inner">
-                <div class="report-card-header">
-                    <span class="report-icon">🎣</span>
-                    <div>
-                        <div class="report-title">From Phishing to LLMjacking: Threat Actors Targeting Cloud Billing Accounts for LLM Usage</div>
-                        <div class="report-tags">
-                            <span class="tag tag-actor">Unknown</span>
-                            
-                        </div>
-                    </div>
-                    <span class="report-date">2026-10-21</span>
-                </div>
-                <div class="report-meta-line report-ioc-line"><span class="tag tag-ioc">Domain: 16</span><span class="tag tag-ioc">IP: 1</span></div><div class="report-ioc-detail"><div class="ioc-table-wrap"><div class="ioc-table-header"><span class="ioc-table-label">Domain</span><span class="ioc-table-count">16</span></div><div class="ioc-table"><div class="ioc-row">gboogl[.]com</div><div class="ioc-row">gbrokl[.]space</div><div class="ioc-row">gbrokl[.]xyz</div><div class="ioc-row">gcoalg[.]com</div><div class="ioc-row">gcslom[.]com</div></div><details class="ioc-details"><summary class="ioc-summary">Show 11 more</summary><div class="ioc-table ioc-table-extra"><div class="ioc-row">gpoosl[.]com</div><div class="ioc-row">gprokl[.]com</div><div class="ioc-row">groolg[.]com</div><div class="ioc-row">groonl[.]com</div><div class="ioc-row">groosl[.]com</div><div class="ioc-row">gsool[.]space</div><div class="ioc-row">gsool[.]xyz</div><div class="ioc-row">gsoolg[.]com</div><div class="ioc-row">gsoosl[.]xyz</div><div class="ioc-row">gxoosl[.]com</div><div class="ioc-row">gzoozl[.]com</div></div></details></div><div class="ioc-table-wrap"><div class="ioc-table-header"><span class="ioc-table-label">IP</span><span class="ioc-table-count">1</span></div><div class="ioc-table"><div class="ioc-row">212[.]73[.]134[.]136</div></div></div></div>
-                <ul class='refs'><li><a href="https://www.wiz.io/blog/from-phishing-to-llmjacking" target="_blank" rel="noopener">wiz.io</a></li></ul>
-            </div>
-        </div>
-        <div class="report-card fade-in" style="transition-delay: 0.78s">
-            <div class="report-card-inner">
-                <div class="report-card-header">
-                    <span class="report-icon">📦</span>
-                    <div>
-                        <div class="report-title">Don't Call Us, We'll Call Your APIs | TraderTraitor Backdoors Resurface on Victim With No Crypto Ties</div>
-                        <div class="report-tags">
-                            <span class="tag tag-actor">TraderTraitor</span>
-                            
-                        </div>
-                    </div>
-                    <span class="report-date">2026-10-21</span>
-                </div>
-                <div class="report-meta-line report-ioc-line"><span class="tag tag-ioc">Domain: 1</span><span class="tag tag-ioc">Hostname: 2</span><span class="tag tag-ioc">MD5: 3</span><span class="tag tag-ioc">SHA1: 6</span><span class="tag tag-ioc">SHA256: 3</span></div><div class="report-ioc-detail"><div class="ioc-table-wrap"><div class="ioc-table-header"><span class="ioc-table-label">Domain</span><span class="ioc-table-count">1</span></div><div class="ioc-table"><div class="ioc-row">grenight[.]com</div></div></div><div class="ioc-table-wrap"><div class="ioc-table-header"><span class="ioc-table-label">Hostname</span><span class="ioc-table-count">2</span></div><div class="ioc-table"><div class="ioc-row">storage[.]hubpage[.]cloud</div><div class="ioc-row">technicais[.]sytes[.]net</div></div></div><div class="ioc-table-wrap"><div class="ioc-table-header"><span class="ioc-table-label">MD5</span><span class="ioc-table-count">3</span></div><div class="ioc-table"><div class="ioc-row">1cd6d13ff15adbf7a42025d10ec99b4a</div><div class="ioc-row">c43f594fac7544e5485cbbe441e470bf</div><div class="ioc-row">d95dede4387ff516f4c23351c450427d</div></div></div><div class="ioc-table-wrap"><div class="ioc-table-header"><span class="ioc-table-label">SHA1</span><span class="ioc-table-count">6</span></div><div class="ioc-table"><div class="ioc-row">02df07a173ab03b82a4fb6a08973fff8b1467f28</div><div class="ioc-row">19af09ebe8b7ad03419677dda515507dd099bc39</div><div class="ioc-row">4ad92bf92ee614b05c340ce17bef7b6ef5a25e82</div><div class="ioc-row">5728b11d30586bbfc1d8bd12df1c722a06e767a2</div><div class="ioc-row">930e5be6d34511bedbfb0d762bd08fffe64e9630</div></div><details class="ioc-details"><summary class="ioc-summary">Show 1 more</summary><div class="ioc-table ioc-table-extra"><div class="ioc-row">c491d477dbe0ae04e9aed9dbe237144c03f73ec4</div></div></details></div><div class="ioc-table-wrap"><div class="ioc-table-header"><span class="ioc-table-label">SHA256</span><span class="ioc-table-count">3</span></div><div class="ioc-table"><div class="ioc-row">4b2d3e8ccce8920a6d01e7d02b84236545a20e5f754b3eec253f8b416b731daa</div><div class="ioc-row">77b4fd46994992f0e57302cfe76ed23c0d90101381d2b89fc2ddf5c4536e77ca</div><div class="ioc-row">f3404ef308098202246f2f3c38c8c3166e9a8e7843ec69c1b11ac0ce9cb4038e</div></div></div></div>
-                <ul class='refs'><li><a href="https://www.sentinelone.com/labs/dont-call-us-well-call-your-apis-tradertraitor-backdoors-resurface-on-victim-with-no-crypto-ties/" target="_blank" rel="noopener">sentinelone.com</a></li></ul>
-            </div>
-        </div>
-        <div class="report-card fade-in" style="transition-delay: 0.8s">
-            <div class="report-card-inner">
-                <div class="report-card-header">
-                    <span class="report-icon">🐀</span>
-                    <div>
-                        <div class="report-title">Dissection of Operation FlashHole, a complex attack by Lazarus</div>
-                        <div class="report-tags">
-                            <span class="tag tag-actor">Lazarus Group</span>
-                            
-                        </div>
-                    </div>
-                    <span class="report-date">2026-10-21</span>
-                </div>
-                <div class="report-meta-line report-ioc-line"><span class="tag tag-ioc">MD5: 7</span><span class="tag tag-ioc">SHA1: 1</span><span class="tag tag-ioc">SHA256: 1</span><span class="tag tag-ioc">URL: 10</span></div><div class="report-ioc-detail"><div class="ioc-table-wrap"><div class="ioc-table-header"><span class="ioc-table-label">MD5</span><span class="ioc-table-count">7</span></div><div class="ioc-table"><div class="ioc-row">2f8475a90a25624ed02f1d18d4e6d65d</div><div class="ioc-row">676fabe30a28b53925fba98e34b35986</div><div class="ioc-row">a28cba214058fcae2883d8cffc883abd</div><div class="ioc-row">b4a7eff35f048f06fb0a2d7631f23a7d</div><div class="ioc-row">c105d6b16f544582772de0159f24c00a</div></div><details class="ioc-details"><summary class="ioc-summary">Show 2 more</summary><div class="ioc-table ioc-table-extra"><div class="ioc-row">ec84d6cb2ae7974767aedac246b50a3e</div><div class="ioc-row">ff07641dc56914dd90ee0bd7404d7ad7</div></div></details></div><div class="ioc-table-wrap"><div class="ioc-table-header"><span class="ioc-table-label">SHA1</span><span class="ioc-table-count">1</span></div><div class="ioc-table"><div class="ioc-row">0549eacd067f37f8b2df8b1bac68838ac1e70352</div></div></div><div class="ioc-table-wrap"><div class="ioc-table-header"><span class="ioc-table-label">SHA256</span><span class="ioc-table-count">1</span></div><div class="ioc-table"><div class="ioc-row">0c6064255c63dcd447176c25f7cd6971f88f9992780e3b36509dd1be7684d4f6</div></div></div><div class="ioc-table-wrap"><div class="ioc-table-header"><span class="ioc-table-label">URL</span><span class="ioc-table-count">10</span></div><div class="ioc-table"><div class="ioc-row">hxxps://cubedesign[.]co[.]kr/mobile/fashion</div><div class="ioc-row">hxxps://cubedesign[.]co[.]kr/news</div><div class="ioc-row">hxxps://cubedesign[.]co[.]kr/news/AABBCC</div><div class="ioc-row">hxxps://cubedesign[.]co[.]kr/news/economy/article/12345678</div><div class="ioc-row">hxxps://fp-news[.]co[.]kr/shop/cart</div></div><details class="ioc-details"><summary class="ioc-summary">Show 5 more</summary><div class="ioc-table ioc-table-extra"><div class="ioc-row">hxxps://javadevhouse[.]co[.]kr/ajax/libs/jquery/1[.]7[.]3/jquery[.]min[.]js</div><div class="ioc-row">hxxps://k-wbc[.]co[.]kr/skin/social/social_view[.]php</div><div class="ioc-row">hxxps://pythonapischool[.]com/api/detach</div><div class="ioc-row">hxxps://rcsh[.]co[.]kr/modules/bbs/tiles/bbs_div/inputForm[.]php</div><div class="ioc-row">hxxps://www[.]ksog[.]org/insert_file/handle[.]php</div></div></details></div></div>
-                <ul class='refs'><li><a href="https://securelist.com/lazarus-operation-flashhole/121541/" target="_blank" rel="noopener">securelist.com</a></li></ul>
-            </div>
-        </div>
 </div>
 
 <footer class="site-footer fade-in" style="transition-delay: 0.4s">
     <div class="footer-quote">"The only good breach is the one you detect."</div>
-    <div class="footer-meta">Report generated 2026-10-22 18:02 UTC &middot; jakesj425.github.io/threat-intel-blog</div>
+    <div class="footer-meta">Report generated 2026-10-23 12:35 UTC &middot; jakesj425.github.io/threat-intel-blog</div>
 </footer>
 
 <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">&#8593;</button>

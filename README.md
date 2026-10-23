@@ -1,6 +1,6 @@
 # Daily Threat Intelligence Report
 
-Daily opinion piece and threat briefing based on reports from the past 24 hours.
+Daily opinion piece and threat briefing based on curated reports from the selected window.
 
 **Live site:** https://jakesj425.github.io/threat-intel-blog/
 
