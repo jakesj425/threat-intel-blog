@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Threat Pulse — November 11, 2026</title>
+<title>Threat Pulse — November 15, 2026</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;0,7..72,700;1,7..72,400;1,7..72,600&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
@@ -860,18 +860,18 @@ body {
     <div class="hero-glow"></div>
     <div class="hero-eyebrow">Threat Intelligence Briefing</div>
     <h1>Daily Threat Pulse</h1>
-    <div class="hero-date">November 11, 2026</div>
+    <div class="hero-date">November 15, 2026</div>
 </div>
 
 <div class="stats-bar">
-    <div class="stat-chip"><span class="num">13</span><span class="lbl">Reports</span></div>
-    <div class="stat-chip"><span class="num">9</span><span class="lbl">Adversaries</span></div>
-    <div class="stat-chip"><span class="num">6</span><span class="lbl">Malware</span></div>
-    <div class="stat-chip"><span class="num">38</span><span class="lbl">CVEs</span></div>
-    <div class="stat-chip"><span class="num">5</span><span class="lbl">IOCs</span></div>
+    <div class="stat-chip"><span class="num">5</span><span class="lbl">Reports</span></div>
+    <div class="stat-chip"><span class="num">2</span><span class="lbl">Adversaries</span></div>
+    <div class="stat-chip"><span class="num">29</span><span class="lbl">Malware</span></div>
+    <div class="stat-chip"><span class="num">13</span><span class="lbl">CVEs</span></div>
+    <div class="stat-chip"><span class="num">83</span><span class="lbl">IOCs</span></div>
 </div>
 
-<div class="themes-row"><span class="theme-chip"><span class="theme-chip-name">Other Campaigns</span><span class="theme-chip-count">10</span></span><span class="theme-chip"><span class="theme-chip-name">Nation-State Activity</span><span class="theme-chip-count">3</span></span></div>
+<div class="themes-row"><span class="theme-chip"><span class="theme-chip-name">Other Campaigns</span><span class="theme-chip-count">1</span></span><span class="theme-chip"><span class="theme-chip-name">Ransomware</span><span class="theme-chip-count">2</span></span><span class="theme-chip"><span class="theme-chip-name">Credential Theft & Infostealers</span><span class="theme-chip-count">1</span></span><span class="theme-chip"><span class="theme-chip-name">Malware Loaders & Backdoors</span><span class="theme-chip-count">1</span></span></div>
 
 <div class="article-wrap">
     <div class="article">
@@ -879,9 +879,9 @@ body {
             <div class="label">Analysis & Opinion</div>
             <h2>Opinion of a DFIR Guy</h2>
         </div>
-        <div class="tldr-card fade-in" style="transition-delay: 0.05s"><div class="tldr-label">TL;DR</div><ul class="tldr-bullets"><li>13 reports analyzed — 10 Other Campaigns, 3 Nation-State Activity</li><li>9 adversarial groups identified</li><li>38 CVEs in active use</li><li>Nation-state campaigns in 3 reports</li><li>Top report: Attackers Exploit AhsayCBS Flaws to Deploy Sandbox-Evading Python Backdoor</li></ul></div>
+        <div class="tldr-card fade-in" style="transition-delay: 0.05s"><div class="tldr-label">TL;DR</div><ul class="tldr-bullets"><li>5 reports analyzed — 2 Ransomware, 1 Other Campaigns, 1 Credential Theft & Infostealers</li><li>2 adversarial groups identified</li><li>13 CVEs in active use</li><li>Ransomware activity across 2 reports</li><li>Top report: Attackers Exploit UnrealIRCd Flaw That Enables Server-Level Command Injection</li></ul></div>
         <div class="article-body fade-in" style="transition-delay: 0.1s">
-            <p>The common thread here is a duality: we're seeing sophisticated nation-state espionage targeting critical infrastructure, alongside high-impact vulnerability exploitation in consumer and enterprise software. On the exploitation side, the immediate takeaways are the deployment of dual-pronged attacks—using bootable malware like XMRig miners alongside stealthy implants like web shells through vulnerabilities in enterprise software (e.g., AhsayCBS, Xen Orchestra bypass). On the defense layer, we see systemic risks across mobile platforms (Apple patches) and foundational software integrity (Git flaws), reinforcing the need for layered detection across endpoint, network, and API levels. The story is about the evolving tradecraft where actors adapt to exploit complex security features, moving from simple malware to multi-stage, sandbox-evading techniques.<div class="para-sources">Source: <a href="https://thehackernews.com/2026/11/attackers-exploit-ahsaycbs-flaws-to.html" target="_blank" rel="noopener">thehackernews.com</a></div></p>
+            <p>The recent threat landscape shows a clear convergence between state-sponsored disruption and financially motivated criminal groups. Our focus for this edition is the exploitation of critical infrastructure vulnerabilities and evolving malware tactics. We have highlighted supply chain risks within networking software, exemplified by the CVE-2026-114713 vulnerability in UnrealIRCd, which allows for server level command injection. Furthermore, ransomware operations continue to evolve, with groups like DragonForce employing sophisticated ransomware-as-a-service models, indicating a shift towards cartel structures for maximizing extortion revenue. Detection efforts must prioritize monitoring for these specific exploitation chains, alongside identifying indicators related to credential theft and AI-assisted attacks targeting user data. The evidence points to a landscape where both infrastructure security and financial crime pose significant risks.<div class="para-sources">Sources: <a href="https://thehackernews.com/2026/11/attackers-exploit-unrealircd-flaw-that.html" target="_blank" rel="noopener">thehackernews.com</a>, <a href="https://thehackernews.tradepub.com" target="_blank" rel="noopener">thehackernews.tradepub.com</a>, <a href="https://feeds.feedburner.com/TheHackersNews" target="_blank" rel="noopener">feeds.feedburner.com</a>, <a href="https://thehackernews.uk/ai-infographic-d" target="_blank" rel="noopener">thehackernews.uk</a></div></p>
         </div>
     </div>
 </div>
@@ -893,9 +893,9 @@ body {
 
 <div class="intel-section fade-in" style="transition-delay: 0.3s">
     <h2>Key Intelligence</h2>
-    <div class="pill-group"><div class="pill-group-label">Actors</div><div class="pill-row"><span class="pill">Armored Likho</span><span class="pill">China-nexus</span><span class="pill">INC</span><span class="pill">Mirage Kitten</span><span class="pill">Qilin</span><span class="pill">STORM-2603</span><span class="pill">Salt Typhoon</span><span class="pill">The Gentlemen</span><span class="pill">UNC1549</span></div></div>
-    <div class="pill-group"><div class="pill-group-label">Malware</div><div class="pill-row"><span class="pill">AMOS</span><span class="pill">NetExec</span><span class="pill">conti</span><span class="pill">mirai</span><span class="pill">overlord rat</span><span class="pill">xmrig</span></div></div>
-    <div class="pill-group"><div class="pill-group-label">CVEs</div><div class="pill-row"><span class="pill">CVE-2025-14733</span><span class="pill">CVE-2025-60710</span><span class="pill">CVE-2026-0257</span><span class="pill">CVE-2026-105133</span><span class="pill">CVE-2026-105134</span><span class="pill">CVE-2026-105437</span><span class="pill">CVE-2026-111497</span><span class="pill">CVE-2026-111560</span><span class="pill">CVE-2026-111760</span><span class="pill">CVE-2026-111793</span><span class="pill">CVE-2026-113408</span><span class="pill">CVE-2026-113960</span></div></div>
+    <div class="pill-group"><div class="pill-group-label">Actors</div><div class="pill-row"><span class="pill">China-nexus</span><span class="pill">DragonForce</span></div></div>
+    <div class="pill-group"><div class="pill-group-label">Malware</div><div class="pill-row"><span class="pill">Bladabindi</span><span class="pill">Cobalt Strike - S0154</span><span class="pill">Conti - S0575</span><span class="pill">DragonForce</span><span class="pill">Endpoint</span><span class="pill">Falcon</span><span class="pill">GSocket</span><span class="pill">KGB RAT</span><span class="pill">LV</span><span class="pill">Lime-Worm</span><span class="pill">LockBit 3.0 - S1202</span><span class="pill">LockBit Black</span></div></div>
+    <div class="pill-group"><div class="pill-group-label">CVEs</div><div class="pill-row"><span class="pill">CVE-2021-44228</span><span class="pill">CVE-2023-46805</span><span class="pill">CVE-2024-21412</span><span class="pill">CVE-2024-21887</span><span class="pill">CVE-2024-21893</span><span class="pill">CVE-2024-57726</span><span class="pill">CVE-2024-57727</span><span class="pill">CVE-2024-57728</span><span class="pill">CVE-2026-114713</span><span class="pill">CVE-2026-118383</span><span class="pill">CVE-2026-81578</span><span class="pill">CVE-2026-82078</span></div></div>
 </div>
 
 <div class="reports-section">
@@ -906,227 +906,91 @@ body {
                 <div class="report-card-header">
                     <span class="report-icon">⚠️</span>
                     <div>
-                        <div class="report-title">Attackers Exploit AhsayCBS Flaws to Deploy Sandbox-Evading Python Backdoor</div>
+                        <div class="report-title">Attackers Exploit UnrealIRCd Flaw That Enables Server-Level Command Injection</div>
                         <div class="report-tags">
-                            <span class="tag tag-actor">Unknown</span>
-                            <span class="tag tag-cve">CVE-2026-105133</span><span class="tag tag-cve">CVE-2026-105134</span>
+                            <span class="tag tag-actor">China-nexus</span>
+                            <span class="tag tag-cve">CVE-2026-114713</span><span class="tag tag-cve">CVE-2026-118383</span>
                         </div>
                     </div>
-                    <span class="report-date">2026-11-10</span>
+                    <span class="report-date">2026-11-14</span>
                 </div>
-                <div class="report-meta-line report-ioc-line"><span class="tag tag-ioc">Domain: 1</span></div><div class="report-ioc-detail"><div class="ioc-table-wrap"><div class="ioc-table-header"><span class="ioc-table-label">Domain</span><span class="ioc-table-count">1</span></div><div class="ioc-table"><div class="ioc-row">creepexplosiondarknight[.]com</div></div></div></div>
-                <ul class='refs'><li><a href="https://thehackernews.com/2026/11/attackers-exploit-ahsaycbs-flaws-to.html" target="_blank" rel="noopener">thehackernews.com</a></li></ul>
+                <div class="report-meta-line report-ioc-line"><span class="tag tag-ioc">Email: 2</span><span class="tag tag-ioc">IP: 1</span></div><div class="report-ioc-detail"><div class="ioc-table-wrap"><div class="ioc-table-header"><span class="ioc-table-label">Email</span><span class="ioc-table-count">2</span></div><div class="ioc-table"><div class="ioc-row">0530info[@]thehackernews[.]com</div><div class="ioc-row">admin[@]thehackernews[.]comen</div></div></div><div class="ioc-table-wrap"><div class="ioc-table-header"><span class="ioc-table-label">IP</span><span class="ioc-table-count">1</span></div><div class="ioc-table"><div class="ioc-row">6[.]2[.]7[.]1</div></div></div></div>
+                <ul class='refs'><li><a href="https://thehackernews.com/2026/11/attackers-exploit-unrealircd-flaw-that.html" target="_blank" rel="noopener">thehackernews.com</a></li><li><a href="https://thehackernews.tradepub.com" target="_blank" rel="noopener">thehackernews.tradepub.com</a></li><li><a href="https://feeds.feedburner.com/TheHackersNews" target="_blank" rel="noopener">feeds.feedburner.com</a></li></ul>
             </div>
         </div>
         <div class="report-card fade-in" style="transition-delay: 0.06s">
             <div class="report-card-inner">
                 <div class="report-card-header">
-                    <span class="report-icon">⚠️</span>
+                    <span class="report-icon">🔒</span>
                     <div>
-                        <div class="report-title">Three China-Nexus Espionage Campaigns Linked Through Sparrow Malware Ecosystem</div>
+                        <div class="report-title">Attackers use Crypto Exchange Names to Disguise Unauthorized Sessions on 100+ ScreenConnect Servers | Huntress</div>
                         <div class="report-tags">
-                            <span class="tag tag-actor">China-nexus</span><span class="tag tag-actor">Salt Typhoon</span>
-                            
+                            <span class="tag tag-actor">Unknown</span>
+                            <span class="tag tag-cve">CVE-2026-84869</span>
                         </div>
                     </div>
-                    <span class="report-date">2026-11-10</span>
+                    <span class="report-date">2026-11-14</span>
                 </div>
-                
-                <ul class='refs'><li><a href="https://thehackernews.com/2026/11/three-china-nexus-espionage-campaigns.html" target="_blank" rel="noopener">thehackernews.com</a></li></ul>
+                <div class="report-meta-line report-ioc-line"><span class="tag tag-ioc">IP: 3</span><span class="tag tag-ioc">SHA256: 7</span></div><div class="report-ioc-detail"><div class="ioc-table-wrap"><div class="ioc-table-header"><span class="ioc-table-label">IP</span><span class="ioc-table-count">3</span></div><div class="ioc-table"><div class="ioc-row">197[.]47[.]160[.]252</div><div class="ioc-row">74[.]208[.]158[.]106</div><div class="ioc-row">87[.]106[.]111[.]220</div></div></div><div class="ioc-table-wrap"><div class="ioc-table-header"><span class="ioc-table-label">SHA256</span><span class="ioc-table-count">7</span></div><div class="ioc-table"><div class="ioc-row">008839ef2a2d54e9efa47013bb23c773d3a152f351e9dfd3b2f4dd27086121df</div><div class="ioc-row">45136a9ab47015c4334b881df9daf824a72347daae0b5730ce3bd7d42b204bf2</div><div class="ioc-row">b55ce5130cd2623017cca29318341f6b4656e3a1dc5ab82ce704e912d0d17535</div><div class="ioc-row">bea82efc82672225cf29eb869972670754f15941bc61b9e5801ffd41c5c39e5f</div><div class="ioc-row">c15b008b0296b1bc9e0f979e6f25b780e3e89edabb344c7ee8c284a1a140f0d7</div></div><details class="ioc-details"><summary class="ioc-summary">Show 2 more</summary><div class="ioc-table ioc-table-extra"><div class="ioc-row">e73020645e7a11a90865d93bd7f3d797585f49ef72b1ac7354392a2da7fbd91f</div><div class="ioc-row">f6d37291c4948b974caf2e9e7e8ca9c2173d2779d1ec0a391488706bbd1a995c</div></div></details></div></div>
+                <ul class='refs'><li><a href="https://www.huntress.com/blog/fake-crypto-exchange-sessions-screenconnect" target="_blank" rel="noopener">huntress.com</a></li><li><a href="https://support.huntress.io/hc/en-us" target="_blank" rel="noopener">support.huntress.io</a></li></ul>
             </div>
         </div>
         <div class="report-card fade-in" style="transition-delay: 0.12s">
             <div class="report-card-inner">
                 <div class="report-card-header">
-                    <span class="report-icon">⚠️</span>
+                    <span class="report-icon">🐀</span>
                     <div>
-                        <div class="report-title">Hackers Exploit Critical Xen Orchestra Auth Bypass Flaw to Gain Admin Access</div>
+                        <div class="report-title">KGB RAT: A Fully Undetectable Windows Trojan Built to Spy, Steal, and Terrorize</div>
                         <div class="report-tags">
                             <span class="tag tag-actor">Unknown</span>
                             
                         </div>
                     </div>
-                    <span class="report-date">2026-11-10</span>
+                    <span class="report-date">2026-11-14</span>
                 </div>
-                <div class="report-meta-line report-ioc-line"><span class="tag tag-ioc">Domain: 2</span><span class="tag tag-ioc">IP: 1</span></div><div class="report-ioc-detail"><div class="ioc-table-wrap"><div class="ioc-table-header"><span class="ioc-table-label">Domain</span><span class="ioc-table-count">2</span></div><div class="ioc-table"><div class="ioc-row">251[.]112</div><div class="ioc-row">ustar3rqxgnskzgnwkgpofgtvxevm6cx3lxdbwt4mndtveqyaohid[.]onion</div></div></div><div class="ioc-table-wrap"><div class="ioc-table-header"><span class="ioc-table-label">IP</span><span class="ioc-table-count">1</span></div><div class="ioc-table"><div class="ioc-row">91[.]211[.]251[.]112</div></div></div></div>
-                <ul class='refs'><li><a href="https://thehackernews.com/2026/11/hackers-exploit-critical-xen-orchestra.html" target="_blank" rel="noopener">thehackernews.com</a></li></ul>
+                <div class="report-meta-line report-ioc-line"><span class="tag tag-ioc">Domain: 5</span><span class="tag tag-ioc">Hostname: 1</span><span class="tag tag-ioc">IP: 2</span><span class="tag tag-ioc">MD5: 12</span><span class="tag tag-ioc">SHA1: 12</span><span class="tag tag-ioc">SHA256: 12</span><span class="tag tag-ioc">URL: 1</span></div><div class="report-ioc-detail"><div class="ioc-table-wrap"><div class="ioc-table-header"><span class="ioc-table-label">Domain</span><span class="ioc-table-count">5</span></div><div class="ioc-table"><div class="ioc-row">api[.]telegram</div><div class="ioc-row">ip-api[.]com</div><div class="ioc-row">kgbrat[.]org</div><div class="ioc-row">ntdoc[.]m417z</div><div class="ioc-row">telegram[.]org</div></div></div><div class="ioc-table-wrap"><div class="ioc-table-header"><span class="ioc-table-label">Hostname</span><span class="ioc-table-count">1</span></div><div class="ioc-table"><div class="ioc-row">ntdoc[.]m417z[.]com</div></div></div><div class="ioc-table-wrap"><div class="ioc-table-header"><span class="ioc-table-label">IP</span><span class="ioc-table-count">2</span></div><div class="ioc-table"><div class="ioc-row">104[.]248[.]130[.]195</div><div class="ioc-row">2[.]59[.]134[.]215</div></div></div><div class="ioc-table-wrap"><div class="ioc-table-header"><span class="ioc-table-label">MD5</span><span class="ioc-table-count">12</span></div><div class="ioc-table"><div class="ioc-row">08af4ffbaff1d8a4a3de99e17ec2ad2c</div><div class="ioc-row">18934ca7b042287f12089187caa92a2e</div><div class="ioc-row">226122ae1693ab2d03ef35ab341885ae</div><div class="ioc-row">4abae0cfbeffab867d67e73db745b758</div><div class="ioc-row">84cbdadcbf2cd1a268e1e0d38372c238</div></div><details class="ioc-details"><summary class="ioc-summary">Show 7 more</summary><div class="ioc-table ioc-table-extra"><div class="ioc-row">9b4705907cbc43d12f7c7d15f8b8e4c5</div><div class="ioc-row">a6b66f293b633472996a8c991a27446a</div><div class="ioc-row">b8bd57a94857dd5f64c9a1e237259284</div><div class="ioc-row">c2f71a13f910c4e0dcbfb3fb90c94f36</div><div class="ioc-row">cc212f3115d81b4ee0eb477d399058c9</div><div class="ioc-row">dec2f0b19a25f985de2f570ffd7de1e8</div><div class="ioc-row">e4af0b6497b27e048aee921e252fb1d8</div></div></details></div><div class="ioc-table-wrap"><div class="ioc-table-header"><span class="ioc-table-label">SHA1</span><span class="ioc-table-count">12</span></div><div class="ioc-table"><div class="ioc-row">09d0c3ccfa00632b58d26004422ad69d531b665f</div><div class="ioc-row">172367b18ae7240c649fb514725ee80d9a86915c</div><div class="ioc-row">18359a252cb62e7995d2d9f4f8173ac4e681e700</div><div class="ioc-row">4cb883e21225a1de5429f47418015eef72e38c0a</div><div class="ioc-row">599e3668a334340f526504fc4030df3d4dfc525d</div></div><details class="ioc-details"><summary class="ioc-summary">Show 7 more</summary><div class="ioc-table ioc-table-extra"><div class="ioc-row">68c1dec37bab447b585379443561632dd4dfd011</div><div class="ioc-row">6a1c1dfecca76f7a8a8ed29d7b84f1c2f16cbdfb</div><div class="ioc-row">7429c30788cd538b6389456226d891f02c595e99</div><div class="ioc-row">b301238eb458514446ac5a30b6753c3e59482629</div><div class="ioc-row">bf262e440760946ccd162519547ff911aaa95700</div><div class="ioc-row">d27f6c548a00317205cff3938532a355cecf7389</div><div class="ioc-row">d612974014b76eb8994079a9a714fa9a4e1f2773</div></div></details></div><div class="ioc-table-wrap"><div class="ioc-table-header"><span class="ioc-table-label">SHA256</span><span class="ioc-table-count">12</span></div><div class="ioc-table"><div class="ioc-row">1b3c95cf2a030df15d1474af2ae96bfe9a6ed160319c1a8782237206035d82c7</div><div class="ioc-row">22255c3c488d4c92ea3567d1032e7a7c790a22cde989a8f0eb257c2d6d811ed4</div><div class="ioc-row">25eb0dfbe57dc07d461e62643262c45de052b012529ad05c7f19c5eb0c1ed646</div><div class="ioc-row">3d71f8b5171f2fe47d9a247a193c1b48c1aaa4d533811e208b8d94ffa5800c9e</div><div class="ioc-row">559df774411724520865fa15aa8b7e209d0ee133db4dc3d3cd180e895d597a36</div></div><details class="ioc-details"><summary class="ioc-summary">Show 7 more</summary><div class="ioc-table ioc-table-extra"><div class="ioc-row">581c440644f93a17191b98158c467be5ae5972ab19668c6e8530a2034833bd45</div><div class="ioc-row">836ebabb6304dd873343e85eb51a9e8c9b3de8a68d5152c3ab0d496c8fc0fdf7</div><div class="ioc-row">8c3e8d0a5fadbd696bcbd56313d69d94f41f1b2678cfea4db83999a6ad62a63e</div><div class="ioc-row">d4fc7867caf1349bbbfd1f2972fe92acedd8507ae89fa822c07f09a194127894</div><div class="ioc-row">d691e9721c38104777664f8afd3941ededcadd433b3b593de3e21aa14d60f1f2</div><div class="ioc-row">d8fb0d64ea8b4a32d6c5869212a62a3c9c6357e4fd7e4cf090a67d22d8f78b62</div><div class="ioc-row">df792f965f693b0a2b5bffd9a1ea5127cbd4b13daa9ddb2559f54523604777d8</div></div></details></div><div class="ioc-table-wrap"><div class="ioc-table-header"><span class="ioc-table-label">URL</span><span class="ioc-table-count">1</span></div><div class="ioc-table"><div class="ioc-row">hxxps://ntdoc[.]m417z[.]com/ntsetinformationprocess</div></div></div></div>
+                <ul class='refs'><li><a href="https://www.group-ib.com/blog/kgb-rat-windows-fud-trojan" target="_blank" rel="noopener">group-ib.com</a></li><li><a href="https://www.group-ib.com/blog/kgb-rat-windows-fud-trojan/" target="_blank" rel="noopener">group-ib.com</a></li></ul>
             </div>
         </div>
         <div class="report-card fade-in" style="transition-delay: 0.18s">
             <div class="report-card-inner">
                 <div class="report-card-header">
-                    <span class="report-icon">⚠️</span>
+                    <span class="report-icon">🐀</span>
                     <div>
-                        <div class="report-title">SGLang RCE Exploit Breaches NEAR AI, Steals Data From 18 Agents and About 100 Users</div>
+                        <div class="report-title">Inside a PaperCut Attacker's AI Toolkit: Agent Instructions, Exploit Code, a Second RCE, and Victims Across 45+ Countries</div>
                         <div class="report-tags">
                             <span class="tag tag-actor">Unknown</span>
-                            
+                            <span class="tag tag-cve">CVE-2026-81578</span><span class="tag tag-cve">CVE-2026-82078</span>
                         </div>
                     </div>
-                    <span class="report-date">2026-11-10</span>
+                    <span class="report-date">2026-11-14</span>
                 </div>
-                <div class="report-meta-line report-ioc-line"><span class="tag tag-ioc">Email: 1</span></div><div class="report-ioc-detail"><div class="ioc-table-wrap"><div class="ioc-table-header"><span class="ioc-table-label">Email</span><span class="ioc-table-count">1</span></div><div class="ioc-table"><div class="ioc-row">security[@]near[.]ai</div></div></div></div>
-                <ul class='refs'><li><a href="https://thehackernews.com/2026/11/sglang-rce-exploit-breaches-near-ai.html" target="_blank" rel="noopener">thehackernews.com</a></li></ul>
+                <div class="report-meta-line report-ioc-line"><span class="tag tag-ioc">Domain: 8</span><span class="tag tag-ioc">Hostname: 2</span><span class="tag tag-ioc">MD5: 4</span><span class="tag tag-ioc">SHA1: 3</span><span class="tag tag-ioc">SHA256: 4</span></div><div class="report-ioc-detail"><div class="ioc-table-wrap"><div class="ioc-table-header"><span class="ioc-table-label">Domain</span><span class="ioc-table-count">8</span></div><div class="ioc-table"><div class="ioc-row">108-security[.]hiv</div><div class="ioc-row">108-system[.]hiv</div><div class="ioc-row">chain-validation-results-2026-09-02[.]md</div><div class="ioc-row">cve-2026-81578-82078-africa-triage[.]md</div><div class="ioc-row">geoip-summary[.]md</div></div><details class="ioc-details"><summary class="ioc-summary">Show 3 more</summary><div class="ioc-table ioc-table-extra"><div class="ioc-row">pc-sec-rust[.]hiv</div><div class="ioc-row">pc-sys-rust[.]hiv</div><div class="ioc-row">where[.]md</div></div></details></div><div class="ioc-table-wrap"><div class="ioc-table-header"><span class="ioc-table-label">Hostname</span><span class="ioc-table-count">2</span></div><div class="ioc-table"><div class="ioc-row">groovy[.]util[.]eval[.]me</div><div class="ioc-row">socks[.]shreadme[.]md</div></div></div><div class="ioc-table-wrap"><div class="ioc-table-header"><span class="ioc-table-label">MD5</span><span class="ioc-table-count">4</span></div><div class="ioc-table"><div class="ioc-row">528cd4e69ecfa5191adbcf6ef28667bf</div><div class="ioc-row">a6437ac3d6798090a218520985d36a3f</div><div class="ioc-row">ce870a91e8d27e8f663f0687abc60b04</div><div class="ioc-row">fc92dfafa7aa741c5f2b9cbcf75d1d19</div></div></div><div class="ioc-table-wrap"><div class="ioc-table-header"><span class="ioc-table-label">SHA1</span><span class="ioc-table-count">3</span></div><div class="ioc-table"><div class="ioc-row">4e24bfae6ea02175d367e8ba3fbbc38990e95bc0</div><div class="ioc-row">577fa0267c491d8aa4531e91b0ba402db24932f4</div><div class="ioc-row">77e981d0b1b81151a6a7d0966aca1b4a1d0f3022</div></div></div><div class="ioc-table-wrap"><div class="ioc-table-header"><span class="ioc-table-label">SHA256</span><span class="ioc-table-count">4</span></div><div class="ioc-table"><div class="ioc-row">12603f7a89c66717661f4695e2f0d474036e42ee1631b2070aa88d590d1b79c3</div><div class="ioc-row">14779d0d7ad6be3d7bf9ed78e4ab6016f22dfa7bc8b5d9c43b56011f7fe2ea19</div><div class="ioc-row">6dca0ea8a52a323b2ae173ef75d7ebb1cc6f909c855e76676a6478b9e40fb861</div><div class="ioc-row">c3f7109963b9599eb93fd9a97a4ffa38e672642b35b33608d69e6bbf9f19da4e</div></div></div></div>
+                <ul class='refs'><li><a href="https://hunt.io/blog/papercut-attacker-ai-toolkit-exploit-code-second-rce" target="_blank" rel="noopener">hunt.io</a></li></ul>
             </div>
         </div>
         <div class="report-card fade-in" style="transition-delay: 0.24s">
             <div class="report-card-inner">
                 <div class="report-card-header">
-                    <span class="report-icon">⚠️</span>
-                    <div>
-                        <div class="report-title">Git Patches Flaw That Lets Malicious Repositories Execute Code During Recursive Clones</div>
-                        <div class="report-tags">
-                            <span class="tag tag-actor">Unknown</span>
-                            <span class="tag tag-cve">CVE-2026-105437</span><span class="tag tag-cve">CVE-2026-111760</span><span class="tag tag-cve">CVE-2026-113408</span><span class="tag tag-cve">CVE-2026-114466</span><span class="tag tag-cve">CVE-2026-114467</span><span class="tag tag-cve">CVE-2026-114469</span>
-                        </div>
-                    </div>
-                    <span class="report-date">2026-11-10</span>
-                </div>
-                
-                <ul class='refs'><li><a href="https://thehackernews.com/2026/11/git-patches-flaw-that-lets-malicious.html" target="_blank" rel="noopener">thehackernews.com</a></li></ul>
-            </div>
-        </div>
-        <div class="report-card fade-in" style="transition-delay: 0.3s">
-            <div class="report-card-inner">
-                <div class="report-card-header">
-                    <span class="report-icon">⚠️</span>
-                    <div>
-                        <div class="report-title">Apple Patches Everyting: November 2026 Edition - SANS ISC</div>
-                        <div class="report-tags">
-                            <span class="tag tag-actor">Unknown</span>
-                            <span class="tag tag-cve">CVE-2026-113960</span><span class="tag tag-cve">CVE-2026-113961</span><span class="tag tag-cve">CVE-2026-113963</span><span class="tag tag-cve">CVE-2026-113964</span><span class="tag tag-cve">CVE-2026-113965</span><span class="tag tag-cve">CVE-2026-113968</span><span class="tag tag-cve">CVE-2026-113969</span><span class="tag tag-cve">CVE-2026-113970</span><span class="tag tag-cve">CVE-2026-113971</span>
-                        </div>
-                    </div>
-                    <span class="report-date">2026-11-10</span>
-                </div>
-                
-                <ul class='refs'><li><a href="https://isc.sans.edu/diary/rss/33506" target="_blank" rel="noopener">isc.sans.edu</a></li></ul>
-            </div>
-        </div>
-        <div class="report-card fade-in" style="transition-delay: 0.36s">
-            <div class="report-card-inner">
-                <div class="report-card-header">
-                    <span class="report-icon">⚠️</span>
-                    <div>
-                        <div class="report-title">CISA Adds Six Known Exploited Vulnerabilities to Catalog</div>
-                        <div class="report-tags">
-                            <span class="tag tag-actor">Unknown</span>
-                            <span class="tag tag-cve">CVE-2026-111560</span><span class="tag tag-cve">CVE-2026-111793</span><span class="tag tag-cve">CVE-2026-116606</span><span class="tag tag-cve">CVE-2026-124194</span><span class="tag tag-cve">CVE-2026-125350</span><span class="tag tag-cve">CVE-2026-20320</span>
-                        </div>
-                    </div>
-                    <span class="report-date">2026-11-10</span>
-                </div>
-                
-                <ul class='refs'><li><a href="https://www.cisa.gov/news-events/alerts/2026/11/10/cisa-adds-six-known-exploited-vulnerabilities-catalog" target="_blank" rel="noopener">cisa.gov</a></li></ul>
-            </div>
-        </div>
-        <div class="report-card fade-in" style="transition-delay: 0.42s">
-            <div class="report-card-inner">
-                <div class="report-card-header">
-                    <span class="report-icon">⚠️</span>
-                    <div>
-                        <div class="report-title">CISA Warns of Active Exploitation of OpenSSH, GPUStack, FreeSWITCH, and IBM Flaws</div>
-                        <div class="report-tags">
-                            <span class="tag tag-actor">Unknown</span>
-                            <span class="tag tag-cve">CVE-2026-123218</span>
-                        </div>
-                    </div>
-                    <span class="report-date">2026-11-10</span>
-                </div>
-                
-                <ul class='refs'><li><a href="https://thehackernews.com/2026/11/cisa-warns-of-active-exploitation-of.html" target="_blank" rel="noopener">thehackernews.com</a></li></ul>
-            </div>
-        </div>
-        <div class="report-card fade-in" style="transition-delay: 0.48s">
-            <div class="report-card-inner">
-                <div class="report-card-header">
-                    <span class="report-icon">⚠️</span>
-                    <div>
-                        <div class="report-title">N-able Takes N-central Cloud Offline After Researcher Discloses 33 Zero-Days with PoC Exploits</div>
-                        <div class="report-tags">
-                            <span class="tag tag-actor">Unknown</span>
-                            
-                        </div>
-                    </div>
-                    <span class="report-date">2026-11-10</span>
-                </div>
-                
-                <ul class='refs'><li><a href="https://thehackernews.com/2026/11/n-able-takes-hosted-n-central-offline.html" target="_blank" rel="noopener">thehackernews.com</a></li></ul>
-            </div>
-        </div>
-        <div class="report-card fade-in" style="transition-delay: 0.54s">
-            <div class="report-card-inner">
-                <div class="report-card-header">
-                    <span class="report-icon">⚠️</span>
-                    <div>
-                        <div class="report-title">SAP Patches Four CVSS 10.0 Flaws, Including Two Enabling Remote Code Execution</div>
-                        <div class="report-tags">
-                            <span class="tag tag-actor">Unknown</span>
-                            <span class="tag tag-cve">CVE-2026-120017</span><span class="tag tag-cve">CVE-2026-44748</span><span class="tag tag-cve">CVE-2026-76964</span><span class="tag tag-cve">CVE-2026-89103</span><span class="tag tag-cve">CVE-2026-89126</span>
-                        </div>
-                    </div>
-                    <span class="report-date">2026-11-10</span>
-                </div>
-                
-                <ul class='refs'><li><a href="https://thehackernews.com/2026/11/sap-patches-four-cvss-100-flaws.html" target="_blank" rel="noopener">thehackernews.com</a></li></ul>
-            </div>
-        </div>
-        <div class="report-card fade-in" style="transition-delay: 0.6s">
-            <div class="report-card-inner">
-                <div class="report-card-header">
-                    <span class="report-icon">⚠️</span>
-                    <div>
-                        <div class="report-title">Apple Patches iMessage Group Chat Privacy Flaws and Bluetooth Pairing Vulnerabilities</div>
-                        <div class="report-tags">
-                            <span class="tag tag-actor">Unknown</span>
-                            <span class="tag tag-cve">CVE-2026-111497</span><span class="tag tag-cve">CVE-2026-113960</span><span class="tag tag-cve">CVE-2026-113961</span>
-                        </div>
-                    </div>
-                    <span class="report-date">2026-11-10</span>
-                </div>
-                
-                <ul class='refs'><li><a href="https://thehackernews.com/2026/11/apple-patches-imessage-group-chat.html" target="_blank" rel="noopener">thehackernews.com</a></li></ul>
-            </div>
-        </div>
-        <div class="report-card fade-in" style="transition-delay: 0.6599999999999999s">
-            <div class="report-card-inner">
-                <div class="report-card-header">
-                    <span class="report-icon">🕵️</span>
-                    <div>
-                        <div class="report-title">Mobile threat report for Q3 2026 | Securelist</div>
-                        <div class="report-tags">
-                            <span class="tag tag-actor">Armored Likho</span><span class="tag tag-actor">Mirage Kitten</span><span class="tag tag-actor">STORM-2603</span><span class="tag tag-actor">UNC1549</span>
-                            
-                        </div>
-                    </div>
-                    <span class="report-date">2026-11-10</span>
-                </div>
-                
-                <ul class='refs'><li><a href="https://securelist.com/malware-report-q3-2026-mobile-statistics/121844/" target="_blank" rel="noopener">securelist.com</a></li></ul>
-            </div>
-        </div>
-        <div class="report-card fade-in" style="transition-delay: 0.72s">
-            <div class="report-card-inner">
-                <div class="report-card-header">
                     <span class="report-icon">🔒</span>
                     <div>
-                        <div class="report-title">Desktop and IoT threat statistics for Q3 2026 | Securelist</div>
+                        <div class="report-title">DragonForce Ransomware Profile: From Affiliate Program to Cybercrime Cartel</div>
                         <div class="report-tags">
-                            <span class="tag tag-actor">Armored Likho</span><span class="tag tag-actor">INC</span><span class="tag tag-actor">Mirage Kitten</span><span class="tag tag-actor">Qilin</span><span class="tag tag-actor">STORM-2603</span><span class="tag tag-actor">The Gentlemen</span><span class="tag tag-actor">UNC1549</span>
-                            <span class="tag tag-cve">CVE-2025-14733</span><span class="tag tag-cve">CVE-2025-60710</span><span class="tag tag-cve">CVE-2026-0257</span><span class="tag tag-cve">CVE-2026-15409</span><span class="tag tag-cve">CVE-2026-15410</span><span class="tag tag-cve">CVE-2026-45659</span><span class="tag tag-cve">CVE-2026-59310</span><span class="tag tag-cve">CVE-2026-63077</span>
+                            <span class="tag tag-actor">DragonForce</span>
+                            <span class="tag tag-cve">CVE-2021-44228</span><span class="tag tag-cve">CVE-2023-46805</span><span class="tag tag-cve">CVE-2024-21412</span><span class="tag tag-cve">CVE-2024-21887</span><span class="tag tag-cve">CVE-2024-21893</span><span class="tag tag-cve">CVE-2024-57726</span><span class="tag tag-cve">CVE-2024-57727</span><span class="tag tag-cve">CVE-2024-57728</span>
                         </div>
                     </div>
-                    <span class="report-date">2026-11-10</span>
+                    <span class="report-date">2026-11-14</span>
                 </div>
-                
-                <ul class='refs'><li><a href="https://securelist.com/malware-report-q3-2026-pc-iot-statistics/121843/" target="_blank" rel="noopener">securelist.com</a></li></ul>
+                <div class="report-meta-line report-ioc-line"><span class="tag tag-ioc">MD5: 2</span><span class="tag tag-ioc">SHA1: 1</span><span class="tag tag-ioc">SHA256: 1</span></div><div class="report-ioc-detail"><div class="ioc-table-wrap"><div class="ioc-table-header"><span class="ioc-table-label">MD5</span><span class="ioc-table-count">2</span></div><div class="ioc-table"><div class="ioc-row">2915b3f8b703eb744fc54c81f4a9c67f</div><div class="ioc-row">97b70e89b5313612a9e7a339ee82ab67</div></div></div><div class="ioc-table-wrap"><div class="ioc-table-header"><span class="ioc-table-label">SHA1</span><span class="ioc-table-count">1</span></div><div class="ioc-table"><div class="ioc-row">e10361a11f8a7f232ac3cb2125c1875a0a69a3e4</div></div></div><div class="ioc-table-wrap"><div class="ioc-table-header"><span class="ioc-table-label">SHA256</span><span class="ioc-table-count">1</span></div><div class="ioc-table"><div class="ioc-row">9f1f11a708d393e0a4109ae189bc64f1f3e312653dcf317a2bd406f18ffcc507</div></div></div></div>
+                <ul class='refs'><li><a href="https://www.bitsight.com/blog/threat-actor-profile-dragonforce-ransomware-group" target="_blank" rel="noopener">bitsight.com</a></li></ul>
             </div>
         </div>
 </div>
 
 <footer class="site-footer fade-in" style="transition-delay: 0.4s">
     <div class="footer-quote">"The only good breach is the one you detect."</div>
-    <div class="footer-meta">Report generated 2026-11-11 12:17 UTC &middot; jakesj425.github.io/threat-intel-blog</div>
+    <div class="footer-meta">Report generated 2026-11-15 13:24 UTC &middot; jakesj425.github.io/threat-intel-blog</div>
 </footer>
 
 <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">&#8593;</button>
