@@ -1,0 +1,90 @@
+{
+  "communities": {
+    "0": [
+      "agents_md",
+      "cve_2021_44228",
+      "cve_2026_114713",
+      "dragonforce",
+      "index_html",
+      "readme_md",
+      "report_ioc_data"
+    ],
+    "1": [
+      "bladabindi"
+    ]
+  },
+  "cohesion": {
+    "0": 0.2857142857142857,
+    "1": 1.0
+  },
+  "gods": [
+    {
+      "id": "index_html",
+      "label": "Threat Intelligence Report Structure",
+      "degree": 6
+    },
+    {
+      "id": "agents_md",
+      "label": "Agent Rules and Graphify Procedures",
+      "degree": 1
+    },
+    {
+      "id": "readme_md",
+      "label": "Daily Threat Intelligence Report Overview",
+      "degree": 1
+    },
+    {
+      "id": "cve_2026_114713",
+      "label": "CVE-2026-114713",
+      "degree": 1
+    },
+    {
+      "id": "dragonforce",
+      "label": "DragonForce Ransomware Group",
+      "degree": 1
+    },
+    {
+      "id": "cve_2021_44228",
+      "label": "CVE-2021-44228",
+      "degree": 1
+    },
+    {
+      "id": "report_ioc_data",
+      "label": "Report IOC Data Structure",
+      "degree": 1
+    },
+    {
+      "id": "bladabindi",
+      "label": "Bladabindi Malware",
+      "degree": 0
+    }
+  ],
+  "surprises": [
+    {
+      "source": "Threat Intelligence Report Structure",
+      "target": "Agent Rules and Graphify Procedures",
+      "source_files": [
+        "index.html",
+        "AGENTS.md"
+      ],
+      "confidence": "INFERRED",
+      "relation": "conceptually_related_to",
+      "why": "inferred connection - not explicitly stated in source; peripheral node `Agent Rules and Graphify Procedures` unexpectedly reaches hub `Threat Intelligence Report Structure`"
+    },
+    {
+      "source": "Daily Threat Intelligence Report Overview",
+      "target": "Threat Intelligence Report Structure",
+      "source_files": [
+        "README.md",
+        "index.html"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "provides_context_for",
+      "why": "peripheral node `Daily Threat Intelligence Report Overview` unexpectedly reaches hub `Threat Intelligence Report Structure`"
+    }
+  ],
+  "tokens": {
+    "input": 17895,
+    "output": 1657
+  }
+}
